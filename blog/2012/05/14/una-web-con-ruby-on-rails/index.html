@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Una web con Ruby on Rails - Javi Moreno</title>
+  <meta name="author" content="Javi Moreno">
+
+  
+  <meta name="description" content="Seguro que en algún momento nos hemos planteado la necesidad de disponer de un servicio web propio para alimentar alguna de nuestras aplicaciones ( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Javi Moreno</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<ul class="social">
+
+  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
+
+
+  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+
+
+  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
+
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:javimoreno.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/sobre-mi">Sobre mi</a></li>
+  <li><a href="/proyectos">Proyectos</a></li>
+  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
+  <li><a href="/blog/archives">Archivo</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+		
+			
+		    <h1 class="entry-title">Una web con Ruby on Rails</h1>
+			
+		
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T17:33:51+00:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Seguro que en algún momento nos hemos planteado la necesidad de disponer de un servicio web propio para alimentar alguna de nuestras aplicaciones (actualización de datos, gestión de InApp Purchases, notificaciones, etc).
+Actualmente hay muchos servicios on-line que nos permiten gestionar estas necesidades con facilidad (Amazon Web Services, iCloud, Azure, Parse, MaaSive). Es conveniente, al menos, echar un vistazo a cada uno de ellos para saber que utilidad podemos sacar de ellos pero creo que también es conveniente hacer un acto de valentía y plantearnos el hacer nuestro propio servicio web.<!-- more -->
+El objetivo que nos hemos marcado para esta sesión de 45 minutos es grande: no nos basta con un servicio que alimente nuestra aplicación, queremos una web que de soporte a esos datos y entre el maremagnun de opciones que hay disponibles para hacer esto nos hemos decantado por Ruby on Rails.</p>
+
+<h2>¿Que es Ruby un Rails?</h2>
+
+<p>Ruby on Rails es la forma de designar a un framework llamado Rails que dota al lenguaje de programación Ruby de toda la funcionalidad para hacer aplicaciones web. En realidad es como si los que hacemos aplicaciones para iOS dijeramos que las hacemos en Objective-C on Cocoa Touch&#8230; no suena tan guay.</p>
+
+<p>Ruby y rails arrastran esa maldición de ser “cools” lo que provoca también rechazo/celos entre los fanaticos de otras plataformas. Ruby tiene fama de ser un lenguaje bonito, con el que da gusto programar. Algún “fanático” decidió que, ya que el nombre del lenguaje era una gema, porque no llamar a las diferentes librerias gemas también&#8230; y por esa razón mientras que los abigarrados programadores de php utilizan librerias los finos y elegantes programadores de ruby utilizan gemas. Rails es una gema, quizá la más famosa, que se apoya en otras gemas muy famosas y envidiadas para hacer aplicaciones web de una forma muy sencilla.</p>
+
+<p>Ruby on Rails respeta al 100 % el patrón de arquitectura Modelo-Vista-Controlador, seguramente sea uno de los frameworks para el desarrollo de aplicaciones web más puristas en este sentido.</p>
+
+<p>También es muy escrupuloso con el cumplimiento del principio Don´t Repeat Yourself. Esto es muy agradable sobre todo a la hora de hacer cambios en el modelo&#8230; algo que hacemos continuamente mientras desarrollamos y que se puede convertir en un dolor de cabeza al pasar a producción. Gracias a esto, las migraciones en ruby son muy sencillas&#8230; mucho más que con Core Data.</p>
+
+<p>El paradigma llamado Convention over configuration también está en las raices de este framework y de la comunidad ruby en general. Ya veremos en nuestro ejemplo como es muy sencillo navegar por el código de nuestra aplicación ya que si la clase que conecta una entidad del modelo con la base de datos se llama List, la tabla se llamará lists, el controlador se llamará lists_controller, etc&#8230;</p>
+
+<h2>¿Y si no se Ruby?</h2>
+
+<p>Dale una oportunidad&#8230; seguro que tampoco sabías Objective-C y estás aquí. Como vamos a ver a continuación, hacer algo básico es muy muy sencillo. Ya habrá tiempo de ir profundizando en el lenguaje más adelante.</p>
+
+<p>Desde luego, lo que vamos a hacer nosotros se puede hacer con otros frameworks y otros lenguajes de programación&#8230; busca el que sea más agradable para ti.</p>
+
+<h2>¿Que necesitamos para hacer nuestra aplicación?</h2>
+
+<p>Nuestro mac, que ya vendrá con ruby instalado. Lo mejor sería actualizar a la última versión ya que como es la primera aplicación que vamos a hacer no tenemos problemas de versiones. En este <a href="http://pragmaticstudio.com/blog/2010/9/23/install-rails-ruby-mac">enlace</a> nos cuentan una forma de actualizar ruby, instalar rails y hacer una aplicación sencilla en Lion. Son los pasos que he seguido yo para hacer la instalación de rails en mi mac y el el ejemplo que vamos a ver es tan sencillo como el que viene en esa página.</p>
+
+<h2>¿Que es lo que vamos a hacer?</h2>
+
+<p>Una aplicación web que llamaremos MegaLists y que tendrá vistas para dar de alta elementos en una lista (algo de lo más original).
+Al introducir por terminal:</p>
+
+<pre><code>$ rails new MegaLists
+</code></pre>
+
+<p>rails nos crea todo proyecto de la aplicación, ahora necesitamos las vistas y la tabla donde almacenaremos nuestra lista. Si hemos decidido llamar a la tabla List  y solo necesitamos un campo para el nombre de la nota y otro para el detalle, las palabras mágicas son estas:</p>
+
+<pre><code>$ rails generate scaffold List name:string description:string
+$ rake db:migrate
+</code></pre>
+
+<p>Al pedirle a rails que nos genere un andamio (scaffold) este nos crea todo lo que necesitamos para disfrutar de nuestra nueva web y de los servicios que nuestra app va a consumir. La segunda instrucción se encarga de realizar una migración en la base de datos para incluir los cambios que hemos solicitado, en este caso, crear una nueva tabla con dos campos.</p>
+
+<p>Podemos tener un fichero con datos de prueba para cargar nuestra base de datos con una única instrucción en caso de que queramos volver a generarlos.  La primera instrucción nos abriría el fichero en nuestro editor de texto, la segunda instrucción es la que cargaría la base de datos.</p>
+
+<pre><code>$ edit db/seeds.rb
+
+$ rake db:seed
+</code></pre>
+
+<p>Aunque parezca mentira, con lo poco que hemos hecho hasta ahora ya tenemos una web creada con toda la funcionalidad necesaria para alimentar la entidad lists. Lo único que nos falta para verla en funcionamiento es arrancar el servidor.</p>
+
+<pre><code>$ rails server
+</code></pre>
+
+<p>El servidor&#8230; ¿cuando lo has instalado? ¿como sabe donde está alojado el proyecto? magia&#8230; las gemas tienen poderes y se encargan de estas cosas. Igual que no tenemos que preocuparnos por la base de datos, ya que rails gestiona las conexiones por nosotros, también incluye un pequeño servidor que nos permitirá hacer nuestras pruebas. Cuando se despliegue la aplicación en producción si que será necesario configurar un servidor Apache, instalar y configurar una base de datos, etc pero para desarrollo no necesitamos nada más.</p>
+
+<p>Si habéis seguido los mismos pasos que yo,  este <a href="http://localhost:3000/lists">enlace</a> os abrirá una pagina web con la lista de los elementos que contiene la tabla. Podemos editarlos, borrarlos, añadir alguno más&#8230;</p>
+
+<p>Quizá, los más llamativo es lo que vemos si abrimos este otro <a href="http://localhost:3000/lists.json">enlace</a>. ¡Tremendo! el mísmo contenido del enlace anterior pero en formato json.</p>
+
+<h2>API REST</h2>
+
+<p>La <a href="http://es.wikipedia.org/wiki/Representational_State_Transfer">wikipedia</a> lo explica muy bien. Se basa en el excelente diseño del protocolo http que permite contener en la llamada toda la información necesaria para comprender la petición. Cada recurso es definido univocamente por su URI y a través de las operaciones http GET, POST, PUT y DELETE podemos crear (Create), leer (Read), actualizar (Update) y borrar (Delete). Todo esto nos lo incluye rails al hacer el scaffold&#8230;. gratis.</p>
+
+<p>En el post que sigue a este veremos como hacer la aplicación iOS que accede a esta API para leer y modificar registros.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-14T17:33:51+00:00" pubdate data-updated="true">May 14<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
+  
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/05/14/web-y-cliente-ios-en-45min/" title="Previous Post: Web y cliente iOS en 45min">&laquo; Web y cliente iOS en 45min</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/05/28/cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/" title="Next Post: Cliente iOS… explotando a NSURLConnection y NSJSONSerialization">Cliente iOS… explotando a NSURLConnection y NSJSONSerialization &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Javi Moreno -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'eloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails/';
+        var disqus_url = 'http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  
+  <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
+  
+
+
+
+
+</body>
+</html>

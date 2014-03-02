@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linklog | Javi Moreno]]></title>
+  <link href="http://javimoreno.me/blog/categories/linklog/atom.xml" rel="self"/>
+  <link href="http://javimoreno.me/"/>
+  <updated>2014-03-02T02:46:30+00:00</updated>
+  <id>http://javimoreno.me/</id>
+  <author>
+    <name><![CDATA[Javi Moreno]]></name>
+    <email><![CDATA[javi@javimoreno.me]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Pow!! es poderoso! &rArr;]]></title>
+		<link href="http://pow.cx"/>
+		
+	  <updated>2014-02-25T02:13:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2014/02/25/pow-es-poderoso</id>
+	  
+	  <content type="html"><![CDATA[Pow!! es la típica cosa que nunca has necesitado pero que una vez la has probado ya no puedes vivir sin ella. No hay nada malo en escribir http://localhost seguido del puerto por donde sirve tu aplicación pero... ¿a qué sería todo más fácil si pudieras llamar a tus proyectos web también por su nombre en tu máquina local? Pues bien, Pow!! se encarga de eso. 
+
+<!--more-->
+
+La instalación es super sencilla: `$ curl get.pow.cx | sh` en tu terminal y ya esta listo para funcionar. A continuación entras en el directorio de pow con `$ cd ~/.pow` y generas un enlace simbolico a la carpeta donde se encuentra tu aplicación: `$ ln -s /path/to/myapp`. A partir de este momento ya podrás acceder a tu aplicación simplemente escribiendo `http://myapp.dev` en tu navegador.    
+
+Funciona sin problemas con Rails, Sinatra o Padrino. Con Octopress tienes que tener la precaución de regenerar los contenidos cada vez que haces algún cambio pero por lo demás va estupendamente. 
+
+Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas opciones que seguro cubrirán tu necesidad.<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/">Permalink</a>]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Jugando a ser John Gruber &rArr;]]></title>
+		<link href="http://octopress.org/docs/blogging/linklog/"/>
+		
+	  <updated>2014-02-25T01:30:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2014/02/25/prueba-post-linklog</id>
+	  
+	  <content type="html"><![CDATA[En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo [Marco Arment](http://www.marco.org) o [Daring Fireball](http://daringfireball.net).    
+Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜
+
+<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/prueba-post-linklog/">Permalink</a>]]></content>
+		
+	</entry>
+	
+</feed>

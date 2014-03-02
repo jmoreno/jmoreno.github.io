@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Cursores dinámicos y NSCompoundPredicate - Javi Moreno</title>
+  <meta name="author" content="Javi Moreno">
+
+  
+  <meta name="description" content="Hace unos años, en un proyecto lleno de anécdotas y experiencias, el grupo de desarrolladores me contaba que habían creado servicios para cada una de &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://javimoreno.me/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Javi Moreno</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<ul class="social">
+
+  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
+
+
+  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+
+
+  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
+
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:javimoreno.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/sobre-mi">Sobre mi</a></li>
+  <li><a href="/proyectos">Proyectos</a></li>
+  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
+  <li><a href="/blog/archives">Archivo</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+		
+			
+		    <h1 class="entry-title">Cursores dinámicos y NSCompoundPredicate</h1>
+			
+		
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-12T03:02:00+00:00" pubdate data-updated="true">Jan 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Hace unos años, en un proyecto lleno de anécdotas y experiencias, el grupo de desarrolladores me contaba que habían creado servicios para cada una de las tablas del modelo de datos con el objetivo de centralizar los accesos a la tablas. La idea me pareció interesante: estaba harto de tocar programas que tenían la misma query y había cambiado algún criterio por lo que unificar las consultas en un único servicio era genial.</p>
+
+<p>Les sugerí que, a la hora de montar los cursores, preparasen toda salida de datos de forma que fuera reutilizable. De esta forma, a medida que se fueran creando nuevas consultas, solo habría que incluir la nueva query. &#8220;No habrá que dar de alta nuevas consultas, hacemos cursores dinámicos&#8230;&#8221; dijo uno de ellos con gran orgullo.</p>
+
+<!-- more -->
+
+
+<p><em>CURSORES DINÁMICOS&#8230; Dios mío&#8230; se han atrevido a utilizar SQL dinámico, el mayor sacrilegio en cualquier instalación con un mainframe</em>, pensé yo. Cuando les dije que no se autorizaría la subida a producción de ningún programa con SQL dinámico me dijeron: &#8220;No, no. Si los hacemos con el SQL de toda la vida&#8221;.</p>
+
+<p>Lo que hacían era montar el <em>where</em> de tal forma que incluían todos los campos por los que se podría preguntar y comprobaban si el campo de la tabla era igual a la variable o si la variable estaba vacía. Esto tenía dos resultados: con un único cursor se obtenían los mismo resultados que con cursores ad-hoc (menos código que picar) y al abrir el cursor, el DB2 hacía un TABLESPACE SCAN y el programa aparecía en todas las estadísticas de pésimo rendimiento (gran bronca del DBA).</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">PERSONAS</span>
+</span><span class='line'> <span class="k">WHERE</span> <span class="p">(</span><span class="n">EDAD</span> <span class="o">=</span> <span class="p">:</span><span class="n">EDAD</span> <span class="k">OR</span> <span class="p">:</span><span class="n">EDAD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">SEXO</span> <span class="o">=</span> <span class="p">:</span><span class="n">SEXO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">SEXO</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="k">OR</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">PESO</span> <span class="o">=</span> <span class="p">:</span><span class="n">PESO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">PESO</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Por eso, cuando la semana pasada me empeñe en montar un predicado variable para un proyecto de iOS y termine encontrando NSCompoundPredicate, pensé: &#8220;Esto si que es un cursor dinámico&#8221;</p>
+
+<p><strong>NSPredicate</strong> es una clase que se utiliza para definir condiciones lógicas que acoten una búsqueda. Esta clase se puede utilizar para obtener un array de objetos más pequeño a partir de otro más grande utilizando un método de la clase NSArray que es <em>filteredArrayUsingPredicate:</em></p>
+
+<p>Por ejemplo: tenemos un array llamado <em>personas</em> que contiene objetos de tipo <em>Individuo. </em>El objeto individuo tiene diferentes propiedades: edad, sexo, altura, peso, colorOjos, colorPelo, etc. Si queremos tener un array más pequeño con las personas que son mujeres y tiene los ojos azules haríamos lo siguiente:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(sexo == %@ AND colorOjos == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">];</span>
+</span><span class='line'><span class="n">NSArray</span> <span class="o">*</span><span class="n">mujeresDeOjosAzules</span> <span class="o">=</span> <span class="p">[</span><span class="n">personas</span> <span class="nl">filteredArrayUsingPredicate:</span><span class="n">predicate</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En el ejemplo anterior, <em>individuo.sexo</em> contendría el valor &#8220;Mujer&#8221; e <em>individuo.colorOjos</em> contendría el valor &#8220;Azul&#8221;. Bastante fácil, no?.</p>
+
+<p>Bueno, supongamos ahora que estamos montando una especie de &#8220;Quien es quien&#8221; en el que dejamos que pregunten de forma aleatoria por un campo, por dos, por todos, etc&#8230; pero sin ningún control. En este caso deberíamos evaluar todas las posibilidades y definir un NSPredicate para cada una de ellas, evaluando previamente cada situación.
+Con pocas propiedades es asumible montar los diferentes NSPredicate, con seis propiedades las combinaciones van a ser unas cuantas (si mis recuerdos de combinatoria no fallan serían 63 combinaciones diferentes)&#8230; ¿tenemos que codificarlas todas? No, existe <strong>NSCompoundPredicate</strong>, la panacea de los cursores dinámicos.</p>
+
+<p>El ejemplo quedaría así:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">predicateArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(edad == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(sexo == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(altura == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(peso == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(colorOjos == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject:</span><span class="p">[</span><span class="n">NSPredicate</span> <span class="nl">predicateWithFormat:</span><span class="s">@&quot;(colorPelo == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">]];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">NSCompoundPredicate</span> <span class="o">*</span><span class="n">compoundPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCompoundPredicate</span> <span class="nl">andPredicateWithSubpredicates:</span><span class="n">predicateArray</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lo que hemos hecho es un NSPredicate por cada propiedad que tenemos que evaluar. Comprobando previamente que esa propiedad esté informada. Cada NSPredicate lo incluimos en un array que posteriormente le pasaremos a la clase NSCompoundPredicate a través del método correspondiente.
+Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recuperar los objetos que cumplan todas las condiciones, orPredicateWithSubpredicates para recuperar los objetos que cumplen alguna condición y notPredicateWithSubpredicates que, creo, sirve para recuperar los objetos que no cumplen ninguna condición.</p>
+
+<p>Si queréis saber más sobre NSPredicate y NSCompoundPredicate, lo mejor es consultar la documentación de Apple:</p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSPredicate_Class/Reference/NSPredicate.html">NSPredicate</a>
+<a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSCompoundPredicate_Class/Reference/Reference.html#//apple_ref/occ/cl/NSCompoundPredicate">NSCompoundPredicate</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-12T03:02:00+00:00" pubdate data-updated="true">Jan 12<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
+  
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" title="Previous Post: Planificando la descarga de informes de iTunes Connect">&laquo; Planificando la descarga de informes de iTunes Connect</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/01/17/un-group-by-con-core-data/" title="Next Post: Un "group by" con Core Data">Un "group by" con Core Data &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Javi Moreno -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'eloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://javimoreno.me/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/';
+        var disqus_url = 'http://javimoreno.me/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  
+  <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
+  
+
+
+
+
+</body>
+</html>

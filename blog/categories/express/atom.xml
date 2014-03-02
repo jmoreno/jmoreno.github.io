@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Express | Javi Moreno]]></title>
+  <link href="http://javimoreno.me/blog/categories/express/atom.xml" rel="self"/>
+  <link href="http://javimoreno.me/"/>
+  <updated>2014-03-02T02:46:30+00:00</updated>
+  <id>http://javimoreno.me/</id>
+  <author>
+    <name><![CDATA[Javi Moreno]]></name>
+    <email><![CDATA[javi@javimoreno.me]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Markdown]]></title>
+		<link href="http://javimoreno.me/blog/2013/07/06/markdown/"/>
+		
+	  <updated>2013-07-06T16:10:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/07/06/markdown</id>
+	  
+	  <content type="html"><![CDATA[Hay dos cosas que recomendaría a todo el mundo que tuviera que escribir *frecuentemente* en un ordenador:     
+
+1. Aprender mecanografía.    
+2. Aprender [markdown](http://daringfireball.net/projects/markdown/).     
+
+<!--more-->
+
+Yo aprendí mecanografía con 18 o 19 años… cuando empecé con memorias, prácticas y otros trabajos universitarios. Markdown lo aprendí hace poco, con 34 años, y creo que no he aprendido nada que me ayude a ganar tanto tiempo en mi día a día entre medias. Markdown te permite confeccionar un documento con títulos, negritas, cursivas, listas, listas numéricas, tablas, citas, hipervínculos,… sin levantar las manos del teclado para ir al trackpad (o al ratón, el que lo use ;-P).
+
+Principalmente lo utilizo en cuatro escenarios.       
+
+1. En el trabajo. Los documentos funcionales, inventarios, y otros documentos que haría con un procesador de texto los hago en markdown.    
+2. En este blog. Todas las entradas de este blog están escritas en markdown.    
+3. En los proyectos de desarrollo *caseros*. Intento siempre tener un readme.md tanto si voy a colgar el proyecto en Github como si no.    
+4. En mis notas. Cualquier nota, Tanto si es para acordarme de como se hace un enlace simbólico como si es para tener un inventario de cuentas y tarjetas las escribo en markdown.    
+
+Desde mi punto de vista, para utilizar markdown solo necesitas dos cosas: un editor de texto y un programa que transforme markdown en formato enriquecido para ver cual será el resultado final. 
+
+En el trabajo, donde tengo que lidiar con Windows, uso [MarkdownPad](http://markdownpad.com), un programa que tiene dos ventanas: una para escribir en markdown y otra para visualizar lo que estas escribiendo en formato enriquecido.
+
+En casa tengo algo más de lío. Inicialmente, todo lo hacía con [Sublime Text](http://www.sublimetext.com). Cuando empece a preocuparme por previsualizar los documentos descubrí Mou, un programa muy semejante a MarkdownPad pero para Mac. Con [Mou](http://mouapp.com) me empece a interesar por la previsualización y así es como descubrí [Marked](http://markedapp.com), un programa dedicado a la previsualización de documentos en markdown y con utilidades para la exportación a HTML, RTF, pdf, etc.    
+
+Siguiendo el rastro a Marked, descubrí que su desarrollador también tenía un programita para escribir en markdown basado en [Notational Velocity](http://notational.net) (un programa del que había oído maravillas en 85% Cocoa): [nvALT](http://brettterpstra.com/projects/nvalt/). La integración de nvALT con Marked fue lo que me animó a probarlo. nvALT trae su propio visualizador (bastante bueno y configurable, por cierto) pero yo prefiero usar Marked (no solo porque lo haya comprado, es que es realmente bueno).
+
+Cualquiera que me conozca sabrá que no me canso de probar herramientas y aunque la combinación nvALT + Marked sigue siendo para mi la mejor, ahora estoy usando también [iA Writer](http://www.iawriter.com/mac/). Aunque iA Writer tiene su propio visualizador (nvALT también tiene el suyo), con automator y preferencias de teclado se puede hacer que el documento se previsualice en Marked (algo que, como ya he dejado claro antes, para mi es imprescindible).
+
+Tanto las notas, como las entradas del blog, son documentos que quiero tener disponibles cuando estoy en casa y también en el iPhone y en el iPad. Si tienes iA Writer para iOS y para Mac puedes beneficiarte de la sincronización con iCloud aunque existiendo Dropbox y los enlaces simbólicos cualquier aplicación es válida. 
+
+## Bueno, con tanta herramienta, ¿cuál es mi forma de trabajar?    
+Actualmente, las notas las escribo en nvALT. Tengo todas las notas metidas en la misma carpeta porque la búsqueda de este programa es genial y además las etiquetas me permiten clasificar las notas. Esta carpeta es un enlace simbólico a la carpeta de iCloud de iA Writer. De esta forma, puedo consultar y editar las notas en la versión para iOS que tengo en el iPhone y en el iPad de esta aplicación. nvALT soporta sincronización con Simplenote por lo que sí activas esta opción podrás tener la sincronización con iPhone y iPad sin tener que comprar iA Writer.  Si la carpeta donde nvALT va a buscar las notas está en Dropbox también... mejor que mejor.
+
+Las entradas del blog y los readme de los proyectos también las solía escribir con nvALT cuando estaba en casa pero ahora estoy usando iA Writer. La experiencia de escribir es mucho mejor en iA Writer ya que da la sensación de que estas solo con tu teclado frente a una hoja en blanco pero nvALT tiene unos atajos de teclado mucho más útiles, creo yo, sobre todo para dar formato al texto.      
+Cuando termino de escribir los readme, copio el texto y lo pego en el fichero correspondiente. A partir de ahí, la edición la haré desde el editor o IDE que toque en función del proyecto: Sublime, Xcode o RubyMine.    
+
+Las entradas del blog las termino de editar en Sublime. El motivo es que Octopress tiene unas convenciones propias para imágenes o código fuente embebido que no me gusta como se previsualizan así que prefiero dejar esa edición para el momento previo a la publicación. 
+
+Y ya esta, llamadme enrevesado pero esta es la forma más cómoda que tengo de trabajar. ;-)]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Mamá, salgo en un podcast!]]></title>
+		<link href="http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast/"/>
+		
+	  <updated>2013-05-21T19:24:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast</id>
+	  
+	  <content type="html"><![CDATA[Aunque el COBOL no esté dentro de la temática habitual de este blog, si habéis leido mi entrada sobre mis diez años como programador, sabréis que los proyectos a los que me dedico durante el día tienen a ese *maravilloso* lenguaje como base para el desarrollo. Por este motivo, cada vez que se habla de COBOL salto como un resorte y en [uno de esos saltos](https://twitter.com/jmoreno78/statuses/274461772721827840), [Jose Antonio Blanco](http://twitter.com/jablanco) cometió la locura de dejarme participar en el podcast [We.Developers](http://wedevelopers.com).      
+Supongo que la audiencia le bajará estrepitosamente. Si queréis echar un vistazo al guión que preparé, es el cuerpo principal de este post.
+
+<!--more-->
+
+## Citas relacionadas con COBOL
+
+No hay muchas, la verdad. Las mejores son las que hacen un poco de leña con el lenguaje, como la de Dijktstra. Son un *poco* ofensivas pero la verdad es que son graciosas. Echale un vistazo a estas a ver que te parecen:
+
+> The use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offence.    
+— Edsger Dijkstra
+
+> Cobol has almost no fervent enthusiasts. As a programming tool, it has roughly the sex appeal of a wrench.    
+— Charles Petzold
+
+> A computer without COBOL and FORTRAN is like a piece of chocolate cake without ketchup or mustard.    
+— John Krueger
+
+> The tree large enough that a stake capable of killing COBOL could be fashioned from its trunk has not yet grown anywhere upon the face of this verdant planet.     
+— Dan Martinez
+
+Como puedes ver, las tres primeras son bastante jocosas con el lenguaje... la última es bastante real y es la que no buscar herir el lenguaje. Vendría a traducirse a algo así como:
+
+> El árbol lo suficientemente largo como para que una estaca capaz de matar al COBOL pudiera sacarse de su tronco todavía no ha crecido lo suficiente en ningún lugar de este verde planeta.    
+- Dan Martinez
+
+##Historia
+
+A finales de los años 50, con la aparición de las primeras máquinas *comerciales* los usuarios empazaban a reclamar a los fabricantes una convergencia en los lenguajes de programación ya que por aquel entonces lo habitual era que cada fabricante tuviera su propio lenguaje para comunicarse con sus máquinas.    
+Una comisión formada por fabricantes de ordenadores, usuarios, trabajadores de la Universidad de Pennsylvania y el Departamento de Defensa de los Estados Unidos fue la que, después de tan solo seis meses de trabajo, definió el lenguaje COBOL, siglas de COmmon Bussines Oriented Language.   
+Un par de años antes, Grace Hopper había desarrollado FLOW-MATIC, un lenguaje pionero ya que empleaba instrucciones en ingles para comunicarse con la máquina. Precisamente para poder transformar estas instrucciones en lenguaje máquina, Grace Hopper creó el primer compilador. Este lenguaje FLOW-MATIC fue en el que más se basó la comisión por lo que, a modo de atribución, se llama a Grace Hopper la madre de COBOL ya que en realidad no tuvo un papel tan preponderante en la comisión. 
+
+Después de la primera definición del lenguaje en el año 59, se realizaron varias revisiones mayores: en el 68, 74, 85 y 2002. La más frecuente suele ser una mejora del año 89 sobre la del 85. La del año 2002 es la que introduce muchos más cambios como orientación a objetos, soporte a mucho más tipos de variables, generación y parseo de XML pero no está muy implementada. 
+
+##Características
+
+La principal característica del COBOL está en su propio nombre: es un lenguaje totalmente orientado a la automatización de procesos de negocio. Quizá ese y no otro sea el principal motivo por el que sigue tan vigente. La mayoría de los lenguajes de programación de los que hablamos hoy en día (C, Java, C++, Objective-C, PHP, Javascript, Python, Ruby, etc) sirven para hacer cualquier tipo de programa. Obviamente están orientados a unas determinadas tecnologías o nichos de mercado: juegos, desarrollo web, drivers, aplicaciones de escritorio, aplicaciones móviles, etc pero no hay ninguno que sirva específicamente para hacer un CRM. COBOL fue diseñado específicamente para dar respuestas a una serie de necesidades que tenían las empresas para automatizar sus procesos. Todos querían un único lenguaje que les permitiera hacer eso, automatizaron sus procesos, procesos que en su mayoría no han cambiado en los últimos 50 o 60 años: emisión de recibos, listados de inventario, contratación de productos, control de actividad de procesos, etc. 
+
+Otra característica novedosa para la época era que soportaba nombres de variables y de métodos de hasta 32 caracteres. Por esto se habla a veces de la *verbosidad* del COBOL. El código es muy legible y casi autodocumentado. Una de las cosas que tuvo muy en cuenta la comisión para el diseño del lenguaje es que un Gerente sin formación técnica pudiera leer el código fuente de un programa y entender que es lo que estaba pasando (luego llego el GOTO y acabo con este sueño dorado). Todos los lenguajes de programación tienen una fuerte influencia de la lengua inglesa pero con pocos tienes la sensación de estar hablando con la máquina como con COBOL: Como programador, escribir i++ y que la variable i aumente su valor en una unidad es una sensación de poder. Para un usuario, leer ADD 1 TO INDEX no deja lugar a dudas.
+Eso no quita para que no haya que poner comentarios: la duda que nos surgirá cuando leamos la instrucción anterior en cualquier lenguaje es: ¿por qué cojones aumenta el indice?
+
+Es un lenguaje de tipado débil. Solo hay dos tipos de variables: numéricas y alfanuméricas. Dentro de las numéricas hay bastantes tipos de empaquetamientos: binario, hexadecimal, decimal comprimido, sin comprimir, editados... un lenguaje dedicado al mundo empresarial tiene que tener una buena gestión de variables numéricas. Es importante destacar que en la definición de la variable se indica explícitamente su longitud, es decir, el número de bytes que necesita. También pueden contruirse arrays.
+
+Las variables pueden agruparse dentro de otras variables (una especie de estructuras de C... pero solo una especie) identificandose la pertenencia a un grupo mediante la indentación por código de nivel. Un ejemplo sería una cuenta corriente: A nivel 01 estaría la variable CUENTA-CORRIENTE, a nivel 05 tendríamos CODIGO-BANCO, CODIGO-SUCURSAL, PRIMER-DIGITO-CONTROL, SEGUNDO-DIGITO-CONTROL y NUMERO-CUENTA. Si utilizamos numéricos de base decimal solo ocuparíamos 20 bytes, es decir, los 20 bytes estarían divididos en cinco bloques de 4, 4, 1, 1 y 10 bytes. 
+
+    01  CUENTA-CORRIENTE
+        05  CODIGO-BANCO           PIC 9(4).
+        05  CODIGO-SUCURSAL        PIC 9(4).
+        05  PRIMER-DIGITO-CONTROL  PIC 9.
+        05  SEGUNDO-DIGITO-CONTROL PIC 9(1).
+        05  NUMERO-CUENTA          PIC 9(10).
+    
+No es necesario definir el tipo y la longitud de la variable de primer nivel. Siempre será alfanumérica y ocupara los mismos bytes que las variables que agrupa. En este caso, si queremos tratarla como numérica tendríamos que redefinirla como numérica. Esto se hace con la instrucción REDEFINES.
+
+    01 CUENTA-CORRIENTE-NUMERICA   PIC 9(20).
+    01 CUENTA-CORRIENTE REDEFINES CUENTA-CORRIENTE-NUMERICA.
+
+No hay variables de tipo booleano, se construyen mediante niveles especiales de indentación pero en realidad se parecen mas a un *enum*. La diferencia con los enum es que podemos evaluar variables numéricas y alfanuméricas.
+
+La estructura de un programa COBOL es muy rígida: Consta de cuatro partes aunque no todas son obligatorias: 
+- Una primera de encabezado (IDENTIFICATION DIVISION), donde se pone el nombre del programa, el autor, las fecha de compilación, etc. 
+- Una segunda de configuración del entorno (ENVIRONMENT DIVISION), cuando el programa accede a ficheros esta es la sección donde se informan las características de dicho fichero, si en lugar de trabajar con punto como separador decimal se utilizase la coma se indicaría en esta sección. 
+- Una tercera para los datos (DATA DIVISION) donde se definen todas las variables que va a utilizar el programa, se aporta algo más de información sobre los ficheros que se hubieran definido en la sección anterior, etc.
+- Una cuarta para las instrucciones (PROCEDURE DIVISION) que sería lo que actualmente entendemos por programa. Es donde se tira el código.
+
+Además de la rigidez de la secciones, el número de columna donde se escribe también es muy importante: los seis primero caracteres están reservados, el séptimo solo se utiliza para comentar o descomentar el código. Del 8 al 11 están reservados para la identificación de las divisiones y las secciones, los niveles 01 de variables y las definiciones de los ficheros. Esto es lo que se conoce como zona A. De la 12 a la 72 es la zona normal para codificar y se conoce como zona B. De la columna 72 a la 80 tampoco se debe escribir ya que el compilador no va a leer lo que ahí escribamos. Esta estructura procede de la forma original de programa en COBOL. Al principio no había IDE´s si no que se usaban fichas de programación. Estas fichas se introducían en los compiladores y si todo era correcto se generaban las tarjetas perforadas con las que funcionaban los mainframes. Aunque ya no haya tarjetas perforadas y se utilicen IDE´s para la codificación, estas restricciones se mantienen en los compiladores actuales.
+
+##Plataformas y Variantes
+
+Aunque la plataforma habitual son los Mainframes se pueden encontrar programas para ordenadores personales. En este punto puedo meter la pata porque el entorno que yo conozco es el mainframe. Aunque el lenguaje COBOL es el mismo, a la versión del lenguaje que se utiliza para desarrollar aplicaciones que luego van a correr en sistemas operativos de ordenadores personales se la llama RM-COBOL. Hay empresas actuales que comercializan productos para seguir desarrollando y manteniendo estos programas como MicroFocus. 
+
+En entorno mainframe la versión más extendida es la del año 85 revisada en el 89. En algunos lugares se puede encontrar una versión denominada ENTERPRISE que además se actualiza con más frecuencia. Cuando me han hablado de ella, lo que más me han destacado es que permite trabajar con variables numéricas de mayor tamaño por lo que se usa en entidades financieras en las que los importes son muy elevados y existe riesgo de perder cifras significativas.
+
+La versión de 2002 "oficializa" algunos desarrollos de terceros existentes que permiten embeber código COBOL en servicios .NET, Java, etc. Yo no he conocido a nadie que haya hecho algo de esto. No se si será más habitual en otros tipos de clientes, en otros países o si será algo menos frecuente como los programas RM-COBOL. 
+
+### Entornos de desarrollo
+
+Aunque se puede programar en cualquier editor de notas. He conocido gente que escribían los programas en Ultra-Edit, otros que lo hacían en SPFPC, un programa MS-DOS con el que se puede escribir un programa, compilarlo, ejecutarlo, etc.
+
+IBM, que es la reina indiscutible en este baile, tiene herramientas de desarrollo COBOL sobre Rational por lo que los programadores de COBOL no tendríamos nada que envidiar a los de Java, aun así, creo que lo más normal si se trabaja en entorno mainframe es usar el IDE que provee el sistema operativo del mainframe o algún otro IDE de terceros que se instale en el mainframe. 
+
+El sistema operativo Z/OS, es el que actualmente traen los ainframes de IBM. Este sistema operativo incluye las funcionalidades originales del MVS pero se le ha agregado compatibilidad con UNIX, soporte para espacios de memoria virtual lo que hace que los mainframe no solo sirvan para tener las funciones clásicas. Entre las características que tiene este sistema operativo se encuentra la de traer de serie un entorno de desarrollo en el que crear, compilar y ejecutar programas contra el propio mainframe... y desde el propio mainframe. Porque no hemos de olvidar que el acceso a este bicharraco se hace siempre desde terminales tontos. En este entorno de desarrollo, cada usuario puede tener su configuración,... el sistema operativo es multiusuario y multitarea. Yo puedo conectarme en mi pc de Madrid al Host de mi empresa, desde un portátil en el AVE Madrid-Barcelona, en el equipo de un compañero en la oficina de Barcelona... y si lo hago con mi usuario y contraseña siempre estaré viendo mi configuración, mis programas, mis librerías y mis permisos. Esto es así desde los años 70... ¿Cuantos años lleva Linode ofreciendo estas ventajas a los desarrolladores? Si, no se puede comparar lo que puede desarrollarse en un mainframe con lo que podemos hacer desde una virtualización de Linode pero la reflexión que yo siempre me hago es que los ciclos también llegan a la tecnología.
+
+Como en cualquier otro lenguaje, COBOL no sería nada si no fuera por otras tecnologías que están a su alrededor. Igual que PHP casi siempre va acompañado de MySQL y de un servidor Apache, el COBOL siempre va rodeado de una serie de términos (tecnologías) que suelen verse en ofertas de empleo. Se suelen buscar expertos en COBOL-CICS-DB2 con conocimientos de JCL, VSAM, IMS, SORTFD o cosas así. Salvando las distancias y pidiendo perdón de antemano a los compañeros del PHP por las confianzas que me estoy tomando, COBOL-CICS-DB2 es el LAMP, MAMP o WAMP del PHP:
+
+CICS es el nombre del terminal de teleproceso que incluyen los mainframes y que son los que permiten las conexiones on-line al sistema desde cualquier terminal tonto o emulador de terminal tonto. Es también el encargado de servir información a los servicios web (estos ya desarrollados en cualquier lenguaje aunque Java es un habitual) que se conectan al CICS a través de algún Gateway. No requiere unos conocimientos adicionales al lenguaje, solo que hay una serie de instrucciones en el lenguaje que solo sirven cuando el programa se va a utilizar en una instalación CICS.
+
+DB2 es una base de datos relacional, igual que MySQL, SQL Server, Oracle, etc. Es un producto de IBM que se puede instalar en distribuido y en mainframe. Al igual que el CICS, el único conocimiento adicional que se requiere es el de saber SQL, ya que es como se accede a la base de datos desde un programa COBOL.
+
+IMS es un gestor de bases de datos jerárquicas, no es lo más actual pero todavía se sigue usando en algún sitio.
+
+VSAM es un sistema de almacenamiento indexado. Aunque también esta muy desfasado, todavía es posible encontrar instalaciones que los usan. Los ficheros de tipo VSAM se usan para hacer la persistencia del DB2 así que para IBM siguen siendo de gran importancia.
+
+JCL es el sistema que se utiliza para ejecutar un proceso Batch. No sirve solo para procesos COBOL sino también para lanzar muchas utilidades que vienen en el Sistema Operativo de los mainframes: utilidades del DB2, procesos de ordenamiento de ficheros planos con SORTFD. Es como un fichero de configuración o mejor, como una plantilla en la que se le dice al sistema operativo el entorno en el que se quiere ejecutar el programa, que programa es el que se va a ejecutar, quien es el usuario que lo lanza para ver si tiene permisos, donde están los ficheros, que estructura tienen, que tamaño se les ha definido, etc. Quizá es a la hora de preparar un JCL cuando mayor es la sensación de estar trabajando con una tecnología con más de 50 años de historia: se habla de fichas, cilindros, pistas, cintas...
+
+
+##Para que se usa hoy en día
+
+Hoy en día el COBOL está presente en multitud de situaciones cotidianas. Casi todos los sistemas bancarios están desarrollados en COBOL: ordenes de transferencia, venta de acciones, de valores, conciliaciones bancarias, procesos de facturación de grandes compañías telefónicas, o de grandes cadenas de supermercados. Aplicaciones completas de gestión de compañías de seguros, procesos de control de centrales eléctricas, aplicaciones de inventario de almacén... y así hasta el infinito. 
+Cuando se habla de la longevidad del COBOL no es porque queden muchos procesos antiguos que nadie se atreve a migrar, es que como esos desarrollos no están aislados, se sigue haciendo nuevo desarrollo en esta plataforma.
+
+Quizá no somos conscientes porque la capa de presentación que vemos nosotros es una aplicación de escritorio tipo Windows, o una página web pero el COBOL está ahí, por debajo. Incluso en alguna aplicación de un dispositivo móvil, los datos son extraídos por un programa COBOL.
+
+Si alguien se ha fijado alguna vez en unos ordenadores todo-en-uno que suele haber en El Corte Ingles en los que te buscan si un articulo está agotado o si lo puedes encontrar en otro centro a través de una pantalla negra en la que van tecleando y pulsando las teclas de función para moverse por las pantallas habrá visto un terminal CICS. La agencia de viajes y los seguros de El Corte Ingles también se contratan con un terminal CICS. 
+
+Para mal o para bien, procesos muy críticos para compañías que mueven un gran volumen de dinero están desarrollados en COBOL, podrían haberse desarrollado en cualquier otro lenguaje más moderno y con más prestaciones pero se desarrollaron en COBOL. A día de hoy, plantearse una refactorización completa de esos programas a otro lenguaje no solo requiere mucho tiempo si no también una gran valentía, y en realidad hay que plantearse también si compensa el cambio.
+
+Esta claro que IBM tiene bien agarrados a los departamentos de sistemas que tienen un mainframe... pero también hay que entender que no todas las empresas son como Facebook o Twitter que pueden plantearse un gran cambio de tecnología. Aunque parezca mentira, en esas grandes entidades financieras, compañías telefónicas, cadenas de alimentación hay departamentos de Sistemas que no son muy grandes y que tienen que hacer frente a desarrollos nuevos y a   mantenimientos muy fuertes por lo que no es de extrañar que sigan apostando por conservar esa tecnología. Una tecnología que no está dando ningún problema, por otro lado, ¿hay que cambiarla simplemente porque sea vieja o no haya muchos programadores?
+
+Sobre el número de programadores y su cotización también hay que aclarar algunas cosas. Lo primero es una triste noticia: la cotización de un programador COBOL no está unida a un sueldo alto. Gana como cualquier otro programador experimentado en Java, .Net o lo que sea. Aunque no hay una necesidad tan alta de programadores COBOL como hubo en los años del efecto 2000 o del cambio de la peseta al euro, se siguen haciendo muchos mantenimientos y nuevos desarrollos que requieren programadores COBOL y estoy convencido de que la demanda no disminuirá en los próximos años. 
+
+##Futuro
+
+Hay una frase que se le atribuye a Bill Gates que dice: "no se que lenguajes de programación habrá en el futuro pero COBOL estará allí". Yo estoy totalmente de acuerdo.
+
+Como ya he comentado en el apartado anterior, el COBOL está presente en procesos de vital importancia para empresas que mueven muchísimo dinero y además está presente en los procesos que garantizan que esas empresas sigan ganando dinero. Mientras IBM siga sirviendo Series Z estos procesos habrá que seguir manteniéndolos. Además, a medida que van apareciendo nuevas tecnologías, estas empresas no optan por sustituir los procesos COBOL por procesos codificados en lenguajes más modernos si no que buscan formas para que los procesos COBOL sigan funcionando: es posible enviar un email desde un  JCL, perfectamente podría enviarse un SMS, hacer una notificación PUSH o lo que venga a continuación.
+
+Está claro que el COBOL no se va a utilizar para programar la próxima Red Social, o para hacer el Backend de un whatsapp, pero las empresas que mantienen procesos COBOL también utilizan tecnologías actuales que se han podido integrar así que a medida que sigan apareciendo nuevas tecnologías y estas se puedan seguir integrando, el COBOL seguirá.
+
+A veces aparecen corrientes a favor de la desaparición del COBOL, o que auguran el final de IBM... hay hueco para todos y lo seguirá habiendo.
+
+##¿Como se puede aprender COBOL?
+
+Los programadores COBOL son como los Sith, siempre van juntos maestro y aprendiz... es una tradición oral que va pasando de generación en generación y de la que nunca queda constancia escrita... o casi.
+
+Ahora más en serio, por hacer caso a Dijkstra, las universidades no enseñan COBOL, tampoco enseñan Objective-C... las universidades son así. 
+Yo aprendí a programar en COBOL en una academia, a través de una oferta de trabajo para gente que no tuviera experiencia en programación o muy poca experiencia. No se anuncian tanto como las que te enseñan a programar en Java o a hacer aplicaciones para iOS o Android pero buscando un poco se pueden encontrar. En IBM los tienen pero son bastante caros. 
+Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBOL a través de internet: habrá que buscar un emulador de un Host, una licencia de MicroFocus y buscar algún tutorial. Si que es cierto que conseguir un mainframe no es algo que pueda hacerse a través de ebay por lo que algunas de las características del lenguaje más relacionadas con esta arquitectura se tendrán que programar en alguna academia buena o directamente en el centro de trabajo.
+
+##Enlaces de interes:
+
+[Su historia, en la wikipedia](http://en.wikipedia.org/wiki/COBOL)  
+[Su historia, en Alt1040](http://alt1040.com/2011/12/historia-de-la-tecnologia-el-lenguaje-cobol)    
+[Foro de cobol en castellano](http://www.escobol.com/)    
+[Empresa comercializador de RM/COBOL](http://www.microfocus.com/products/micro-focus-developer/rm-cobol/)    
+[Curiosidad, el blog de alguien que quiere aprender COBOL en 2012](http://www.carlospinan.com/2012/09/21/iniciando-con-cobol-en-windows-7/)    
+[La Biblioteca de Alejandría: La documentación de IBM](http://pic.dhe.ibm.com/infocenter/pdthelp/v1r1/index.jsp?topic=%2Fcom.ibm.entcobol.doc_4.2%2FPGandLR%2Fpgtitlemvs.htm)    
+[Hasta Jeff Atwood habla de él](http://www.codinghorror.com/blog/2009/08/cobol-everywhere-and-nowhere.html)    
+
+
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Sobre Memorión]]></title>
+		<link href="http://javimoreno.me/blog/2013/05/17/sobre-memorion/"/>
+		
+	  <updated>2013-05-17T23:04:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/05/17/sobre-memorion</id>
+	  
+	  <content type="html"><![CDATA[Hablando un día por Twitter, Miguel Díaz Rubio (aka [@migueldiazrubio](http://twitter.com/migueldiazrubio)) cometió la imprudencia de animarme a escribir algo en su blog: [www.migueldiazrubio.com](http://www.migueldiazrubio.com). Obviamente le dije que si, el blog de Miguel junto con el de [Objective-C.es](http://objective-c.es) son de lo mejorcito que hay ahora mismo en castellano para aprender Objective-C y Cocoa Touch, las herramientas necesarias para hacer aplicaciones iOS y una oportunidad para ayudar a estos *máquinas* no podía desperdiciarse. 
+
+<!--more-->
+
+Hoy se ha publicado en el blog de Miguel [mi primera colaboración](http://www.migueldiazrubio.com/2013/05/17/desarrollo-ios-primeros-pasos-con-uicollectionview-parte-ii/) (espero que me deje hacer alguna más), un tutorial sobre como hacer un juego de encontrar las parejas basado en un componente que se presento en iOS 6: UICollectionView. Este era un tutorial que tenía pensado colgar en este blog más pronto o más tarde pero estoy seguro que en el blog de Miguel podrá ser de utilidad a más gente.
+
+No es un ejemplo que se me haya ocurrido sobre la marcha, llevo trabajando a ratos en una aplicación muy parecida a la del tutorial desde hace seis meses. Por esta razón me ha parecido oportuno escribir esta entrada que explica de donde me vino la inspiración.
+
+En diciembre del año pasado mi hija estuvo ingresada un par de días en el hospital (un sustejo del que afortunadamente se recuperó perfectamente). Un par de días en los que jugamos a todos los juegos que había en el hospital más alguno que llevamos de casa. Su favorito era uno con piezas que había que poner boca abajo, e ir dando la vuelta de dos en dos hasta encontrar todas las parejas.    
+Recordé que en la aplicación Phytonista había un ejemplo que consistía precisamente en un juego como este y que usaba los animales del teclado emoji como personajes del juego. 
+
+> Merece mucho la pena ver el código para darse cuenta de la potencia de Python ya que con muy pocas líneas tienes el juego funcionando.  
+
+El caso es que pensé en si sería mucho más complicado hacerlo en Objective-C, sobre todo el grid de tarjetas y en ese momento caí en la cuenta de que UICollectionView podría ser un buen candidato ya que se alimenta fácilmente con un array y permite definir el tamaño de las celdas,...
+
+Una vez recuperados del susto, empece a probar si mi idea era cierta y en seguida vi que si, que UICollectionView era genial para hacer este juego. Desde entonces, a ratos, he ido metiéndole funcionalidad para hacer el juego algo más interesante y entretenido. La verdad es que mi hija se lo pone en el iPad sin que yo le diga nada, así que no debe estar muy mal hecho ;-)
+
+Si alguien está interesado en probarlo y no tiene cuenta de desarrollador, que me lo diga, no me vendrá mal tener más beta-tester. 
+
+El código fuente podéis verlo [aquí](https://github.com/jmoreno/Memorion).]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Helios: el sol Vs. la 'iNube']]></title>
+		<link href="http://javimoreno.me/blog/2013/04/04/helios-el-sol-vs-la-inube/"/>
+		
+	  <updated>2013-04-04T02:31:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/04/04/helios-el-sol-vs-la-inube</id>
+	  
+	  <content type="html"><![CDATA[<blockquote><p>There's a lady who's sure all that glitters is gold<br/>And she's buying a stairway to heaven.</p><footer><strong>Led Zeppelin</strong> <cite>Stairway to Heaven.</cite></footer></blockquote>
+
+Son tiempos convulsos para la sincronización de datos entre aplicaciones. Si seguís al mismo tipo de personas que yo en Twitter habréis visto como el nivel de indignación con iCloud por la sincronización por Core Data ha llegado a niveles casi de disturbios. [Este post](http://rms2.tumblr.com/post/46505165521/the-gathering-storm-our-travails-with-icloud-sync) de los desarrolladores de Yojimbo es un buen resumen. 
+Para echar un poco más de leña al fuego, Brent Simmons escribía [Why Developers Shouldn’t Use iCloud Syncing, Even If It Worked](http://t.co/U6NFNTDjDR) unos días después.
+
+<!--more-->
+
+Mattt Thompson aprovechó el _April Fools´ Day_ para poner una pizca de humor en el asunto dedicando un [NSHipster a iCloud](http://nshipster.com/icloud/).
+
+La sorpresa llegó cuando el día siguiente aparecieron estos dos tweets casi seguidos:
+
+<div class='embed tweet'><blockquote class="twitter-tweet"><p>Helios is an open-source framework that provides essential backend services for iOS apps.&#10;&#10;<a href="http://t.co/GVlV0qF7Ov">http://t.co/GVlV0qF7Ov</a></p>&mdash; Mattt Thompson (@mattt) <a href="https://twitter.com/mattt/statuses/319144081731227649">April 2, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+<div class='embed tweet'><blockquote class="twitter-tweet" lang="es"><p>If you had a laugh at yesterday's post about iCloud, you may be interested in this new project: <a href="http://t.co/wNUIHsRMDv" title="http://helios.io">helios.io</a></p>&mdash; NSHipster (@NSHipster) <a href="https://twitter.com/NSHipster/status/319144640592896000">2 de abril de 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+A estas alturas creo que no hay que presentar a Mattt Thompson, famoso co-creador de AFNetworking, pero igual si que hay que volver a repasar algunas de las cosas que ha estado haciendo en los últimos tiempos, desde que abandono Gowalla para entrar a formar parte del equipo de Heroku como Director del área de Mobile:
+
+- AFNetworking se ha consolidado como el framework de facto para realizar cualquier comunicación con servidores, descarga y subida de ficheros, etc.
+- Basándose en AFNetworking ha creado AFIncrementalStore, que junto con el servicio Heroku Mobile permite hacer persistencia de Core Data en servidores de forma correcta... ¿dardo envenenado a iCloud?
+
+Los dos trabajos anteriores son bastante conocidos pero también tienen buena reputación los siguientes:
+
+- Cargo Bay es una pequeña librería para realizar la verificación de las transacciones realizadas por In-App-Purchases.
+- Orbiter es otra pequeña librería que facilita el control de los dispositivos vinculados a notificaciones para poder usar servicios push de terceros como Urban Airship o Parse sin tener que instalar los SDK´s correspondientes.
+- Rack::PushNotification es un webservice para realizar las notificaciones push desde nuestros propios servidores.
+
+Podríamos seguir y seguir con otras muchas pequeñas y grandes utilidades creadas por Mattt: Postgres.app (una cliente standalone para instalar PostgreSQL en el Mac), Induction.app (un cliente de bases de datos también para Mac),... pero creo que esta es una buena representación.
+
+Aparte de los IaaS, PaaS y los SaaS, últimamente empiezan a sonar mucho los BaaS (Backend as a Service) como Parse, Urban Airship, Apigee, Azure o BackBeam.io (que es un desarrollo español, mañico para más señas). Las ventajas de estos Baas son claras, nos permiten disfrutar de una infraestructura necesaria por la mayoría de las aplicaciones móviles sin tener que desarrollar nada. Normalmente, además, tienen una tarifa de entrada que suele ser gratuita en la mayoría de los casos. Una vez que superas ese consumo gratuito, empiezas a pagar. Si has diseñado un buen plan de negocio para tu aplicación, lo normal es que cuando llegues al punto de tener que pagar por usar el Baas ya tengas bastantes ingresos y por tanto te siga compensando seguir utilizándolo.
+
+Heroku, la empresa donde trabaja Mattt es un Paas (Platform as a Service), lo que ofrece es una plataforma donde es muy sencillo desplegar una aplicación. Es decir, el backend lo desarrollamos nosotros y ellos a cambio nos dan facilidades para el despliegue, garantías de escalabilidad y nos liberan del mantenimiento de las máquinas en sí.    
+Pero si a Heroku le sumamos los desarrollos que ha estado realizando Mattt: un backend para nuestras bases de datos, un backend para los dispositivos que requieren de notificaciones push, le añadimos un servicio para realizar la validación de los IAP en el servidor y un servicio para generar Passbooks (que empiezan a estar de moda) tenemos casi nuestro propio Parse. Además, no es necesario un SDK para la parte cliente, Mattt ya tiene un montón de librerías que se encargan de esto: AFNetworking, AFIncrementalStore, Cargo Bay, Orbiter,...
+
+Helios no es un sustituto de Parse, Urban Airship, TestFlight, Flurry... todavía, pero tiempo al tiempo.    
+Con Parse tenemos cubierto prácticamente todo lo que se le puede pedir a un backend: persistencia, cuentas de usuario, notificaciones push, servicios de geolocalización. Urban Airship está especializado en notificaciones push, geolocalización y passbook. Flurry tiene métricas de uso y control de errores. Testflight tiene distribución de betas, control de uso y gestión de errores. Crashlitycs solo gestión de errores. New Relic se mete ahora con monitores de servicios.
+Si se nos va la mano, terminamos haciendo una aplicación del tiempo con 17 SDK´s diferentes instalados. La idea de Heroku me parece brillante, yo te pongo el hosting y un backend superpersonalizable. Además te doy clientes modulares para lo que quieras usar. Eres libre de usar tu propio servidor pero que sepas que en Heroku es tan sencillo como escribir "git push heroku master" y cuando llegue el momento de pagar, pagarás. No es oro todo lo que reluce ya que pasamos de depender de una caja negra como Parse a un conjunto de servicios desarrollados por una única empresa pero al menos esos servicios son _open source_, podemos ver el código cuando queramos y depender solo de nosostros mismos.
+
+Ya os digo que a Helios le queda mucho camino por andar, pero tiene muy buena pinta. Estoy haciendo pruebas con él y quiero ver si es fácil de superar las dos principales carencias que le veo ahora mismo: la gestión de usuarios y las notificaciones push sin recurrir a servicios de terceros. También quiero saber si su uso en Heroku implica directamente coste o si, por el contrario, podemos probarlo de forma gratuita con bastante margen... creo que Helios va a ser un _habitual_ en mis próximos posts... Stay tuned!
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Una decada]]></title>
+		<link href="http://javimoreno.me/blog/2013/03/31/una-decada/"/>
+		
+	  <updated>2013-03-31T01:18:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/03/31/una-decada</id>
+	  
+	  <content type="html"><![CDATA[<blockquote><p>Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.</p><footer><strong>Douglas Adams.</strong></footer></blockquote>
+
+Hoy hace diez años que entré a trabajar como programador en una empresa de consultoría. Para algunos serán muchos, para otros serán pocos, para mi es una cantidad muy significativa que me permite echar la vista atrás y reflexionar sobre como han cambiado las cosas desde entonces.
+
+<!--more-->
+
+Yo no iba a ser programador. Estudié (y no me arrepiento) Química porque me gustaba muchísimo e incluso tuve la suerte de trabajar de becario en la Facultad de Químicas durante un año y en Repsol durante seis meses. La historia comienza en segundo de carrera, cuando compre mi primer ordenador, un clónico con Windows 95 original (puedo demostrarlo con fotos) con el que empece a utilizar [Origin](http://www.softwarecientifico.com/paginas/origin.htm), [Hyperchem](http://www.hyper.com), [Matlab](http://www.mathworks.es/products/matlab/) y el mítico [Maple V](http://www.tecnun.es/asignaturas/metmat/Manual_Maple/version5.pdf). Creo que esto era a finales del año 1997, para acceder a Internet reservábamos una hora en la sala de informática de la facultad, no había proxy pero una señora de muy mal caracter te abroncaba si buscabas guiones de los Monty Python, la fuente favorita de las paginas web era Times New Roman y usabamos [Altavista](http://es.wikipedia.org/wiki/AltaVista) para hacer búsquedas.   
+
+Desde el primer momento me sentí muy bien con el ordenador. Tuve la certeza de que si hubiera tenido mi primer ordenador (en realidad era el segundo, el primero fué un Amstrad CPC 464 en los ochenta) en el bachillerato no habría elegido Química como carrera pero aun así continué con mi _vocación_. Podría haberme especializado en Química Física, una rama de la Química que en aquella época ya tenía un alto contenido computacional: eran unos frikis que usaban linux porque no había que apagarlos nunca y así podían dejar cálculos corriendo durante meses, pero a mi lo que me gustaba era la síntesis de moléculas orgánicas... que le vamos a hacer.   
+
+El caso es que cuando acabé la carrera y me puse a buscar trabajo las opciones eran: comercial, profesor de secundaria y programador. Había más posibilidades de trabajar como investigador en el extranjero pero por aquella época yo ya era un huevón y no quería salir de casa así que empece por la primera opción, comercial. No me llevó mucho tiempo darme cuenta de que aquello no era lo mío y a los cinco meses estaba haciendo un curso de programación en base de datos y echando curriculums en las típicas empresas de consultoría que contrataban a gente sin experiencia en programación (no doy nombres pero seguro que se os ocurren muchas). En las navidades de 2002 me seleccionaron para hacer un curso de COBOL/CICS/DB2, dejé el trabajo de visitador médico y durante un mes y medio estuve aprendiendo las bases para ser un cobolero. 
+
+Aunque se decía que había bastante trabajo de programador, las _vacas gordas_ estaban adelgazando. En 2003, la burbuja de las _punto com_ ya había estallado, los grandes proyectos de desarrollo COBOL en España que habían sido el efecto 2000 y la transición de la peseta al euro ya estaban más que acabados, el trío de las Azores se disponía a invadir Irak... en este escenario tan devastador, sin ninguna experiencia como programador y con un gran sentimiento de intrusismo, ser contratado como Codificador Informático por la importante suma de 10.300€ brutos anuales fue algo maravilloso. \</ironia>
+
+Programar me gustaba mucho, tanto, que cuando ya me empezaba a sentir cómodo con COBOL y sus adláteres le empece a hacer ojillos al lenguaje con el que programaban los _tíos de al lado_, esos que hacían cosas mucho más sofisticadas que nosotros: Java.  
+En el año 2003 ya era normal tener internet en casa y aunque en aquella época no había tantos recursos para aprender a programar encontré un tutorial de Sun para aprender Java mientras desarrollabas un _diarío de buceo (Dive Log)_. Aunque parezca mentira, rebuscando en la web de Oracle todavía se puede encontrar este [pecio](http://www.oracle.com/technetwork/topics/newtojava/divelog-140357.html).     
+Yo no se nadar, y mucho menos bucear por lo que todo apuntaba a receta para un fracaso y así fue. Avancé bastante con la aplicación pero entender los conceptos de orientación a objetos, herencia, clases y demás me costaba mucho. 
+
+Quizá fuera culpa mía, por empeñarme en aprender con lo que obtenía de internet en una época en la que no había los recursos para aprender que tenemos ahora, quizá por que no fuí más al grano de lo que quería aprender, quizá porque mis conocimientos de programación no estaban lo suficientemente asentados, el caso es que finalmente se me quitaron las ganas de aprender Java y cualquier otro lenguaje. En el trabajo seguía haciendo programas en COBOL, aprendía mucho de bases de datos, SQL, normalización, diseño de aplicaciones,... y con eso era suficiente. Aprovechaba mis ratos libres para leer, escuchar música, estar con mi novia, mis amigos y hacer de bajista en un par de grupos. De hecho, pocas personas pueden presumir de haber estado en el Sexto encuentro de asociaciones de Félix Rodríguez de la Fuente y muchos menos pueden presumir de haber tocado en directo allí, en [Ruesta, Huesca](http://www.iberica2000.org/Es/Articulo.asp?Id=3648). Había más músicos que asistentes. 
+
+Aunque no dedicaba mi tiempo libre a programar, descubrí MySpace y empece a modificar y mantener el MySpace del grupo en el que estaba. En algo había mejorado internet: era mucho más fácil encontrar recursos que te explicaran como modificar las hojas de estilos de MySpace e incluso había gente que compartía hojas de estilos muy trabajadas de forma desinteresada. Internet había cambiado pero mi talento para el diseño no así que pronto me canse de jugar con MySpace. El friki que había dentro de mi estaba deseando salir pero todavía faltaba algo... un _totem_.
+
+El _totem_ llegó en 2009 con forma de iPhone 3G, comprado dos semanas antes de que presentaran el 3GS. Eran otros tiempos, nunca había oído hablar de los ciclos de vida de los productos de Apple. El caso es que yo estaba muy contento con él, lo usaba bastante, probaba apps, hacia fotos, leía el correo, Google Reader y de repente, un día, mientras esperaba al autobús empece a buscar una aplicación para calcular el percentil de un bebé. Buscaba algo sencillo, que permitiese guardar unos pocos datos del recién nacido y, en cada revisión, mostrara la evolución del percentil. No vi nada que me llamara la atención y me dije: "¿Esto podría hacerlo yo?". 
+Lo comente con un compañero de trabajo y empezamos a investigar: hacía falta un Mac, no sabíamos si se podría virtualizar pero descubrimos que había algo llamado Hackintosh que podría valer. Encontramos la web de desarrolladores de Apple que te daban un filón de documentación sin pagar ni un duro. No había ni un solo tutorial en castellano pero en ingles había ya unas cuantas páginas especializadas que te enseñaban desde cero.
+
+Viéndolo en perspectiva, de lo único que me arrepiento de esa época es de haberle dedicado tanto tiempo al Hackintosh. Yo no tenía mucho tiempo libre con mi hija recién nacida (lo de quitarme horas de sueño no lo había descubierto todavía) y mantener un Hackintosh requiere mucho tiempo. Esas navidades me compre el primer libro de desarrollo de aplicaciones y empece a darle caña por las noches. Lo que más me quemaba (siempre me ha quemado) era conseguir hacer cosas sin terminar de entender del todo lo que estaba pasando. Yo no sabía lo que era la programación orientada a objetos, había leído sobre ella cuando intente aprender .Net y Java pero nunca termine de tenerlo claro. Ahora estaba empeñado en aprender, y tenía que hacerlo con Objective-C.    
+El tiempo iba pasando pero no conseguía producir nada, cada vez iba entendiendo un poco más como funcionaba iPhone OS (así se llamaba entonces) pero no terminaba las aplicaciones (sigo teniendo una larga lista de aplicaciones inacabadas). El problema era que me costaba mucho enfocarme. Había descubierto que podía aprender mucho por mi cuenta, internet estaba plagada de recursos y por fin tenía paciencia (o pasaba más tiempo en casa) para detenerme a leer, madurar, entender. No había hecho ninguna aplicación pero estaba convencido de que algún día necesitaría de servicios web que alimentaran alguna de mis aplicaciones por lo que también tendría que aprender algo de desarrollo web. Ruby on Rails sonaba bastante pero todo el mundo decía que Php era muy fácil y que el hosting era muy barato... Aprender, aprender, aprender, me estaba obsesionando, y mucho.
+
+Al final si que llegaron las aplicaciones: la primera, una lista de chistes _graciosillos_ para felicitar la Navidad y el año nuevo salió a finales de 2010. No ganó ni para pagar la licencia de desarrollador pero nos enseño mucho sobre la publicidad, los comentarios y la _competencia_, sobre todo, de la *_competencia_*.
+Más tarde, a principios de 2012 salió TasaTuCoche. De esta si que aprendimos bastante más: identificar un nicho, ver que se podía mejorar, probar técnicas de posicionamiento en el App Store, etc. Aquí ya hay necesidad de servicios web por lo que hubo que aprender algo de Php, hostings, redireccionamiento dns, dominios y demás historias. Php está bien, y nos permitió desarrollar el servicio en muy poco tiempo pero aun así hay algo que no me hace sentir cómodo cuando programo en Php, por eso volví a darle a Ruby On Rails.
+
+Y ahí sigo, saltando de iOS a Ruby on Rails, mirando de reojo a Node.js, comprando libros de OSX para cuando pueda, pasar a la pantalla grande, disfrutando de compartir mi tiempo y mi código en GitHub, o en este blog,...
+
+Diez años para mí son muchos años, se han pasado volando y sobre todo los últimos cuatro me hubiera gustado exprimirlos más. Es muy difícil saber en que se traducirán las horas de sueño que me estoy quitando pero no me pesan nada por que, solo de aprender lo que estoy aprendiendo, ya las doy por bien invertidas y se que marcarán lo que pasará en los próximos diez años. Si estos han sido buenos, los próximos espero que sean la caña.
+
+### Nota:
+Esta entrada la empece a escribir el domingo 31 de Marzo pero hasta hoy 2 de Abril no he podido terminarla. 
+
+
+
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Como mola Octopress]]></title>
+		<link href="http://javimoreno.me/blog/2013/03/08/como-mola-octopress/"/>
+		
+	  <updated>2013-03-08T02:10:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/03/08/como-mola-octopress</id>
+	  
+	  <content type="html"><![CDATA[Estoy disfrutando como un enano con [Octopress](http://octopress.org). Como ya conté en el anterior post, he probado unos cuantos servicios para publicar blogs y a grandes rasgos todos me han parecido iguales: un menú de configuración en el que puedes tocar cuatro cosas, la promesa de que a través de CSS te lo puedes configurar a tu gusto y en ocasiones una oferta de plugins que nunca terminan de hacer lo que crees que deben hacer.
+
+Si analizamos lo que ofrece Octopress, posiblemente Wordpress sea el que más se le parezca (no creo que el nombre sea casualidad). Se puede descargar toda el proyecto del blog desde la página de [wordpress.org](http://wordpress.org), se configura un MySQL, se tocan un par de ficheros, se sube a un hosting de php y a disfrutar del blog... todo un mundo de maravillosos plugins y temas está a tu disposición.   
+El problema es que php y yo no terminamos de llevarnos bien. 
+
+<!--more-->
+
+No tengo nada en contra de PHP, es un lenguaje muy extendido, con muchisima documentación a lo largo y ancho de internet, con el que se pueden hacer muchisimas cosas, fácil de aprender y con una gran oferta de hosting. Durante casi un año he tenido un blog wordpress instalado en un hosting gratuito. En todo este año podría haber creado páginas, modificado los plugins que no hacían lo que yo quería, cambiado los estilos,... pero el caso es que no lo he hecho.
+
+Sin embargo, en los poco menos de un mes que llevo con octopress he creado páginas, cambiado estilos, modificado plugins e incluso creando alguno nuevo pero lo más importante es que... __TENGO GANAS DE ESCRIBIR__
+
+## ¿Qué es Octopress?
+
+Octopress está basado en Jekyll, un generador de blogs estáticos. Jekyll propone una estructura de carpetas para el sitio web, las páginas se escriben en formato Textile, Markdown o Liquid y Jekyll se encarga de generar el contenido web estático en HTML. Octopress añade a Jekyll unas plantillas para entradas de blog y páginas, un tema por defecto que se adapta a cualquier pantalla y es HTML5, la automatización con Rake de determinadas tareas como la creación de entradas, el generado del blog, la previsualización del blog, el despliegue en Github (y también en Heroku y en Rsync), la limpieza de la cache... En muchos aspectos me recuerda a Rails. 
+
+Además, a mi me esta viniendo muy bien para practicar Git. Mi flujo de trabajo sería el siguiente:
+- Creo una nueva rama cuando voy a escribir o probar alguna cosa. 
+- Hago lo que tenga que hacer en la nueva rama
+- Si todo esta bien o he terminado de escribir la entrada hago el merge a la rama _source_
+- Género el blog, lo despliego y hago push al repositorio de GitHub. 
+
+A muchos les parecerá una vuelta al pasado, a mi es lo que más me gusta: la sensación de que mi blog es una aplicación desarrollada por mi y de la que yo controlo hasta el último detalle. El hecho de que el contenido ya no sea dinámico (aunque esto no es del todo cierto ya que hay determinadas partes del blog que están hechas en javascript, precisamente para darle dinamismo) resulta chocante al principio pero buscando un poco por internet encuentras grandes defensores de este tipo de sitios sobre todo en casos en los que el blog está alojado en un servidor personal y una alta demanda podía provocar discontinuidades en el servicio. Dudo mucho de que este vaya a ser mi caso, pero no está de más tomar alguna medida. :-)
+
+## Editando el blog
+
+En mi caso, la edición del blog la hago con Sublime Text. Una de las cosas que más echarán en falta los que tengan Wordpress es que no hay una aplicación nativa con la que puedas gestionar tu blog en cualquier momento y situación pero es lo que tiene _compilar_ un blog, que necesitas tu equipo del día a día para hacer alguna correción o para publicar una nueva entrada. Creo que la aparación en el App Store de programas como [Pythonista](https://itunes.apple.com/es/app/pythonista/id528579881) acabarán trayendo la posibilidad de generar y desplegar el blog desde un iPad o un iPhone pero de momento, lo único que se puede hacer desde un dispositivo móvil es ir escribiendo alguna entrada que otra. En mi caso utilizo [iA Writer](https://itunes.apple.com/us/app/ia-writer/id392502056?l=es&mt=8) y la sincronización con Dropbox.     
+Para que os hagáis una idea, está entrada se empezo a escribir en el mac, la parte central la escribi en el metro mientras iba a trabajar y estoy terminando de escribirla ahora otra vez en el mac. El paso de creación de entrada hay que hacerlo con _rake_ pero puedes ir empezando a escribir lo que tengas pensado en cualquier sitio, para eso se invento el corta-pega.
+
+Otro día hablaré un poco más de los plugins, de las plantillas Liquid y cosas así. No hace falta ser un experto para tocar un par de scripts o buscar alguna cosa en internet y hacerte la vida un poco más fácil.
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Y otro]]></title>
+		<link href="http://javimoreno.me/blog/2013/02/12/y-otro/"/>
+		
+	  <updated>2013-02-12T00:32:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2013/02/12/y-otro</id>
+	  
+	  <content type="html"><![CDATA[>Lo reconozco, soy un culo inquieto. 
+Creo que he probado más sistemas de blogging que entradas he escrito.
+
+Siendo usuario de Gmail, cuando te animas a escribir en un blog lo más fácil es hacerlo en Blogger... y así empece yo: [AZCT Abend](http://azctabend.blogspot.com.es "AZCT Abend") era la incursión de un Cobolero en el mundo del blogging y como de COBOL no había mucho que contar, la idea era ir contando mis avances en el aprendizaje de Objective-C y Cocoa Touch. 
+
+<!--more-->
+
+Al mismo tiempo, como buen "early adopter" que soy, me hice mi cuenta en Tumblr con un par de blogs: uno que me servía como galería de fotos de [Instagram](http://mismamente.tumblr.com "mismamente") y otro para colgar citas que parecían llamativas: <http://indistintamente.tumblr.com>... claramente al de Instagram le dediqué más tiempo. 
+
+Poco más tarde, por diversas circunstancias que no vienen al caso compre un dominio: <http://zinkinapps.com>. Era el momento de tener un sitio web y un [blog de desarrollo](http://zinkinapps.com/blog) vinculado al mismo. No tenía ni idea de como hacer la página pero con el blog si que sabía que tenía que subir un peldaño más: WordPress. 
+No es que Blogger estuviera mal, de hecho sigue siendo un buen punto de partida, pero como muchas cosas que hace/compra Google está un poco a medias. Si quieres tener un blog personalizado, con unos temas que den la impresión de que el tipo que está detras es un "fiera" internet te dice que tienes que probar WordPress.
+Así me meti en el maravilloso mundo de los hosting gratuitos, descubrí php, los plugins y otras mandangas. Casi al mismo tiempo descubrí Twitter Bootstrap que para alguien como yo, con el talento del diseñador del blog de [Richard Stallman](http://stallman.org), era la forma de hacer una web con un estilo cuidado.
+
+Una cosa llevo a la otra y finalmente decidí que ni php, ni hosting gratuitos, ni leches. El hosting en Heroku, la web a hacerla con Ruby on Rails y el blog... ¿en WordPress? Bueno, si no hay otra opción.
+El caso es que mientras estaba haciendo la web con Rails (todavía está en desarrollo) pensé en que el blog lo podía hacer también en Rails. Al fin y al cabo, la mayoría de los tutoriales de Rails son de como hacer un blog y con markdown podría escribir las entradas en cualquier editor, subir el contenido a la base de datos y usar alguna gema que lo pase a HTML. 
+
+Y buscando, buscando encontré Octopress: un framework de blogging que puedo desplegar en Heroku (o en GitHub que es donde está este), con el que practico MarkDown y Git, dos de mis propósitos de 2013. Lo que no entiendo es como tardé tanto tiempo en encontrarlo, si estuvo siempré ahí, desde el [principio.](http://mattgemmell.com)
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Soporte Nysnö para MacBook Pro]]></title>
+		<link href="http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro/"/>
+		
+	  <updated>2012-12-23T19:51:28+00:00</updated>
+	  <id>http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro</id>
+	  
+	  <content type="html"><![CDATA[No tenía pensado hablar de bricolaje en este blog pero una mención de [@rubdottocom](http://twitter.com/rubdottocom) haciendo referencia a una entrada suya haciendo lo mismo pero [con otro modelo](http://putofreak.com/crea-un-dock-para-tu-macbook-con-un-servilletero-de-ikea) me hizo plantearme una sección de "Macnitas" para este blog.
+
+Le he pedido a los Reyes Magos una pantalla de 24 pulgadas para conectar al MacBook Pro y poder hacer storyboards de aplicaciones para el iPad sin volverme loco. El caso es que, cuando lo tenga, el portátil pasará a ser un "sobremesa" y para que no me quite mucho espacio he estado mirando soportes verticales. Obviamente son todos muy buenos y caros pero como la economía española no está para tirar cohetes y hay que hacer mucha contención del gasto decidí explorar otras opciones: atriles, sujetalibros, etc, hasta que mi mujer me dijo: "¿por qué no usas ese servilletero que compramos en Ikea y que nunca usamos?"
+
+<!-- more -->
+<img src="/images/photos/2012/12/nysno-servilletero__0137987_PE296893_S4-300x300.jpg">
+
+Genial!!! Pero había un problema, tenía que conseguir que el MBP encajase pero que sin que se arañase. El caso es que me acorde que en algún armario había una espuma de esas que vienen en las fundas de neopreno para los portátiles. Perfecto, una vez recortada con forma de estrella y cortada por la mitad para pegar en los dos laterales del servilletero ya teníamos el "Soporte Nysnö para MacBook Pro".
+
+<img src="/images/photos/2012/12/Foto-23-12-12-18-43-59-e1356285841523-224x300.jpg">
+
+El problema del "Soporte Nysnö" es que es poco estable y como en casa hay un terremoto y otro viene en camino hay que evitar las inestabilidades. Nuevamente Ikea al rescate, esta vez con las sujeciones de un organizador de cables que también estaba en desuso.
+
+<img src="/images/photos/2012/12/ikea-300x300.jpg">
+
+Listo, el resultado final no tendrá la misma belleza del aluminio del BookArc pero lo importante es que es efectivo y barato.
+
+Os dejo un par de imágenes más para que veáis el resultado.
+
+<img src="/images/photos/2012/12/Foto-23-12-12-18-43-48-e1356285786354-224x300.jpg">
+
+<img src="/images/photos/2012/12/Foto-23-12-12-18-42-58-e1356286140661-224x300.jpg">
+
+Espero que os haya gustado. :-)]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Jugando con la App Store]]></title>
+		<link href="http://javimoreno.me/blog/2012/09/27/jugando-con-la-app-store/"/>
+		
+	  <updated>2012-09-27T08:00:48+00:00</updated>
+	  <id>http://javimoreno.me/blog/2012/09/27/jugando-con-la-app-store</id>
+	  
+	  <content type="html"><![CDATA[El miércoles 26 de septiembre tuve la oportunidad de dar otra charla en la NSCoderMAD. Volvió a ser en el CIBALL un sitio que parece que visitaremos mucho en los próximos meses si todo va bien. En esta ocasión mi charla giró sobre la experiencia de usar los servicios de AppGratis, una aplicación que envía newsletter y hace notificaciones push cada día hablando de una aplicación que baja de precio o pasa a ser gratis. Creo que la charla es bastante interesante por la experiencia en si y porque aporta datos no muy habituales: las ganancias de una aplicación del Top 25 de pago.
+
+<!-- more --> 
+
+He subido la presentacion a slideshare en dos versiones, con las "notas del presentador" y sin ellas. También se van a enlazar desde el tumblr de [NSCoderMAD](http://nscoder-mad.tumblr.com/) junto con la presentación que hizo [Alejandro](https://twitter.com/j4n0) sobre el runtime de Objective-C; una presentación profunda de contenido, como no podía ser de otra forma, muy interesante e ilustrativa. Os recomiendo que la veáis. Espero que guste:
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/14474794 " width="595" height="446" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe> 
+
+Esta es la presentación pero con mis notas:  
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/14474831 " width="595" height="446" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe> ]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[¿Morirá Microsoft por daños colaterales?]]></title>
+		<link href="http://javimoreno.me/blog/2012/07/05/morira-microsoft-por-danos-colaterales/"/>
+		
+	  <updated>2012-07-05T00:18:36+00:00</updated>
+	  <id>http://javimoreno.me/blog/2012/07/05/morira-microsoft-por-danos-colaterales</id>
+	  
+	  <content type="html"><![CDATA[Este fin de semana he estado leyendo un articulo  bastante interesante sobre el desarrollo del sistema operativo WebOS contado de forma cronológica. El articulo es de The Verge y se llama [Pre to postmortem: the inside story of the death of Palm and webOS](http://www.theverge.com/2012/6/5/3062611/palm-webos-hp-inside-story-pre-postmortem). Lo tenía para leer en Pocket desde hacía unas semanas pero, quizá por el quinto cumpleaños del iPhone, ha estado circulando por twitter durante toda la semana.
+
+Después de leerlo, de escuchar el [último podcast de Puromac](http://www.puromac.com/general/puromac-223-se-anuncia-microsoft-surface/) (uno de los mejores que he escuchado aunque a Fede no se le oía a penas), de[ ver un tweet](https://twitter.com/greggretsch/statuses/218052452820336641) y la [replica de John Gruber](http://daringfireball.net/linked/2012/06/29/iphone-industry), de ver las [últimas noticias de Microsoft](http://www.xataka.com/tablets/microsoft-surface-contra-todos) y [las de Google](http://www.xataka.com/tablets/nexus-7-el-tablet-de-google), de compartir impresiones con amigos y juntar todo esto en mi cabeza, he estado reflexionando un poco sobre todo esto y me he animado a hacer un "articulo de opinión"...
+
+<!-- more -->
+
+Es innegable que el iPhone rompió todos los esquemas establecidos en telefonía móvil de una forma que nadie podía preveer, ni siquiera en Apple. Cuando desarrollas un producto es normal que te emociones y pienses que va a ser un exito, más que nada porque si no... ¿para qué lo desarrollas?. Y es normal que la competencia te mire y piense: "te vas a estrellar", porque al fin y al cabo son la competencia y no asumen que tu vayas a sacar un producto mejor que el que ellos tienen; pero, a veces, ocurren cosas inesperadas y el caso es que el iPhone fue algo más que una moda pasajera o un capricho de fanboys y pasó a convertirse en la referencia para los dispositivos de la categoría "smartphone" (aunque la diferencia entre lo que había entonces y lo que hay ahora es similar a la del Austrolapithecus y el Homo Sapiens). No hay más que ver como están ahora Nokia (la cotización ha bajado un 89% desde hace cinco años) y RIM (la cotización ha bajado un 85% en el mismo periodo) para darse cuenta de que los que parten el bacalao ahora son otros, como por ejemplo Samsung (su cotización ha subido un 36% desde entonces).
+
+En el articulo de The Verge se comenta, de pasada, un hecho que para mi es fundamental en todo esto: Andy Rubin (Responsable del desarrollo de Android) fue de los primeros en darse cuenta de que el iPhone y su sistema operativo (conocido por aquel entonces como iPhone OS) suponían un cambio de paradigma que les obligaba a dejar de hacer un SO semejante al de Blackberry o Symbian para hacer basado en pantallas táctiles.
+
+Palm tardó un poco más en darse cuenta pero al final se puso las pilas pero terminó siendo devorada por HP. Nokia se resistió como pudo pero al final ha decidido incluir en sus dispositivos de gama alta Windows Phone (100 % tactil) y ha dejado Symbian para los de gama baja. RIM ha anunciado que el nuevo sistema operativo se retrasará hasta 2013... posiblemente después del verano anunciarán que disuelven la compañia y que si alguien está interesado en sus patentes que les compren.
+
+El caso es que después de todo esto, el escenario es el siguiente: Apple vende un teléfono con un sistema operativo instalado que se actualiza gratuitamente y el resto de las empresas de telefonía (Samsung, HTC, Motorola, Sony...) venden dispositivos con un sistema operativo que les "regala" Google.
+
+En el año 2010 a Apple le dio por sacar el iPad. Una especie de iPod Touch con 3G pero con pantalla gigantesca que podría haber sido un gran fracaso si no lo hubieran comprado 15 millones de personas en todo el mundo. Se vuelve a repetir el esquema del lanzamiento del iPhone: los chicos que lo presentan convencidos de que van a vender un montón y los que ya fabricaban algo parecido convencidos de que no. Desde Google se anuncia que la próxima versión de Android se adapatará al tamaño de las tablets y Microsoft dice que no teme que el iPad se coma el negocio de los pc´s. Al fin y al cabo, Microsoft acababa de presentar Windows Phone, la alternativa a iOS y a Android. No estaban para pensar en tabletas.
+
+Y ahora, en Junio de 2012, cuando se cumplen 5 años de la venta del primer iPhone, se presentan casi simultaneamente Microsoft Surface y Google Nexus 7: los "iPads" de Microsoft y Google. Microsoft ya tiene claro que esto de los sistemas operativos táctiles tiene futuro así que se anima a sacar un hibrido entre pantalla táctil y teclado asociado para los que echen de menos un portátil. Por otro lado, Google quiere demostrar que tener la última versión de su sistema operativo en una tableta está muy bien... ¿quién de los dos convencerá a los fabricantes asiáticos? porque es de lo que se trata esta apuesta.
+
+Vayamos al grano de lo que quería expresar en este articulo: Microsoft lo tiene jodido por culpa de Google. Apple lleva unos años de exitos encadenados en los que está haciendo mucho dinero y subiendo su cotización en bolsa (un 376% en cinco años) vendiendo sus propios productos con su propio sistema operativo. Google lleva cinco años regalando un sistema operativo a los fabricantes de dispositivos móviles lo que le ha permitido consolidar sus servicios y seguir aumentado su cotización (un 9% más que hace cinco años). ¿Y que ha hecho Microsoft?
+
+Durante estos últimos años, siempre que se hablaba de Microsoft, de como Apple le iba comiendo terreno y de como Android cada vez tenía más popularidad se decía que no había que preocuparse: Microsoft tenía un edificio como el del Tío Gilito lleno de monedas de oro y podría aguantar el tirón mucho tiempo. Después de grandes novedades, como Windows Phone o la enorme apuesta por Windows 8 se han animado a presentar un producto fabricado por ellos mismos con su sistema operativo (si, lo que Steve Jobs llevaba defendiendo desde el Apple I: la integración completa entre software y hardware) pero alegando que lo que pretenden ser es punta de lanza para que los fabricantes enfoquen de esta forma Windows 8, haciendo algo parecido a lo que han hecho ellos con Surface.
+
+En los medios se hablaba de lo de siempre: han copiado a Apple, es un portatil dado la vuelta, etc... Yo debo ser muy fan de Asus (que lo soy) pero para mi el Surface es una copia del [Asus Eee Pad Transformer Prime](http://www.asus.es/Eee/Eee_Pad/Eee_Pad_Transformer_Prime_TF201/) que, dicho sea de paso, monta Android 3.2 Honeycomb de forma totalmente gratuita. Si Asus (y todos los demás) se animan a incluir Windows 8 en sus dispostivos (que ya se que no tiene nada que ver con Android... pero si yo fuera Andy Rubin miraría con ojos golosos ese pastel) tendrán que subir el precio para hacer frente al precio de la licencia de Windows a no ser que Microsoft se anime a regalarla. Y llegados a este punto ¿qué futuro le espera a Microsoft?
+
+Apple juega en una linea aparte: fabrica sus propios dispositivos y desarrolla su propio sistema operativo desde hace más de 30 años. La alternativa a esto fue el licenciamiento del sistema operativo que tan bien le ha ido a Microsoft durante más de treinta años pero en el nuevo escenario, la alternativa es una compañía que regala el sistema operativo para ganar dinero con los servicios que tiene por detrás lo que destruye por completo el modelo de negocio de Microsoft.
+
+Son curiosos los caprichos del destino: Microsoft y Apple llevan enfrentados desde los albores de la informática de consumo. En el nuevo escenario de la movilidad los rivales son Apple y Google pero, en la lucha que mantienen, a quien están disparando es a Microsoft...
+
+¿cómo acabará todo esto?
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Web y cliente iOS en 45min]]></title>
+		<link href="http://javimoreno.me/blog/2012/05/14/web-y-cliente-ios-en-45min/"/>
+		
+	  <updated>2012-05-14T16:44:37+00:00</updated>
+	  <id>http://javimoreno.me/blog/2012/05/14/web-y-cliente-ios-en-45min</id>
+	  
+	  <content type="html"><![CDATA[El pasado 14 de Mayo tuve la suerte de poder dar una charla en el CIBALL sobre como hacer un sitio web con Ruby on Rails y una aplicación iOS que accediera a los datos almacenados en dicho sitio.
+
+El contenido de esta charla lo preparamos entre Jorge Ortiz (aka [@jdortiz](https://twitter.com/#!/jdortiz)) y yo. El resultado está grabado en formato screencast pero es lo suficientemente largo como para resultar tremendamente pesado. Aun así lo hemos colgado en Vimeo por si algún imprudente se anima a verlo.
+
+<!-- more -->
+
+<iframe width="" height="" src="http://player.vimeo.com/video/42366092 " frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+La presentación que utilizamos fue esta.
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/12871774 " width="595" height="446" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe> 
+
+Las dos siguientes entradas de este blog consistirán en la [preparación del sitio web](http://www.zinkinapps.com/blog/?p=78) y en el [desarrollo de la aplicación para iOS](http://www.zinkinapps.com/blog/?p=130). Estamos trabajando en unos screencast para cada una de las entradas pero todavía no están listos.
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[No empezamos muy bien... es difícil sacar tiempo para escribir un blog. ]]></title>
+		<link href="http://javimoreno.me/blog/2011/10/26/5/"/>
+		
+	  <updated>2011-10-26T17:28:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2011/10/26/5</id>
+	  
+	  <content type="html"><![CDATA[De momento me conformo con dejar aquí un par de sitios web bastante interesantes que he encontrado últimamente:
+
+  * [MaaSive](http://www.maasive.co/): Es un sitio web que ofrece persistencia en la nube. Lo encontré gracias a un tweet de [Brandon Trebitowski](http://twitter.com/brandontreb) y el video demostrativo deja claro lo que es: un framework que podríamos utilizar para sustituir (o complementar según se quiera) a Core Data y almacenar todos los datos en la nube. Soluciones como esta hay unas cuantas: amazon cloud services, google app engine, etc. La ventaja de este framework es la clara orientación a iOS. Está todavía en fase alfa.
+	
+  * [Parse:](http://www.parse.com/) Este es el que más impresionado me ha dejado. En algún momento pensarás en hacer una app que requiera notificaciones "push". Al margen de lo engorroso que pueda resultar montar todo el servicio de notificaciones, lo más probable es que la solución que encontremos tenga un coste económico ya que requiere de un servidor.
+
+Parse encapsula todo el proceso de notificación en un framework para que sea sencillo de implementar en una app y además es gratuito para pocos usos (relativamente, que ya me gustaría a mí tener una app que hiciera más de un millón de push al mes).
+
+Hasta aquí por hoy. Estoy trabajando en algunas cosillas que me gustaría compartir pero todavía no están terminadas. Espero no tardar tanto en escribir el siguiente.
+
+
+
+]]></content>
+		
+	</entry>
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[DISPLAY ‘HOLA MUNDO’]]></title>
+		<link href="http://javimoreno.me/blog/2011/08/31/display-hola-mundo/"/>
+		
+	  <updated>2011-08-31T16:00:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2011/08/31/display-hola-mundo</id>
+	  
+	  <content type="html"><![CDATA[Espero que este no sea otro intento más de escribir un blog y pueda darle continuidad.
+
+Llevo muchos años pensando en lo que podría escribir en un blog... tantos que hasta ahora no había escrito ninguno. Como últimamente estoy muy centrado en el tema de la programación para iOS y leo muchos blogs donde la gente cuenta cosas que ha aprendido o sabe hacer para ayudar al resto de la comunidad de desarrolladores (entre ellos a mi), he pensado que una buena idea para empezar sería devolver los favores escribiendo mis "avances". De eso es de lo que trata este blog... de como un triste programador de COBOL intenta hacer app´s para su iPhone.
+
+Y para darle más cache a esta primera entrada, me voy a permitir el lujo de citar a Marcus Zarra que en su post "Why so serious?" hace una afirmación que ningún desarrollador debe olvidar jamás... o al menos eso pienso yo.
+
+
+> 
+
+> 
+> "We as developer must remember that we are not the target for 99% of the software that is written. We are not the final judge on what will or will not work. If anything, we are the last people that should have an opinion on what is good or bad. We should be the ones that step back and watch what the “normals” do with it. They determine the success or failure, not us"
+]]></content>
+		
+	</entry>
+	
+</feed>

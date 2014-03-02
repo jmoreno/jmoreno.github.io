@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Como se hizo URLHunter - Javi Moreno</title>
+  <meta name="author" content="Javi Moreno">
+
+  
+  <meta name="description" content="Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Javi Moreno</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<ul class="social">
+
+  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
+
+
+  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+
+
+  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
+
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:javimoreno.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/sobre-mi">Sobre mi</a></li>
+  <li><a href="/proyectos">Proyectos</a></li>
+  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
+  <li><a href="/blog/archives">Archivo</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+		
+			
+		    <h1 class="entry-title">Como se hizo URLHunter</h1>
+			
+		
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-11T02:43:00+00:00" pubdate data-updated="true">Mar 11<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque existen páginas como las de <a href="http://railscasts.com" title="Railscasts">Railscasts</a>.<br/>
+Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instalar las gemas necesarias para trabajar con Twitter Bootstrap, del que somos fans.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;therubyracer&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;less-rails&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter-bootstrap-rails&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!--more-->
+
+
+<p>Después de cargar las gemas en nuestro proyecto con Bundle Install, terminamos de instalar Bootstrap en nuestro proyecto con la siguiente instrucción:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">g</span> <span class="ss">bootstrap</span><span class="p">:</span><span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>El propósito de nuestra aplicación es mostrar un listado de los tweets de <a href="http://twitter.com/objectivec_es" title="@ObjectiveC_es">@objectivec_es</a> que contienen una url. De esta forma tendremos agrupados en una web toda esa información tan interesante que van soltando a nuestro timeline y que muchas veces perdemos por no hacer un favorito a tiempo. Dicho esto, de primeras lo que vamos a necesitar es una página en la que mostraremos información procedente del API de Twitter.</p>
+
+<p>Creamos un controlador para las páginas de contenido estático:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">StaticPages</span> <span class="n">home</span> <span class="n">help</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y hacemos algunos ajuste en el <em>layout</em> general para empezar a beneficiarnos de Twitter Bootstrap</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;title&gt;</span>URLHunter<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+</span><span class='line'><span class="c">  &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="c">  &lt;![endif]--&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>%= stylesheet_link_tag    &quot;application&quot;, :media =&gt; &quot;all&quot; %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= javascript_include_tag &quot;application&quot; %&gt;
+</span><span class='line'>  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
+</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= yield %&gt;<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span3&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h2&gt;</span>¿Por qué?<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span>Porque alguien tenía que hacerlo. Si no, Twitter volvería a cambiar su API para eliminar la funcionalidad de favoritos.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Accediendo al API de Twitter</h2>
+
+<p>Para recuperar el timelime de nuestra &#8220;presa&#8221; podemos desarrollar las llamadas que necesitemos o utilizar la gema &#8220;Twitter&#8221;. Siguiendo la filosfía DRY y como hay otras cosas mucho mejores que hacer, nosotros nos decantamos por la gema.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Antiguamente ya podríamos hacer algunas pruebas con la consola pero en los tiempos que corren hay que autenticarse. Para ello, siguiendo la documentación de la gema, hay que crear un fichero de inicialización en /config/initializers llamado twitter.rb:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_KEY</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_SECRET</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN_SECRET</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Una vez hayamos reemplazado los valores aplantillados con los que podemos encontrar en la sección de &#8220;Mis applicaciones&#8221; de la web de desarrolladores de Twitter ya estaremos en condiciones de empezar a consumir datos de Twitter.</p>
+
+<p>Inicialmente, vamos a probar que tal funciona todo incluyendo lo siguiente en el home.html.erb:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% Twitter.user_timeline(&quot;objectivec_es&quot;, :count =&gt; 10, :exclude_replies =&gt; true).each do |tweet| %&gt;
+</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span> <span class="err">&lt;</span>%= tweet.text %&gt; <span class="nt">&lt;/blockquote&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>¿Igualito que en iOS, eh? Bueno, cada uno tiene sus virtudes. En cualquier caso, aunque hemos obtenido rapidos resultados no podemos decir que sean <em>bonitos</em>. Lo suyo sería que los hashtags, las menciones y los links tuvieran los vinculos correspondientes. Para eso vamos a utilizar otra gema.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem <span class="s1">&#39;twitter-text&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Según la documentación de la gema, para <em>autolinkar</em> las entidades lo único que tenemos que hacer es lo siguiente:</p>
+
+<p>A <em>app/helpers/application_helper.rb</em> lo dejaremos de esta forma</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="ss">Twitter</span><span class="p">:</span><span class="ss">:Autolink</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y en <em>home.html.erb</em> cambiaremos el contenido de la cita por lo siguiente:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;/blockquote&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Es necesario poner html_safe al final para que Rails interprete que le estamos pasando un texto que contiene etiquetas HTML, si no lo hicieramos las etiquetas se pintarían como si fuera texto plano.</p></blockquote>
+
+<p>Si recargamos ahora la página veremos todos los tweets con enlaces a los usuarios mencionados, a los hasgtags&#8230; Como diría Duke Nukem: &#8220;Ah!, much better!!!&#8221;</p>
+
+<p>Lo siguiente que vamos a hacer es almacenar los tweets en base de datos. ¿Por qué?, pues por varios motivos:</p>
+
+<ul>
+<li>No queremos perder ni una sola de estas píldoras de información</li>
+<li>Ahora no son muchos pero cuando los chicos de <a href="http://twitter.com/objectivec_es" title="@ObjectiveC_es">@ObjectiveC_es</a> vayan por los 3000 tweets esta web tardará bastante más en cargar</li>
+<li>En esta vida, no eres nadie si no haces un poco de persistencia.</li>
+</ul>
+
+
+<p>Así que crearemos un modelo para almacenar algunos datos. Inicialmente será muy sencillo, ya lo complicaremos más adelante:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rails g model tweetlink tweet_id screen_name content:text profile_image tweet_created_at
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>e incluiremos algunos métodos de conveniencia en la nueva clase:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Tweetlink</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="n">attr_accessible</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:screen_name</span><span class="p">,</span> <span class="ss">:tweet_id</span><span class="p">,</span> <span class="ss">:profile_image</span><span class="p">,</span> <span class="ss">:tweet_created_at</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">first_time</span>
+</span><span class='line'>    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">3200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">pull_tweets</span>
+</span><span class='line'>    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:since_id</span> <span class="o">=&gt;</span> <span class="n">maximum</span><span class="p">(</span><span class="ss">:tweet_id</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</span><span class='line'>   <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</span><span class='line'>     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</span><span class='line'>       <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</span><span class='line'>       <span class="n">create!</span><span class="p">(</span>
+</span><span class='line'>           <span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>           <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</span><span class='line'>           <span class="n">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</span><span class='line'>           <span class="n">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</span><span class='line'>           <span class="n">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</span><span class='line'>       <span class="p">)</span>
+</span><span class='line'>     <span class="k">end</span>
+</span><span class='line'>   <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A continuación, tendremos que cambiar el controlador y la vista ya que ahora mismo todavía están recuperando la información directamente desde el API.</p>
+
+<p>El metodo <em>home</em> quedará de la siguiente manera:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y la vista de esta otra forma:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span>
+</span><span class='line'>      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
+</span><span class='line'>      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
+</span><span class='line'>      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/blockquote&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Para terminar vamos a incluir paginación, esto reducirá el tiempo de carga de la página y mejorará la usabilidad. Otra vez más, podriamos escribir todo el código necesario para montar una paginación pero con un par de gemas lo podemos dejar solucionado:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;will_paginate&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;bootstrap-will_paginate&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>La gema <em>will_paginate</em> es la que se encarga de la gestión de la paginación. Lo único que tendremos que hacer es cambiar el número de registros que recuperamos de la clase Tweetlink en el controlador. En lugar de <em>all</em> usaremos <em>paginate</em>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En el layout, indicaremos donde queremos que aparezca el componente de paginación. La gema <em>bootstrap-will_paginate</em> aplica los estilos de Twitter Bootstrap a paginación.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span>
+</span><span class='line'>      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
+</span><span class='line'>      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
+</span><span class='line'>      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
+</span><span class='line'>      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/blockquote&gt;</span>
+</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y listo, podríamos seguir incluyendo muchas mejoras y posiblemente es lo que haga en los próximos días pero por el momento&#8230; esto es todo.</p>
+
+<p>El código fuente lo puedes encontrar en <a href="https://github.com/jmoreno/URLHunter/tree/GitHub">Github</a></p>
+
+<h2>ACTUALIZACIÓN 12/03/2013</h2>
+
+<p>He corregido los fragmentos de código que erán erróneos. En la siguiente entrada tenéis una explicación de los errores. Disculpad las molestias.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-11T02:43:00+00:00" pubdate data-updated="true">Mar 11<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
+  
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/08/como-mola-octopress/" title="Previous Post: Como mola Octopress">&laquo; Como mola Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/03/12/resacon-en-heroku/" title="Next Post: Resacón en Heroku">Resacón en Heroku &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Javi Moreno -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'eloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
+        var disqus_url = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  
+  <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
+  
+
+
+
+
+</body>
+</html>

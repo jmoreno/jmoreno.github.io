@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Variables de entorno en Rails - Javi Moreno</title>
+  <meta name="author" content="Javi Moreno">
+
+  
+  <meta name="description" content="Como usar variables de entorno en un proyecto Rails para compartir el código y dormir tranquilo.">
+  <meta name="keywords" content="Environment Variables, Variables de Entorno, Heroku, GitHub, Open Source">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://javimoreno.me/blog/2013/03/25/variables-de-entorno-en-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Javi Moreno</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<ul class="social">
+
+  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
+
+
+  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+
+
+  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
+
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:javimoreno.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/sobre-mi">Sobre mi</a></li>
+  <li><a href="/proyectos">Proyectos</a></li>
+  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
+  <li><a href="/blog/archives">Archivo</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+		
+			
+		    <h1 class="entry-title">Variables de entorno en Rails</h1>
+			
+		
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-25T13:25:00+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Cuando terminé la primera versión de URLHunter, tenía claro que compartir el código fuente del proyecto era básico. Principalmente por dos razones:   <br/>
+Primero, porque que se aprende mucho viendo el código, quizá mas que siguiendo un tutorial.<br/>
+Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, pull requests y enriqueciera URLHunter con sus aportaciones individuales.</p>
+
+<p>Cuando lo iba a subir a GitHub caí en la cuenta de que los <em>tokens</em>, <em>consumer_keys</em>, etc de Twitter los iba a poder ver cualquiera que echara un vistazo al fichero <em>twitter.rb</em> y no solo eso, si en el futuro decidía incluir un formulario de contacto, integrar New Relic o Google Analytics los usuarios, contraseñas, identificadores únicos serían visibles para todo el mundo. Fue entonces cuando vi la importancia de las <em><em>variables de entorno</em></em> a las que hacían referencia en la documentación de la gema de Twitter.</p>
+
+<!--more-->
+
+
+<p>El caso es que, por no hacerlo de primeras, para subir el repositorio a GitHub tuve que crear una rama nueva, cambiar los ficheros, asegurarme de que la rama principal nunca se sincronizaría con GitHub, etc. El problema añadido a esto es que todas los cambios que he ido haciendo al proyecto no los he podido sincronizar con la rama GitHub por falta de tiempo (o pereza, según se mire). En fin, que antes de que la cosa se complicará más había que actuar así que buscando un poco en internet he encontrado <a href="http://railsapps.github.com/rails-environment-variables.html">este tutorial</a> que es el que voy a seguir para ocultar la información confidencial del proyecto.</p>
+
+<p>La opción que he decidido desarrollar es la tercera, tiene un poco más de trabajo a la hora de desplegar en Heroku pero no es muy significativo.</p>
+
+<p>Lo primero es crear el fichero <em>local_env.yml</em> e incluirlo en <em>.gitignore</em> para que no lo veáis jamás. ;-)</p>
+
+<figure class='code'><figcaption><span>/config/local_env.yml  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1"># Rename this file to local_env.yml</span>
+</span><span class='line'><span class="c1"># Add account settings and API keys here.</span>
+</span><span class='line'><span class="c1"># This file should be listed in .gitignore to keep your settings secret!</span>
+</span><span class='line'><span class="c1"># Each entry gets set as a local environment variable.</span>
+</span><span class='line'><span class="c1"># This file overrides ENV variables in the Unix shell.</span>
+</span><span class='line'><span class="c1"># For example, setting:</span>
+</span><span class='line'><span class="c1"># GMAIL_USERNAME: &#39;Your_Gmail_Username&#39;</span>
+</span><span class='line'><span class="c1"># makes &#39;Your_Gmail_Username&#39; available as ENV[&quot;GMAIL_USERNAME&quot;]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Twitter Variables</span>
+</span><span class='line'><span class="l-Scalar-Plain">CONSUMER_KEY</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Consumer_Key&#39;</span>
+</span><span class='line'><span class="l-Scalar-Plain">CONSUMER_SECRET</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Consumer_Secret&#39;</span>
+</span><span class='line'><span class="l-Scalar-Plain">OAUTH_TOKEN</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Oauth_Token&#39;</span>
+</span><span class='line'><span class="l-Scalar-Plain">OAUTH_TOKEN_SECRET</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Oauth_Token_Secret&#39;</span>
+</span><span class='line'><span class="c1"># New Relic Parameters</span>
+</span><span class='line'><span class="l-Scalar-Plain">NEW_RELIC_LICENSE_KEY</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_New_Relic_License_Key&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>En el fichero podéis ver como no solo he creado variables de entorno para Twitter si no también para New Relic, eso es porque al margen de los cambios en el estilo de URLHunter, el uso de los Tweets Embeds y algunas mejoras en la cache también he incluido New Relic para monitorizar su comportamiento y buscar formas de mejorar el rendimiento.</p>
+
+<p>Ahora hay que incluir las variables de entorno en los ficheros correspondientes. El fichero de configuración <em>twitter.rb</em> quedará de la siguiente manera:</p>
+
+<figure class='code'><figcaption><span>/config/initializers/twitter.rb  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;CONSUMER_KEY&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;CONSUMER_SECRET&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;OAUTH_TOKEN&quot;</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;OAUTH_TOKEN_SECRET&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y en el fichero de configuración de New Relic lo único que hay que tener en cuenta es que hay usar ruby embebido para nombra la variable de entorno:</p>
+
+<figure class='code'><figcaption><span>/config/newrelic.yml  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'>  <span class="c1"># You must specify the license key associated with your New Relic</span>
+</span><span class='line'>  <span class="c1"># account.  This key binds your Agent&#39;s data to your account in the</span>
+</span><span class='line'>  <span class="c1"># New Relic service.</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">license_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;%= ENV[&#39;NEW_RELIC_LICENSE_KEY&#39;] %&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Cargando las variables de entorno.</h2>
+
+<p>Para que la aplicación cargue las variables de entorno, tendremos que indicarle en el fichero de configuración que lo primero que tiene que hacer, antes que configurar cualquier otro ajuste es cargar las variables de nuestro fichero. Esto lo tendremos que hacer en el fichero <em>application.rb</em>:</p>
+
+<figure class='code'><figcaption><span>/config/application.rb  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>    <span class="c1"># Load the environment variables at beginning</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">before_configuration</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;local_env.yml&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+</span><span class='line'>        <span class="no">ENV</span><span class="o">[</span><span class="n">key</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>      <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Si hemos hecho todo esto correctamente, al ejecutar la aplicación en local todo debería funcionar perfectamente. El problema nos lo vamos a encontrar cuando despleguemos en Heroku. Heroku se apoya en el fichero git de nuestro proyecto para tomar toda la información. Del mismo modo que el fichero donde hemos incluido las variables de entorno no es visible en el repositorio (GitHub, Bitbucket,&#8230;) tampoco lo es para Heroku por lo que las variables de entorno nunca se cargarán al iniciar la aplicación. Hemos de cargar estas variables de forma manual.</p>
+
+<figure class='code'><figcaption><span>Carga de variables de entorno en Heroku  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Key&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Podemos hacer un fichero bash que ejecutaremos después de hacer el despliegue en heroku. Este script tendría la siguiente estructura:</p>
+
+<figure class='code'><figcaption><span>Script para cargar variables de entorno en Heroku heroku.sh  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Key&#39;</span> <span class="nv">CONSUMER_SECRET</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Secret&#39;</span> <span class="nv">OAUTH_TOKEN</span><span class="o">=</span><span class="s1">&#39;Your_Oauth_Token&#39;</span> <span class="nv">OAUTH_TOKEN_SECRET</span><span class="o">=</span><span class="s1">&#39;Your_Oauth_Token_Secret&#39;</span> <span class="nv">NEW_RELIC_LICENSE_KEY</span><span class="o">=</span><span class="s1">&#39;Your_New_Relic_License_Key&#39;</span>;
+</span><span class='line'>heroku info --app urlhunter-314159;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y lo ejecutamos escribiendo en el terminal:</p>
+
+<figure class='code'><figcaption><span>Script para cargar variables de entorno en Heroku  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sh heroku.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Listo. Ya podemos compartir el código fuente del proyecto sin temor a que nadie pueda hacer uso de nuestras claves de terceros.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-25T13:25:00+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/anáisis/'>Anáisis</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
+  
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/25/variables-de-entorno-en-rails/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/03/25/variables-de-entorno-en-rails/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/22/send-to-kindle-para-octopress/" title="Previous Post: Send to kindle para Octopress">&laquo; Send to kindle para Octopress</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/03/31/una-decada/" title="Next Post: Una decada">Una decada &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Javi Moreno -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'eloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://javimoreno.me/blog/2013/03/25/variables-de-entorno-en-rails/';
+        var disqus_url = 'http://javimoreno.me/blog/2013/03/25/variables-de-entorno-en-rails/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  
+  <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
+  
+
+
+
+
+</body>
+</html>
