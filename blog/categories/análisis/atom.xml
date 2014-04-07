@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Análisis | Javi Moreno]]></title>
   <link href="http://javimoreno.me/blog/categories/análisis/atom.xml" rel="self"/>
   <link href="http://javimoreno.me/"/>
-  <updated>2014-03-02T02:46:30+00:00</updated>
+  <updated>2014-04-06T23:57:51+00:00</updated>
   <id>http://javimoreno.me/</id>
   <author>
     <name><![CDATA[Javi Moreno]]></name>
@@ -12,6 +12,161 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+	
+	<entry>
+	  
+		<title type="html"><![CDATA[Octoberry Pi]]></title>
+		<link href="http://javimoreno.me/blog/2014/04/07/octoberry-pi/"/>
+		
+	  <updated>2014-04-07T09:30:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2014/04/07/octoberry-pi</id>
+	  
+	  <content type="html"><![CDATA[Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta.   
+Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.    
+Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:
+
+<blockquote><p>Lo nuestro es el plomo.</p></blockquote>
+
+Claro, que un poco más adelante, en la misma película también dijo:
+
+<blockquote><p>En aquel momento parecía una buena idea.</p></blockquote>
+
+<!--more-->
+
+Este año, los Reyes Magos me trajeron una Raspberry Pi. Si ya se que ya no está tan de moda pero después de una conversación con [Jorge Ortiz](http://twitter.com/jdortiz) allá por Octubre me picó el gusanillo de usar este dispositivo para hacer pruebas de configuración de un servidor Rails. Después, pensando en lo poco que consume, que puede estar siempre encendido, que soporta ssh,… pensé que a lo mejor esta era la forma de poder publicar cosas en el blog cuando no estuviera en casa. 
+
+## Organización: Borradores y Blog.
+
+Supongo que ya lo sabréis pero Octopress se apoya mucho en git. Inicialmente pensé en tener toda la carpeta del proyecto en Dropbox para que estuviera sincronizado el contenido tanto en la Raspberry, como en el Mac, el iPhone o el iPad. Si esto funcionaba, lo único que tendría que hacer cuando hubiera terminado de escribir algo sería entrar en la RPi y hacer el **deploy** desde allí.    
+No fue una buena idea, primero porque la RPi no es el más rápido de los dispositivos y segundo porque la carpeta de un proyecto Octopress con la rama **source** tiene un número de ficheros que tiende a infinito y Dropbox es genial excepto cuando tienes un número muy grande de ficheros.    
+El plan B fue tener una carpeta en Dropbox para los borradores, tener el repositorio del blog sincronizado también con la Raspberry y mover los **borradores** al proyecto cuando fuera a publicar algo.
+
+## Crear una carpeta de borradores en Dropbox. 
+
+Prácticamente todos los editores markdown que hay tanto para iPhone, como para iPad como para Mac permiten guardar en Dropbox. En mi caso particular uso iA Writer en el iPhone, Editorial en el iPad y nvAlt, iA Writer o Textmate en el Mac (según me de). En todos estos editores puedo escribir los artículos, en el iPad y en el Mac además puedo hacer la **postprodución** del post, es decir la maquetación y uso de los plugins que aporta Octopress para que las entradas queden más vitaminadas. Además, el tener todo en Dropbox me permite empezar a escribir en el Mac, seguir escribiendo en el iPhone mientras voy en el Metro y terminar de maquetar en el iPad (porque mola mucho usar Editorial).
+
+Para poder usar Dropbox en la Raspberry me basé en [esta entrada](http://raspi.tv/2013/how-to-use-dropbox-with-raspberry-pi). Es importante destacar que Dropbox en la Raspberry todavía no funciona (y no se si algún día funcionará) como funciona en nuestros dispositivos habituales: no hay sincronización. [Dropbox Uploader](https://github.com/andreafabrizi/Dropbox-Uploader) lo que permite es descargar, subir, borrar, crear directorios y demás historias pero la sincronización es algo que, si lo quieres, te lo tienes que currar tu. En mi caso, con la descarga de Dropbox a la Raspberry es suficiente.
+
+## GitHub, Bitbucket y ramas remotas.
+
+Aunque este blog está hospedado en GitHub, el repositorio completo (Octopress consta de dos ramas: **master** y **source**) está alojado en Bitbucket. No es que tenga nada que ocultar, simplemente que tengo cosas a medio escribir que no me apetece que se vean hasta que estén terminadas. 
+Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repositorio remoto, lo único que hay que hacer es crear una clave ssh en la Raspberry ([en GitHub tienen muy buenos tutoriales de como hacerlo](https://help.github.com/articles/generating-ssh-keys)), vincular esta clave tanto al repositorio de Bitbucket como al de GitHub y disfrutar: ya podemos clonar, hacer pull, hacer push y todas esas cosas que hacen que Octopress mole tanto. Como a todos los efectos es una nueva instalación. Cuando clonamos el proyecto tenemos que hacer el "bundle install" y volver a configurar el sistema de despliegue. Con las [instrucciones del sitio de Octopress](http://octopress.org/docs/deploying/) es más que suficiente.
+
+## El proceso de publicación.
+
+Creo que todavía no lo había dicho pero en todo momento he estado accediendo a la Raspberry vía ssh. Si usas git y octopress no deberías tenerle ningún miedo al terminal por lo que acceder vía ssh al dispositivo no será tampoco un problema. Para facilitarme un poco la tarea me he creado una serie de scripts para las situaciones que me puedo encontrar con más frecuencia:
+
+1. Descargar los borradores y previsualizar
+2. Publicar lo que haya en la Raspberry
+3. Descargar los borradores y publicar
+4. Descargar el repositorio y previsualizar
+5. Descargar el repositorio y publicar
+
+En todos los casos, después de publicar se hace commit en el repositorio y se suben los cambios a los servidores remotos.
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>quickpost.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</span><span class='line'>mv ./drafts/*.markdown ./blog/source/_posts
+</span><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickpost.sh&quot;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+El script anterior descarga los ficheros que estén en la carpeta de *borradores*. A continuación, mueve los ficheros con extensión _markdown_ a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace `commit`en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.
+
+El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un `pulo` al repositorio remoto,…
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>gitpost.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>git pull origin <span class="nb">source</span>
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="err">&quot;</span>Nuevo publicación con gitpost.sh”
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>quickpreview.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</span><span class='line'>mv ./drafts/*.markdown ./blog/source/_posts
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>quickdeploy.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickdeploy.sh&quot;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>gitpreview.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>git pull origin <span class="nb">source</span>
+</span><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+## Wherever I may roam
+
+Y aquí llega el punto por el que decidí montar todo este tinglado: tenemos el repositorio del blog clonado en la Raspberry Pi, hemos creado una serie de scripts para facilitar el proceso de descarga y publicación. Para poder publicar en cualquier momento y allá donde nos encontremos solo nos faltan dos cosas: poder acceder a la Raspberry desde fuera de la red local y tener una aplicación en el iPhone o en el iPad que permitan hacer un ssh.
+
+Lo primero lo he resuelto con [no-ip](http://www.noip.com) un servicio gratuito que mediante la instalación de un paquete en la Raspberry y la configuración de una cuenta nos permite acceder a nuestra red como si de un servicio web se tratara. Ya no recuerdo cual es el tutorial que usé yo para configurarlo pero cualquiera que aparece al buscar “no-ip raspberry” en Google valdrá. Es algo extremadamente sencillo.
+
+Y para lo segundo, hacía ya bastante tiempo que le había echado el ojo a [Prompt](https://itunes.apple.com/es/app/prompt/id421507115?mt=8) de la gente de [Panic](http://www.panic.com). Quizá sea una aplicación cara (cuesta 7€) pero cumple su cometido a la perfección.
+
+## Conclusión.
+
+Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.    
+Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante `crontab` me daría mucha agilidad.]]></content>
+		
+	</entry>
 	
 	<entry>
 	  
@@ -1701,7 +1856,7 @@ He corregido los fragmentos de código que erán erróneos. En la siguiente entr
 		<title type="html"><![CDATA[Pintando rutas con MapKit]]></title>
 		<link href="http://javimoreno.me/blog/2012/05/28/pintando-rutas-con-mapkit/"/>
 		
-	  <updated>2012-05-28T03:56:01+00:00</updated>
+	  <updated>2012-05-28T03:56:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/05/28/pintando-rutas-con-mapkit</id>
 	  
 	  <content type="html"><![CDATA[Le tenía muchas ganas a MapKit. Es de esas cosas que sabes que en algún momento tendrás que toquetear pero por algún motivo ese momento no llega. Al final ha sido para hacer una aplicación que tiene la funcionalidad de "como llegar". Había oído a unos decir que esto era muy complicado y a otros que no era para tanto... Por lo que he podido comprobar, a partir de iOS 4 es bastante fácil de implementar. No he intentado bajar el código más allá de esta versión así que no puedo confirmar si es muy complicado en versiones anteriores.
@@ -1738,7 +1893,7 @@ Y ya está, el código fuente de la demo lo podéis encontrar en [GitHub](https:
 		<title type="html"><![CDATA[Una web con Ruby on Rails]]></title>
 		<link href="http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails/"/>
 		
-	  <updated>2012-05-14T17:33:51+00:00</updated>
+	  <updated>2012-05-14T17:33:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/05/14/una-web-con-ruby-on-rails</id>
 	  
 	  <content type="html"><![CDATA[Seguro que en algún momento nos hemos planteado la necesidad de disponer de un servicio web propio para alimentar alguna de nuestras aplicaciones (actualización de datos, gestión de InApp Purchases, notificaciones, etc).

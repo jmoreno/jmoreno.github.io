@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Analisis | Javi Moreno]]></title>
   <link href="http://javimoreno.me/blog/categories/analisis/atom.xml" rel="self"/>
   <link href="http://javimoreno.me/"/>
-  <updated>2014-03-02T02:46:30+00:00</updated>
+  <updated>2014-04-06T23:57:51+00:00</updated>
   <id>http://javimoreno.me/</id>
   <author>
     <name><![CDATA[Javi Moreno]]></name>
@@ -18,7 +18,7 @@
 		<title type="html"><![CDATA[Cliente iOS… explotando a NSURLConnection y NSJSONSerialization]]></title>
 		<link href="http://javimoreno.me/blog/2012/05/28/cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/"/>
 		
-	  <updated>2012-05-28T02:27:16+00:00</updated>
+	  <updated>2012-05-28T02:27:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/05/28/cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization</id>
 	  
 	  <content type="html"><![CDATA[En la entrada anterior vimos como hacer una web con su API Rest con muy poco esfuerzo. En esta vamos a ver como conectar con ese API Rest con muy poco esfuerzo también. Eso si, vamos a centrarnos solamente en la clase NSURLConnection; la creación de la aplicación, modificación del modelo y del storyboard lo damos por supuesto.

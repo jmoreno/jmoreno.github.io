@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Express | Javi Moreno]]></title>
   <link href="http://javimoreno.me/blog/categories/express/atom.xml" rel="self"/>
   <link href="http://javimoreno.me/"/>
-  <updated>2014-03-02T02:46:30+00:00</updated>
+  <updated>2014-04-06T23:57:51+00:00</updated>
   <id>http://javimoreno.me/</id>
   <author>
     <name><![CDATA[Javi Moreno]]></name>
@@ -428,7 +428,7 @@ Y buscando, buscando encontré Octopress: un framework de blogging que puedo des
 		<title type="html"><![CDATA[Soporte Nysnö para MacBook Pro]]></title>
 		<link href="http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro/"/>
 		
-	  <updated>2012-12-23T19:51:28+00:00</updated>
+	  <updated>2012-12-23T19:51:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro</id>
 	  
 	  <content type="html"><![CDATA[No tenía pensado hablar de bricolaje en este blog pero una mención de [@rubdottocom](http://twitter.com/rubdottocom) haciendo referencia a una entrada suya haciendo lo mismo pero [con otro modelo](http://putofreak.com/crea-un-dock-para-tu-macbook-con-un-servilletero-de-ikea) me hizo plantearme una sección de "Macnitas" para este blog.
@@ -463,7 +463,7 @@ Espero que os haya gustado. :-)]]></content>
 		<title type="html"><![CDATA[Jugando con la App Store]]></title>
 		<link href="http://javimoreno.me/blog/2012/09/27/jugando-con-la-app-store/"/>
 		
-	  <updated>2012-09-27T08:00:48+00:00</updated>
+	  <updated>2012-09-27T08:00:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/09/27/jugando-con-la-app-store</id>
 	  
 	  <content type="html"><![CDATA[El miércoles 26 de septiembre tuve la oportunidad de dar otra charla en la NSCoderMAD. Volvió a ser en el CIBALL un sitio que parece que visitaremos mucho en los próximos meses si todo va bien. En esta ocasión mi charla giró sobre la experiencia de usar los servicios de AppGratis, una aplicación que envía newsletter y hace notificaciones push cada día hablando de una aplicación que baja de precio o pasa a ser gratis. Creo que la charla es bastante interesante por la experiencia en si y porque aporta datos no muy habituales: las ganancias de una aplicación del Top 25 de pago.
@@ -485,7 +485,7 @@ Esta es la presentación pero con mis notas:  
 		<title type="html"><![CDATA[¿Morirá Microsoft por daños colaterales?]]></title>
 		<link href="http://javimoreno.me/blog/2012/07/05/morira-microsoft-por-danos-colaterales/"/>
 		
-	  <updated>2012-07-05T00:18:36+00:00</updated>
+	  <updated>2012-07-05T00:18:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/07/05/morira-microsoft-por-danos-colaterales</id>
 	  
 	  <content type="html"><![CDATA[Este fin de semana he estado leyendo un articulo  bastante interesante sobre el desarrollo del sistema operativo WebOS contado de forma cronológica. El articulo es de The Verge y se llama [Pre to postmortem: the inside story of the death of Palm and webOS](http://www.theverge.com/2012/6/5/3062611/palm-webos-hp-inside-story-pre-postmortem). Lo tenía para leer en Pocket desde hacía unas semanas pero, quizá por el quinto cumpleaños del iPhone, ha estado circulando por twitter durante toda la semana.
@@ -526,7 +526,7 @@ Son curiosos los caprichos del destino: Microsoft y Apple llevan enfrentados des
 		<title type="html"><![CDATA[Web y cliente iOS en 45min]]></title>
 		<link href="http://javimoreno.me/blog/2012/05/14/web-y-cliente-ios-en-45min/"/>
 		
-	  <updated>2012-05-14T16:44:37+00:00</updated>
+	  <updated>2012-05-14T16:44:00+00:00</updated>
 	  <id>http://javimoreno.me/blog/2012/05/14/web-y-cliente-ios-en-45min</id>
 	  
 	  <content type="html"><![CDATA[El pasado 14 de Mayo tuve la suerte de poder dar una charla en el CIBALL sobre como hacer un sitio web con Ruby on Rails y una aplicación iOS que accediera a los datos almacenados en dicho sitio.

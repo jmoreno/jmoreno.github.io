@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tweets automáticos con Octopress - Javi Moreno</title>
+  <meta name="author" content="Javi Moreno">
+
+  
+  <meta name="description" content="Como publicar un tweet por cada post nuevo publicado usando Karmacracy como acortador de url´s">
+  <meta name="keywords" content="Octopress, Karmacracy, Twitter">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Javi Moreno</a></h1>
+  
+    <h2>&#9823;</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+<ul class="social">
+
+  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
+
+
+  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+
+
+  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
+
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:javimoreno.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/sobre-mi">Sobre mi</a></li>
+  <li><a href="/proyectos">Proyectos</a></li>
+  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
+  <li><a href="/blog/archives">Archivo</a></li>
+</ul>
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+		
+			
+		    <h1 class="entry-title">Tweets automáticos con Octopress</h1>
+			
+		
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-04T01:21:00+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Ultimamente estoy dedicando mi tiempo libre (cada día más escaso) a automatizar ciertas tareas que Octopress, por su naturaleza estática, no permite realizar. En este post explico como acabar con una de mis mayores frustraciones: poner un tweet automáticamente cada vez que publico un artículo usando Karmacracy como acortador.</p>
+
+<!--more-->
+
+
+<p>A mi me gusta mucho Karmacracy. No es que tenga una especial fijación por controlar el número de clicks que se hacen a los enlaces que comparto pero si se trata de enlaces a este blog me gusta tener un &#8220;pequeño control&#8221; del número de clicks.</p>
+
+<p>Hasta ahora lo que hacía era compartir mediante el botón de Karmacracy la entrada que acababa de publicar. Me ha estado funcionando muy bien todo este tiempo pero llevo dandole vueltas a una automatización del proceso de publicación y estar pendiente para darle a un botón no es lo más automático del mundo.</p>
+
+<p>Empecé a estudiar otras posibilidades como IFTTT que automatizan la publicación de un tweet cuando detectan cambios en un rss. Eso habría estado fantástico si IFTTT permitiera configurar que &#8220;acortador&#8221; quieres usar pero los enlaces compartidos de esta manera ya están acortados por IFTTT&#8230; una pena.</p>
+
+<p>Finalmente, después de dar muchas vueltas he decidido tirar por la via dura y crear una tarea en el <code>rakefile</code> de Octopress que se encargue de la publicación del tweet. Para no publicar un tweet por cada post cada vez que desplegaba el blog añado a un <code>hash</code> cada enlace que se ha publicado.</p>
+
+<figure class='code'><figcaption><span>Task para compartir un enlace por Twitter </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">La</span> <span class="n">primera</span> <span class="n">versi</span><span class="err">ó</span><span class="n">n</span> <span class="n">de</span> <span class="n">esta</span> <span class="n">tarea</span> <span class="n">es</span> <span class="n">la</span> <span class="ss">siguiente</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">desc</span> <span class="s2">&quot;set permalinks, get the short url from karmacracy and share it with Twitter&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:share_with_twitter</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Twitter config (for tweeting posts)</span>
+</span><span class='line'>  <span class="n">client</span> <span class="o">=</span> <span class="ss">Twitter</span><span class="p">:</span><span class="ss">:REST</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span>        <span class="o">=</span> <span class="s2">&quot;TU_CONSUMER_KEY&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span>     <span class="o">=</span> <span class="s2">&quot;TU_CONSUMER_SECRET&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">access_token</span>        <span class="o">=</span> <span class="s2">&quot;TU_ACCESS_TOKEN&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">access_token_secret</span> <span class="o">=</span> <span class="s2">&quot;TU_ACCESS_TOKEN_SECRET&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span>
+</span><span class='line'>    <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@tweets</span> <span class="o">=</span> <span class="ss">Marshal</span><span class="p">:</span><span class="ss">:load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="vi">@tweets</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/**&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">tweet_posted</span> <span class="o">=</span> <span class="vi">@tweets</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">tweet</span><span class="o">|</span> <span class="n">tweet</span><span class="o">[</span><span class="s2">&quot;post&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="n">post</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">!</span><span class="p">(</span><span class="n">tweet_posted</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#get frontmatter</span>
+</span><span class='line'>      <span class="n">stream</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span> <span class="n">post</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">frontmatter</span> <span class="o">=</span> <span class="ss">YAML</span><span class="p">:</span><span class="ss">:load</span><span class="p">(</span> <span class="n">stream</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">stream</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#get permalink</span>
+</span><span class='line'>      <span class="n">post_time_frontmatter</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">_strptime</span><span class="p">(</span><span class="n">frontmatter</span><span class="o">[</span><span class="s2">&quot;date&quot;</span><span class="o">]</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d %H:%M&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">post_time</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span><span class="p">,</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:mon</span><span class="o">]</span><span class="p">,</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:mday</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">post_title</span> <span class="o">=</span> <span class="n">frontmatter</span><span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">post_link</span> <span class="o">=</span> <span class="n">post</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\d{4}-\d{2}-\d{2}-/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;.markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">permalink</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">blog_url</span><span class="si">}</span><span class="s2">blog/</span><span class="si">#{</span><span class="n">post_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m/%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">post_title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#short permalink with karmacracy</span>
+</span><span class='line'>      <span class="n">kcyshorter</span> <span class="o">=</span> <span class="s2">&quot;http://kcy.me/api/?u=TU_USUARIO_DE_KARMACRACY78&amp;key=TU_KEY_DE_KARMACRACY&amp;url=</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">permalink</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="n">result</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">kcyshorter</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1"># Tweet</span>
+</span><span class='line'>      <span class="n">tweet_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;He escrito </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">post_title</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">: </span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#</span>
+</span><span class='line'>      <span class="n">tweet</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;post&quot;</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="n">post_title</span><span class="p">,</span> <span class="s2">&quot;klink&quot;</span> <span class="o">=&gt;</span> <span class="n">result</span><span class="p">,</span> <span class="s2">&quot;tweet&quot;</span> <span class="o">=&gt;</span> <span class="n">tweet_response</span><span class="o">[</span><span class="s2">&quot;uri&quot;</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'>      <span class="vi">@tweets</span> <span class="o">&lt;&lt;</span> <span class="n">tweet</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Marshal</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="vi">@tweets</span><span class="p">))</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Si queremos que esta tarea se ejecuta cada vez que desplegamos el blog, lo único que hay que hacer es incluir al final de la tarea <code>:deploy</code> lo siguiente:</p>
+
+<figure class='code'><figcaption><span>[] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Rake</span><span class="p">:</span><span class="ss">:Task</span><span class="o">[</span><span class="ss">:share_with_twitter</span><span class="o">].</span><span class="n">execute</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y ya está, si todo ha funcionado perfectamente, al publicar esta entrada automáticamente se ha publicado también un tweet. ;-)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-04T01:21:00+00:00" pubdate data-updated="true">Apr 4<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
+  
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/25/pow-es-poderoso/" title="Previous Post: Pow!! es poderoso!">&laquo; Pow!! es poderoso!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/07/octoberry-pi/" title="Next Post: Octoberry Pi">Octoberry Pi &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Javi Moreno -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'eloctoblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/';
+        var disqus_url = 'http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+  
+  <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
+  
+
+
+
+
+</body>
+</html>

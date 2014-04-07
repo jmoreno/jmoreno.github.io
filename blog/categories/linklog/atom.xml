@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linklog | Javi Moreno]]></title>
   <link href="http://javimoreno.me/blog/categories/linklog/atom.xml" rel="self"/>
   <link href="http://javimoreno.me/"/>
-  <updated>2014-03-02T02:46:30+00:00</updated>
+  <updated>2014-04-06T23:57:51+00:00</updated>
   <id>http://javimoreno.me/</id>
   <author>
     <name><![CDATA[Javi Moreno]]></name>
@@ -39,12 +39,12 @@ Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas 
 		<link href="http://octopress.org/docs/blogging/linklog/"/>
 		
 	  <updated>2014-02-25T01:30:00+00:00</updated>
-	  <id>http://javimoreno.me/blog/2014/02/25/prueba-post-linklog</id>
+	  <id>http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber</id>
 	  
 	  <content type="html"><![CDATA[En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo [Marco Arment](http://www.marco.org) o [Daring Fireball](http://daringfireball.net).    
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜
 
-<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/prueba-post-linklog/">Permalink</a>]]></content>
+<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/">Permalink</a>]]></content>
 		
 	</entry>
 	

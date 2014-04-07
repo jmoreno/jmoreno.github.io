@@ -4,7 +4,7 @@
   <title><![CDATA[Javi Moreno]]></title>
   <link href="http://javimoreno.me/atom.xml" rel="self"/>
   <link href="http://javimoreno.me/"/>
-  <updated>2014-03-02T02:46:30+00:00</updated>
+  <updated>2014-04-06T23:57:51+00:00</updated>
   <id>http://javimoreno.me/</id>
   <author>
     <name><![CDATA[Javi Moreno]]></name>
@@ -15,7 +15,332 @@
   
 	<entry>
 	  
-		<title type="html"><![CDATA[Pow!! es poderoso! &rArr;]]></title>
+		<title type="html"><![CDATA[Octoberry Pi]]></title>
+		<link href="http://javimoreno.me/blog/2014/04/07/octoberry-pi/"/>
+		
+	  <updated>2014-04-07T09:30:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2014/04/07/octoberry-pi</id>
+	  
+	  <content type="html"><![CDATA[<p>Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta. <br/>
+Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.  <br/>
+Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:</p>
+
+<blockquote><p>Lo nuestro es el plomo.</p></blockquote>
+
+
+<p>Claro, que un poco más adelante, en la misma película también dijo:</p>
+
+<blockquote><p>En aquel momento parecía una buena idea.</p></blockquote>
+
+
+
+
+<!--more-->
+
+
+<p>Este año, los Reyes Magos me trajeron una Raspberry Pi. Si ya se que ya no está tan de moda pero después de una conversación con <a href="http://twitter.com/jdortiz">Jorge Ortiz</a> allá por Octubre me picó el gusanillo de usar este dispositivo para hacer pruebas de configuración de un servidor Rails. Después, pensando en lo poco que consume, que puede estar siempre encendido, que soporta ssh,… pensé que a lo mejor esta era la forma de poder publicar cosas en el blog cuando no estuviera en casa.</p>
+
+<h2>Organización: Borradores y Blog.</h2>
+
+<p>Supongo que ya lo sabréis pero Octopress se apoya mucho en git. Inicialmente pensé en tener toda la carpeta del proyecto en Dropbox para que estuviera sincronizado el contenido tanto en la Raspberry, como en el Mac, el iPhone o el iPad. Si esto funcionaba, lo único que tendría que hacer cuando hubiera terminado de escribir algo sería entrar en la RPi y hacer el <strong>deploy</strong> desde allí.  <br/>
+No fue una buena idea, primero porque la RPi no es el más rápido de los dispositivos y segundo porque la carpeta de un proyecto Octopress con la rama <strong>source</strong> tiene un número de ficheros que tiende a infinito y Dropbox es genial excepto cuando tienes un número muy grande de ficheros.  <br/>
+El plan B fue tener una carpeta en Dropbox para los borradores, tener el repositorio del blog sincronizado también con la Raspberry y mover los <strong>borradores</strong> al proyecto cuando fuera a publicar algo.</p>
+
+<h2>Crear una carpeta de borradores en Dropbox.</h2>
+
+<p>Prácticamente todos los editores markdown que hay tanto para iPhone, como para iPad como para Mac permiten guardar en Dropbox. En mi caso particular uso iA Writer en el iPhone, Editorial en el iPad y nvAlt, iA Writer o Textmate en el Mac (según me de). En todos estos editores puedo escribir los artículos, en el iPad y en el Mac además puedo hacer la <strong>postprodución</strong> del post, es decir la maquetación y uso de los plugins que aporta Octopress para que las entradas queden más vitaminadas. Además, el tener todo en Dropbox me permite empezar a escribir en el Mac, seguir escribiendo en el iPhone mientras voy en el Metro y terminar de maquetar en el iPad (porque mola mucho usar Editorial).</p>
+
+<p>Para poder usar Dropbox en la Raspberry me basé en <a href="http://raspi.tv/2013/how-to-use-dropbox-with-raspberry-pi">esta entrada</a>. Es importante destacar que Dropbox en la Raspberry todavía no funciona (y no se si algún día funcionará) como funciona en nuestros dispositivos habituales: no hay sincronización. <a href="https://github.com/andreafabrizi/Dropbox-Uploader">Dropbox Uploader</a> lo que permite es descargar, subir, borrar, crear directorios y demás historias pero la sincronización es algo que, si lo quieres, te lo tienes que currar tu. En mi caso, con la descarga de Dropbox a la Raspberry es suficiente.</p>
+
+<h2>GitHub, Bitbucket y ramas remotas.</h2>
+
+<p>Aunque este blog está hospedado en GitHub, el repositorio completo (Octopress consta de dos ramas: <strong>master</strong> y <strong>source</strong>) está alojado en Bitbucket. No es que tenga nada que ocultar, simplemente que tengo cosas a medio escribir que no me apetece que se vean hasta que estén terminadas.
+Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repositorio remoto, lo único que hay que hacer es crear una clave ssh en la Raspberry (<a href="https://help.github.com/articles/generating-ssh-keys">en GitHub tienen muy buenos tutoriales de como hacerlo</a>), vincular esta clave tanto al repositorio de Bitbucket como al de GitHub y disfrutar: ya podemos clonar, hacer pull, hacer push y todas esas cosas que hacen que Octopress mole tanto. Como a todos los efectos es una nueva instalación. Cuando clonamos el proyecto tenemos que hacer el &#8220;bundle install&#8221; y volver a configurar el sistema de despliegue. Con las <a href="http://octopress.org/docs/deploying/">instrucciones del sitio de Octopress</a> es más que suficiente.</p>
+
+<h2>El proceso de publicación.</h2>
+
+<p>Creo que todavía no lo había dicho pero en todo momento he estado accediendo a la Raspberry vía ssh. Si usas git y octopress no deberías tenerle ningún miedo al terminal por lo que acceder vía ssh al dispositivo no será tampoco un problema. Para facilitarme un poco la tarea me he creado una serie de scripts para las situaciones que me puedo encontrar con más frecuencia:</p>
+
+<ol>
+<li>Descargar los borradores y previsualizar</li>
+<li>Publicar lo que haya en la Raspberry</li>
+<li>Descargar los borradores y publicar</li>
+<li>Descargar el repositorio y previsualizar</li>
+<li>Descargar el repositorio y publicar</li>
+</ol>
+
+
+<p>En todos los casos, después de publicar se hace commit en el repositorio y se suben los cambios a los servidores remotos.</p>
+
+<figure class='code'><figcaption><span>quickpost.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</span><span class='line'>mv ./drafts/*.markdown ./blog/source/_posts
+</span><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickpost.sh&quot;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>El script anterior descarga los ficheros que estén en la carpeta de <em>borradores</em>. A continuación, mueve los ficheros con extensión <em>markdown</em> a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace <code>commit</code>en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.</p>
+
+<p>El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un <code>pulo</code> al repositorio remoto,…</p>
+
+<figure class='code'><figcaption><span>gitpost.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>git pull origin <span class="nb">source</span>
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="err">&quot;</span>Nuevo publicación con gitpost.sh”
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>quickpreview.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</span><span class='line'>mv ./drafts/*.markdown ./blog/source/_posts
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>quickdeploy.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickdeploy.sh&quot;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>gitpreview.sh </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">set</span> -e
+</span><span class='line'><span class="nb">cd </span>blog
+</span><span class='line'>git pull origin <span class="nb">source</span>
+</span><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Wherever I may roam</h2>
+
+<p>Y aquí llega el punto por el que decidí montar todo este tinglado: tenemos el repositorio del blog clonado en la Raspberry Pi, hemos creado una serie de scripts para facilitar el proceso de descarga y publicación. Para poder publicar en cualquier momento y allá donde nos encontremos solo nos faltan dos cosas: poder acceder a la Raspberry desde fuera de la red local y tener una aplicación en el iPhone o en el iPad que permitan hacer un ssh.</p>
+
+<p>Lo primero lo he resuelto con <a href="http://www.noip.com">no-ip</a> un servicio gratuito que mediante la instalación de un paquete en la Raspberry y la configuración de una cuenta nos permite acceder a nuestra red como si de un servicio web se tratara. Ya no recuerdo cual es el tutorial que usé yo para configurarlo pero cualquiera que aparece al buscar “no-ip raspberry” en Google valdrá. Es algo extremadamente sencillo.</p>
+
+<p>Y para lo segundo, hacía ya bastante tiempo que le había echado el ojo a <a href="https://itunes.apple.com/es/app/prompt/id421507115?mt=8">Prompt</a> de la gente de <a href="http://www.panic.com">Panic</a>. Quizá sea una aplicación cara (cuesta 7€) pero cumple su cometido a la perfección.</p>
+
+<h2>Conclusión.</h2>
+
+<p>Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.  <br/>
+Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante <code>crontab</code> me daría mucha agilidad.</p>
+]]></content>
+		
+	</entry>
+  
+	<entry>
+	  
+		<title type="html"><![CDATA[Tweets automáticos con Octopress]]></title>
+		<link href="http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/"/>
+		
+	  <updated>2014-04-04T01:21:00+00:00</updated>
+	  <id>http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress</id>
+	  
+	  <content type="html"><![CDATA[<p>Ultimamente estoy dedicando mi tiempo libre (cada día más escaso) a automatizar ciertas tareas que Octopress, por su naturaleza estática, no permite realizar. En este post explico como acabar con una de mis mayores frustraciones: poner un tweet automáticamente cada vez que publico un artículo usando Karmacracy como acortador.</p>
+
+<!--more-->
+
+
+<p>A mi me gusta mucho Karmacracy. No es que tenga una especial fijación por controlar el número de clicks que se hacen a los enlaces que comparto pero si se trata de enlaces a este blog me gusta tener un &#8220;pequeño control&#8221; del número de clicks.</p>
+
+<p>Hasta ahora lo que hacía era compartir mediante el botón de Karmacracy la entrada que acababa de publicar. Me ha estado funcionando muy bien todo este tiempo pero llevo dandole vueltas a una automatización del proceso de publicación y estar pendiente para darle a un botón no es lo más automático del mundo.</p>
+
+<p>Empecé a estudiar otras posibilidades como IFTTT que automatizan la publicación de un tweet cuando detectan cambios en un rss. Eso habría estado fantástico si IFTTT permitiera configurar que &#8220;acortador&#8221; quieres usar pero los enlaces compartidos de esta manera ya están acortados por IFTTT&#8230; una pena.</p>
+
+<p>Finalmente, después de dar muchas vueltas he decidido tirar por la via dura y crear una tarea en el <code>rakefile</code> de Octopress que se encargue de la publicación del tweet. Para no publicar un tweet por cada post cada vez que desplegaba el blog añado a un <code>hash</code> cada enlace que se ha publicado.</p>
+
+<figure class='code'><figcaption><span>Task para compartir un enlace por Twitter </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">La</span> <span class="n">primera</span> <span class="n">versi</span><span class="err">ó</span><span class="n">n</span> <span class="n">de</span> <span class="n">esta</span> <span class="n">tarea</span> <span class="n">es</span> <span class="n">la</span> <span class="ss">siguiente</span><span class="p">:</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">desc</span> <span class="s2">&quot;set permalinks, get the short url from karmacracy and share it with Twitter&quot;</span>
+</span><span class='line'><span class="n">task</span> <span class="ss">:share_with_twitter</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Twitter config (for tweeting posts)</span>
+</span><span class='line'>  <span class="n">client</span> <span class="o">=</span> <span class="ss">Twitter</span><span class="p">:</span><span class="ss">:REST</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span>        <span class="o">=</span> <span class="s2">&quot;TU_CONSUMER_KEY&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span>     <span class="o">=</span> <span class="s2">&quot;TU_CONSUMER_SECRET&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">access_token</span>        <span class="o">=</span> <span class="s2">&quot;TU_ACCESS_TOKEN&quot;</span>
+</span><span class='line'>    <span class="n">config</span><span class="o">.</span><span class="n">access_token_secret</span> <span class="o">=</span> <span class="s2">&quot;TU_ACCESS_TOKEN_SECRET&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span>
+</span><span class='line'>    <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@tweets</span> <span class="o">=</span> <span class="ss">Marshal</span><span class="p">:</span><span class="ss">:load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="vi">@tweets</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="vi">@tweets</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/**&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">tweet_posted</span> <span class="o">=</span> <span class="vi">@tweets</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">tweet</span><span class="o">|</span> <span class="n">tweet</span><span class="o">[</span><span class="s2">&quot;post&quot;</span><span class="o">]</span> <span class="o">==</span> <span class="n">post</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">!</span><span class="p">(</span><span class="n">tweet_posted</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#get frontmatter</span>
+</span><span class='line'>      <span class="n">stream</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span> <span class="n">post</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">frontmatter</span> <span class="o">=</span> <span class="ss">YAML</span><span class="p">:</span><span class="ss">:load</span><span class="p">(</span> <span class="n">stream</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">stream</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#get permalink</span>
+</span><span class='line'>      <span class="n">post_time_frontmatter</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">_strptime</span><span class="p">(</span><span class="n">frontmatter</span><span class="o">[</span><span class="s2">&quot;date&quot;</span><span class="o">]</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-%d %H:%M&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">post_time</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:year</span><span class="o">]</span><span class="p">,</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:mon</span><span class="o">]</span><span class="p">,</span><span class="n">post_time_frontmatter</span><span class="o">[</span><span class="ss">:mday</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">post_title</span> <span class="o">=</span> <span class="n">frontmatter</span><span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">post_link</span> <span class="o">=</span> <span class="n">post</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\d{4}-\d{2}-\d{2}-/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;.markdown&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">posts_dir</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">permalink</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">blog_url</span><span class="si">}</span><span class="s2">blog/</span><span class="si">#{</span><span class="n">post_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m/%d&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">post_title</span><span class="o">.</span><span class="n">to_url</span><span class="si">}</span><span class="s2">/&quot;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#short permalink with karmacracy</span>
+</span><span class='line'>      <span class="n">kcyshorter</span> <span class="o">=</span> <span class="s2">&quot;http://kcy.me/api/?u=TU_USUARIO_DE_KARMACRACY78&amp;key=TU_KEY_DE_KARMACRACY&amp;url=</span><span class="si">#{</span><span class="no">CGI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">permalink</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="n">result</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">kcyshorter</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1"># Tweet</span>
+</span><span class='line'>      <span class="n">tweet_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;He escrito </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">post_title</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">: </span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">#</span>
+</span><span class='line'>      <span class="n">tweet</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;post&quot;</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="n">post_title</span><span class="p">,</span> <span class="s2">&quot;klink&quot;</span> <span class="o">=&gt;</span> <span class="n">result</span><span class="p">,</span> <span class="s2">&quot;tweet&quot;</span> <span class="o">=&gt;</span> <span class="n">tweet_response</span><span class="o">[</span><span class="s2">&quot;uri&quot;</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'>      <span class="vi">@tweets</span> <span class="o">&lt;&lt;</span> <span class="n">tweet</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">source_dir</span><span class="si">}</span><span class="s2">/tweets.info&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Marshal</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="vi">@tweets</span><span class="p">))</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Si queremos que esta tarea se ejecuta cada vez que desplegamos el blog, lo único que hay que hacer es incluir al final de la tarea <code>:deploy</code> lo siguiente:</p>
+
+<figure class='code'><figcaption><span>[] </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Rake</span><span class="p">:</span><span class="ss">:Task</span><span class="o">[</span><span class="ss">:share_with_twitter</span><span class="o">].</span><span class="n">execute</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Y ya está, si todo ha funcionado perfectamente, al publicar esta entrada automáticamente se ha publicado también un tweet. ;-)</p>
+]]></content>
+		
+	</entry>
+  
+	<entry>
+	  
+		<title type="html"><![CDATA[&rarr; Pow!! es poderoso!]]></title>
 		<link href="http://pow.cx"/>
 		
 	  <updated>2014-02-25T02:13:00+00:00</updated>
@@ -31,21 +356,21 @@
 <p>Funciona sin problemas con Rails, Sinatra o Padrino. Con Octopress tienes que tener la precaución de regenerar los contenidos cada vez que haces algún cambio pero por lo demás va estupendamente.</p>
 
 <p>Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas opciones que seguro cubrirán tu necesidad.</p>
-<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/">Permalink</a>]]></content>
+<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/">&#9823; Permalink</a>]]></content>
 		
 	</entry>
   
 	<entry>
 	  
-		<title type="html"><![CDATA[Jugando a ser John Gruber &rArr;]]></title>
+		<title type="html"><![CDATA[&rarr; Jugando a ser John Gruber]]></title>
 		<link href="http://octopress.org/docs/blogging/linklog/"/>
 		
 	  <updated>2014-02-25T01:30:00+00:00</updated>
-	  <id>http://javimoreno.me/blog/2014/02/25/prueba-post-linklog</id>
+	  <id>http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber</id>
 	  
 	  <content type="html"><![CDATA[<p>En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo <a href="http://www.marco.org">Marco Arment</a> o <a href="http://daringfireball.net">Daring Fireball</a>.  <br/>
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜</p>
-<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/prueba-post-linklog/">Permalink</a>]]></content>
+<a rel="full-article" href="http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/">&#9823; Permalink</a>]]></content>
 		
 	</entry>
   
@@ -2819,74 +3144,6 @@ El problema es que php y yo no terminamos de llevarnos bien.</p>
 Para que os hagáis una idea, está entrada se empezo a escribir en el mac, la parte central la escribi en el metro mientras iba a trabajar y estoy terminando de escribirla ahora otra vez en el mac. El paso de creación de entrada hay que hacerlo con <em>rake</em> pero puedes ir empezando a escribir lo que tengas pensado en cualquier sitio, para eso se invento el corta-pega.</p>
 
 <p>Otro día hablaré un poco más de los plugins, de las plantillas Liquid y cosas así. No hace falta ser un experto para tocar un par de scripts o buscar alguna cosa en internet y hacerte la vida un poco más fácil.</p>
-]]></content>
-		
-	</entry>
-  
-	<entry>
-	  
-		<title type="html"><![CDATA[Y otro]]></title>
-		<link href="http://javimoreno.me/blog/2013/02/12/y-otro/"/>
-		
-	  <updated>2013-02-12T00:32:00+00:00</updated>
-	  <id>http://javimoreno.me/blog/2013/02/12/y-otro</id>
-	  
-	  <content type="html"><![CDATA[<blockquote><p>Lo reconozco, soy un culo inquieto.
-Creo que he probado más sistemas de blogging que entradas he escrito.</p></blockquote>
-
-<p>Siendo usuario de Gmail, cuando te animas a escribir en un blog lo más fácil es hacerlo en Blogger&#8230; y así empece yo: <a href="http://azctabend.blogspot.com.es" title="AZCT Abend">AZCT Abend</a> era la incursión de un Cobolero en el mundo del blogging y como de COBOL no había mucho que contar, la idea era ir contando mis avances en el aprendizaje de Objective-C y Cocoa Touch.</p>
-
-<!--more-->
-
-
-<p>Al mismo tiempo, como buen &#8220;early adopter&#8221; que soy, me hice mi cuenta en Tumblr con un par de blogs: uno que me servía como galería de fotos de <a href="http://mismamente.tumblr.com" title="mismamente">Instagram</a> y otro para colgar citas que parecían llamativas: <a href="http://indistintamente.tumblr.com">http://indistintamente.tumblr.com</a>&#8230; claramente al de Instagram le dediqué más tiempo.</p>
-
-<p>Poco más tarde, por diversas circunstancias que no vienen al caso compre un dominio: <a href="http://zinkinapps.com">http://zinkinapps.com</a>. Era el momento de tener un sitio web y un <a href="http://zinkinapps.com/blog">blog de desarrollo</a> vinculado al mismo. No tenía ni idea de como hacer la página pero con el blog si que sabía que tenía que subir un peldaño más: WordPress.
-No es que Blogger estuviera mal, de hecho sigue siendo un buen punto de partida, pero como muchas cosas que hace/compra Google está un poco a medias. Si quieres tener un blog personalizado, con unos temas que den la impresión de que el tipo que está detras es un &#8220;fiera&#8221; internet te dice que tienes que probar WordPress.
-Así me meti en el maravilloso mundo de los hosting gratuitos, descubrí php, los plugins y otras mandangas. Casi al mismo tiempo descubrí Twitter Bootstrap que para alguien como yo, con el talento del diseñador del blog de <a href="http://stallman.org">Richard Stallman</a>, era la forma de hacer una web con un estilo cuidado.</p>
-
-<p>Una cosa llevo a la otra y finalmente decidí que ni php, ni hosting gratuitos, ni leches. El hosting en Heroku, la web a hacerla con Ruby on Rails y el blog&#8230; ¿en WordPress? Bueno, si no hay otra opción.
-El caso es que mientras estaba haciendo la web con Rails (todavía está en desarrollo) pensé en que el blog lo podía hacer también en Rails. Al fin y al cabo, la mayoría de los tutoriales de Rails son de como hacer un blog y con markdown podría escribir las entradas en cualquier editor, subir el contenido a la base de datos y usar alguna gema que lo pase a HTML.</p>
-
-<p>Y buscando, buscando encontré Octopress: un framework de blogging que puedo desplegar en Heroku (o en GitHub que es donde está este), con el que practico MarkDown y Git, dos de mis propósitos de 2013. Lo que no entiendo es como tardé tanto tiempo en encontrarlo, si estuvo siempré ahí, desde el <a href="http://mattgemmell.com">principio.</a></p>
-]]></content>
-		
-	</entry>
-  
-	<entry>
-	  
-		<title type="html"><![CDATA[Soporte Nysnö para MacBook Pro]]></title>
-		<link href="http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro/"/>
-		
-	  <updated>2012-12-23T19:51:28+00:00</updated>
-	  <id>http://javimoreno.me/blog/2012/12/23/soporte-nysno-para-macbook-pro</id>
-	  
-	  <content type="html"><![CDATA[<p>No tenía pensado hablar de bricolaje en este blog pero una mención de <a href="http://twitter.com/rubdottocom">@rubdottocom</a> haciendo referencia a una entrada suya haciendo lo mismo pero <a href="http://putofreak.com/crea-un-dock-para-tu-macbook-con-un-servilletero-de-ikea">con otro modelo</a> me hizo plantearme una sección de &#8220;Macnitas&#8221; para este blog.</p>
-
-<p>Le he pedido a los Reyes Magos una pantalla de 24 pulgadas para conectar al MacBook Pro y poder hacer storyboards de aplicaciones para el iPad sin volverme loco. El caso es que, cuando lo tenga, el portátil pasará a ser un &#8220;sobremesa&#8221; y para que no me quite mucho espacio he estado mirando soportes verticales. Obviamente son todos muy buenos y caros pero como la economía española no está para tirar cohetes y hay que hacer mucha contención del gasto decidí explorar otras opciones: atriles, sujetalibros, etc, hasta que mi mujer me dijo: &#8220;¿por qué no usas ese servilletero que compramos en Ikea y que nunca usamos?&#8221;</p>
-
-<!-- more -->
-
-
-<p><img src="http://javimoreno.me/images/photos/2012/12/nysno-servilletero__0137987_PE296893_S4-300x300.jpg"></p>
-
-<p>Genial!!! Pero había un problema, tenía que conseguir que el MBP encajase pero que sin que se arañase. El caso es que me acorde que en algún armario había una espuma de esas que vienen en las fundas de neopreno para los portátiles. Perfecto, una vez recortada con forma de estrella y cortada por la mitad para pegar en los dos laterales del servilletero ya teníamos el &#8220;Soporte Nysnö para MacBook Pro&#8221;.</p>
-
-<p><img src="http://javimoreno.me/images/photos/2012/12/Foto-23-12-12-18-43-59-e1356285841523-224x300.jpg"></p>
-
-<p>El problema del &#8220;Soporte Nysnö&#8221; es que es poco estable y como en casa hay un terremoto y otro viene en camino hay que evitar las inestabilidades. Nuevamente Ikea al rescate, esta vez con las sujeciones de un organizador de cables que también estaba en desuso.</p>
-
-<p><img src="http://javimoreno.me/images/photos/2012/12/ikea-300x300.jpg"></p>
-
-<p>Listo, el resultado final no tendrá la misma belleza del aluminio del BookArc pero lo importante es que es efectivo y barato.</p>
-
-<p>Os dejo un par de imágenes más para que veáis el resultado.</p>
-
-<p><img src="http://javimoreno.me/images/photos/2012/12/Foto-23-12-12-18-43-48-e1356285786354-224x300.jpg"></p>
-
-<p><img src="http://javimoreno.me/images/photos/2012/12/Foto-23-12-12-18-42-58-e1356286140661-224x300.jpg"></p>
-
-<p>Espero que os haya gustado. :-)</p>
 ]]></content>
 		
 	</entry>
