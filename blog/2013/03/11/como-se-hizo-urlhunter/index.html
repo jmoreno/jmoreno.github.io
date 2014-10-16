@@ -1,40 +1,21 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Como se hizo URLHunter - Javi Moreno</title>
-  <meta name="author" content="Javi Moreno">
+<html>
 
-  
-  <meta name="description" content="Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque &hellip;">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Como Se Hizo URLHunter</title>
+    <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+">
 
-  
-  <link rel="canonical" href="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
-  
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/">
+	  
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
@@ -50,586 +31,386 @@
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Javi Moreno</a></h1>
-  
-    <h2>&#9823;</h2>
-  
-</hgroup>
+	<link href='/stylesheets/all-5633615de6ceb2962f12411016b5b8ed.css' media='all' rel='stylesheet' type='text/css'>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">♟ Javi Moreno</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">Sobre Mi</a>
+          
+        
+          
+          <a class="page-link" href="/articles/">Artículos</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/linkposts/">Enlaces</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-<ul class="social">
-
-  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
 
 
-  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
 
-
-  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
-
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:javimoreno.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/sobre-mi">Sobre mi</a></li>
-  <li><a href="/proyectos">Proyectos</a></li>
-  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
-  <li><a href="/blog/archives">Archivo</a></li>
-</ul>
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-		
-			
-		    <h1 class="entry-title">Como se hizo URLHunter</h1>
-			
-		
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-11T02:43:00+00:00" pubdate data-updated="true">Mar 11<span>th</span>, 2013</time>
-        
-      </p>
-    
+  <header class="post-header">
+		 
+    <h1 class="post-title">Como Se Hizo URLHunter</h1>
+		 
+    <p class="post-meta">Mar 11, 2013</p>
   </header>
 
-
-<div class="entry-content"><p>Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque existen páginas como las de <a href="http://railscasts.com" title="Railscasts">Railscasts</a>.<br/>
+  <article class="post-content">
+    <p>Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque existen páginas como las de <a href="http://railscasts.com" title="Railscasts">Railscasts</a>.<br />
 Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instalar las gemas necesarias para trabajar con Twitter Bootstrap, del que somos fans.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;therubyracer&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;less-rails&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter-bootstrap-rails&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;therubyracer&#39;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;less-rails&#39;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;twitter-bootstrap-rails&#39;</span></div></div></pre></div></figure>
 
 <!--more-->
 
-
 <p>Después de cargar las gemas en nuestro proyecto con Bundle Install, terminamos de instalar Bootstrap en nuestro proyecto con la siguiente instrucción:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">g</span> <span class="ss">bootstrap</span><span class="p">:</span><span class="n">install</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">rake</span> <span class="n">g</span> <span class="ss">bootstrap</span><span class="p">:</span><span class="n">install</span></div></div></pre></div></figure>
 
 <p>El propósito de nuestra aplicación es mostrar un listado de los tweets de <a href="http://twitter.com/objectivec_es" title="@ObjectiveC_es">@objectivec_es</a> que contienen una url. De esta forma tendremos agrupados en una web toda esa información tan interesante que van soltando a nuestro timeline y que muchas veces perdemos por no hacer un favorito a tiempo. Dicho esto, de primeras lo que vamos a necesitar es una página en la que mostraremos información procedente del API de Twitter.</p>
 
 <p>Creamos un controlador para las páginas de contenido estático:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">StaticPages</span> <span class="n">home</span> <span class="n">help</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">rake</span> <span class="n">g</span> <span class="n">controller</span> <span class="no">StaticPages</span> <span class="n">home</span> <span class="n">help</span></div></div></pre></div></figure>
 
 <p>Y hacemos algunos ajuste en el <em>layout</em> general para empezar a beneficiarnos de Twitter Bootstrap</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;title&gt;</span>URLHunter<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!--[if lt IE 9]&gt;</span>
-</span><span class='line'><span class="c">  &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="c">  &lt;![endif]--&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>%= stylesheet_link_tag    &quot;application&quot;, :media =&gt; &quot;all&quot; %&gt;
-</span><span class='line'>  <span class="err">&lt;</span>%= javascript_include_tag &quot;application&quot; %&gt;
-</span><span class='line'>  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
-</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= yield %&gt;<span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span3&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;h2&gt;</span>¿Por qué?<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;p&gt;</span>Porque alguien tenía que hacerlo. Si no, Twitter volvería a cambiar su API para eliminar la funcionalidad de favoritos.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;html&gt;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;head&gt;</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="nt">&lt;title&gt;</span>URLHunter<span class="nt">&lt;/title&gt;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="c">  &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="c">  &lt;![endif]--&gt;</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>%= stylesheet_link_tag    &quot;application&quot;, :media =&gt; &quot;all&quot; %&gt;
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>%= javascript_include_tag &quot;application&quot; %&gt;
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/head&gt;</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;body&gt;</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span9&quot;</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= yield %&gt;<span class="nt">&lt;/div&gt;</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;span3&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="nt">&lt;h2&gt;</span>¿Por qué?<span class="nt">&lt;/h2&gt;</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="nt">&lt;p&gt;</span>Porque alguien tenía que hacerlo. Si no, Twitter volvería a cambiar su API para eliminar la funcionalidad de favoritos.<span class="nt">&lt;/p&gt;</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;/div&gt;</span>
+</div></div><div data-line="21" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
+</div></div><div data-line="22" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/body&gt;</span>
+</div></div><div data-line="23" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/html&gt;</span></div></div></pre></div></figure>
 
+<h2 id="accediendo-al-api-de-twitter">Accediendo al API de Twitter</h2>
 
-<h2>Accediendo al API de Twitter</h2>
+<p>Para recuperar el timelime de nuestra “presa” podemos desarrollar las llamadas que necesitemos o utilizar la gema “Twitter”. Siguiendo la filosfía DRY y como hay otras cosas mucho mejores que hacer, nosotros nos decantamos por la gema.</p>
 
-<p>Para recuperar el timelime de nuestra &#8220;presa&#8221; podemos desarrollar las llamadas que necesitemos o utilizar la gema &#8220;Twitter&#8221;. Siguiendo la filosfía DRY y como hay otras cosas mucho mejores que hacer, nosotros nos decantamos por la gema.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;twitter&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;twitter&#39;</span></div></div></pre></div></figure>
 
 <p>Antiguamente ya podríamos hacer algunas pruebas con la consola pero en los tiempos que corren hay que autenticarse. Para ello, siguiendo la documentación de la gema, hay que crear un fichero de inicialización en /config/initializers llamado twitter.rb:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_KEY</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_SECRET</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN</span>
-</span><span class='line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN_SECRET</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_KEY</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">YOUR_CONSUMER_SECRET</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">YOUR_OAUTH_TOKEN_SECRET</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
-
-<p>Una vez hayamos reemplazado los valores aplantillados con los que podemos encontrar en la sección de &#8220;Mis applicaciones&#8221; de la web de desarrolladores de Twitter ya estaremos en condiciones de empezar a consumir datos de Twitter.</p>
+<p>Una vez hayamos reemplazado los valores aplantillados con los que podemos encontrar en la sección de “Mis applicaciones” de la web de desarrolladores de Twitter ya estaremos en condiciones de empezar a consumir datos de Twitter.</p>
 
 <p>Inicialmente, vamos a probar que tal funciona todo incluyendo lo siguiente en el home.html.erb:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% Twitter.user_timeline(&quot;objectivec_es&quot;, :count =&gt; 10, :exclude_replies =&gt; true).each do |tweet| %&gt;
-</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span> <span class="err">&lt;</span>%= tweet.text %&gt; <span class="nt">&lt;/blockquote&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% Twitter.user_timeline(&quot;objectivec_es&quot;, :count =&gt; 10, :exclude_replies =&gt; true).each do |tweet| %&gt;
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;blockquote&gt;</span> <span class="err">&lt;</span>%= tweet.text %&gt; <span class="nt">&lt;/blockquote&gt;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% end %&gt;
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/div&gt;</span></div></div></pre></div></figure>
 
 <p>¿Igualito que en iOS, eh? Bueno, cada uno tiene sus virtudes. En cualquier caso, aunque hemos obtenido rapidos resultados no podemos decir que sean <em>bonitos</em>. Lo suyo sería que los hashtags, las menciones y los links tuvieran los vinculos correspondientes. Para eso vamos a utilizar otra gema.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem <span class="s1">&#39;twitter-text&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">gem <span class="s1">&#39;twitter-text&#39;</span></div></div></pre></div></figure>
 
 <p>Según la documentación de la gema, para <em>autolinkar</em> las entidades lo único que tenemos que hacer es lo siguiente:</p>
 
 <p>A <em>app/helpers/application_helper.rb</em> lo dejaremos de esta forma</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="ss">Twitter</span><span class="p">:</span><span class="ss">:Autolink</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="kp">include</span> <span class="no">Twitter</span><span class="o">::</span><span class="no">Autolink</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Y en <em>home.html.erb</em> cambiaremos el contenido de la cita por lo siguiente:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;/blockquote&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;/blockquote&gt;</span></div></div></pre></div></figure>
 
+<blockquote>
+  <p>Es necesario poner html_safe al final para que Rails interprete que le estamos pasando un texto que contiene etiquetas HTML, si no lo hicieramos las etiquetas se pintarían como si fuera texto plano.</p>
+</blockquote>
 
-<blockquote><p>Es necesario poner html_safe al final para que Rails interprete que le estamos pasando un texto que contiene etiquetas HTML, si no lo hicieramos las etiquetas se pintarían como si fuera texto plano.</p></blockquote>
-
-<p>Si recargamos ahora la página veremos todos los tweets con enlaces a los usuarios mencionados, a los hasgtags&#8230; Como diría Duke Nukem: &#8220;Ah!, much better!!!&#8221;</p>
+<p>Si recargamos ahora la página veremos todos los tweets con enlaces a los usuarios mencionados, a los hasgtags… Como diría Duke Nukem: “Ah!, much better!!!”</p>
 
 <p>Lo siguiente que vamos a hacer es almacenar los tweets en base de datos. ¿Por qué?, pues por varios motivos:</p>
 
 <ul>
-<li>No queremos perder ni una sola de estas píldoras de información</li>
-<li>Ahora no son muchos pero cuando los chicos de <a href="http://twitter.com/objectivec_es" title="@ObjectiveC_es">@ObjectiveC_es</a> vayan por los 3000 tweets esta web tardará bastante más en cargar</li>
-<li>En esta vida, no eres nadie si no haces un poco de persistencia.</li>
+  <li>No queremos perder ni una sola de estas píldoras de información</li>
+  <li>Ahora no son muchos pero cuando los chicos de <a href="http://twitter.com/objectivec_es" title="@ObjectiveC_es">@ObjectiveC_es</a> vayan por los 3000 tweets esta web tardará bastante más en cargar</li>
+  <li>En esta vida, no eres nadie si no haces un poco de persistencia.</li>
 </ul>
-
 
 <p>Así que crearemos un modelo para almacenar algunos datos. Inicialmente será muy sencillo, ya lo complicaremos más adelante:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rails g model tweetlink tweet_id screen_name content:text profile_image tweet_created_at
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">rails g model tweetlink tweet_id screen_name content:text profile_image tweet_created_at</div></div></pre></div></figure>
 
 <p>e incluiremos algunos métodos de conveniencia en la nueva clase:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Tweetlink</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
-</span><span class='line'>  <span class="n">attr_accessible</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:screen_name</span><span class="p">,</span> <span class="ss">:tweet_id</span><span class="p">,</span> <span class="ss">:profile_image</span><span class="p">,</span> <span class="ss">:tweet_created_at</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">first_time</span>
-</span><span class='line'>    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">3200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">pull_tweets</span>
-</span><span class='line'>    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:since_id</span> <span class="o">=&gt;</span> <span class="n">maximum</span><span class="p">(</span><span class="ss">:tweet_id</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-</span><span class='line'>   <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</span><span class='line'>     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
-</span><span class='line'>       <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
-</span><span class='line'>     <span class="k">end</span>
-</span><span class='line'>     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
-</span><span class='line'>       <span class="n">create!</span><span class="p">(</span>
-</span><span class='line'>           <span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span class='line'>           <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
-</span><span class='line'>           <span class="n">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
-</span><span class='line'>           <span class="n">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
-</span><span class='line'>           <span class="n">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
-</span><span class='line'>       <span class="p">)</span>
-</span><span class='line'>     <span class="k">end</span>
-</span><span class='line'>   <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">class</span> <span class="nc">Tweetlink</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">attr_accessible</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">:screen_name</span><span class="p">,</span> <span class="ss">:tweet_id</span><span class="p">,</span> <span class="ss">:profile_image</span><span class="p">,</span> <span class="ss">:tweet_created_at</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">first_time</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">3200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="k">end</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">pull_tweets</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="no">Twitter</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="s2">&quot;objectivec_es&quot;</span><span class="p">,</span> <span class="ss">:count</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">,</span> <span class="ss">:exclude_replies</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:since_id</span> <span class="o">=&gt;</span> <span class="n">maximum</span><span class="p">(</span><span class="ss">:tweet_id</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="n">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="k">end</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">       <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="k">end</span>
+</div></div><div data-line="21" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</div></div><div data-line="22" class="code-highlight-row numbered"><div class="code-highlight-line">       <span class="n">create!</span><span class="p">(</span>
+</div></div><div data-line="23" class="code-highlight-row numbered"><div class="code-highlight-line">           <span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</div></div><div data-line="24" class="code-highlight-row numbered"><div class="code-highlight-line">           <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</div></div><div data-line="25" class="code-highlight-row numbered"><div class="code-highlight-line">           <span class="ss">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</div></div><div data-line="26" class="code-highlight-row numbered"><div class="code-highlight-line">           <span class="ss">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</div></div><div data-line="27" class="code-highlight-row numbered"><div class="code-highlight-line">           <span class="ss">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</div></div><div data-line="28" class="code-highlight-row numbered"><div class="code-highlight-line">       <span class="p">)</span>
+</div></div><div data-line="29" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="k">end</span>
+</div></div><div data-line="30" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">end</span>
+</div></div><div data-line="31" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="32" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>A continuación, tendremos que cambiar el controlador y la vista ya que ahora mismo todavía están recuperando la información directamente desde el API.</p>
 
 <p>El metodo <em>home</em> quedará de la siguiente manera:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">all</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">all</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Y la vista de esta otra forma:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
-</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span>
-</span><span class='line'>      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
-</span><span class='line'>      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
-</span><span class='line'>      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
-</span><span class='line'>      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/blockquote&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;tweets-with-links&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;blockquote&gt;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;/blockquote&gt;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% end %&gt;
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/div&gt;</span></div></div></pre></div></figure>
 
 <p>Para terminar vamos a incluir paginación, esto reducirá el tiempo de carga de la página y mejorará la usabilidad. Otra vez más, podriamos escribir todo el código necesario para montar una paginación pero con un par de gemas lo podemos dejar solucionado:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;will_paginate&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;bootstrap-will_paginate&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;will_paginate&#39;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">gem</span> <span class="s1">&#39;bootstrap-will_paginate&#39;</span></div></div></pre></div></figure>
 
 <p>La gema <em>will_paginate</em> es la que se encarga de la gestión de la paginación. Lo único que tendremos que hacer es cambiar el número de registros que recuperamos de la clase Tweetlink en el controlador. En lugar de <em>all</em> usaremos <em>paginate</em>:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>En el layout, indicaremos donde queremos que aparezca el componente de paginación. La gema <em>bootstrap-will_paginate</em> aplica los estilos de Twitter Bootstrap a paginación.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
-</span><span class='line'>    <span class="nt">&lt;blockquote&gt;</span>
-</span><span class='line'>      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
-</span><span class='line'>      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
-</span><span class='line'>      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
-</span><span class='line'>      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/blockquote&gt;</span>
-</span><span class='line'>  <span class="err">&lt;</span>% end %&gt;
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span><span class='line'><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;blockquote&gt;</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;/blockquote&gt;</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="err">&lt;</span>% end %&gt;
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/div&gt;</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;</div></div></pre></div></figure>
 
-
-<p>Y listo, podríamos seguir incluyendo muchas mejoras y posiblemente es lo que haga en los próximos días pero por el momento&#8230; esto es todo.</p>
+<p>Y listo, podríamos seguir incluyendo muchas mejoras y posiblemente es lo que haga en los próximos días pero por el momento… esto es todo.</p>
 
 <p>El código fuente lo puedes encontrar en <a href="https://github.com/jmoreno/URLHunter/tree/GitHub">Github</a></p>
 
-<h2>ACTUALIZACIÓN 12/03/2013</h2>
+<h2 id="actualizacin-12032013">ACTUALIZACIÓN 12/03/2013</h2>
 
 <p>He corregido los fragmentos de código que erán erróneos. En la siguiente entrada tenéis una explicación de los errores. Disculpad las molestias.</p>
-</div>
 
 
-  <footer>
-    <p class="meta">
-      
+  </article>
   
-
-<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-11T02:43:00+00:00" pubdate data-updated="true">Mar 11<span>th</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+	
+    <div class="sharing">
   
   <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
   
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" data-via="" data-counturl="http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/" >Tweet</a>
   
   
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
 </div>
 
+  
+  <p class="meta">
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/03/08/como-mola-octopress/" title="Previous Post: Como mola Octopress">&laquo; Como mola Octopress</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/03/12/resacon-en-heroku/" title="Next Post: Resacón en Heroku">Resacón en Heroku &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-
-</div>
-
-<aside class="sidebar">
-  
+      <a class="navigation-link-left" href="/blog/2013/03/08/como-mola-octopress/" title="Previous Post: Como Mola Octopress">&laquo; Como Mola Octopress</a>
     
-  
-</aside>
+    
+      <a class="navigation-link-right" href="/blog/2013/03/12/resacon-en-heroku/" title="Next Post: Resacón en Heroku">Resacón en Heroku &raquo;</a>
+    
+  </p>
+	<div style="clear: both;"></div>
+	
+  <comments class="post-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
+      var disqus_url = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </comments>
+	
 
+</div>
 
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Javi Moreno -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+    <footer class="site-footer">
+	
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>♟ Javi Moreno</li>
+          <li><a href="mailto:javi@javimoreno.me">javi@javimoreno.me</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jmoreno">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jmoreno78">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16"
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno78</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </p>
+      </div>
+    </div>
+
+  </div>
 
 </footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'eloctoblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
-        var disqus_url = 'http://javimoreno.me/blog/2013/03/11/como-se-hizo-urlhunter/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+		
+		
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -641,12 +422,11 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
   </script>
 
 
-  
+		  
   <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
   
 
 
+  </body>
 
-
-</body>
 </html>

@@ -1,40 +1,21 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Resacón en Heroku - Javi Moreno</title>
-  <meta name="author" content="Javi Moreno">
+<html>
 
-  
-  <meta name="description" content="Como era de esperar, el debut de URLHunter ha tenido alguna incidencia. En un primer momento pensé que todo era provocado por unos cambios de ultima &hellip;">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resacón en Heroku</title>
+    <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+">
 
-  
-  <link rel="canonical" href="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
-  
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/">
+	  
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
@@ -50,351 +31,254 @@
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Javi Moreno</a></h1>
-  
-    <h2>&#9823;</h2>
-  
-</hgroup>
+	<link href='/stylesheets/all-5633615de6ceb2962f12411016b5b8ed.css' media='all' rel='stylesheet' type='text/css'>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">♟ Javi Moreno</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">Sobre Mi</a>
+          
+        
+          
+          <a class="page-link" href="/articles/">Artículos</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/linkposts/">Enlaces</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-<ul class="social">
-
-  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
 
 
-  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
 
-
-  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
-
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:javimoreno.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/sobre-mi">Sobre mi</a></li>
-  <li><a href="/proyectos">Proyectos</a></li>
-  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
-  <li><a href="/blog/archives">Archivo</a></li>
-</ul>
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-		
-			
-		    <h1 class="entry-title">Resacón en Heroku</h1>
-			
-		
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-12T02:15:00+00:00" pubdate data-updated="true">Mar 12<span>th</span>, 2013</time>
-        
-      </p>
-    
+  <header class="post-header">
+		 
+    <h1 class="post-title">Resacón en Heroku</h1>
+		 
+    <p class="post-meta">Mar 12, 2013</p>
   </header>
 
-
-<div class="entry-content"><p>Como era de esperar, el debut de <a href="http://urlhunter-314159.herokuapp.com">URLHunter</a> ha tenido alguna incidencia. <br/>
+  <article class="post-content">
+    <p>Como era de esperar, el debut de <a href="http://urlhunter-314159.herokuapp.com">URLHunter</a> ha tenido alguna incidencia. <br />
 En un primer momento pensé que todo era provocado por unos cambios de ultima hora que tuve que hacer en los tipos de campo de la entidad <em>Tweetlinks</em> al pasar de SQLite a PostgreSQL pero no, el problema ha sido de programador despistado.</p>
 
 <!--more-->
 
-
 <p>Este es el método que se encarga de la grabación de los tweets en el modelo. Según el API de Twitter, cada tweet retweeteado estará contenido dentro de otro tweet. El tweet <em>padre</em> siempre pertenecerá al usuario que hace el retweet mientras que la información original estará en el anidado. Esta es la razón por la que al preguntar si el tweet es en realidad un retweet hay que hacer una sustitución del objeto <em>tweet</em>. El problema ha sido que la comprobación de que el tweet_id no existe en la tabla se hacía antes del cambio por lo que, en realidad, el que se terminaba grabando siempre era otro.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-</span><span class='line'> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
-</span><span class='line'>     <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
-</span><span class='line'>   <span class="k">end</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
-</span><span class='line'>     <span class="n">create!</span><span class="p">(</span>
-</span><span class='line'>         <span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span class='line'>         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
-</span><span class='line'>     <span class="p">)</span>
-</span><span class='line'>   <span class="k">end</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">end</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="n">create!</span><span class="p">(</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="p">)</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">end</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">end</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Este sería el código correcto:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-</span><span class='line'> <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
-</span><span class='line'>   <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</span><span class='line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
-</span><span class='line'>     <span class="n">create!</span><span class="p">(</span>
-</span><span class='line'>         <span class="n">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-</span><span class='line'>         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
-</span><span class='line'>         <span class="n">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
-</span><span class='line'>     <span class="p">)</span>
-</span><span class='line'>   <span class="k">end</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">end</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="n">create!</span><span class="p">(</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">         <span class="ss">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">     <span class="p">)</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">   <span class="k">end</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line"> <span class="k">end</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
+<p>A veces sucede que un error compensa a otro error y esto es lo que ha pasado esta vez. Al incluir la paginación, se me olvido incluir un criterio de ordenación en la query correspondiente. Debido a esto, el orden de presentación era por inserción (ascendente). En la carga inicial se recuperan 200 tweets pero se empiezan a insertar de más reciente a más antiguo. Posteriormente, cada llamada a la página recupera los nuevos tweets y si corresponde insertarlos los inserta.   <br />
+A lo largo de la mañana se podía ver como el número de páginas iba subiendo de seis hasta once que es a lo que ha llegado hasta que he podido hacer un pequeño arreglo en Heroku. Básicamente las cinco nuevas páginas contenían el mismo tweet, en concreto el RT de mi tweet de presentación… vamos un debut lamentable ;-)</p>
 
-<p>A veces sucede que un error compensa a otro error y esto es lo que ha pasado esta vez. Al incluir la paginación, se me olvido incluir un criterio de ordenación en la query correspondiente. Debido a esto, el orden de presentación era por inserción (ascendente). En la carga inicial se recuperan 200 tweets pero se empiezan a insertar de más reciente a más antiguo. Posteriormente, cada llamada a la página recupera los nuevos tweets y si corresponde insertarlos los inserta.   <br/>
-A lo largo de la mañana se podía ver como el número de páginas iba subiendo de seis hasta once que es a lo que ha llegado hasta que he podido hacer un pequeño arreglo en Heroku. Básicamente las cinco nuevas páginas contenían el mismo tweet, en concreto el RT de mi tweet de presentación&#8230; vamos un debut lamentable ;-)</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Este sería la forma correcta:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">home</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;tweet_id DESC&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
-</span><span class='line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">}</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;tweet_id DESC&#39;</span><span class="p">)</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
-
-<h2>¿Cómo lo he podido arreglar sin tocar el código?</h2>
+<h2 id="cmo-lo-he-podido-arreglar-sin-tocar-el-cdigo">¿Cómo lo he podido arreglar sin tocar el código?</h2>
 
 <p>Una vez identificado el problema, y viendo que los amigos de <a href="http://twitter.com/ObjectiveC_es">@ObjectiveC_es</a> habían tweeteado algún enlace más lo único que había que hacer era hacer un rollback de la base de datos, borrarla completamente y volverla a crear. La primera carga de la base de datos recuperaría hasta un tweet normal y mientras no hicieran otro retweet de un enlace no se volvería a producir el problema.</p>
 
 <p>Por los pelos, la próxima vez seré más prudente y hare una beta. :-)</p>
-</div>
 
 
-  <footer>
-    <p class="meta">
-      
+  </article>
   
-
-<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-12T02:15:00+00:00" pubdate data-updated="true">Mar 12<span>th</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/ruby-on-rails/'>Ruby on Rails</a>, <a class='category' href='/blog/categories/urlhunter/'>URLHunter</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+	
+    <div class="sharing">
   
   <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
   
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/" data-via="" data-counturl="http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/" >Tweet</a>
   
   
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
 </div>
 
+  
+  <p class="meta">
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/03/11/como-se-hizo-urlhunter/" title="Previous Post: Como se hizo URLHunter">&laquo; Como se hizo URLHunter</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/03/22/send-to-kindle-para-octopress/" title="Next Post: Send to kindle para Octopress">Send to kindle para Octopress &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-
-</div>
-
-<aside class="sidebar">
-  
+      <a class="navigation-link-left" href="/blog/2013/03/11/como-se-hizo-urlhunter/" title="Previous Post: Como Se Hizo URLHunter">&laquo; Como Se Hizo URLHunter</a>
     
-  
-</aside>
+    
+      <a class="navigation-link-right" href="/blog/2013/03/22/send-to-kindle-para-octopress/" title="Next Post: Send to Kindle Para Octopress">Send to Kindle Para Octopress &raquo;</a>
+    
+  </p>
+	<div style="clear: both;"></div>
+	
+  <comments class="post-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/';
+      var disqus_url = 'http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </comments>
+	
 
+</div>
 
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Javi Moreno -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+    <footer class="site-footer">
+	
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>♟ Javi Moreno</li>
+          <li><a href="mailto:javi@javimoreno.me">javi@javimoreno.me</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jmoreno">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jmoreno78">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16"
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno78</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </p>
+      </div>
+    </div>
+
+  </div>
 
 </footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'eloctoblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/';
-        var disqus_url = 'http://javimoreno.me/blog/2013/03/12/resacon-en-heroku/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+		
+		
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -406,12 +290,11 @@ A lo largo de la mañana se podía ver como el número de páginas iba subiendo 
   </script>
 
 
-  
+		  
   <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
   
 
 
+  </body>
 
-
-</body>
 </html>

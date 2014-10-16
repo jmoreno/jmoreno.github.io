@@ -1,40 +1,21 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Helios II. Houston, tenemos un problema. - Javi Moreno</title>
-  <meta name="author" content="Javi Moreno">
+<html>
 
-  
-  <meta name="description" content="Segundo análisis de las funcionalidades del framework Helios, esta vez centrandome en las notificaciones Push">
-  <meta name="keywords" content="Helios.io, Heroku, Houston, Orbiter, iOS, Notificaciones push, Ruby on Rails, AFNetworking">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Helios II. Houston, Tenemos Un Problema.</title>
+    <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+">
 
-  
-  <link rel="canonical" href="http://javimoreno.me/blog/2013/05/02/helios-ii-houston">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
-  
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/">
+	  
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
@@ -50,85 +31,82 @@
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Javi Moreno</a></h1>
-  
-    <h2>&#9823;</h2>
-  
-</hgroup>
+	<link href='/stylesheets/all-5633615de6ceb2962f12411016b5b8ed.css' media='all' rel='stylesheet' type='text/css'>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">♟ Javi Moreno</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">Sobre Mi</a>
+          
+        
+          
+          <a class="page-link" href="/articles/">Artículos</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/linkposts/">Enlaces</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-<ul class="social">
-
-  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
 
 
-  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
 
-
-  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
-
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:javimoreno.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/sobre-mi">Sobre mi</a></li>
-  <li><a href="/proyectos">Proyectos</a></li>
-  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
-  <li><a href="/blog/archives">Archivo</a></li>
-</ul>
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-		
-			
-		    <h1 class="entry-title">Helios II. Houston, tenemos un problema.</h1>
-			
-		
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T03:36:00+00:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-        
-      </p>
-    
+  <header class="post-header">
+		 
+    <h1 class="post-title">Helios II. Houston, Tenemos Un Problema.</h1>
+		 
+    <p class="post-meta">May 2, 2013</p>
   </header>
 
-
-<div class="entry-content"><blockquote><p>- Okay, Houston, we&#8217;ve had a problem here.<br/>- This is Houston. Say again, please!<br/>- Uh, Houston, we&#8217;ve had a problem.</p><footer><strong>CAPCOM Apollo XIII</strong> <cite>Jack Swigert - Jack R. Lousma - James a. Lovell.</cite></footer></blockquote>
-
+  <article class="post-content">
+    <figure class="quote"><blockquote><ul>
+  <li>Okay, Houston, we’ve had a problem here.</li>
+  <li>This is Houston. Say again, please!</li>
+  <li>Uh, Houston, we’ve had a problem.</li>
+</ul></blockquote><figcaption class="quote-source"><span class="quote-author">CAPCOM Apollo XIII</span><cite class="quote-title">Jack Swigert - Jack R. Lousma - James A. Lovell.</cite></figcaption></figure>
 
 <p>Aprovechando que Rafa Aguilar (aka <a href="http://twitter.com/rais38">@rais38</a>) ha publicado en <a href="http://objective-c.es">Objective-C.es</a> un par de entradas sobre las notificaciones Push en iOS he decidido aparcar un par de cosillas que me tenían bastante atareado y continuar con el análisis de <a href="http://helios.io">Helios.io</a> que había prometido.</p>
 
 <!--more-->
-
 
 <p>Yo no me voy a detener a explicar en que consisten las notificaciones Push y que tipos podemos encontrar en iOS ya que Rafa lo ha explicado estupendamente si no que voy a contar como se desarrollaría el ejemplo de la segunda entrada con Ruby en lugar de con PHP. Para ello, usaré Houston, una gema desarrollada por <a href="http://twitter.com/mattt">@mattt</a>. La versión actual de Helios (que tiene unas pocas horas) ya incluye Houston de serie así que Helios y Orbiter nos proporcionan un backend completo para el envío de notificaciones Push.</p>
 
@@ -138,353 +116,241 @@
 
 <p><a href="http://objective-c.es/envio-de-notificaciones-en-ios-parte-2/">Envío de notificaciones en iOS (Parte 2)</a></p>
 
-<h2>Helios y Orbiter. Preparando el CAPCOM.</h2>
+<h2 id="helios-y-orbiter-preparando-el-capcom">Helios y Orbiter. Preparando el CAPCOM.</h2>
 
 <p>Si habéis seguido las indicaciones del artículo de Objective-C.es, tendréis una aplicación instalada en vuestro dispositivo que vuelca al log de Xcode el token que le devuelven los servidores de Apple para las notificaciones Push.
 Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un servidor, esto nos será útil cuando queramos enviar notificaciones desde nuestro servidor a los dispositivos que tengamos vinculados a nuestra aplicación. No será necesario pasar siempre el token al servicio si no que podría bastar con usar el <em>alias</em>.</p>
 
 <p>Para ello, nos descargamos Orbiter de GitHub y lo incorporamos a nuestro proyecto o bien usamos CocoaPods, lo que hagamos habitualmente y modificamos el siguiente método del AppDelegate:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">deviceToken</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">NSURL</span> <span class="o">*</span><span class="n">serverURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://192.168.1.105:3000&quot;</span><span class="p">];</span>
-</span><span class='line'>    <span class="n">NSURLCredential</span> <span class="o">*</span><span class="n">serverCredential</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLCredential</span> <span class="nl">credentialWithUser:</span><span class="s">@&quot;YourUsername&quot;</span> <span class="nl">password:</span><span class="s">@&quot;YourPassword&quot;</span> <span class="nl">persistence:</span><span class="n">NSURLCredentialPersistencePermanent</span><span class="p">];</span>
-</span><span class='line'>    <span class="n">Orbiter</span> <span class="o">*</span><span class="n">orbiter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Orbiter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBaseURL:</span><span class="n">serverURL</span> <span class="nl">credential:</span><span class="n">serverCredential</span><span class="p">];</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">orbiter</span> <span class="nl">registerDeviceToken:</span><span class="n">deviceToken</span> <span class="nl">withAlias:</span><span class="s">@&quot;ApoloXIII&quot;</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">responseObject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Registration Success: %@&quot;</span><span class="p">,</span> <span class="n">responseObject</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Registration Error: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didRegisterForRemoteNotificationsWithDeviceToken:</span><span class="p">(</span><span class="bp">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">deviceToken</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7b;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSURL</span> <span class="o">*</span><span class="n">serverURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://192.168.1.105:3000&quot;</span><span class="p">];</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSURLCredential</span> <span class="o">*</span><span class="n">serverCredential</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURLCredential</span> <span class="nl">credentialWithUser</span><span class="p">:</span><span class="s">@&quot;YourUsername&quot;</span> <span class="nl">password</span><span class="p">:</span><span class="s">@&quot;YourPassword&quot;</span> <span class="nl">persistence</span><span class="p">:</span><span class="n">NSURLCredentialPersistencePermanent</span><span class="p">];</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="n">Orbiter</span> <span class="o">*</span><span class="n">orbiter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Orbiter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBaseURL</span><span class="p">:</span><span class="n">serverURL</span> <span class="nl">credential</span><span class="p">:</span><span class="n">serverCredential</span><span class="p">];</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">[</span><span class="n">orbiter</span> <span class="nl">registerDeviceToken</span><span class="p">:</span><span class="n">deviceToken</span> <span class="nl">withAlias</span><span class="p">:</span><span class="s">@&quot;ApoloXIII&quot;</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">responseObject</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Registration Success: %@&quot;</span><span class="p">,</span> <span class="n">responseObject</span><span class="p">);</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">&#x7d;</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Registration Error: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">&#x7d;];</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7d;</span></div></div></pre></div></figure>
 
 <p>El servidor que voy a utilizar para almacenar los tokens y enviar las notificaciones es el mismo de la entrada anterior sobre almacenamiento de datos y sincronización. Si recordáis, una de las cosas que hicimos fue poner seguridad por lo que necesitamos pasarle un usuario y una contraseña. Orbiter usa NSURLCredential para estos fines.</p>
 
 <p>Si hemos hecho todo correctamente, al arrancar la aplicación en el dispositivo obtendremos el siguiente resultado:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>2013-05-01 11:07:01.903 CAPCOM<span class="o">[</span>24399:907<span class="o">]</span> Registration Success: <span class="o">{</span>
-</span><span class='line'><span class="nv">device</span> <span class="o">=</span>     <span class="o">{</span>
-</span><span class='line'>    <span class="nb">alias</span> <span class="o">=</span> ApoloXIII;
-</span><span class='line'>    <span class="nv">badge</span> <span class="o">=</span> 0;
-</span><span class='line'>    <span class="nv">id</span> <span class="o">=</span> 1;
-</span><span class='line'>    <span class="s2">&quot;ip_address&quot;</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span>;
-</span><span class='line'>    <span class="nv">language</span> <span class="o">=</span> es;
-</span><span class='line'>    <span class="nv">lat</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span>;
-</span><span class='line'>    <span class="nv">lng</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span>;
-</span><span class='line'>    <span class="nv">locale</span> <span class="o">=</span> <span class="s2">&quot;es_ES&quot;</span>;
-</span><span class='line'>    <span class="nv">tags</span> <span class="o">=</span>         <span class="o">(</span>
-</span><span class='line'>        <span class="s2">&quot;iPhone OS 6.1.3&quot;</span>,
-</span><span class='line'>        <span class="s2">&quot;v1.0&quot;</span>,
-</span><span class='line'>        iPhone
-</span><span class='line'>    <span class="o">)</span>;
-</span><span class='line'>    <span class="nv">timezone</span> <span class="o">=</span> <span class="s2">&quot;Europe/Madrid&quot;</span>;
-</span><span class='line'>    <span class="nv">token</span> <span class="o">=</span> 1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A;
-</span><span class='line'>    <span class="nv">tsv</span> <span class="o">=</span> <span class="s2">&quot;&#39;1f0e7706d1a343bf17615051db944743f18156c52eff0f8dd43dda23f156862a&#39;:1 &#39;apoloxiii&#39;:2 &#39;es&#39;:3,4 &#39;europe/madrid&#39;:5&quot;</span>;
-</span><span class='line'>    <span class="o">}</span>;
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">2013-05-01 11:07:01.903 CAPCOM<span class="o">[</span>24399:907<span class="o">]</span> Registration Success: <span class="o">&#x7b;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nv">device</span> <span class="o">=</span>     <span class="o">&#x7b;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nb">alias</span> <span class="o">=</span> ApoloXIII<span class="p">;</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">badge</span> <span class="o">=</span> 0<span class="p">;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">id</span> <span class="o">=</span> 1<span class="p">;</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="s2">&quot;ip_address&quot;</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span><span class="p">;</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">language</span> <span class="o">=</span> es<span class="p">;</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">lat</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span><span class="p">;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">lng</span> <span class="o">=</span> <span class="s2">&quot;&lt;null&gt;&quot;</span><span class="p">;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">locale</span> <span class="o">=</span> <span class="s2">&quot;es_ES&quot;</span><span class="p">;</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">tags</span> <span class="o">=</span>         <span class="o">(</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="s2">&quot;iPhone OS 6.1.3&quot;</span>,
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="s2">&quot;v1.0&quot;</span>,
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">        iPhone
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="o">)</span><span class="p">;</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">timezone</span> <span class="o">=</span> <span class="s2">&quot;Europe/Madrid&quot;</span><span class="p">;</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">token</span> <span class="o">=</span> 1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A<span class="p">;</span>
+</div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nv">tsv</span> <span class="o">=</span> <span class="s2">&quot;&#39;1f0e7706d1a343bf17615051db944743f18156c52eff0f8dd43dda23f156862a&#39;:1 &#39;apoloxiii&#39;:2 &#39;es&#39;:3,4 &#39;europe/madrid&#39;:5&quot;</span><span class="p">;</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="o">&#x7d;</span><span class="p">;</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="o">&#x7d;</span></div></div></pre></div></figure>
 
 <p>Y en el panel de administración de Helios veremos lo siguiente:</p>
 
-<p><img src="/images/photos/2013/admin-helios-tokens.png"></p>
+<p><img src="http://javimoreno.me/assets/photos/2013/admin-helios-tokens.png" alt="" /></p>
 
 <p>Ahora tenemos que preparar nuestro servidor para que realice el envío de notificaciones Push. Como ya hemos comentado al principio, esta funcionalidad no la traía Helios en su primera versión y nos obligaba a nosotros a incluir y configurar esta gema. Hace pocas horas han actualizado el repositorio de Helios incluyendo la funcionalidad de envío de mensajes mediante Houston. Como el merge en GitHub es tan reciente, la gema que hay en <a href="http://rubygems.org/gems/helios">RubyGems.org</a> todavía no está actualizada así que para poder usarla en nuestro proyecto Rails he tenido que indicar en el <em>gemfile</em> que tome el fuente de GitHub. Al hacerlo de esta forma, las dependencias no son visibles por el Bundler por lo que, para evitar errores, he indicado también que necesitamos la gema <strong>Houston</strong>.</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>gem <span class="s1">&#39;helios&#39;</span>, :git <span class="o">=</span>&gt; <span class="s1">&#39;git://github.com/helios-framework/helios.git&#39;</span>
-</span><span class='line'>gem <span class="s1">&#39;houston&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">gem <span class="s1">&#39;helios&#39;</span>, :git <span class="o">=</span>&gt; <span class="s1">&#39;git://github.com/helios-framework/helios.git&#39;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">gem <span class="s1">&#39;houston&#39;</span></div></div></pre></div></figure>
 
 <p>Ahora tendremos que guardar el certificado para realizar APS en alguna carpeta de nuestro proyecto y decirle a Helios donde está. Los pasos que hay que seguir para trabajar con los certificados están en el post de Rafa, lo único que haremos diferente es el paso de exportación del certificado, al que le daremos un nombre más <em>comodo</em> para nuestra configuración:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>openssl pkcs12 -in CAPCOMAPNDEV.p12 -out apple_push_notification.pem -nodes -clcerts
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nv">$ </span>openssl pkcs12 -in CAPCOMAPNDEV.p12 -out apple_push_notification.pem -nodes -clcerts</div></div></pre></div></figure>
 
 <p>El fichero .pem resultante lo dejaremos en la carpeta <em>config</em> de nuestro proyecto (junto al xcdatamodel) y modificaremos la configuración de Helios en nuestro <em>application.rb</em> de la siguiente manera:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Using framework Helios as a middleware for our app</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="ss">Helios</span><span class="p">:</span><span class="ss">:Application</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">service</span> <span class="ss">:data</span><span class="p">,</span> <span class="ss">model</span><span class="p">:</span> <span class="s1">&#39;./config/DealerErgoGo.xcdatamodel&#39;</span>
-</span><span class='line'>  <span class="n">service</span> <span class="ss">:push_notification</span><span class="p">,</span> <span class="n">apn_certificate</span><span class="p">:</span> <span class="s1">&#39;.config/apple_push_notification.pem&#39;</span><span class="p">,</span> <span class="n">apn_environment</span><span class="p">:</span> <span class="s1">&#39;development&#39;</span>
-</span><span class='line'>  <span class="n">service</span> <span class="ss">:in_app_purchase</span>
-</span><span class='line'>  <span class="n">service</span> <span class="ss">:passbook</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="c1"># Using framework Helios as a middleware for our app</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="no">Helios</span><span class="o">::</span><span class="no">Application</span> <span class="k">do</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">service</span> <span class="ss">:data</span><span class="p">,</span> <span class="ss">model</span><span class="p">:</span> <span class="s1">&#39;./config/DealerErgoGo.xcdatamodel&#39;</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">service</span> <span class="ss">:push_notification</span><span class="p">,</span> <span class="ss">apn_certificate</span><span class="p">:</span> <span class="s1">&#39;.config/apple_push_notification.pem&#39;</span><span class="p">,</span> <span class="ss">apn_environment</span><span class="p">:</span> <span class="s1">&#39;development&#39;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">service</span> <span class="ss">:in_app_purchase</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="n">service</span> <span class="ss">:passbook</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Para comprobar que todo está bien configurado, ejecutamos la siguiente instrucción desde el terminal (recordad que nuestro servidor tiene configurado usuario y contraseña):</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>curl -X POST --user <span class="s2">&quot;username:password&quot;</span> -d <span class="s1">&#39;payload={&quot;aps&quot;: {&quot;alert&quot;:&quot;Okay, stand by Thirteen, we are looking at it.&quot;,&quot;badge&quot;:&quot;13&quot;,&quot;sound&quot;:&quot;default&quot;}}&#39;</span> http://localhost:3000/message
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">curl -X POST --user <span class="s2">&quot;username:password&quot;</span> -d <span class="s1">&#39;payload=&#x7b;&quot;aps&quot;: &#x7b;&quot;alert&quot;:&quot;Okay, stand by Thirteen, we are looking at it.&quot;,&quot;badge&quot;:&quot;13&quot;,&quot;sound&quot;:&quot;default&quot;&#x7d;&#x7d;&#39;</span> http://localhost:3000/message</div></div></pre></div></figure>
 
+<p>Listo, parece que ya tenemos comunicación con Houston… o por lo menos recibimos sus mensajes. ;-)</p>
 
-<p>Listo, parece que ya tenemos comunicación con Houston&#8230; o por lo menos recibimos sus mensajes. ;-)</p>
-
-<p><img src="/images/photos/2013/notificacion-iphone.png" width="320" height="480"></p>
+<p><img src="http://javimoreno.me/assets/photos/2013/notificacion-iphone.png" alt="" /></p>
 
 <p>Houston incluye una utilidad de terminal a la que le pasamos un token, la ubicación del certificado y el mensaje que queremos enviar. Esto no verifica que hayamos configurado correctamente ningún servidor, solo que el certificado y el token sean correctos:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>apn push <span class="s2">&quot;1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A&quot;</span> -c <span class="s2">&quot;config/apple_push_notification.pem&quot;</span> -m <span class="s2">&quot;Okay, stand by Thirteen, we&#39;re looking at it.&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nv">$ </span>apn push <span class="s2">&quot;1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A&quot;</span> -c <span class="s2">&quot;config/apple_push_notification.pem&quot;</span> -m <span class="s2">&quot;Okay, stand by Thirteen, we&#39;re looking at it.&quot;</span></div></div></pre></div></figure>
 
-
-<h2>Siguientes pasos</h2>
+<h2 id="siguientes-pasos">Siguientes pasos</h2>
 
 <p>Nuevamente vuelvo a tener sentimientos encontrados. Aunque esta vez he terminado más satisfecho de forma general con los resultados obtenidos de Helios, Orbiter y Houston todavía queda mucho por hacer para tener algo que se parezca mínimamente a lo que nos ofrecen Parse o Urban Airship</p>
 
 <p>Hemos almacenado los tokens en nuestro servidor y hemos sido capaces de enviar notificaciones a nuestro dispositivo desde el terminal. Podríamos realizar el envío de mensajes desde la propia aplicación con un método semejante a este:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">useHoustonServiceWithAlert:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">alert</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nl">URLWithString:</span><span class="s">@&quot;http://localhost:3000&quot;</span><span class="p">];</span>
-</span><span class='line'>    <span class="n">AFHTTPClient</span> <span class="o">*</span><span class="n">httpClient</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AFHTTPClient</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBaseURL:</span><span class="n">url</span><span class="p">];</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">httpClient</span> <span class="nl">setAuthorizationHeaderWithUsername:</span><span class="s">@&quot;GoogleReader&quot;</span> <span class="nl">password:</span><span class="s">@&quot;F0r3v3r&quot;</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">payload</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span><span class="s">@&quot;aps&quot;</span><span class="o">:</span> <span class="err">@</span><span class="p">{</span><span class="s">@&quot;alert&quot;</span><span class="o">:</span> <span class="n">alert</span><span class="p">,</span> <span class="s">@&quot;sound&quot;</span><span class="o">:</span> <span class="s">@&quot;default&quot;</span><span class="p">}};</span>
-</span><span class='line'>    <span class="n">NSData</span> <span class="o">*</span><span class="n">jsonData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nl">dataWithJSONObject:</span><span class="n">payload</span>
-</span><span class='line'>                                                       <span class="nl">options:</span><span class="mi">0</span>
-</span><span class='line'>                                                         <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">NSString</span> <span class="o">*</span><span class="n">JSONString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBytes:</span><span class="p">[</span><span class="n">jsonData</span> <span class="n">bytes</span><span class="p">]</span> <span class="nl">length:</span><span class="p">[</span><span class="n">jsonData</span> <span class="n">length</span><span class="p">]</span> <span class="nl">encoding:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys:</span>
-</span><span class='line'>                            <span class="n">JSONString</span><span class="p">,</span> <span class="s">@&quot;payload&quot;</span><span class="p">,</span>
-</span><span class='line'>                            <span class="nb">nil</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="p">[</span><span class="n">httpClient</span> <span class="nl">postPath:</span><span class="s">@&quot;/message&quot;</span> <span class="nl">parameters:</span><span class="n">params</span> <span class="nl">success:</span><span class="o">^</span><span class="p">(</span><span class="n">AFHTTPRequestOperation</span> <span class="o">*</span><span class="n">operation</span><span class="p">,</span> <span class="kt">id</span> <span class="n">responseObject</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSString</span> <span class="o">*</span><span class="n">responseStr</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithData:</span><span class="n">responseObject</span> <span class="nl">encoding:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
-</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Request Successful, response &#39;%@&#39;&quot;</span><span class="p">,</span> <span class="n">responseStr</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}</span> <span class="nl">failure:</span><span class="o">^</span><span class="p">(</span><span class="n">AFHTTPRequestOperation</span> <span class="o">*</span><span class="n">operation</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[HTTPClient Error]: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">}];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">useHoustonServiceWithAlert:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">alert</span> 
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7b;</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://localhost:3000&quot;</span><span class="p">];</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="n">AFHTTPClient</span> <span class="o">*</span><span class="n">httpClient</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AFHTTPClient</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBaseURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">[</span><span class="n">httpClient</span> <span class="nl">setAuthorizationHeaderWithUsername</span><span class="p">:</span><span class="s">@&quot;GoogleReader&quot;</span> <span class="nl">password</span><span class="p">:</span><span class="s">@&quot;F0r3v3r&quot;</span><span class="p">];</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">payload</span> <span class="o">=</span> <span class="l">@&#x7b;</span><span class="s">@&quot;aps&quot;</span><span class="o">:</span> <span class="l">@&#x7b;</span><span class="s">@&quot;alert&quot;</span><span class="o">:</span> <span class="n">alert</span><span class="p">,</span> <span class="s">@&quot;sound&quot;</span><span class="o">:</span> <span class="s">@&quot;default&quot;</span><span class="l">&#x7d;&#x7d;</span><span class="p">;</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSData</span> <span class="o">*</span><span class="n">jsonData</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSJSONSerialization</span> <span class="nl">dataWithJSONObject</span><span class="p">:</span><span class="n">payload</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">                                                       <span class="nl">options</span><span class="p">:</span><span class="mi">0</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">                                                         <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSString</span> <span class="o">*</span><span class="n">JSONString</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBytes</span><span class="p">:[</span><span class="n">jsonData</span> <span class="n">bytes</span><span class="p">]</span> <span class="nl">length</span><span class="p">:[</span><span class="n">jsonData</span> <span class="n">length</span><span class="p">]</span> <span class="nl">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDictionary</span> <span class="nl">dictionaryWithObjectsAndKeys</span><span class="p">:</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line">                            <span class="n">JSONString</span><span class="p">,</span> <span class="s">@&quot;payload&quot;</span><span class="p">,</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">                            <span class="nb">nil</span><span class="p">];</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">[</span><span class="n">httpClient</span> <span class="nl">postPath</span><span class="p">:</span><span class="s">@&quot;/message&quot;</span> <span class="nl">parameters</span><span class="p">:</span><span class="n">params</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">AFHTTPRequestOperation</span> <span class="o">*</span><span class="n">operation</span><span class="p">,</span> <span class="kt">id</span> <span class="n">responseObject</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="bp">NSString</span> <span class="o">*</span><span class="n">responseStr</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithData</span><span class="p">:</span><span class="n">responseObject</span> <span class="nl">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Request Successful, response &#39;%@&#39;&quot;</span><span class="p">,</span> <span class="n">responseStr</span><span class="p">);</span>
+</div></div><div data-line="21" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">&#x7d;</span> <span class="nl">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">AFHTTPRequestOperation</span> <span class="o">*</span><span class="n">operation</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="22" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[HTTPClient Error]: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">);</span>
+</div></div><div data-line="23" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="p">&#x7d;];</span>
+</div></div><div data-line="24" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7d;</span></div></div></pre></div></figure>
 
 <p>Pero en realidad este mensaje no se lo estaríamos enviando al Apolo XIII solamente si no a toda la misión Apolo. Si nos atrevemos a mirar el código fuente de Helios, el fichero <a href="https://github.com/helios-framework/helios/blob/master/lib/helios/backend/push-notification.rb"><em>push-notification.rb</em></a> es bastante clarificador: no solo admite el parámetro <em>payload</em>, también admite otro parámetro llamado <em>tokens</em> que es de tipo <em>array</em>. Es decir, si le pasamos un array de tokens el mensaje solo llegará a los dispositivos determinados por esos tokens.</p>
 
 <p>Pero los tokens están almacenados en el servidor, hacemos el registro con Orbiter cada vez que un dispositivo en el que instalamos la aplicación acepta que le enviemos notificaciones Push. ¿Tenemos que descargarnos el listado completo de tokens al dispositivo y filtrar por los <em>alias</em>? Parece que no.</p>
 
-<p>Si nos fijamos en el mismo fuente de antes, donde se define el método get devices, vemos que hay algunos parámetros que se le pueden pasar a dicho método: pages, per_page, limit, offset y q&#8230; los cuatro primeros son, obviamente, para controlar la paginación de los resultados y el quinto parece ser el indicado para hacer una <em>query</em> a la tabla <em>Device</em> pero, ¿qué es <a href="http://www.postgresql.org/docs/9.1/static/textsearch-tables.html"><em>tsquery</em></a>? Pues según la documentación de PostgreSQL es la forma de hacer búsqueda completa de texto dentro de una determinada entidad.</p>
+<p>Si nos fijamos en el mismo fuente de antes, donde se define el método get devices, vemos que hay algunos parámetros que se le pueden pasar a dicho método: pages, per_page, limit, offset y q… los cuatro primeros son, obviamente, para controlar la paginación de los resultados y el quinto parece ser el indicado para hacer una <em>query</em> a la tabla <em>Device</em> pero, ¿qué es <a href="http://www.postgresql.org/docs/9.1/static/textsearch-tables.html"><em>tsquery</em></a>? Pues según la documentación de PostgreSQL es la forma de hacer búsqueda completa de texto dentro de una determinada entidad. </p>
 
-<p>En realidad <em>tsquery</em> devolverá todas las registros en los que aparezca el <strong>lexema</strong> que estamos buscando, esto es, si queremos buscar el token del Apolo XIII haríamos una llamada como la siguiente:</p>
+<p>En realidad <em>tsquery</em> devolverá todas las registros en los que aparezca el <strong>lexema</strong> que estamos buscando, esto es, si queremos buscar el token del Apolo XIII haríamos una llamada como la siguiente: </p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>curl -X GET --user <span class="s2">&quot;GoogleReader:F0r3v3r&quot;</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXIII
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nv">$ </span>curl -X GET --user <span class="s2">&quot;GoogleReader:F0r3v3r&quot;</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXIII</div></div></pre></div></figure>
 
 <p>Pero si, por ejemplo, quisiéramos buscar el token del Apolo XI:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>curl -X GET --user <span class="s2">&quot;GoogleReader:F0r3v3r&quot;</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXI
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nv">$ </span>curl -X GET --user <span class="s2">&quot;GoogleReader:F0r3v3r&quot;</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXI</div></div></pre></div></figure>
 
 <p>Recuperariamos los tokens de los Apolos XI, XII, XIII y XIV. Es más, como la búsqueda se hace en todos los campos de la entidad Device, pudiera ser que recuperáramos algún otro registro más. Por ejemplo, si en vez de misiones espaciales utilizáramos como <em>alias</em> los nombres de las lunas de Jupiter. Al buscar el token de <em>Europe</em>, la consulta nos devolvería el token del alias <em>Europe</em> y el de todos los registros de dispositivos con <em>timezone</em> europeo.</p>
 
-<p>Para este caso particular, y viendo el funcionamiento de los servicios de Parse y Urban Airship, sería conveniente ampliar las funcionalidades de push-notification.rb para incluir los alias como parámetro y buscar sus tokens. Además sería conveniente hacer el envío de notificaciones en batch para los casos en los que hubiera muchos tokens. Sería recomendable que las notificaciones se almacenaran en base de datos y que el envío se hiciera en background&#8230; vamos, que esto es un no parar. :-)</p>
+<p>Para este caso particular, y viendo el funcionamiento de los servicios de Parse y Urban Airship, sería conveniente ampliar las funcionalidades de push-notification.rb para incluir los alias como parámetro y buscar sus tokens. Además sería conveniente hacer el envío de notificaciones en batch para los casos en los que hubiera muchos tokens. Sería recomendable que las notificaciones se almacenaran en base de datos y que el envío se hiciera en background… vamos, que esto es un no parar. :-)</p>
 
 <p>Aun con todo el trabajo que queda por hacer, hemos podido ver lo sencillo que es montar un sistema de notificaciones para nuestras aplicaciones iOS. Si solo lo queremos para enviar, de vez en cuando, un mensajero para que nos compren alguna aplicación, con esto tenemos más que suficiente.</p>
-</div>
 
 
-  <footer>
-    <p class="meta">
-      
+  </article>
   
-
-<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T03:36:00+00:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+	
+    <div class="sharing">
   
   <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
   
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/" data-via="" data-counturl="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/" >Tweet</a>
   
   
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
 </div>
 
+  
+  <p class="meta">
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/04/11/helios-i-guardando-datos/" title="Previous Post: Helios I. Guardando datos">&laquo; Helios I. Guardando datos</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/05/17/sobre-memorion/" title="Next Post: Sobre Memorión">Sobre Memorión &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-
-</div>
-
-<aside class="sidebar">
-  
+      <a class="navigation-link-left" href="/blog/2013/04/11/helios-i-guardando-datos/" title="Previous Post: Helios I. Guardando Datos">&laquo; Helios I. Guardando Datos</a>
     
-  
-</aside>
+    
+      <a class="navigation-link-right" href="/blog/2013/05/17/sobre-memorion/" title="Next Post: Sobre Memorión">Sobre Memorión &raquo;</a>
+    
+  </p>
+	<div style="clear: both;"></div>
+	
+  <comments class="post-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
+      var disqus_url = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </comments>
+	
 
+</div>
 
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Javi Moreno -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+    <footer class="site-footer">
+	
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>♟ Javi Moreno</li>
+          <li><a href="mailto:javi@javimoreno.me">javi@javimoreno.me</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jmoreno">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jmoreno78">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16"
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno78</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </p>
+      </div>
+    </div>
+
+  </div>
 
 </footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'eloctoblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
-        var disqus_url = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+		
+		
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -496,12 +362,11 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
   </script>
 
 
-  
+		  
   <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
   
 
 
+  </body>
 
-
-</body>
 </html>

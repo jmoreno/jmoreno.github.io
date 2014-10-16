@@ -1,40 +1,21 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Adios Keynote, hola reveal.js - Javi Moreno</title>
-  <meta name="author" content="Javi Moreno">
+<html>
 
-  
-  <meta name="description" content="El día que empecé a preparar la presentación Helios y su integración en iOS me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban &hellip;">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adios Keynote, Hola reveal.js</title>
+    <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+">
 
-  
-  <link rel="canonical" href="http://javimoreno.me/blog/2013/10/05/adios-keynote">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Javi Moreno" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=Asap:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png" />
-  
+    <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://javimoreno.me/blog/2013/10/05/adios-keynote/">
+	  
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
@@ -50,446 +31,328 @@
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Javi Moreno</a></h1>
-  
-    <h2>&#9823;</h2>
-  
-</hgroup>
+	<link href='/stylesheets/all-5633615de6ceb2962f12411016b5b8ed.css' media='all' rel='stylesheet' type='text/css'>
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">♟ Javi Moreno</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">Sobre Mi</a>
+          
+        
+          
+          <a class="page-link" href="/articles/">Artículos</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/linkposts/">Enlaces</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
 
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-<ul class="social">
-
-  <li><a rel="twitter" href="http://twitter.com/jmoreno78" title="Twitter">Twitter</a></li>
 
 
-  <li><a rel="github" href="https://github.com/jmoreno" title="GitHub">GitHub</a></li>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
 
-
-  <li><a rel="email" href="mailto:javi@javimoreno.me" title="Email">Email</a></li>
-
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:javimoreno.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/sobre-mi">Sobre mi</a></li>
-  <li><a href="/proyectos">Proyectos</a></li>
-  <li><a href="http://www.zinkinapps.com">Zink in apps!</a></li>
-  <li><a href="/blog/archives">Archivo</a></li>
-</ul>
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-		
-			
-		    <h1 class="entry-title">Adios Keynote, hola reveal.js</h1>
-			
-		
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-05T03:07:00+00:00" pubdate data-updated="true">Oct 5<span>th</span>, 2013</time>
-        
-      </p>
-    
+  <header class="post-header">
+		 
+    <h1 class="post-title">Adios Keynote, Hola reveal.js</h1>
+		 
+    <p class="post-meta">Oct 5, 2013</p>
   </header>
 
-
-<div class="entry-content"><p>El día que empecé a preparar la presentación <a href="http://slides.helios.javimoreno.me">Helios y su integración en iOS</a> me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,&#8230; con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí <a href="https://github.com/hakimel/reveal.js">reveal.js</a>&#8230; y decidí no volver a abrir Keynote nunca más.</p>
+  <article class="post-content">
+    <p>El día que empecé a preparar la presentación <a href="http://slides.helios.javimoreno.me">Helios y su integración en iOS</a> me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,… con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí <a href="https://github.com/hakimel/reveal.js">reveal.js</a>… y decidí no volver a abrir Keynote nunca más.</p>
 
 <!--more-->
 
+<p>La <a href="http://lab.hakim.se/reveal-js/#/">presentación de ejemplo</a> ya te da una idea general de toda la potencia de este framework. Inicialmente, a mi me bastaba con poder reutilizar un fichero en markdown en la presentación y al ver que dentro de cada <code>section</code>, que es como se identifican las <em>slides</em>, se podía introducir texto en markdown me daba por satisfecho. Luego seguí navegando y vi que, en realidad, podía utilizar un texto entero en markdown ya que con una seríe de convenciones en la escritura y arrancando reveal.js como una aplicación node.js, esta aplicación se encargaba de generar la presentación completa… reveal.js FTW!    </p>
 
-<p>La <a href="http://lab.hakim.se/reveal-js/#/">presentación de ejemplo</a> ya te da una idea general de toda la potencia de este framework. Inicialmente, a mi me bastaba con poder reutilizar un fichero en markdown en la presentación y al ver que dentro de cada <code>section</code>, que es como se identifican las <em>slides</em>, se podía introducir texto en markdown me daba por satisfecho. Luego seguí navegando y vi que, en realidad, podía utilizar un texto entero en markdown ya que con una seríe de convenciones en la escritura y arrancando reveal.js como una aplicación node.js, esta aplicación se encargaba de generar la presentación completa&#8230; reveal.js FTW!</p>
-
-<h2>Atajos de teclado</h2>
+<h2 id="atajos-de-teclado">Atajos de teclado</h2>
 
 <p>Un poco más adelante explicaré como hacer que reveal.js lea de un fichero <code>.md</code> pero antes quiero destacar la funcionalidad de reveal.js accesible a través de teclado.</p>
 
 <ul>
-<li>Avance de diapositivas. Una característica muy llamativa de reveal.js es que las presentaciones tienen dos dimensiones. Estamos acostumbrados a avanzar y a retroceder pero con este framework también podemos subir y bajar. Esto, desde mi punto de vista, es muy útil cuando quieres ampliar la información de una diapositiva en varias diapositivas más. En el eje horizontal (avance-retroceso) estarían las diapositivas principales y algunas de ellas podrían tener un eje vertical (arriba-abajo). La navegación se controla con las teclas de cursor pero si la presentación se visualiza en un dispositivo táctil el control de la navegación se hace con el dedo. Impresionante, no?</li>
-<li>Vistazo general. Pulsando la tecla <em>escape</em> se hace un zoom y puedes ver todas las diapositivas en miniatura lo que te permite navegar más rápidamente a una en concreto. Además, en caso de que tengas secciones de diapositivas (grupos en vertical) puedes ver la diapositiva que se mostraría en un flujo de navegación horizontal.</li>
-<li>Modo Pausa. Pulsando la tecla &#8220;b&#8221; se hace un fundido a negro, de esta forma puedes forzar al público a centrar su atención en ti en lugar de hacerlo sobre la presentación. Para salir de la <em>pausa</em> hay que volver a pulsar la &#8220;b&#8221;.</li>
-<li>Pantalla completa. Pulsando la tecla &#8220;f&#8221;</li>
+  <li>Avance de diapositivas. Una característica muy llamativa de reveal.js es que las presentaciones tienen dos dimensiones. Estamos acostumbrados a avanzar y a retroceder pero con este framework también podemos subir y bajar. Esto, desde mi punto de vista, es muy útil cuando quieres ampliar la información de una diapositiva en varias diapositivas más. En el eje horizontal (avance-retroceso) estarían las diapositivas principales y algunas de ellas podrían tener un eje vertical (arriba-abajo). La navegación se controla con las teclas de cursor pero si la presentación se visualiza en un dispositivo táctil el control de la navegación se hace con el dedo. Impresionante, no?</li>
+  <li>Vistazo general. Pulsando la tecla <em>escape</em> se hace un zoom y puedes ver todas las diapositivas en miniatura lo que te permite navegar más rápidamente a una en concreto. Además, en caso de que tengas secciones de diapositivas (grupos en vertical) puedes ver la diapositiva que se mostraría en un flujo de navegación horizontal.</li>
+  <li>Modo Pausa. Pulsando la tecla “b” se hace un fundido a negro, de esta forma puedes forzar al público a centrar su atención en ti en lugar de hacerlo sobre la presentación. Para salir de la <em>pausa</em> hay que volver a pulsar la “b”.</li>
+  <li>Pantalla completa. Pulsando la tecla “f”</li>
 </ul>
-
 
 <p>Nada que envidiar a los programas típicos de presentaciones como Powerpoint (perdón por ponerlo en primer lugar) o Keynote.</p>
 
-<h2>Funcionalidad avanzada</h2>
+<h2 id="funcionalidad-avanzada">Funcionalidad avanzada</h2>
 
 <p>Tener reveal.js dentro de una aplicación node.js también te permite visualizar las notas del presentador y alguna otra funcionalidad más sofisticada como sincronizar la presentación con todos los que la estén viendo al mismo tiempo que tu en sus dispositivos, actualizar el contenido de las diapositivas en tiempo real, etc..
 La verdad es que toda esas funcionalidades pintan muy bien pero yo lo único que quería era:</p>
 
-<h2>¡Una presentación hecha con markdown!</h2>
+<h2 id="una-presentacin-hecha-con-markdown">¡Una presentación hecha con markdown!</h2>
 
-<p>Hay que destacar que, al combinar reveal.js con un fichero .md donde están recogidas todas las diapositivas no se explota toda la potencia del framework como las diferentes transiciones, enlaces internos, colores de fondo diferentes, imágenes de fondo diferentes, vistas fragmentadas, etc. En mi humilde opinión, abusar de las transiciones, cambios de colores o de imágenes suele cargar bastante una presentación, pero vamos, que eso es cuestión de gustos. <br/>
+<p>Hay que destacar que, al combinar reveal.js con un fichero .md donde están recogidas todas las diapositivas no se explota toda la potencia del framework como las diferentes transiciones, enlaces internos, colores de fondo diferentes, imágenes de fondo diferentes, vistas fragmentadas, etc. En mi humilde opinión, abusar de las transiciones, cambios de colores o de imágenes suele cargar bastante una presentación, pero vamos, que eso es cuestión de gustos. <br />
 Si que eché de menos el no poder hacer vistas fragmentadas. Espero que en alguna próxima versión den con la forma de hacerlo. Al menos la agrupación de diapositivas y las notas si que está disponibles y eso es para mí algo digno de mención. Para que os hagáis una idea, este es el corazón de mi presentación: el fichero <a href="https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md">presentation.md</a>.</p>
 
-<h2>¿Cómo hice mi presentación?</h2>
+<h2 id="cmo-hice-mi-presentacin">¿Cómo hice mi presentación?</h2>
 
 <p>Lo primero que hice fue clonar el repositorio original de <a href="https://github.com/hakimel/reveal.js">reveal.js</a> y cambiar el fichero index.html. La mayor parte de la presentación estaría en el fichero markdown pero en la primera diapositiva quería usar una vista fragmentada (de esas en las que las frases o las palabras van apareciendo poco a poco). Debido a esto, el código de mi presentación quedaría así:</p>
 
-<figure class='code'><figcaption><span>Fragmento HTML para definir la presentación</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;reveal&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;slides&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>        <span class="nt">&lt;section&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;h1&gt;</span>Helios<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;h2&gt;</span>y su integración en iOS<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>¿Es <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/mattt&quot;</span><span class="nt">&gt;</span>@mattt<span class="nt">&lt;/a&gt;&lt;/small&gt;</span> una persona o una legión?<span class="nt">&lt;/h3&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;p&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno78<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">&quot;presentation.md&quot;</span> <span class="na">data-separator=</span><span class="s">&quot;^\n\n\n&quot;</span> <span class="na">data-vertical=</span><span class="s">&quot;^\n\n&quot;</span> <span class="na">data-notes=</span><span class="s">&quot;^Note:&quot;</span> <span class="na">data-charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nt">&lt;section&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;h1&gt;</span>THE END<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;h3&gt;</span>BY Javier Moreno / javimoreno.me<span class="nt">&lt;/h3&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/section&gt;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><figcaption class="code-highlight-caption"><span class="code-highlight-caption-title">Fragmento HTML para definir la presentación</span></figcaption><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;reveal&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="c">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;slides&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="nt">&lt;section&gt;</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;h1&gt;</span>Helios<span class="nt">&lt;/h1&gt;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;h2&gt;</span>y su integración en iOS<span class="nt">&lt;/h2&gt;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>¿Es <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/mattt&quot;</span><span class="nt">&gt;</span>@mattt<span class="nt">&lt;/a&gt;&lt;/small&gt;</span> una persona o una legión?<span class="nt">&lt;/h3&gt;</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;p&gt;</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno78<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;/p&gt;</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="nt">&lt;/section&gt;</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">&quot;presentation.md&quot;</span> <span class="na">data-separator=</span><span class="s">&quot;^\n\n\n&quot;</span> <span class="na">data-vertical=</span><span class="s">&quot;^\n\n&quot;</span> <span class="na">data-notes=</span><span class="s">&quot;^Note:&quot;</span> <span class="na">data-charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="nt">&lt;section&gt;</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;h1&gt;</span>THE END<span class="nt">&lt;/h1&gt;</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;h3&gt;</span>BY Javier Moreno / javimoreno.me<span class="nt">&lt;/h3&gt;</span>
+</div></div><div data-line="21" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>
+</div></div><div data-line="22" class="code-highlight-row numbered"><div class="code-highlight-line">                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+</div></div><div data-line="23" class="code-highlight-row numbered"><div class="code-highlight-line">            <span class="nt">&lt;/p&gt;</span>
+</div></div><div data-line="24" class="code-highlight-row numbered"><div class="code-highlight-line">        <span class="nt">&lt;/section&gt;</span>
+</div></div><div data-line="25" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="26" class="code-highlight-row numbered"><div class="code-highlight-line">    <span class="nt">&lt;/div&gt;</span>
+</div></div><div data-line="27" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="28" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nt">&lt;/div&gt;</span></div></div></pre></div></figure>
 
 <p>Eso es todo, aparentemente tres diapositivas. La sección que se nutre de un fichero markdown tiene los siguientes atributos:</p>
 
 <ul>
-<li><code>data-markdown</code>: La ubicación del fichero</li>
-<li><code>data-separator</code>: Lo que vaya a identificar la separación entre diapositivas horizontales. En mi caso, tres líneas en blanco.</li>
-<li><code>data-vertical</code>: Lo que vaya a identificar la separación entre diapositivas verticales. En mi caso, dos líneas en blanco.</li>
-<li><code>data-notes</code>: Lo que identifique que el texto a continuación no es parte visual de la diapositivas si no de las notas.</li>
-<li><code>data-charset</code>: Muy importante para nosotros, que usamos muchos caracteres especiales como tildes, eñes, signos de interrogación y admiración el poner UTF-8.</li>
+  <li><code>data-markdown</code>: La ubicación del fichero</li>
+  <li><code>data-separator</code>: Lo que vaya a identificar la separación entre diapositivas horizontales. En mi caso, tres líneas en blanco.</li>
+  <li><code>data-vertical</code>: Lo que vaya a identificar la separación entre diapositivas verticales. En mi caso, dos líneas en blanco.</li>
+  <li><code>data-notes</code>: Lo que identifique que el texto a continuación no es parte visual de la diapositivas si no de las notas.</li>
+  <li><code>data-charset</code>: Muy importante para nosotros, que usamos muchos caracteres especiales como tildes, eñes, signos de interrogación y admiración el poner UTF-8.</li>
 </ul>
-
 
 <p>Y eso es todo, si echáis un vistazo al fichero <a href="https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md">presentation.md</a> comprobaréis lo que acabo de comentar.</p>
 
-<p>Una vez hecho esto, para probarlo en local hay que tener instalado <a href="http://nodejs.org">node.js</a> y <a href="http://gruntjs.com/getting-started#installing-the-cli">grunt</a>. Si ya tenemos estos servicios instalados lo único que hay que hacer es ir hasta la carpeta donde está reveal, instalar las dependencias con <code>$ npm install</code> y arrancar la presentación con <code>$ grunt serve</code>. La presentación se verá en <a href="http://localhost:8000">http://localhost:8000</a>.</p>
+<p>Una vez hecho esto, para probarlo en local hay que tener instalado <a href="http://nodejs.org">node.js</a> y <a href="http://gruntjs.com/getting-started#installing-the-cli">grunt</a>. Si ya tenemos estos servicios instalados lo único que hay que hacer es ir hasta la carpeta donde está reveal, instalar las dependencias con <code>$ npm install</code> y arrancar la presentación con <code>$ grunt serve</code>. La presentación se verá en <a href="http://localhost:8000">http://localhost:8000</a>. </p>
 
-<h2>Despliegue en Heroku.</h2>
+<h2 id="despliegue-en-heroku">Despliegue en Heroku.</h2>
 
-<p>Si hacer lo anterior me llevo un rato de nada, conseguir desplegar en Heroku me llevó un mes: subí con éxito el martes y la presentación a los asistentes de la NSCoderMAD fue el miércoles.  <br/>
+<p>Si hacer lo anterior me llevo un rato de nada, conseguir desplegar en Heroku me llevó un mes: subí con éxito el martes y la presentación a los asistentes de la NSCoderMAD fue el miércoles.  <br />
 Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fracaso. Por lo visto <em>grunt</em> está muy bien para entornos de desarrollo pero los hosting de node.js prefieren otras cosas. Búsquedas en Google hablan de versiones diferentes de la Heroku Toolbet para desplegar aplicaciones node.js con grub pero a mi no me funcionó ninguna de las recomendaciones que encontré.</p>
 
 <p>A última hora encontré este <a href="https://github.com/willy-vvu/reveal.js">fork de reveal.js</a> que se podía previsualizar en Heroku y de ahí tomé las configuraciones que necesitaba para que funcionará mi presentación en Heroku.</p>
 
 <p>Lo primero fue crear un fichero llamado <code>server.js</code> con el siguiente contenido:</p>
 
-<figure class='code'><figcaption><span>Fichero server.js</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">,</span><span class="nx">mime</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mime&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="o">||</span><span class="mi">5000</span><span class="p">);</span>
-</span><span class='line'><span class="kd">function</span> <span class="nx">handler</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nx">uri</span><span class="o">==</span><span class="s1">&#39;/&#39;</span><span class="p">){</span>
-</span><span class='line'>      <span class="nx">uri</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="nx">uri</span><span class="o">=</span><span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
-</span><span class='line'>  <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">uri</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span>
-</span><span class='line'>      <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
-</span><span class='line'>          <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Error loading file...&#39;</span><span class="p">);</span>            
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span><span class="nx">mime</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
-</span><span class='line'>      <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-</span><span class='line'>      <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">})</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><figcaption class="code-highlight-caption"><span class="code-highlight-caption-title">Fichero server.js</span></figcaption><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="p">,</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="p">,</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">  <span class="p">,</span><span class="nx">mime</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mime&#39;</span><span class="p">)</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line"> </div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="o">||</span><span class="mi">5000</span><span class="p">);</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="kd">function</span> <span class="nx">handler</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="k">if</span><span class="p">(</span><span class="nx">uri</span><span class="o">==</span><span class="s1">&#39;/&#39;</span><span class="p">)&#x7b;</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nx">uri</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="p">&#x7d;</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nx">uri</span><span class="o">=</span><span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">uri</span><span class="p">);</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="18" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="19" class="code-highlight-row numbered"><div class="code-highlight-line">			<span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+</div></div><div data-line="20" class="code-highlight-row numbered"><div class="code-highlight-line">			<span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Error loading file...&#39;</span><span class="p">);</span>			  
+</div></div><div data-line="21" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="p">&#x7d;</span>
+</div></div><div data-line="22" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span><span class="nx">mime</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
+</div></div><div data-line="23" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+</div></div><div data-line="24" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</div></div><div data-line="25" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="p">&#x7d;)</span>
+</div></div><div data-line="26" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7d;</span></div></div></pre></div></figure>
 
 <p>Este fichero contiene la información mínima que node.js necesita para arrancar la aplicación. Para que lea de este fichero, hubo que modificar el fichero <code>Procfile</code></p>
 
-<figure class='code'><figcaption><span>Fichero Procfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>web: node server.js
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><figcaption class="code-highlight-caption"><span class="code-highlight-caption-title">Fichero Procfile</span></figcaption><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line">web: node server.js</div></div></pre></div></figure>
 
 <p>Y por último, cambiar el fichero de dependencias <code>package.json</code>:</p>
 
-<figure class='code'><figcaption><span>Fichero package.json</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Javi Moreno featuring (reveal.js by Hakim El Hattab)&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;revealjs&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Helios y su integración con iOS&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.1&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@github.com:jmoreno/HeliosTalk.git&quot;</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>  <span class="nt">&quot;engines&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;0.8.x&quot;</span>
-</span><span class='line'>  <span class="p">},</span>
-</span><span class='line'>  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.7&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nt">&quot;npm&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.x&quot;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code-highlight-figure"><figcaption class="code-highlight-caption"><span class="code-highlight-caption-title">Fichero package.json</span></figcaption><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7b;</span>
+</div></div><div data-line="2" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Javi Moreno featuring (reveal.js by Hakim El Hattab)&quot;</span><span class="p">,</span>
+</div></div><div data-line="3" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;revealjs&quot;</span><span class="p">,</span>
+</div></div><div data-line="4" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Helios y su integración con iOS&quot;</span><span class="p">,</span>
+</div></div><div data-line="5" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.1&quot;</span><span class="p">,</span>
+</div></div><div data-line="6" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="7" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
+</div></div><div data-line="8" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@github.com:jmoreno/HeliosTalk.git&quot;</span>
+</div></div><div data-line="9" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="p">&#x7d;,</span>
+</div></div><div data-line="10" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;engines&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="11" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;0.8.x&quot;</span>
+</div></div><div data-line="12" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="p">&#x7d;,</span>
+</div></div><div data-line="13" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
+</div></div><div data-line="14" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.7&quot;</span><span class="p">,</span>
+</div></div><div data-line="15" class="code-highlight-row numbered"><div class="code-highlight-line">		<span class="nt">&quot;npm&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.x&quot;</span>
+</div></div><div data-line="16" class="code-highlight-row numbered"><div class="code-highlight-line">	<span class="p">&#x7d;</span>
+</div></div><div data-line="17" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="p">&#x7d;</span></div></div></pre></div></figure>
 
 <p>Ya solo quedaba hacer commit y seguir los pasos para desplegar en Heroku:</p>
 
 <ol>
-<li><code>$ heroku create</code></li>
-<li><code>$ git push heroku master</code></li>
-<li><code>$ heroku open</code></li>
+  <li><code>$ heroku create</code></li>
+  <li><code>$ git push heroku master</code></li>
+  <li><code>$ heroku open</code></li>
 </ol>
-
 
 <p>No os podéis hacer a la idea de la alegría que me llevé.</p>
 
-<h2>Para acabar</h2>
+<h2 id="para-acabar">Para acabar</h2>
 
 <p>Creo que, en su momento, este tweet no se entendió:</p>
 
-<div class='embed tweet'><blockquote class="twitter-tweet"><p>Si no me falla el valor, la presentación que estoy haciendo para la <a href="https://twitter.com/nscoder_mad">@nscoder_mad</a> se podrá ver en slideshare, Github y Heroku…</p>&mdash; Javi Moreno (@jmoreno78) <a href="https://twitter.com/jmoreno78/statuses/377465465054191616">September 10, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-
+<div class="embed tweet"><blockquote class="twitter-tweet"><p>Si no me falla el valor, la presentación que estoy haciendo para la <a href="https://twitter.com/nscoder_mad">@nscoder_mad</a> se podrá ver en slideshare, Github y Heroku…</p>&mdash; Javi Moreno (@jmoreno78) <a href="https://twitter.com/jmoreno78/status/377465465054191616">September 10, 2013</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
 <p>Como al final no me faltó el valor, ahí está la presentación: en <a href="http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os">slideshare</a>, <a href="https://github.com/jmoreno/HeliosTalk">Github</a> y <a href="http://slides.helios.javimoreno.me/#/">Heroku</a>. \o/</p>
-</div>
 
-
-  <footer>
-    <p class="meta">
-      
+  </article>
   
-
-<span class="byline author vcard">Posted by <span class="fn">Javi Moreno</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-05T03:07:00+00:00" pubdate data-updated="true">Oct 5<span>th</span>, 2013</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/análisis/'>Análisis</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+	
+    <div class="sharing">
   
   <div class="kcy_karmacracy_widget_h_ID" style="display:inline"></div>
   
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/10/05/adios-keynote/" data-via="jmoreno78" data-counturl="http://javimoreno.me/blog/2013/10/05/adios-keynote/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://javimoreno.me/blog/2013/10/05/adios-keynote/" data-via="" data-counturl="http://javimoreno.me/blog/2013/10/05/adios-keynote/" >Tweet</a>
   
   
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
 </div>
 
+  
+  <p class="meta">
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2013/07/06/markdown/" title="Previous Post: Markdown">&laquo; Markdown</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2013/11/11/padrinos-y-vacunas/" title="Next Post: Padrinos y vacunas">Padrinos y vacunas &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-
-</div>
-
-<aside class="sidebar">
-  
+      <a class="navigation-link-left" href="/blog/2013/07/06/markdown/" title="Previous Post: Markdown">&laquo; Markdown</a>
     
-  
-</aside>
+    
+      <a class="navigation-link-right" href="/blog/2013/11/11/padrinos-y-vacunas/" title="Next Post: Padrinos Y Vacunas">Padrinos Y Vacunas &raquo;</a>
+    
+  </p>
+	<div style="clear: both;"></div>
+	
+  <comments class="post-comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.me/blog/2013/10/05/adios-keynote/';
+      var disqus_url = 'http://javimoreno.me/blog/2013/10/05/adios-keynote/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </comments>
+	
 
+</div>
 
+      </div>
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Javi Moreno -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+
+    <footer class="site-footer">
+	
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>♟ Javi Moreno</li>
+          <li><a href="mailto:javi@javimoreno.me">javi@javimoreno.me</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jmoreno">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jmoreno78">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16"
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jmoreno78</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </p>
+      </div>
+    </div>
+
+  </div>
 
 </footer>
-  
 
-<script type="text/javascript">
-      var disqus_shortname = 'eloctoblog';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://javimoreno.me/blog/2013/10/05/adios-keynote/';
-        var disqus_url = 'http://javimoreno.me/blog/2013/10/05/adios-keynote/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
+		
+		
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -501,12 +364,11 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
   </script>
 
 
-  
+		  
   <script defer="defer" src="http://rodney.karmacracy.com/widget-3.0/?id=ID&button=1&display=right&show-tooltip=0"></script>
   
 
 
+  </body>
 
-
-</body>
 </html>
