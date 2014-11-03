@@ -14,7 +14,6 @@
     <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/solarized-light.css">
     <link rel="canonical" href="http://javimoreno.me/">
 	  
   <script type="text/javascript">
@@ -94,11 +93,49 @@
   <ul class="post-list">
     
       <li>
+        <span class="post-meta">Nov 3, 2014</span>
+
+        <h2>
+          <a class="post-link" href="/blog/2014/11/03/obsesin-por-los-detalles/">Obsesión Por Los&nbsp;Detalles</a>
+        </h2>
+				
+				<p>El objetivo de esta entrada no es ser publicada, es simplemente testear las diferencias entre usar <code>codeblock o </code>highlight para resaltar el código fuente de una entrada de este blog.</p>
+
+<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row unnumbered"><div class="code-highlight-line"><span class="k">module</span> <span class="nn">Reading</span>
+</div></div><div data-line="2" class="code-highlight-row unnumbered"><div class="code-highlight-line">  <span class="k">class</span> <span class="nc">Generator</span> <span class="o">&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Generator</span>
+</div></div><div data-line="3" class="code-highlight-row unnumbered"><div class="code-highlight-line">    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+</div></div><div data-line="4" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">ongoing</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="no">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ongoing?</span><span class="p">)</span>
+</div></div><div data-line="5" class="code-highlight-row unnumbered"><div class="code-highlight-line"> </div></div><div data-line="6" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">detect</span> <span class="p">&#x7b;</span><span class="o">|</span><span class="n">page</span><span class="o">|</span> <span class="n">page</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;reading.html&#39;</span><span class="p">&#x7d;</span>
+</div></div><div data-line="7" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;ongoing&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">ongoing</span>
+</div></div><div data-line="8" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;done&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">done</span>
+</div></div><div data-line="9" class="code-highlight-row unnumbered"><div class="code-highlight-line">    <span class="k">end</span>
+</div></div><div data-line="10" class="code-highlight-row unnumbered"><div class="code-highlight-line">  <span class="k">end</span>
+</div></div><div data-line="11" class="code-highlight-row unnumbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Reading</span>
+  <span class="k">class</span> <span class="nc">Generator</span> <span class="o">&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Generator</span>
+    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+      <span class="n">ongoing</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="no">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ongoing?</span><span class="p">)</span>
+
+      <span class="n">reading</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">page</span><span class="o">|</span> <span class="n">page</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;reading.html&#39;</span><span class="p">}</span>
+      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;ongoing&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">ongoing</span>
+      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;done&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">done</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+
+				
+				
+				
+      </li>
+    
+      <li>
         <span class="post-meta">Apr 7, 2014</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2014/04/07/octoberry-pi/">Octoberry&nbsp;Pi</a>
-        </h1>
+        </h2>
 				
 				<p>Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta. <br />
 Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.  <br />
@@ -121,9 +158,9 @@ Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora
       <li>
         <span class="post-meta">Apr 4, 2014</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2014/04/04/tweets-automaticos-con-octopress/">Tweets Automáticos Con&nbsp;Octopress</a>
-        </h1>
+        </h2>
 				
 				<p>Ultimamente estoy dedicando mi tiempo libre (cada día más escaso) a automatizar ciertas tareas que Octopress, por su naturaleza estática, no permite realizar. En este post explico como acabar con una de mis mayores frustraciones: poner un tweet automáticamente cada vez que publico un artículo usando Karmacracy como acortador.</p>
 
@@ -138,9 +175,9 @@ Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora
       <li>
         <span class="post-meta">Feb 25, 2014</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2014/02/25/pow-es-poderoso/">Pow!! Es&nbsp;Poderoso!&nbsp;<span class='post-marker post-marker-after'>♟</span></a>
-        </h1>
+        </h2>
 				
 				<p>Pow!! es la típica cosa que nunca has necesitado pero que una vez la has probado ya no puedes vivir sin ella. No hay nada malo en escribir http://localhost seguido del puerto por donde sirve tu aplicación pero… ¿a qué sería todo más fácil si pudieras llamar a tus proyectos web también por su nombre en tu máquina local? Pues bien, Pow!! se encarga de eso. </p>
 
@@ -155,9 +192,9 @@ Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora
       <li>
         <span class="post-meta">Feb 25, 2014</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2014/02/25/jugando-a-ser-john-gruber/">Jugando a Ser John&nbsp;Gruber&nbsp;<span class='post-marker post-marker-after'>♟</span></a>
-        </h1>
+        </h2>
 				
 				<p>En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo <a href="http://www.marco.org">Marco Arment</a> o <a href="http://daringfireball.net">Daring Fireball</a>.  <br />
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜</p>
@@ -171,9 +208,9 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
       <li>
         <span class="post-meta">Jan 26, 2014</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2014/01/26/workflows-de-editorial-para-octopress/">Workflows De Editorial Para&nbsp;Octopress</a>
-        </h1>
+        </h2>
 				
 				<p>He estado creando una serie de workflows en <a href="https://itunes.apple.com/es/app/editorial/id673907758?mt=8">Editorial</a> que creo serán de gran ayuda a todos los que usen esta fantástica herramienta de edición para iPad al escribir las entradas de su blog Octopress.    </p>
 
@@ -188,9 +225,9 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
       <li>
         <span class="post-meta">Nov 11, 2013</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2013/11/11/padrinos-y-vacunas/">Padrinos Y&nbsp;Vacunas</a>
-        </h1>
+        </h2>
 				
 				<figure class="quote"><blockquote><p>Le haré una oferta que no podrá rechazar.</p></blockquote><figcaption class="quote-source"><span class="quote-author">Vito Corleone </span><cite class="quote-title">El Padrino</cite></figcaption></figure>
 
@@ -207,9 +244,9 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
       <li>
         <span class="post-meta">Oct 5, 2013</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2013/10/05/adios-keynote/">Adios Keynote, Hola&nbsp;reveal.js</a>
-        </h1>
+        </h2>
 				
 				<p>El día que empecé a preparar la presentación <a href="http://slides.helios.javimoreno.me">Helios y su integración en iOS</a> me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,… con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí <a href="https://github.com/hakimel/reveal.js">reveal.js</a>… y decidí no volver a abrir Keynote nunca más.</p>
 
@@ -224,9 +261,9 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
       <li>
         <span class="post-meta">Jul 6, 2013</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2013/07/06/markdown/">Markdown</a>
-        </h1>
+        </h2>
 				
 				<p>Hay dos cosas que recomendaría a todo el mundo que tuviera que escribir <em>frecuentemente</em> en un ordenador:     </p>
 
@@ -246,9 +283,9 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
       <li>
         <span class="post-meta">May 22, 2013</span>
 
-        <h1>
+        <h2>
           <a class="post-link" href="/blog/2013/05/22/helios-iii-piratas-y-bucaneros/">Helios III. Piratas Y&nbsp;Bucaneros.</a>
-        </h1>
+        </h2>
 				
 				<figure class="quote"><blockquote><p>El puerto espacial de Mos Eisley. No encontrarás nunca un lugar como éste tan lleno de maldad y vileza. Debemos cuidarnos.</p></blockquote><figcaption class="quote-source"><span class="quote-author">Star Wars</span><cite class="quote-title">Ben Kenobi llegando a Mos Eisley con Luke Skywalker</cite></figcaption></figure>
 
@@ -259,24 +296,6 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
 				
 				
 					<p><a class="excerpt-link" href="/blog/2013/05/22/helios-iii-piratas-y-bucaneros/">Sigue leyendo</a></p>
-				
-				
-      </li>
-    
-      <li>
-        <span class="post-meta">May 21, 2013</span>
-
-        <h1>
-          <a class="post-link" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Mamá, Salgo en Un&nbsp;Podcast!</a>
-        </h1>
-				
-				<p>Aunque el COBOL no esté dentro de la temática habitual de este blog, si habéis leido mi entrada sobre mis diez años como programador, sabréis que los proyectos a los que me dedico durante el día tienen a ese <em>maravilloso</em> lenguaje como base para el desarrollo. Por este motivo, cada vez que se habla de COBOL salto como un resorte y en <a href="https://twitter.com/jmoreno78/statuses/274461772721827840">uno de esos saltos</a>, <a href="http://twitter.com/jablanco">Jose Antonio Blanco</a> cometió la locura de dejarme participar en el podcast <a href="http://wedevelopers.com">We.Developers</a>.    <br />
-Supongo que la audiencia le bajará estrepitosamente. Si queréis echar un vistazo al guión que preparé, es el cuerpo principal de este post.</p>
-
-
-				
-				
-					<p><a class="excerpt-link" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Sigue leyendo</a></p>
 				
 				
       </li>
