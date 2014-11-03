@@ -6,9 +6,23 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Nov 2014 23:16:15 +0100</pubDate>
-    <lastBuildDate>Mon, 03 Nov 2014 23:16:15 +0100</lastBuildDate>
+    <pubDate>Mon, 03 Nov 2014 23:11:38 +0000</pubDate>
+    <lastBuildDate>Mon, 03 Nov 2014 23:11:38 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Enfocarse O Morir</title>
+        <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Despite all my rage I’m still just a rat in a cage.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;The Smashing Pumpkins&lt;/span&gt;&lt;cite class=&quot;quote-title&quot;&gt;Mellon Collie and The Infinity Sadness&lt;/cite&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;Es triste ver la fecha de la última publicación de este blog. Es triste ver cuando fué la última vez que hice algún commit a uno de mis &lt;em&gt;proyectos nocturnos&lt;/em&gt;. En todo este tiempo no han dejado de venirme ideas ni para escribir artículos ni para hacer aplicaciones pero no creo que el problema sea la falta de ideas sino la falta de tiempo y dedicación para desarrollarlas.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 04 Nov 2014 00:04:00 +0000</pubDate>
+        <link>http://javimoreno.me/blog/2014/11/04/enfocarse-o-morir/</link>
+        <guid isPermaLink="true">http://javimoreno.me/blog/2014/11/04/enfocarse-o-morir/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Octoberry Pi</title>
@@ -114,7 +128,7 @@ Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repo
 &lt;p&gt;Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.  &lt;br /&gt;
 Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante &lt;code&gt;crontab&lt;/code&gt; me daría mucha agilidad.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 07 Apr 2014 09:30:00 +0200</pubDate>
+        <pubDate>Mon, 07 Apr 2014 09:30:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2014/04/07/octoberry-pi/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/04/07/octoberry-pi/</guid>
         
@@ -185,7 +199,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 &lt;p&gt;Y ya está, si todo ha funcionado perfectamente, al publicar esta entrada automáticamente se ha publicado también un tweet. ;-)&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 04 Apr 2014 01:21:00 +0200</pubDate>
+        <pubDate>Fri, 04 Apr 2014 01:21:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/</guid>
         
@@ -204,7 +218,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 
 &lt;p&gt;Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas opciones que seguro cubrirán tu necesidad.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 25 Feb 2014 02:13:00 +0100</pubDate>
+        <pubDate>Tue, 25 Feb 2014 02:13:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</guid>
         
@@ -217,7 +231,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
+        <pubDate>Tue, 25 Feb 2014 01:30:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
         
@@ -274,7 +288,7 @@ Si se hace de esta forma, el primer workflow creara un fichero octopress a la pr
 
 &lt;p&gt;Mola, ¿eh?&lt;/p&gt;
 </description>
-        <pubDate>Sun, 26 Jan 2014 00:59:00 +0100</pubDate>
+        <pubDate>Sun, 26 Jan 2014 00:59:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2014/01/26/workflows-de-editorial-para-octopress/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/01/26/workflows-de-editorial-para-octopress/</guid>
         
@@ -423,7 +437,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
 &lt;p&gt;El código fuente de dicha aplicación lo podéis ver en &lt;a href=&quot;https://github.com/jmoreno/VacScheduler&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 11 Nov 2013 01:31:00 +0100</pubDate>
+        <pubDate>Mon, 11 Nov 2013 01:31:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</guid>
         
@@ -579,7 +593,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
 
 &lt;p&gt;Como al final no me faltó el valor, ahí está la presentación: en &lt;a href=&quot;http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os&quot;&gt;slideshare&lt;/a&gt;, &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk&quot;&gt;Github&lt;/a&gt; y &lt;a href=&quot;http://slides.helios.javimoreno.me/#/&quot;&gt;Heroku&lt;/a&gt;. \o/&lt;/p&gt;
 </description>
-        <pubDate>Sat, 05 Oct 2013 03:07:00 +0200</pubDate>
+        <pubDate>Sat, 05 Oct 2013 03:07:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2013/10/05/adios-keynote/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/10/05/adios-keynote/</guid>
         
@@ -636,7 +650,7 @@ Cuando termino de escribir los readme, copio el texto y lo pego en el fichero co
 
 &lt;p&gt;Y ya esta, llamadme enrevesado pero esta es la forma más cómoda que tengo de trabajar. ;-)&lt;/p&gt;
 </description>
-        <pubDate>Sat, 06 Jul 2013 16:10:00 +0200</pubDate>
+        <pubDate>Sat, 06 Jul 2013 16:10:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2013/07/06/markdown/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/07/06/markdown/</guid>
         
@@ -985,7 +999,7 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
   &lt;p&gt;Ojito con las dependencias. No se que versión de Helios, CargoBay y AFNetworking estaréis utilizando pero se nota que estos frameworks se están tocando bastante estos días. Yo he tenido algún problemita que otro a la hora de preparar esta entrada. Nada que un par de horas de cabezazos en la pared no solucionen… ;-)&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-        <pubDate>Wed, 22 May 2013 06:54:00 +0200</pubDate>
+        <pubDate>Wed, 22 May 2013 06:54:00 +0000</pubDate>
         <link>http://javimoreno.me/blog/2013/05/22/helios-iii-piratas-y-bucaneros/</link>
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/05/22/helios-iii-piratas-y-bucaneros/</guid>
         
@@ -994,166 +1008,6 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
         <category>In-App Purchases</category>
         
         <category>CargoBay</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Mamá, Salgo en Un Podcast!</title>
-        <description>&lt;p&gt;Aunque el COBOL no esté dentro de la temática habitual de este blog, si habéis leido mi entrada sobre mis diez años como programador, sabréis que los proyectos a los que me dedico durante el día tienen a ese &lt;em&gt;maravilloso&lt;/em&gt; lenguaje como base para el desarrollo. Por este motivo, cada vez que se habla de COBOL salto como un resorte y en &lt;a href=&quot;https://twitter.com/jmoreno78/statuses/274461772721827840&quot;&gt;uno de esos saltos&lt;/a&gt;, &lt;a href=&quot;http://twitter.com/jablanco&quot;&gt;Jose Antonio Blanco&lt;/a&gt; cometió la locura de dejarme participar en el podcast &lt;a href=&quot;http://wedevelopers.com&quot;&gt;We.Developers&lt;/a&gt;.    &lt;br /&gt;
-Supongo que la audiencia le bajará estrepitosamente. Si queréis echar un vistazo al guión que preparé, es el cuerpo principal de este post.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;citas-relacionadas-con-cobol&quot;&gt;Citas relacionadas con COBOL&lt;/h2&gt;
-
-&lt;p&gt;No hay muchas, la verdad. Las mejores son las que hacen un poco de leña con el lenguaje, como la de Dijktstra. Son un &lt;em&gt;poco&lt;/em&gt; ofensivas pero la verdad es que son graciosas. Echale un vistazo a estas a ver que te parecen:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offence.  &lt;br /&gt;
-— Edsger Dijkstra&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Cobol has almost no fervent enthusiasts. As a programming tool, it has roughly the sex appeal of a wrench.  &lt;br /&gt;
-— Charles Petzold&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A computer without COBOL and FORTRAN is like a piece of chocolate cake without ketchup or mustard.  &lt;br /&gt;
-— John Krueger&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The tree large enough that a stake capable of killing COBOL could be fashioned from its trunk has not yet grown anywhere upon the face of this verdant planet.   &lt;br /&gt;
-— Dan Martinez&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Como puedes ver, las tres primeras son bastante jocosas con el lenguaje… la última es bastante real y es la que no buscar herir el lenguaje. Vendría a traducirse a algo así como:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;El árbol lo suficientemente largo como para que una estaca capaz de matar al COBOL pudiera sacarse de su tronco todavía no ha crecido lo suficiente en ningún lugar de este verde planeta.  &lt;br /&gt;
-- Dan Martinez&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;historia&quot;&gt;Historia&lt;/h2&gt;
-
-&lt;p&gt;A finales de los años 50, con la aparición de las primeras máquinas &lt;em&gt;comerciales&lt;/em&gt; los usuarios empazaban a reclamar a los fabricantes una convergencia en los lenguajes de programación ya que por aquel entonces lo habitual era que cada fabricante tuviera su propio lenguaje para comunicarse con sus máquinas.  &lt;br /&gt;
-Una comisión formada por fabricantes de ordenadores, usuarios, trabajadores de la Universidad de Pennsylvania y el Departamento de Defensa de los Estados Unidos fue la que, después de tan solo seis meses de trabajo, definió el lenguaje COBOL, siglas de COmmon Bussines Oriented Language. &lt;br /&gt;
-Un par de años antes, Grace Hopper había desarrollado FLOW-MATIC, un lenguaje pionero ya que empleaba instrucciones en ingles para comunicarse con la máquina. Precisamente para poder transformar estas instrucciones en lenguaje máquina, Grace Hopper creó el primer compilador. Este lenguaje FLOW-MATIC fue en el que más se basó la comisión por lo que, a modo de atribución, se llama a Grace Hopper la madre de COBOL ya que en realidad no tuvo un papel tan preponderante en la comisión. &lt;/p&gt;
-
-&lt;p&gt;Después de la primera definición del lenguaje en el año 59, se realizaron varias revisiones mayores: en el 68, 74, 85 y 2002. La más frecuente suele ser una mejora del año 89 sobre la del 85. La del año 2002 es la que introduce muchos más cambios como orientación a objetos, soporte a mucho más tipos de variables, generación y parseo de XML pero no está muy implementada. &lt;/p&gt;
-
-&lt;h2 id=&quot;caractersticas&quot;&gt;Características&lt;/h2&gt;
-
-&lt;p&gt;La principal característica del COBOL está en su propio nombre: es un lenguaje totalmente orientado a la automatización de procesos de negocio. Quizá ese y no otro sea el principal motivo por el que sigue tan vigente. La mayoría de los lenguajes de programación de los que hablamos hoy en día (C, Java, C++, Objective-C, PHP, Javascript, Python, Ruby, etc) sirven para hacer cualquier tipo de programa. Obviamente están orientados a unas determinadas tecnologías o nichos de mercado: juegos, desarrollo web, drivers, aplicaciones de escritorio, aplicaciones móviles, etc pero no hay ninguno que sirva específicamente para hacer un CRM. COBOL fue diseñado específicamente para dar respuestas a una serie de necesidades que tenían las empresas para automatizar sus procesos. Todos querían un único lenguaje que les permitiera hacer eso, automatizaron sus procesos, procesos que en su mayoría no han cambiado en los últimos 50 o 60 años: emisión de recibos, listados de inventario, contratación de productos, control de actividad de procesos, etc. &lt;/p&gt;
-
-&lt;p&gt;Otra característica novedosa para la época era que soportaba nombres de variables y de métodos de hasta 32 caracteres. Por esto se habla a veces de la &lt;em&gt;verbosidad&lt;/em&gt; del COBOL. El código es muy legible y casi autodocumentado. Una de las cosas que tuvo muy en cuenta la comisión para el diseño del lenguaje es que un Gerente sin formación técnica pudiera leer el código fuente de un programa y entender que es lo que estaba pasando (luego llego el GOTO y acabo con este sueño dorado). Todos los lenguajes de programación tienen una fuerte influencia de la lengua inglesa pero con pocos tienes la sensación de estar hablando con la máquina como con COBOL: Como programador, escribir i++ y que la variable i aumente su valor en una unidad es una sensación de poder. Para un usuario, leer ADD 1 TO INDEX no deja lugar a dudas.
-Eso no quita para que no haya que poner comentarios: la duda que nos surgirá cuando leamos la instrucción anterior en cualquier lenguaje es: ¿por qué cojones aumenta el indice?&lt;/p&gt;
-
-&lt;p&gt;Es un lenguaje de tipado débil. Solo hay dos tipos de variables: numéricas y alfanuméricas. Dentro de las numéricas hay bastantes tipos de empaquetamientos: binario, hexadecimal, decimal comprimido, sin comprimir, editados… un lenguaje dedicado al mundo empresarial tiene que tener una buena gestión de variables numéricas. Es importante destacar que en la definición de la variable se indica explícitamente su longitud, es decir, el número de bytes que necesita. También pueden contruirse arrays.&lt;/p&gt;
-
-&lt;p&gt;Las variables pueden agruparse dentro de otras variables (una especie de estructuras de C… pero solo una especie) identificandose la pertenencia a un grupo mediante la indentación por código de nivel. Un ejemplo sería una cuenta corriente: A nivel 01 estaría la variable CUENTA-CORRIENTE, a nivel 05 tendríamos CODIGO-BANCO, CODIGO-SUCURSAL, PRIMER-DIGITO-CONTROL, SEGUNDO-DIGITO-CONTROL y NUMERO-CUENTA. Si utilizamos numéricos de base decimal solo ocuparíamos 20 bytes, es decir, los 20 bytes estarían divididos en cinco bloques de 4, 4, 1, 1 y 10 bytes. &lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;01  CUENTA-CORRIENTE
-    05  CODIGO-BANCO           PIC 9(4).
-    05  CODIGO-SUCURSAL        PIC 9(4).
-    05  PRIMER-DIGITO-CONTROL  PIC 9.
-    05  SEGUNDO-DIGITO-CONTROL PIC 9(1).
-    05  NUMERO-CUENTA          PIC 9(10).
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;No es necesario definir el tipo y la longitud de la variable de primer nivel. Siempre será alfanumérica y ocupara los mismos bytes que las variables que agrupa. En este caso, si queremos tratarla como numérica tendríamos que redefinirla como numérica. Esto se hace con la instrucción REDEFINES.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;01 CUENTA-CORRIENTE-NUMERICA   PIC 9(20).
-01 CUENTA-CORRIENTE REDEFINES CUENTA-CORRIENTE-NUMERICA.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;No hay variables de tipo booleano, se construyen mediante niveles especiales de indentación pero en realidad se parecen mas a un &lt;em&gt;enum&lt;/em&gt;. La diferencia con los enum es que podemos evaluar variables numéricas y alfanuméricas.&lt;/p&gt;
-
-&lt;p&gt;La estructura de un programa COBOL es muy rígida: Consta de cuatro partes aunque no todas son obligatorias: 
-- Una primera de encabezado (IDENTIFICATION DIVISION), donde se pone el nombre del programa, el autor, las fecha de compilación, etc. 
-- Una segunda de configuración del entorno (ENVIRONMENT DIVISION), cuando el programa accede a ficheros esta es la sección donde se informan las características de dicho fichero, si en lugar de trabajar con punto como separador decimal se utilizase la coma se indicaría en esta sección. 
-- Una tercera para los datos (DATA DIVISION) donde se definen todas las variables que va a utilizar el programa, se aporta algo más de información sobre los ficheros que se hubieran definido en la sección anterior, etc.
-- Una cuarta para las instrucciones (PROCEDURE DIVISION) que sería lo que actualmente entendemos por programa. Es donde se tira el código.&lt;/p&gt;
-
-&lt;p&gt;Además de la rigidez de la secciones, el número de columna donde se escribe también es muy importante: los seis primero caracteres están reservados, el séptimo solo se utiliza para comentar o descomentar el código. Del 8 al 11 están reservados para la identificación de las divisiones y las secciones, los niveles 01 de variables y las definiciones de los ficheros. Esto es lo que se conoce como zona A. De la 12 a la 72 es la zona normal para codificar y se conoce como zona B. De la columna 72 a la 80 tampoco se debe escribir ya que el compilador no va a leer lo que ahí escribamos. Esta estructura procede de la forma original de programa en COBOL. Al principio no había IDE´s si no que se usaban fichas de programación. Estas fichas se introducían en los compiladores y si todo era correcto se generaban las tarjetas perforadas con las que funcionaban los mainframes. Aunque ya no haya tarjetas perforadas y se utilicen IDE´s para la codificación, estas restricciones se mantienen en los compiladores actuales.&lt;/p&gt;
-
-&lt;h2 id=&quot;plataformas-y-variantes&quot;&gt;Plataformas y Variantes&lt;/h2&gt;
-
-&lt;p&gt;Aunque la plataforma habitual son los Mainframes se pueden encontrar programas para ordenadores personales. En este punto puedo meter la pata porque el entorno que yo conozco es el mainframe. Aunque el lenguaje COBOL es el mismo, a la versión del lenguaje que se utiliza para desarrollar aplicaciones que luego van a correr en sistemas operativos de ordenadores personales se la llama RM-COBOL. Hay empresas actuales que comercializan productos para seguir desarrollando y manteniendo estos programas como MicroFocus. &lt;/p&gt;
-
-&lt;p&gt;En entorno mainframe la versión más extendida es la del año 85 revisada en el 89. En algunos lugares se puede encontrar una versión denominada ENTERPRISE que además se actualiza con más frecuencia. Cuando me han hablado de ella, lo que más me han destacado es que permite trabajar con variables numéricas de mayor tamaño por lo que se usa en entidades financieras en las que los importes son muy elevados y existe riesgo de perder cifras significativas.&lt;/p&gt;
-
-&lt;p&gt;La versión de 2002 “oficializa” algunos desarrollos de terceros existentes que permiten embeber código COBOL en servicios .NET, Java, etc. Yo no he conocido a nadie que haya hecho algo de esto. No se si será más habitual en otros tipos de clientes, en otros países o si será algo menos frecuente como los programas RM-COBOL. &lt;/p&gt;
-
-&lt;h3 id=&quot;entornos-de-desarrollo&quot;&gt;Entornos de desarrollo&lt;/h3&gt;
-
-&lt;p&gt;Aunque se puede programar en cualquier editor de notas. He conocido gente que escribían los programas en Ultra-Edit, otros que lo hacían en SPFPC, un programa MS-DOS con el que se puede escribir un programa, compilarlo, ejecutarlo, etc.&lt;/p&gt;
-
-&lt;p&gt;IBM, que es la reina indiscutible en este baile, tiene herramientas de desarrollo COBOL sobre Rational por lo que los programadores de COBOL no tendríamos nada que envidiar a los de Java, aun así, creo que lo más normal si se trabaja en entorno mainframe es usar el IDE que provee el sistema operativo del mainframe o algún otro IDE de terceros que se instale en el mainframe. &lt;/p&gt;
-
-&lt;p&gt;El sistema operativo Z/OS, es el que actualmente traen los ainframes de IBM. Este sistema operativo incluye las funcionalidades originales del MVS pero se le ha agregado compatibilidad con UNIX, soporte para espacios de memoria virtual lo que hace que los mainframe no solo sirvan para tener las funciones clásicas. Entre las características que tiene este sistema operativo se encuentra la de traer de serie un entorno de desarrollo en el que crear, compilar y ejecutar programas contra el propio mainframe… y desde el propio mainframe. Porque no hemos de olvidar que el acceso a este bicharraco se hace siempre desde terminales tontos. En este entorno de desarrollo, cada usuario puede tener su configuración,… el sistema operativo es multiusuario y multitarea. Yo puedo conectarme en mi pc de Madrid al Host de mi empresa, desde un portátil en el AVE Madrid-Barcelona, en el equipo de un compañero en la oficina de Barcelona… y si lo hago con mi usuario y contraseña siempre estaré viendo mi configuración, mis programas, mis librerías y mis permisos. Esto es así desde los años 70… ¿Cuantos años lleva Linode ofreciendo estas ventajas a los desarrolladores? Si, no se puede comparar lo que puede desarrollarse en un mainframe con lo que podemos hacer desde una virtualización de Linode pero la reflexión que yo siempre me hago es que los ciclos también llegan a la tecnología.&lt;/p&gt;
-
-&lt;p&gt;Como en cualquier otro lenguaje, COBOL no sería nada si no fuera por otras tecnologías que están a su alrededor. Igual que PHP casi siempre va acompañado de MySQL y de un servidor Apache, el COBOL siempre va rodeado de una serie de términos (tecnologías) que suelen verse en ofertas de empleo. Se suelen buscar expertos en COBOL-CICS-DB2 con conocimientos de JCL, VSAM, IMS, SORTFD o cosas así. Salvando las distancias y pidiendo perdón de antemano a los compañeros del PHP por las confianzas que me estoy tomando, COBOL-CICS-DB2 es el LAMP, MAMP o WAMP del PHP:&lt;/p&gt;
-
-&lt;p&gt;CICS es el nombre del terminal de teleproceso que incluyen los mainframes y que son los que permiten las conexiones on-line al sistema desde cualquier terminal tonto o emulador de terminal tonto. Es también el encargado de servir información a los servicios web (estos ya desarrollados en cualquier lenguaje aunque Java es un habitual) que se conectan al CICS a través de algún Gateway. No requiere unos conocimientos adicionales al lenguaje, solo que hay una serie de instrucciones en el lenguaje que solo sirven cuando el programa se va a utilizar en una instalación CICS.&lt;/p&gt;
-
-&lt;p&gt;DB2 es una base de datos relacional, igual que MySQL, SQL Server, Oracle, etc. Es un producto de IBM que se puede instalar en distribuido y en mainframe. Al igual que el CICS, el único conocimiento adicional que se requiere es el de saber SQL, ya que es como se accede a la base de datos desde un programa COBOL.&lt;/p&gt;
-
-&lt;p&gt;IMS es un gestor de bases de datos jerárquicas, no es lo más actual pero todavía se sigue usando en algún sitio.&lt;/p&gt;
-
-&lt;p&gt;VSAM es un sistema de almacenamiento indexado. Aunque también esta muy desfasado, todavía es posible encontrar instalaciones que los usan. Los ficheros de tipo VSAM se usan para hacer la persistencia del DB2 así que para IBM siguen siendo de gran importancia.&lt;/p&gt;
-
-&lt;p&gt;JCL es el sistema que se utiliza para ejecutar un proceso Batch. No sirve solo para procesos COBOL sino también para lanzar muchas utilidades que vienen en el Sistema Operativo de los mainframes: utilidades del DB2, procesos de ordenamiento de ficheros planos con SORTFD. Es como un fichero de configuración o mejor, como una plantilla en la que se le dice al sistema operativo el entorno en el que se quiere ejecutar el programa, que programa es el que se va a ejecutar, quien es el usuario que lo lanza para ver si tiene permisos, donde están los ficheros, que estructura tienen, que tamaño se les ha definido, etc. Quizá es a la hora de preparar un JCL cuando mayor es la sensación de estar trabajando con una tecnología con más de 50 años de historia: se habla de fichas, cilindros, pistas, cintas…&lt;/p&gt;
-
-&lt;h2 id=&quot;para-que-se-usa-hoy-en-da&quot;&gt;Para que se usa hoy en día&lt;/h2&gt;
-
-&lt;p&gt;Hoy en día el COBOL está presente en multitud de situaciones cotidianas. Casi todos los sistemas bancarios están desarrollados en COBOL: ordenes de transferencia, venta de acciones, de valores, conciliaciones bancarias, procesos de facturación de grandes compañías telefónicas, o de grandes cadenas de supermercados. Aplicaciones completas de gestión de compañías de seguros, procesos de control de centrales eléctricas, aplicaciones de inventario de almacén… y así hasta el infinito. 
-Cuando se habla de la longevidad del COBOL no es porque queden muchos procesos antiguos que nadie se atreve a migrar, es que como esos desarrollos no están aislados, se sigue haciendo nuevo desarrollo en esta plataforma.&lt;/p&gt;
-
-&lt;p&gt;Quizá no somos conscientes porque la capa de presentación que vemos nosotros es una aplicación de escritorio tipo Windows, o una página web pero el COBOL está ahí, por debajo. Incluso en alguna aplicación de un dispositivo móvil, los datos son extraídos por un programa COBOL.&lt;/p&gt;
-
-&lt;p&gt;Si alguien se ha fijado alguna vez en unos ordenadores todo-en-uno que suele haber en El Corte Ingles en los que te buscan si un articulo está agotado o si lo puedes encontrar en otro centro a través de una pantalla negra en la que van tecleando y pulsando las teclas de función para moverse por las pantallas habrá visto un terminal CICS. La agencia de viajes y los seguros de El Corte Ingles también se contratan con un terminal CICS. &lt;/p&gt;
-
-&lt;p&gt;Para mal o para bien, procesos muy críticos para compañías que mueven un gran volumen de dinero están desarrollados en COBOL, podrían haberse desarrollado en cualquier otro lenguaje más moderno y con más prestaciones pero se desarrollaron en COBOL. A día de hoy, plantearse una refactorización completa de esos programas a otro lenguaje no solo requiere mucho tiempo si no también una gran valentía, y en realidad hay que plantearse también si compensa el cambio.&lt;/p&gt;
-
-&lt;p&gt;Esta claro que IBM tiene bien agarrados a los departamentos de sistemas que tienen un mainframe… pero también hay que entender que no todas las empresas son como Facebook o Twitter que pueden plantearse un gran cambio de tecnología. Aunque parezca mentira, en esas grandes entidades financieras, compañías telefónicas, cadenas de alimentación hay departamentos de Sistemas que no son muy grandes y que tienen que hacer frente a desarrollos nuevos y a   mantenimientos muy fuertes por lo que no es de extrañar que sigan apostando por conservar esa tecnología. Una tecnología que no está dando ningún problema, por otro lado, ¿hay que cambiarla simplemente porque sea vieja o no haya muchos programadores?&lt;/p&gt;
-
-&lt;p&gt;Sobre el número de programadores y su cotización también hay que aclarar algunas cosas. Lo primero es una triste noticia: la cotización de un programador COBOL no está unida a un sueldo alto. Gana como cualquier otro programador experimentado en Java, .Net o lo que sea. Aunque no hay una necesidad tan alta de programadores COBOL como hubo en los años del efecto 2000 o del cambio de la peseta al euro, se siguen haciendo muchos mantenimientos y nuevos desarrollos que requieren programadores COBOL y estoy convencido de que la demanda no disminuirá en los próximos años. &lt;/p&gt;
-
-&lt;h2 id=&quot;futuro&quot;&gt;Futuro&lt;/h2&gt;
-
-&lt;p&gt;Hay una frase que se le atribuye a Bill Gates que dice: “no se que lenguajes de programación habrá en el futuro pero COBOL estará allí”. Yo estoy totalmente de acuerdo.&lt;/p&gt;
-
-&lt;p&gt;Como ya he comentado en el apartado anterior, el COBOL está presente en procesos de vital importancia para empresas que mueven muchísimo dinero y además está presente en los procesos que garantizan que esas empresas sigan ganando dinero. Mientras IBM siga sirviendo Series Z estos procesos habrá que seguir manteniéndolos. Además, a medida que van apareciendo nuevas tecnologías, estas empresas no optan por sustituir los procesos COBOL por procesos codificados en lenguajes más modernos si no que buscan formas para que los procesos COBOL sigan funcionando: es posible enviar un email desde un  JCL, perfectamente podría enviarse un SMS, hacer una notificación PUSH o lo que venga a continuación.&lt;/p&gt;
-
-&lt;p&gt;Está claro que el COBOL no se va a utilizar para programar la próxima Red Social, o para hacer el Backend de un whatsapp, pero las empresas que mantienen procesos COBOL también utilizan tecnologías actuales que se han podido integrar así que a medida que sigan apareciendo nuevas tecnologías y estas se puedan seguir integrando, el COBOL seguirá.&lt;/p&gt;
-
-&lt;p&gt;A veces aparecen corrientes a favor de la desaparición del COBOL, o que auguran el final de IBM… hay hueco para todos y lo seguirá habiendo.&lt;/p&gt;
-
-&lt;h2 id=&quot;como-se-puede-aprender-cobol&quot;&gt;¿Como se puede aprender COBOL?&lt;/h2&gt;
-
-&lt;p&gt;Los programadores COBOL son como los Sith, siempre van juntos maestro y aprendiz… es una tradición oral que va pasando de generación en generación y de la que nunca queda constancia escrita… o casi.&lt;/p&gt;
-
-&lt;p&gt;Ahora más en serio, por hacer caso a Dijkstra, las universidades no enseñan COBOL, tampoco enseñan Objective-C… las universidades son así. 
-Yo aprendí a programar en COBOL en una academia, a través de una oferta de trabajo para gente que no tuviera experiencia en programación o muy poca experiencia. No se anuncian tanto como las que te enseñan a programar en Java o a hacer aplicaciones para iOS o Android pero buscando un poco se pueden encontrar. En IBM los tienen pero son bastante caros. 
-Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBOL a través de internet: habrá que buscar un emulador de un Host, una licencia de MicroFocus y buscar algún tutorial. Si que es cierto que conseguir un mainframe no es algo que pueda hacerse a través de ebay por lo que algunas de las características del lenguaje más relacionadas con esta arquitectura se tendrán que programar en alguna academia buena o directamente en el centro de trabajo.&lt;/p&gt;
-
-&lt;h2 id=&quot;enlaces-de-interes&quot;&gt;Enlaces de interes:&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/COBOL&quot;&gt;Su historia, en la wikipedia&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;http://alt1040.com/2011/12/historia-de-la-tecnologia-el-lenguaje-cobol&quot;&gt;Su historia, en Alt1040&lt;/a&gt;  &lt;br /&gt;
-&lt;a href=&quot;http://www.escobol.com/&quot;&gt;Foro de cobol en castellano&lt;/a&gt;  &lt;br /&gt;
-&lt;a href=&quot;http://www.microfocus.com/products/micro-focus-developer/rm-cobol/&quot;&gt;Empresa comercializador de RM/COBOL&lt;/a&gt;  &lt;br /&gt;
-&lt;a href=&quot;http://www.carlospinan.com/2012/09/21/iniciando-con-cobol-en-windows-7/&quot;&gt;Curiosidad, el blog de alguien que quiere aprender COBOL en 2012&lt;/a&gt;  &lt;br /&gt;
-&lt;a href=&quot;http://pic.dhe.ibm.com/infocenter/pdthelp/v1r1/index.jsp?topic=%2Fcom.ibm.entcobol.doc_4.2%2FPGandLR%2Fpgtitlemvs.htm&quot;&gt;La Biblioteca de Alejandría: La documentación de IBM&lt;/a&gt;  &lt;br /&gt;
-&lt;a href=&quot;http://www.codinghorror.com/blog/2009/08/cobol-everywhere-and-nowhere.html&quot;&gt;Hasta Jeff Atwood habla de él&lt;/a&gt;    &lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 21 May 2013 19:24:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast/</link>
-        <guid isPermaLink="true">http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast/</guid>
         
         
       </item>
