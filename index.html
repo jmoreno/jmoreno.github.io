@@ -93,44 +93,6 @@
   <ul class="post-list">
     
       <li>
-        <span class="post-meta">Nov 3, 2014</span>
-
-        <h2>
-          <a class="post-link" href="/blog/2014/11/03/obsesin-por-los-detalles/">Obsesión Por Los&nbsp;Detalles</a>
-        </h2>
-				
-				<p>El objetivo de esta entrada no es ser publicada, es simplemente testear las diferencias entre usar <code>codeblock o </code>highlight para resaltar el código fuente de una entrada de este blog.</p>
-
-<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row unnumbered"><div class="code-highlight-line"><span class="k">module</span> <span class="nn">Reading</span>
-</div></div><div data-line="2" class="code-highlight-row unnumbered"><div class="code-highlight-line">  <span class="k">class</span> <span class="nc">Generator</span> <span class="o">&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Generator</span>
-</div></div><div data-line="3" class="code-highlight-row unnumbered"><div class="code-highlight-line">    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
-</div></div><div data-line="4" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">ongoing</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="no">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ongoing?</span><span class="p">)</span>
-</div></div><div data-line="5" class="code-highlight-row unnumbered"><div class="code-highlight-line"> </div></div><div data-line="6" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">detect</span> <span class="p">&#x7b;</span><span class="o">|</span><span class="n">page</span><span class="o">|</span> <span class="n">page</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;reading.html&#39;</span><span class="p">&#x7d;</span>
-</div></div><div data-line="7" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;ongoing&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">ongoing</span>
-</div></div><div data-line="8" class="code-highlight-row unnumbered"><div class="code-highlight-line">      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;done&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">done</span>
-</div></div><div data-line="9" class="code-highlight-row unnumbered"><div class="code-highlight-line">    <span class="k">end</span>
-</div></div><div data-line="10" class="code-highlight-row unnumbered"><div class="code-highlight-line">  <span class="k">end</span>
-</div></div><div data-line="11" class="code-highlight-row unnumbered"><div class="code-highlight-line"><span class="k">end</span></div></div></pre></div></figure>
-
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Reading</span>
-  <span class="k">class</span> <span class="nc">Generator</span> <span class="o">&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Generator</span>
-    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
-      <span class="n">ongoing</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="no">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ongoing?</span><span class="p">)</span>
-
-      <span class="n">reading</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">page</span><span class="o">|</span> <span class="n">page</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;reading.html&#39;</span><span class="p">}</span>
-      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;ongoing&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">ongoing</span>
-      <span class="n">reading</span><span class="o">.</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;done&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="n">done</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
-
-
-				
-				
-				
-      </li>
-    
-      <li>
         <span class="post-meta">Apr 7, 2014</span>
 
         <h2>
@@ -296,6 +258,24 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
 				
 				
 					<p><a class="excerpt-link" href="/blog/2013/05/22/helios-iii-piratas-y-bucaneros/">Sigue leyendo</a></p>
+				
+				
+      </li>
+    
+      <li>
+        <span class="post-meta">May 21, 2013</span>
+
+        <h2>
+          <a class="post-link" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Mamá, Salgo en Un&nbsp;Podcast!</a>
+        </h2>
+				
+				<p>Aunque el COBOL no esté dentro de la temática habitual de este blog, si habéis leido mi entrada sobre mis diez años como programador, sabréis que los proyectos a los que me dedico durante el día tienen a ese <em>maravilloso</em> lenguaje como base para el desarrollo. Por este motivo, cada vez que se habla de COBOL salto como un resorte y en <a href="https://twitter.com/jmoreno78/statuses/274461772721827840">uno de esos saltos</a>, <a href="http://twitter.com/jablanco">Jose Antonio Blanco</a> cometió la locura de dejarme participar en el podcast <a href="http://wedevelopers.com">We.Developers</a>.    <br />
+Supongo que la audiencia le bajará estrepitosamente. Si queréis echar un vistazo al guión que preparé, es el cuerpo principal de este post.</p>
+
+
+				
+				
+					<p><a class="excerpt-link" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Sigue leyendo</a></p>
 				
 				
       </li>
