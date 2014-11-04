@@ -1,7 +1,7 @@
 desc "Publicación automática"
 task :publicar do
   puts "\n## Generación del sitio estático con Octopress"
-  status = system("octopress generate")
+  status = system("octopress build")
   puts status ? "Success" : "Failed"
   puts "\n## Despliegue del sitio en Github Pages"
   status = system("octopress deploy")
