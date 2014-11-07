@@ -47,6 +47,6 @@ task :publicar do
   status = system("git push origin source")
   puts status ? "Todo ha ido bien" : "Algo ha salido mal"
   puts "\n## Pushing commits to remote"
-  Rake::Task[':share_with_twitter'].execute
+  Rake::Task[:share_with_twitter].execute
 end
 
