@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 07 Nov 2014 17:03:49 +0100</pubDate>
-    <lastBuildDate>Fri, 07 Nov 2014 17:03:49 +0100</lastBuildDate>
+    <pubDate>Fri, 07 Nov 2014 18:23:25 +0100</pubDate>
+    <lastBuildDate>Fri, 07 Nov 2014 18:23:25 +0100</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -431,7 +431,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
       </item>
     
       <item>
-        <title>Adios Keynote, Hola reveal.js</title>
+        <title>Adios Keynote. Hola reveal.js</title>
         <description>&lt;p&gt;El día que empecé a preparar la presentación &lt;a href=&quot;http://slides.helios.javimoreno.me&quot;&gt;Helios y su integración en iOS&lt;/a&gt; me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,… con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí &lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;reveal.js&lt;/a&gt;… y decidí no volver a abrir Keynote nunca más.&lt;/p&gt;
 
 &lt;!--more--&gt;
