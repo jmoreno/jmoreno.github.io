@@ -1,13 +1,18 @@
 require 'twitter'
 
+twitter_consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
+twitter_consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
+twitter_access_token        = "99518813-yNGjsxxBSWQYcluuY16lB4lYgel7xgR2S0jry53n5"
+twitter_access_token_secret = "gh8LPBMtAjYyqkz3wckwEHu3zMsHaNFVyMcIVsKHBOmO2"
+
 task :share_with_twitter do
  
   # Twitter config (for tweeting posts)
   client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
-    config.consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
-    config.access_token        = "99518813-yNGjsxxBSWQYcluuY16lB4lYgel7xgR2S0jry53n5"
-    config.access_token_secret = "gh8LPBMtAjYyqkz3wckwEHu3zMsHaNFVyMcIVsKHBOmO2"
+    config.consumer_key        = twitter_consumer_key
+    config.consumer_secret     = twitter_consumer_secret
+    config.access_token        = twitter_access_token
+    config.access_token_secret = twitter_access_token_secret
   end
  
   if File.exists? ".karmaplugin/tweets.info"
