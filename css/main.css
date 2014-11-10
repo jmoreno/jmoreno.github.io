@@ -89,7 +89,7 @@ blockquote {
  */
 pre,
 code {
-  font-family: "Source Code Pro";
+  font-family: 'Source Code Pro';
   font-size: 15px;
   border: 1px solid #e8e8e8;
   border-radius: 3px;
@@ -275,7 +275,8 @@ pre {
 
 .post-link {
   display: block;
-  font-size: 26px; }
+  font-size: 26px;
+  margin-bottom: 0px; }
 
 .excerpt-link {
   display: block;
@@ -288,10 +289,19 @@ pre {
 .post-header {
   margin-bottom: 30px; }
 
-.post-title {
+.post-title-h1 {
   font-size: 42px;
   letter-spacing: -1px;
   line-height: 1; }
+  @media screen and (max-width: 800px) {
+    .post-title-h1 {
+      font-size: 36px; } }
+
+.post-title {
+  font-size: 42px;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 2px; }
   @media screen and (max-width: 800px) {
     .post-title {
       font-size: 36px; } }
