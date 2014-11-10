@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Nov 2014 01:56:56 +0100</pubDate>
-    <lastBuildDate>Mon, 10 Nov 2014 01:56:56 +0100</lastBuildDate>
+    <pubDate>Mon, 10 Nov 2014 01:59:19 +0100</pubDate>
+    <lastBuildDate>Mon, 10 Nov 2014 01:59:19 +0100</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -216,7 +216,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 </description>
         <pubDate>Tue, 25 Feb 2014 02:13:00 +0100</pubDate>
 				 
-        <link>http://javimoreno.mehttp://pow.cx</link>
+        <link>http://pow.cx</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</guid>
         
@@ -233,7 +233,7 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
 </description>
         <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
 				 
-        <link>http://javimoreno.mehttp://octopress.org/docs/blogging/linklog/</link>
+        <link>http://octopress.org/docs/blogging/linklog/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
         
