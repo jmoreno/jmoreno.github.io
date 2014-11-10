@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Nov 2014 01:50:54 +0100</pubDate>
-    <lastBuildDate>Mon, 10 Nov 2014 01:50:54 +0100</lastBuildDate>
+    <pubDate>Mon, 10 Nov 2014 01:56:56 +0100</pubDate>
+    <lastBuildDate>Mon, 10 Nov 2014 01:56:56 +0100</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -202,7 +202,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
     
       <item>
 				 
-        <title>Pow!! Es Poderoso!</title>
+        <title>Pow!! Es&amp;nbsp;Poderoso!&amp;nbsp;&lt;span class=&#39;post-marker post-marker-after&#39;&gt;→&lt;/span&gt;</title>
 				 
         <description>&lt;p&gt;Pow!! es la típica cosa que nunca has necesitado pero que una vez la has probado ya no puedes vivir sin ella. No hay nada malo en escribir http://localhost seguido del puerto por donde sirve tu aplicación pero… ¿a qué sería todo más fácil si pudieras llamar a tus proyectos web también por su nombre en tu máquina local? Pues bien, Pow!! se encarga de eso. &lt;/p&gt;
 
@@ -216,7 +216,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 </description>
         <pubDate>Tue, 25 Feb 2014 02:13:00 +0100</pubDate>
 				 
-        <link>http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</link>
+        <link>http://javimoreno.mehttp://pow.cx</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</guid>
         
@@ -225,7 +225,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
     
       <item>
 				 
-        <title>Jugando a Ser John Gruber</title>
+        <title>Jugando a Ser John&amp;nbsp;Gruber&amp;nbsp;&lt;span class=&#39;post-marker post-marker-after&#39;&gt;→&lt;/span&gt;</title>
 				 
         <description>&lt;p&gt;En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo &lt;a href=&quot;http://www.marco.org&quot;&gt;Marco Arment&lt;/a&gt; o &lt;a href=&quot;http://daringfireball.net&quot;&gt;Daring Fireball&lt;/a&gt;.  &lt;br /&gt;
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜&lt;/p&gt;
@@ -233,7 +233,7 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
 </description>
         <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
 				 
-        <link>http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</link>
+        <link>http://javimoreno.mehttp://octopress.org/docs/blogging/linklog/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
         
