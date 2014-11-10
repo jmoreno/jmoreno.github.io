@@ -6,12 +6,14 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Nov 2014 01:34:32 +0100</pubDate>
-    <lastBuildDate>Mon, 10 Nov 2014 01:34:32 +0100</lastBuildDate>
+    <pubDate>Mon, 10 Nov 2014 01:39:58 +0100</pubDate>
+    <lastBuildDate>Mon, 10 Nov 2014 01:39:58 +0100</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
+				 
         <title>Octoberry Pi</title>
+				 
         <description>&lt;p&gt;Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta. &lt;br /&gt;
 Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.  &lt;br /&gt;
 Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:&lt;/p&gt;
@@ -115,14 +117,18 @@ Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repo
 Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante &lt;code&gt;crontab&lt;/code&gt; me daría mucha agilidad.&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Apr 2014 09:30:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2014/04/07/octoberry-pi/</link>
+				 
+        <link>/blog/2014/04/07/octoberry-pi/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/04/07/octoberry-pi/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Tweets Automáticos Con Octopress</title>
+				 
         <description>&lt;p&gt;Ultimamente estoy dedicando mi tiempo libre (cada día más escaso) a automatizar ciertas tareas que Octopress, por su naturaleza estática, no permite realizar. En este post explico como acabar con una de mis mayores frustraciones: poner un tweet automáticamente cada vez que publico un artículo usando Karmacracy como acortador.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -186,14 +192,18 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 
 </description>
         <pubDate>Fri, 04 Apr 2014 01:21:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/</link>
+				 
+        <link>/blog/2014/04/04/tweets-automaticos-con-octopress/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Pow!! Es Poderoso!</title>
+				 
         <description>&lt;p&gt;Pow!! es la típica cosa que nunca has necesitado pero que una vez la has probado ya no puedes vivir sin ella. No hay nada malo en escribir http://localhost seguido del puerto por donde sirve tu aplicación pero… ¿a qué sería todo más fácil si pudieras llamar a tus proyectos web también por su nombre en tu máquina local? Pues bien, Pow!! se encarga de eso. &lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -205,27 +215,35 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 &lt;p&gt;Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas opciones que seguro cubrirán tu necesidad.&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Feb 2014 02:13:00 +0100</pubDate>
-        <link>http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</link>
+				 
+        <link>/blog/2014/02/25/pow-es-poderoso/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/pow-es-poderoso/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Jugando a Ser John Gruber</title>
+				 
         <description>&lt;p&gt;En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo &lt;a href=&quot;http://www.marco.org&quot;&gt;Marco Arment&lt;/a&gt; o &lt;a href=&quot;http://daringfireball.net&quot;&gt;Daring Fireball&lt;/a&gt;.  &lt;br /&gt;
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
-        <link>http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</link>
+				 
+        <link>/blog/2014/02/25/jugando-a-ser-john-gruber/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Workflows De Editorial Para Octopress</title>
+				 
         <description>&lt;p&gt;He estado creando una serie de workflows en &lt;a href=&quot;https://itunes.apple.com/es/app/editorial/id673907758?mt=8&quot;&gt;Editorial&lt;/a&gt; que creo serán de gran ayuda a todos los que usen esta fantástica herramienta de edición para iPad al escribir las entradas de su blog Octopress.    &lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -275,14 +293,18 @@ Si se hace de esta forma, el primer workflow creara un fichero octopress a la pr
 &lt;p&gt;Mola, ¿eh?&lt;/p&gt;
 </description>
         <pubDate>Sun, 26 Jan 2014 00:59:00 +0100</pubDate>
-        <link>http://javimoreno.me/blog/2014/01/26/workflows-de-editorial-para-octopress/</link>
+				 
+        <link>/blog/2014/01/26/workflows-de-editorial-para-octopress/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/01/26/workflows-de-editorial-para-octopress/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Padrinos Y Vacunas</title>
+				 
         <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Le haré una oferta que no podrá rechazar.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;Vito Corleone &lt;/span&gt;&lt;cite class=&quot;quote-title&quot;&gt;El Padrino&lt;/cite&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;En la misma película de la que he sacado esta cita se dice que los italianos piensan que el mundo es tan duro que hay que tener dos padres y por eso todos tienen un padrino. Quizá esto es lo que pensaron los desarrolladores del nuevo framework del que me he hecho fan, Padrino, por que el nombre le viene que ni pintado. &lt;/p&gt;
@@ -424,14 +446,18 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
 
 </description>
         <pubDate>Mon, 11 Nov 2013 01:31:00 +0100</pubDate>
-        <link>http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</link>
+				 
+        <link>/blog/2013/11/11/padrinos-y-vacunas/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Adios Keynote, Hola reveal.js</title>
+				 
         <description>&lt;p&gt;El día que empecé a preparar la presentación &lt;a href=&quot;http://slides.helios.javimoreno.me&quot;&gt;Helios y su integración en iOS&lt;/a&gt; me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,… con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí &lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;reveal.js&lt;/a&gt;… y decidí no volver a abrir Keynote nunca más.&lt;/p&gt;
 
 &lt;!--more--&gt;
@@ -580,7 +606,9 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
 &lt;p&gt;Como al final no me faltó el valor, ahí está la presentación: en &lt;a href=&quot;http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os&quot;&gt;slideshare&lt;/a&gt;, &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk&quot;&gt;Github&lt;/a&gt; y &lt;a href=&quot;http://slides.helios.javimoreno.me/#/&quot;&gt;Heroku&lt;/a&gt;. \o/&lt;/p&gt;
 </description>
         <pubDate>Sat, 05 Oct 2013 03:07:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2013/10/05/adios-keynote/</link>
+				 
+        <link>/blog/2013/10/05/adios-keynote/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/10/05/adios-keynote/</guid>
         
         <category>reveal.js</category>
@@ -593,7 +621,9 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
       </item>
     
       <item>
+				 
         <title>Markdown</title>
+				 
         <description>&lt;p&gt;Hay dos cosas que recomendaría a todo el mundo que tuviera que escribir &lt;em&gt;frecuentemente&lt;/em&gt; en un ordenador:     &lt;/p&gt;
 
 &lt;ol&gt;
@@ -637,14 +667,18 @@ Cuando termino de escribir los readme, copio el texto y lo pego en el fichero co
 &lt;p&gt;Y ya esta, llamadme enrevesado pero esta es la forma más cómoda que tengo de trabajar. ;-)&lt;/p&gt;
 </description>
         <pubDate>Sat, 06 Jul 2013 16:10:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2013/07/06/markdown/</link>
+				 
+        <link>/blog/2013/07/06/markdown/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/07/06/markdown/</guid>
         
         
       </item>
     
       <item>
+				 
         <title>Helios III. Piratas Y Bucaneros.</title>
+				 
         <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;El puerto espacial de Mos Eisley. No encontrarás nunca un lugar como éste tan lleno de maldad y vileza. Debemos cuidarnos.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;Star Wars&lt;/span&gt;&lt;cite class=&quot;quote-title&quot;&gt;Ben Kenobi llegando a Mos Eisley con Luke Skywalker&lt;/cite&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;Para esta tercera entrega volvemos a basarnos en unos artículos de Rafa Aguilar (aka &lt;a href=&quot;http://twitter.com/rais38&quot;&gt;@rais38&lt;/a&gt;), recien publicados en &lt;a href=&quot;http://objective-c.es&quot;&gt;Objective-C.es&lt;/a&gt;, donde primero nos explica las &lt;a href=&quot;http://objective-c.es/in-app-purchases-en-ios-parte-1/&quot;&gt;categorías y tipos de In-App Purchases&lt;/a&gt; y después &lt;a href=&quot;http://objective-c.es/in-app-purchases-en-ios-parte-2/&quot;&gt;nos enseña con un ejemplo&lt;/a&gt; lo sencillo que es incorporar a una aplicación esta excelente fuente de ingresos.    &lt;br /&gt;
@@ -986,7 +1020,9 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
 &lt;/blockquote&gt;
 </description>
         <pubDate>Wed, 22 May 2013 06:54:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2013/05/22/helios-iii-piratas-y-bucaneros/</link>
+				 
+        <link>/blog/2013/05/22/helios-iii-piratas-y-bucaneros/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/05/22/helios-iii-piratas-y-bucaneros/</guid>
         
         <category>Helios</category>
@@ -999,7 +1035,9 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
       </item>
     
       <item>
+				 
         <title>Mamá, Salgo en Un Podcast!</title>
+				 
         <description>&lt;p&gt;Aunque el COBOL no esté dentro de la temática habitual de este blog, si habéis leido mi entrada sobre mis diez años como programador, sabréis que los proyectos a los que me dedico durante el día tienen a ese &lt;em&gt;maravilloso&lt;/em&gt; lenguaje como base para el desarrollo. Por este motivo, cada vez que se habla de COBOL salto como un resorte y en &lt;a href=&quot;https://twitter.com/jmoreno78/statuses/274461772721827840&quot;&gt;uno de esos saltos&lt;/a&gt;, &lt;a href=&quot;http://twitter.com/jablanco&quot;&gt;Jose Antonio Blanco&lt;/a&gt; cometió la locura de dejarme participar en el podcast &lt;a href=&quot;http://wedevelopers.com&quot;&gt;We.Developers&lt;/a&gt;.    &lt;br /&gt;
 Supongo que la audiencia le bajará estrepitosamente. Si queréis echar un vistazo al guión que preparé, es el cuerpo principal de este post.&lt;/p&gt;
 
@@ -1152,7 +1190,9 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
 
 </description>
         <pubDate>Tue, 21 May 2013 19:24:00 +0200</pubDate>
-        <link>http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast/</link>
+				 
+        <link>/blog/2013/05/21/mama-salgo-en-un-podcast/</link>
+				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/05/21/mama-salgo-en-un-podcast/</guid>
         
         
