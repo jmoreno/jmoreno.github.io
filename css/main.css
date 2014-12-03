@@ -68,8 +68,11 @@ a {
   a:visited {
     color: #b36500; }
   a:hover {
-    color: #111;
-    text-decoration: underline; }
+    color: #fdfdfd;
+    background: #ff9100;
+    text-decoration: none;
+    border-radius: 3px;
+    cursor: default; }
 
 /**
  * Blockquotes
@@ -159,6 +162,9 @@ pre {
   float: left; }
   .site-title, .site-title:visited {
     color: #424242; }
+  .site-title:hover {
+    color: #ff9100;
+    background-color: #fdfdfd; }
 
 .site-nav {
   float: right;
@@ -170,6 +176,9 @@ pre {
     line-height: 1.5; }
     .site-nav .page-link:not(:first-child) {
       margin-left: 20px; }
+    .site-nav .page-link:hover {
+      color: #ff9100;
+      background-color: #fdfdfd; }
   @media screen and (max-width: 600px) {
     .site-nav {
       position: absolute;
@@ -279,9 +288,9 @@ pre {
   margin-bottom: 0px; }
 
 .excerpt-link {
-  display: block;
+  display: inline-block;
   font-size: 16px;
-  text-align: right; }
+  float: right; }
 
 /**
  * Posts
