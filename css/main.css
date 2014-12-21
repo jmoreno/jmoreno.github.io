@@ -57,7 +57,8 @@ li > ol {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 300; }
+  font-weight: 300;
+  font-family: "Montserrat", sans-serif; }
 
 /**
  * Links
@@ -155,6 +156,7 @@ pre {
   position: relative; }
 
 .site-title {
+  font-family: "Montserrat", sans-serif;
   font-size: 26px;
   line-height: 56px;
   letter-spacing: -1px;
@@ -168,7 +170,8 @@ pre {
 
 .site-nav {
   float: right;
-  line-height: 56px; }
+  line-height: 56px;
+  font-family: "Montserrat", sans-serif; }
   .site-nav .menu-icon {
     display: none; }
   .site-nav .page-link {
