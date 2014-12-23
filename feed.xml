@@ -6,9 +6,14 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 21 Dec 2014 23:55:19 +0100</pubDate>
-    <lastBuildDate>Sun, 21 Dec 2014 23:55:19 +0100</lastBuildDate>
-    <generator>Jekyll v2.5.1</generator>
+<<<<<<< HEAD
+    <pubDate>Tue, 23 Dec 2014 09:19:40 +0100</pubDate>
+    <lastBuildDate>Tue, 23 Dec 2014 09:19:40 +0100</lastBuildDate>
+=======
+    <pubDate>Tue, 23 Dec 2014 09:08:24 +0100</pubDate>
+    <lastBuildDate>Tue, 23 Dec 2014 09:08:24 +0100</lastBuildDate>
+>>>>>>> ghost
+    <generator>Jekyll v2.5.3</generator>
     
       <item>
 				 
@@ -352,9 +357,8 @@ Si se hace de esta forma, el primer workflow creara un fichero octopress a la pr
 
 &lt;figure class=&quot;code-highlight-figure&quot;&gt;&lt;div class=&quot;code-highlight&quot;&gt;&lt;pre class=&quot;code-highlight-pre&quot;&gt;&lt;div data-line=&quot;1&quot; class=&quot;code-highlight-row numbered&quot;&gt;&lt;div class=&quot;code-highlight-line&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;padrino g project VacScheduler -t shoulda -e haml -c sass -s jquery -d activerecord -b&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
 
-&lt;p&gt;La mejor forma de saber que significan todos estos términos es mirar la &lt;a href=&quot;http://www.padrinorb.com/guides/generators&quot;&gt;documentación de Padrino sobre los generadores&lt;/a&gt;. Yo he puesto todo esto, no porque sea un listillo, sino porque para hacer está aplicación me he fusilado el &lt;a href=&quot;http://www.padrinorb.com/guides/blog-tutorial&quot;&gt;tutorial sobre como hacer un blog&lt;/a&gt;.    &lt;/p&gt;
-
-&lt;p&gt;Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para el testing, haml para el renderizado de las páginas, sass para los estilos, jquery para la parte de scripting y activerecord para el orm. Además, cuando termine la creación del proyecto, forzaremos una instalación de las gemas que nos faltan con Bundle.&lt;/p&gt;
+&lt;p&gt;La mejor forma de saber que significan todos estos términos es mirar la &lt;a href=&quot;http://www.padrinorb.com/guides/generators&quot;&gt;documentación de Padrino sobre los generadores&lt;/a&gt;. Yo he puesto todo esto, no porque sea un listillo, sino porque para hacer está aplicación me he fusilado el &lt;a href=&quot;http://www.padrinorb.com/guides/blog-tutorial&quot;&gt;tutorial sobre como hacer un blog&lt;/a&gt;.  &lt;br /&gt;
+Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para el testing, haml para el renderizado de las páginas, sass para los estilos, jquery para la parte de scripting y activerecord para el orm. Además, cuando termine la creación del proyecto, forzaremos una instalación de las gemas que nos faltan con Bundle.&lt;/p&gt;
 
 &lt;h3 id=&quot;creacin-del-panel-de-administracin-esto-har-las-delicias-de-ms-de-uno&quot;&gt;Creación del panel de administración (esto hará las delicias de más de uno)&lt;/h3&gt;
 
