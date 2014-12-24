@@ -36,7 +36,7 @@ end
 desc "Publicación automática"
 task :publicar do
   puts "\n## Generación del sitio estático con Octopress"
-  status = system("octopress build")
+  status = system("jekyll build")
   puts status ? "Todo ha ido bien" : "Algo ha salido mal"
   puts "\n## Despliegue del sitio en Github Pages"
   status = system("octopress deploy")
