@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 24 Dec 2014 01:27:40 +0100</pubDate>
-    <lastBuildDate>Wed, 24 Dec 2014 01:27:40 +0100</lastBuildDate>
+    <pubDate>Wed, 24 Dec 2014 01:39:14 +0100</pubDate>
+    <lastBuildDate>Wed, 24 Dec 2014 01:39:14 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -21,6 +21,8 @@
         <link>http://javimoreno.me/blog/2014/11/19/motivacion-al-poder/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2014/11/19/motivacion-al-poder/</guid>
+        
+        <category>featured</category>
         
         
       </item>
