@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>♟ Javi Moreno</title>
+    <title>Javi Moreno</title>
     <description>En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 23 Dec 2014 09:24:45 +0100</pubDate>
-    <lastBuildDate>Tue, 23 Dec 2014 09:24:45 +0100</lastBuildDate>
+    <pubDate>Wed, 24 Dec 2014 01:13:32 +0100</pubDate>
+    <lastBuildDate>Wed, 24 Dec 2014 01:13:32 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
