@@ -6,15 +6,15 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 31 Dec 2014 08:24:20 +0000</pubDate>
-    <lastBuildDate>Wed, 31 Dec 2014 08:24:20 +0000</lastBuildDate>
+    <pubDate>Sun, 04 Jan 2015 19:13:42 +0100</pubDate>
+    <lastBuildDate>Sun, 04 Jan 2015 19:13:42 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
 				 
         <title>Bullet With Butterfly Wings</title>
 				 
-        <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Despite all my rage I’m still just a rat in a cage.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;The Smashing Pumpkins - Mellon Collie and The Infinity Sadness &lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+        <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Despite all my rage I’m still just a rat in a cage.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;The Smashing Pumpkins - Bullet with butterfly wings &lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 
 &lt;p&gt;Siempre es bueno pararse a pensar que estamos haciendo, como lo estamos haciendo y ver si hay alguna forma de mejorar. En esta época del año, bien sea por las Navidades o porque precisamente se acaba un año y empieza otro, es un momento habitual para hacer uno de estos &lt;em&gt;puntos de situación&lt;/em&gt;. &lt;br /&gt;
 En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole vueltas a como me encuentro.&lt;/p&gt;
@@ -39,7 +39,7 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
 
 &lt;p&gt;&lt;em&gt;Imagen de cabecera obtenida de &lt;a href=&quot;http://www.resplashed.com/&quot;&gt;&lt;strong&gt;re&lt;/strong&gt;:splashed&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 31 Dec 2014 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 31 Dec 2014 00:00:00 +0100</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/12/31/bullet-with-butterfly-wings/</link>
 				 
@@ -55,7 +55,7 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
         <description>&lt;figure class=&quot;quote&quot;&gt;&lt;blockquote&gt;&lt;p&gt;Despite all my rage I’m still just a rat in a cage.&lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&quot;quote-source&quot;&gt;&lt;span class=&quot;quote-author&quot;&gt;The Smashing Pumpkins - Mellon Collie and The Infinity Sadness &lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Mon, 29 Dec 2014 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 29 Dec 2014 00:00:00 +0100</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/12/29/enfocarse-o-morir/</link>
 				 
@@ -70,7 +70,7 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
 				 
         <description>&lt;p&gt;&lt;a href=&quot;http://dilbert.com/strips/comic/1997-11-05/&quot;&gt;&lt;img src=&quot;http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/000000/10000/2000/500/12564/12564.strip.zoom.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 19 Nov 2014 21:50:00 +0000</pubDate>
+        <pubDate>Wed, 19 Nov 2014 21:50:00 +0100</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/11/19/motivacion-al-poder/</link>
 				 
@@ -185,7 +185,7 @@ Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repo
 &lt;p&gt;Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.  &lt;br /&gt;
 Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante &lt;code&gt;crontab&lt;/code&gt; me daría mucha agilidad.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 07 Apr 2014 09:30:00 +0000</pubDate>
+        <pubDate>Mon, 07 Apr 2014 09:30:00 +0200</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/04/07/octoberry-pi/</link>
 				 
@@ -260,7 +260,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 &lt;p&gt;Y ya está, si todo ha funcionado perfectamente, al publicar esta entrada automáticamente se ha publicado también un tweet. ;-)&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 04 Apr 2014 01:21:00 +0000</pubDate>
+        <pubDate>Fri, 04 Apr 2014 01:21:00 +0200</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/04/04/tweets-automaticos-con-octopress/</link>
 				 
@@ -283,7 +283,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 
 &lt;p&gt;Eso sí, no te dejes engañar por su aparente sencillez, Pow!! tiene muchisimas opciones que seguro cubrirán tu necesidad.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 25 Feb 2014 02:13:00 +0000</pubDate>
+        <pubDate>Tue, 25 Feb 2014 02:13:00 +0100</pubDate>
 				 
         <link>http://pow.cx</link>
 				 
@@ -300,7 +300,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
 Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 25 Feb 2014 01:30:00 +0000</pubDate>
+        <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
 				 
         <link>http://octopress.org/docs/blogging/linklog/</link>
 				 
@@ -361,7 +361,7 @@ Si se hace de esta forma, el primer workflow creara un fichero octopress a la pr
 
 &lt;p&gt;Mola, ¿eh?&lt;/p&gt;
 </description>
-        <pubDate>Sun, 26 Jan 2014 00:59:00 +0000</pubDate>
+        <pubDate>Sun, 26 Jan 2014 00:59:00 +0100</pubDate>
 				 
         <link>http://javimoreno.me/blog/2014/01/26/workflows-de-editorial-para-octopress/</link>
 				 
@@ -513,7 +513,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
 &lt;p&gt;El código fuente de dicha aplicación lo podéis ver en &lt;a href=&quot;https://github.com/jmoreno/VacScheduler&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 11 Nov 2013 01:31:00 +0000</pubDate>
+        <pubDate>Mon, 11 Nov 2013 01:31:00 +0100</pubDate>
 				 
         <link>http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</link>
 				 
@@ -673,7 +673,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
 
 &lt;p&gt;Como al final no me faltó el valor, ahí está la presentación: en &lt;a href=&quot;http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os&quot;&gt;slideshare&lt;/a&gt;, &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk&quot;&gt;Github&lt;/a&gt; y &lt;a href=&quot;http://slides.helios.javimoreno.me/#/&quot;&gt;Heroku&lt;/a&gt;. \o/&lt;/p&gt;
 </description>
-        <pubDate>Sat, 05 Oct 2013 03:07:00 +0000</pubDate>
+        <pubDate>Sat, 05 Oct 2013 03:07:00 +0200</pubDate>
 				 
         <link>http://javimoreno.me/blog/2013/10/05/adios-keynote/</link>
 				 
