@@ -51,7 +51,26 @@ task :publicar do
   puts "\n## Pushing commits to remote"
   status = system("git push origin source")
   puts status ? "Todo ha ido bien" : "Algo ha salido mal"
-  puts "\n## Pushing commits to remote"
+  puts "\n## Publicando tweet de último post escrito"
   Rake::Task[:share_with_twitter].execute
 end
 
+desc "Publicación automática sin tweet."
+task :publicar_solo do
+  puts "\n## Generación del sitio estático con Octopress"
+  status = system("jekyll build")
+  puts status ? "Todo ha ido bien" : "Algo ha salido mal"
+  puts "\n## Despliegue del sitio en Github Pages"
+  status = system("octopress deploy")
+  puts status ? "Todo ha ido bien" : "Algo ha salido mal"
+  puts "\n## Staging modified files"
+  status = system("git add -A")
+  puts status ? "Todo ha ido bien" : "Algo ha salido mal"
+  puts "\n## Committing a site build at #{Time.now.utc}"
+  message = "Build site at #{Time.now.utc}"
+  status = system("git commit -m \"#{message}\"")
+  puts status ? "Todo ha ido bien" : "Algo ha salido mal"
+  puts "\n## Pushing commits to remote"
+  status = system("git push origin source")
+  puts status ? "Todo ha ido bien" : "Algo ha salido mal"
+end
