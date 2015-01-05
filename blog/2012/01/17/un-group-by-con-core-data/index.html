@@ -40,7 +40,7 @@
   </script>
 
 
-	<link href='/stylesheets/all-2d40617490fb324b2f8cc8fd997d6690.css' media='all' rel='stylesheet' type='text/css'>
+	<link href='/stylesheets/all-5633615de6ceb2962f12411016b5b8ed.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
     <!-- header start -->
@@ -78,19 +78,19 @@
 
 <!--more-->
 
-<p>Si nos basamos en el ejemplo que utilizamos en la entrada anterior, podría ser de utilidad conocer que colores de pelo diferentes o que colores de ojos tenemos en nuestra base de datos. Con SQL esto se suele hacer con la clausulas “distinct” o “group by”. La clausula <em>distinct _ahora mismo está en desuso y si bien no es 100 % equivalente a la clausula _group by</em> si que es cierto que los resultados obtenidos son análogos.</p>
+<p>Si nos basamos en el ejemplo que utilizamos en la entrada anterior, podría ser de utilidad conocer que colores de pelo diferentes o que colores de ojos tenemos en nuestra base de datos. Con SQL esto se suele hacer con la clausulas &quot;distinct&quot; o &quot;group by&quot;. La clausula <em>distinct _ahora mismo está en desuso y si bien no es 100 % equivalente a la clausula _group by</em> si que es cierto que los resultados obtenidos son análogos.</p>
 
 <p>En Cocoa, si tienes una base de datos sqlite puedes hacer perfectamente un group by y gestionar los resultados. Sin embargo, hay una forma más sencilla de hacerlo: con <em>Key-value coding</em> (en adelante KVC) que no solo sirve para los objetos de Core Data si no también para arrays de diccionarios y objetos que estén preparados para KVC. Para ello usaremos los <em>operadores de colección</em>.</p>
 
 <p>Un array con el color de pelo de los individuos de nuestra base de datos se obtendría así:</p>
 
-<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">coloresDePelo</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrayDeIndividuos</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="err">&#39;</span><span class="p">@</span><span class="n">distinctUnionOfArrays</span><span class="p">.</span><span class="n">colorPelo</span><span class="err">&#39;</span><span class="p">];</span></div></div></pre></div></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">coloresDePelo</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrayDeIndividuos</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="err">&#39;</span><span class="p">@</span><span class="n">distinctUnionOfArrays</span><span class="p">.</span><span class="n">colorPelo</span><span class="err">&#39;</span><span class="p">];</span></div></div></pre></div></figure>
 
 <p>El arrayDeIndividuos está formado por objetos de tipo Individuo que es un NSManagedObject y que por lo tanto admite KVC. Si el objeto Individuo fuese un diccionario (NSDictionary o NSMutableDictionary) también funcionaría. El operador que hemos usado es <code>@distinctUnionOfArrays</code>.</p>
 
 <p>Una cosa más para que nos den la Matricula de Honor. Es muy posible que el array esté desordenado, para obtener un array con los colores de pelo ordenados alfabéticamente añadiríamos la siguiente instrucción:</p>
 
-<figure class="code-highlight-figure"><div class="code-highlight"><pre class="code-highlight-pre"><div data-line="1" class="code-highlight-row numbered"><div class="code-highlight-line"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">coloresDePeloOrdenados</span> <span class="o">=</span> <span class="p">[</span><span class="n">coloresDePelo</span> <span class="nl">sortedArrayUsingSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">localizedCaseInsensitiveCompare</span><span class="p">:)];</span></div></div></pre></div></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">coloresDePeloOrdenados</span> <span class="o">=</span> <span class="p">[</span><span class="n">coloresDePelo</span> <span class="nl">sortedArrayUsingSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">localizedCaseInsensitiveCompare</span><span class="p">:)];</span></div></div></pre></div></figure>
 
 <p>La documentación de Apple sobre KVC la puedes encontrar <a href="http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/KeyValueCoding.html#//apple_ref/doc/uid/10000107-SW1">aquí</a>. Ahí podrás ver otros operadores de colección.
 Si en vez de leer sobre KVC te apetece escuchar, el <a href="http://ochentaycincoporcientococoa.tumblr.com/post/4290497170/85-cocoa-episodio-21-kvc">episodio 21 de 85 % Cocoa</a> hace una excelente introducción.</p>
