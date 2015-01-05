@@ -1,7 +1,3 @@
-
-
-
-#!/usr/bin/env bash
 require 'twitter'
 
 twitter_consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
