@@ -6,9 +6,119 @@
 </description>
     <link>http://javimoreno.me/</link>
     <atom:link href="http://javimoreno.me/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 11 Jan 2015 09:30:49 +0100</pubDate>
-    <lastBuildDate>Sun, 11 Jan 2015 09:30:49 +0100</lastBuildDate>
+    <pubDate>Mon, 12 Jan 2015 11:20:54 +0100</pubDate>
+    <lastBuildDate>Mon, 12 Jan 2015 11:20:54 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+				 
+        <title>Octoberry Pi Reloaded</title>
+				 
+        <description>&lt;p&gt;Desde que escribí &lt;a href=&quot;/blog/2014/04/07/octoberry-pi/&quot;&gt;Octoberry Pi&lt;/a&gt; tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar &lt;em&gt;cron&lt;/em&gt; pero hasta estas navidades no he terminado de dejarlo listo.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Hace poco migré el blog de &lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt; a la ultima versión de &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;. Principalmente porque, aunque Octopress es sencillo, creo que viene demasiado cargado de plugins, la organización de las carpetas me parece un poco confusa  y además, la versión 3.0 de Octopress no tendrá nada que ver con la actual ya que se transforma en una serie de plugins &lt;em&gt;avanzados&lt;/em&gt; para Jekyll así que me pareció conveniente adentrarme en la austeridad del framework original. &lt;/p&gt;
+
+&lt;p&gt;Pese al cambio, el montaje no ha variado mucho del descrito en el articulo arriba mencionado. Lo resumo a continuación por si no queréis leerlo:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Carpeta en Dropbox donde están los borradores de los artículos que voy escribiendo y los que están para publicar. Tanto en el iPad como en el iPhone uso &lt;a href=&quot;http://omz-software.com/editorial/&quot;&gt;Editorial&lt;/a&gt; para escribir, maquetar, buscar enlaces, fotos,... En el MacBook Pro, si edito algún artículo, ahora mismo usaría Textmate 2 que es el que tengo más preparado&lt;/li&gt;
+&lt;li&gt;Raspberry Pi. No tiene gran cosa instalada: ruby con &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt;, unas cuantas gemas necesarias para publicar este blog y git para subir los cambios en el proyecto tanto al repositorio de Github que permite que leas esto como al repositorio privado de Bitbucket donde está la chicha que no quiero que se vea... ;-)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;La automatización de la publicación la consigo con dos scripts. El primero es una tarea de Rake en el que se  indican todos los pasos para publicar el blog:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Publicación automática&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:publicar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Generación del sitio estático con Octopress&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;jekyll build&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Todo ha ido bien&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Algo ha salido mal&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Despliegue del sitio en Github Pages&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;octopress deploy&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Todo ha ido bien&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Algo ha salido mal&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Staging modified files&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;git add -A&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Todo ha ido bien&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Algo ha salido mal&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Committing a site build at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Build site at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;git commit -m &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&amp;quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Todo ha ido bien&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Algo ha salido mal&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Pushing commits to remote&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;git push origin source&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Todo ha ido bien&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Algo ha salido mal&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Publicando tweet de último post escrito&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:share_with_twitter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;La mezcla de castellano e ingles se debe a que me base en un Rakefile que ya tenía parte de lo que yo necesitaba. En general no me gusta traducir lo que han escrito otros en ingles y no me gusta escribir en ingles lo que, normalmente, solo voy a ver yo. Sois libres de criticarme por esto, no me vais a quitar el sueño.&lt;/p&gt;
+
+&lt;p&gt;Aunque está clarito lo que hace este script, un poco más de detalle nunca viene mal:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Generación del sitio. Jekyll construye un sitio hmtl completo que guarda en la carpeta _site&lt;/li&gt;
+&lt;li&gt;Despligue en Github. Un nuevo plugin de Octopress 3.0, Octopress Deploy, hace un push de la carpeta _site a la rama master del repositorio de Github vinculado a Github Pages, que es, por así decirlo, mi hosting.&lt;/li&gt;
+&lt;li&gt;Commit de los cambios realizados. Siempre, después de publicar en Github Pages hago un commit y subo los cambios al repositorio de Bitbucket. Normalmente, lo único que se añade es el nuevo post y las imágenes que pueda incluir pero a veces realizo modificaciones desde la raspberry.&lt;/li&gt;
+&lt;li&gt;Publico el tweet de &lt;em&gt;spam&lt;/em&gt;. Cada vez que escribo un nuevo artículo, publico un tweet para que la gente que me sigue se pueda enterar. Este tweet contiene un enlace acortado con &lt;a href=&quot;https://karmacracy.com/&quot;&gt;Karmacracy&lt;/a&gt; mediante un plugin de cosecha propia. Es de los poquitos plugins que tiene este blog.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Esta tarea no es exclusiva para la raspberry, la uso también en el Mac cuando publico desde allí.&lt;/p&gt;
+
+&lt;p&gt;El script específico de la Raspberry es el que pongo a continuación. Inicialmente hice unos cuantos más pero con esta versión me es suficiente:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
+./Dropbox-Uploader/dropbox_uploader.sh download /drafts/Blog ./drafts/
+mv ./drafts/Blog/*.markdown ./blog/_posts
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
+/home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Otro script que no es gran cosa:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Descarga de la carpeta de Dropbox donde guardo los post a la Raspberry.&lt;/li&gt;
+&lt;li&gt;Mueve los ficheros con extensión &lt;em&gt;markdown&lt;/em&gt; a la carpeta del blog donde se almacenan. Mis borradores no tienen extensión &lt;em&gt;markdown&lt;/em&gt; sino &lt;em&gt;md&lt;/em&gt;. Igual esto está un poco cogido con pinzas pero a mi me vale.&lt;/li&gt;
+&lt;li&gt;Cambia al directorio del blog. Ahora que lo veo, creo que esto no sería necesario. Como no he probado otra cosa, lo dejo. Igual más adelante lo actualizo.&lt;/li&gt;
+&lt;li&gt;Ejecuta la tarea con rake. He probado de muchas maneras, la única que me ha funcionado es la que, de forma unívoca, dice la versión de &lt;em&gt;rake&lt;/em&gt; que debe usar.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Aunque parezca mentira, la automatización ha llevado más tiempo del que podría pensarse. Para empezar no estoy muy familiarizado con el mundo Linux. Tengo una tarea planificada con &lt;em&gt;cron&lt;/em&gt; en el Mac, la descarga de los informes de iTunes Connect, lo que no me convierte en ningún experto. Además, cualquiera que haya trabajado con Ruby sabrá el dolor de cabeza que suponen las gemas, las versiones de Ruby y todo lo relacionado. Durante varios días me estuve pegando con esto porque, cuando se ejecutaba la tarea con &lt;em&gt;cron&lt;/em&gt; se produción errores que cuando ejecutaba el script a mano no se daban.&lt;/p&gt;
+
+&lt;p&gt;Inicialmente, la tarea en cron era así:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt; * * * /home/pi/scripts/publicar.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y lo único que veía eran los típicos mensajes diciendo que la versión de la gema fulanita en Ruby patatín no  encuentran la dependencia de la gema menganita en Ruby patatán... lógico: patatín y patatán no tendrían que mezclarse.&lt;br&gt;
+Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imagen de la Raspberry dos veces encontré las palabrás mágicas en la página de rvm, ese ser tan querido y odiado al mismo tiempo. Decían así:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rvm cron setup&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A partir de ese momento, mi crontab quedó así:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#sm start rvm&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/pi/.rvm/gems/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;GEM_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/pi/.rvm/gems/ruby-2.1.0&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;GEM_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/pi/.rvm/gems/ruby-2.1.0:/home/pi/.rvm/gems/ruby-2.1.0@global&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;MY_RUBY_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/pi/.rvm/rubies/ruby-2.1.0&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IRBRC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/pi/.rvm/rubies/ruby-2.1.0/.irbrc&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#sm end rvm&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt; * * * /home/pi/scripts/publicar.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Al parecer, no es suficiente con tocar los &lt;em&gt;.profile&lt;/em&gt; y &lt;em&gt;.bash_profile&lt;/em&gt; para que coger la versión buena con rvm si no que es necesario informar al inicio del &lt;em&gt;cron&lt;/em&gt; la ruta que tiene que seguir para encontrar la versión correcta. No es lo más bonito del mundo pero desde entonces, a eso de las nueve y media de la mañana, puedes encontrarte artículos recién publicados, como este.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Imagen de cabecera obtenida de &lt;a href=&quot;http://www.resplashed.com/&quot;&gt;&lt;strong&gt;re&lt;/strong&gt;:splashed&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Jan 2015 00:31:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.me/blog/2015/01/12/octoberry-pi-reloaded/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.me/blog/2015/01/12/octoberry-pi-reloaded/</guid>
+        
+        
+      </item>
     
       <item>
 				 
@@ -531,172 +641,6 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
         <link>http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.me/blog/2013/11/11/padrinos-y-vacunas/</guid>
-        
-        
-      </item>
-    
-      <item>
-				 
-        <title>Adios Keynote, Hola reveal.js</title>
-				 
-        <description>&lt;p&gt;El día que empecé a preparar la presentación &lt;a href=&quot;http://slides.helios.javimoreno.me&quot;&gt;Helios y su integración en iOS&lt;/a&gt; me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,... con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí &lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;reveal.js&lt;/a&gt;... y decidí no volver a abrir Keynote nunca más.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;La &lt;a href=&quot;http://lab.hakim.se/reveal-js/#/&quot;&gt;presentación de ejemplo&lt;/a&gt; ya te da una idea general de toda la potencia de este framework. Inicialmente, a mi me bastaba con poder reutilizar un fichero en markdown en la presentación y al ver que dentro de cada &lt;code&gt;section&lt;/code&gt;, que es como se identifican las &lt;em&gt;slides&lt;/em&gt;, se podía introducir texto en markdown me daba por satisfecho. Luego seguí navegando y vi que, en realidad, podía utilizar un texto entero en markdown ya que con una seríe de convenciones en la escritura y arrancando reveal.js como una aplicación node.js, esta aplicación se encargaba de generar la presentación completa... reveal.js FTW!    &lt;/p&gt;
-
-&lt;h2&gt;Atajos de teclado&lt;/h2&gt;
-
-&lt;p&gt;Un poco más adelante explicaré como hacer que reveal.js lea de un fichero &lt;code&gt;.md&lt;/code&gt; pero antes quiero destacar la funcionalidad de reveal.js accesible a través de teclado.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Avance de diapositivas. Una característica muy llamativa de reveal.js es que las presentaciones tienen dos dimensiones. Estamos acostumbrados a avanzar y a retroceder pero con este framework también podemos subir y bajar. Esto, desde mi punto de vista, es muy útil cuando quieres ampliar la información de una diapositiva en varias diapositivas más. En el eje horizontal (avance-retroceso) estarían las diapositivas principales y algunas de ellas podrían tener un eje vertical (arriba-abajo). La navegación se controla con las teclas de cursor pero si la presentación se visualiza en un dispositivo táctil el control de la navegación se hace con el dedo. Impresionante, no?&lt;/li&gt;
-&lt;li&gt;Vistazo general. Pulsando la tecla &lt;em&gt;escape&lt;/em&gt; se hace un zoom y puedes ver todas las diapositivas en miniatura lo que te permite navegar más rápidamente a una en concreto. Además, en caso de que tengas secciones de diapositivas (grupos en vertical) puedes ver la diapositiva que se mostraría en un flujo de navegación horizontal.&lt;/li&gt;
-&lt;li&gt;Modo Pausa. Pulsando la tecla &amp;quot;b&amp;quot; se hace un fundido a negro, de esta forma puedes forzar al público a centrar su atención en ti en lugar de hacerlo sobre la presentación. Para salir de la &lt;em&gt;pausa&lt;/em&gt; hay que volver a pulsar la &amp;quot;b&amp;quot;.&lt;/li&gt;
-&lt;li&gt;Pantalla completa. Pulsando la tecla &amp;quot;f&amp;quot;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Nada que envidiar a los programas típicos de presentaciones como Powerpoint (perdón por ponerlo en primer lugar) o Keynote.&lt;/p&gt;
-
-&lt;h2&gt;Funcionalidad avanzada&lt;/h2&gt;
-
-&lt;p&gt;Tener reveal.js dentro de una aplicación node.js también te permite visualizar las notas del presentador y alguna otra funcionalidad más sofisticada como sincronizar la presentación con todos los que la estén viendo al mismo tiempo que tu en sus dispositivos, actualizar el contenido de las diapositivas en tiempo real, etc..
-La verdad es que toda esas funcionalidades pintan muy bien pero yo lo único que quería era:&lt;/p&gt;
-
-&lt;h2&gt;¡Una presentación hecha con markdown!&lt;/h2&gt;
-
-&lt;p&gt;Hay que destacar que, al combinar reveal.js con un fichero .md donde están recogidas todas las diapositivas no se explota toda la potencia del framework como las diferentes transiciones, enlaces internos, colores de fondo diferentes, imágenes de fondo diferentes, vistas fragmentadas, etc. En mi humilde opinión, abusar de las transiciones, cambios de colores o de imágenes suele cargar bastante una presentación, pero vamos, que eso es cuestión de gustos.&lt;br&gt;
-Si que eché de menos el no poder hacer vistas fragmentadas. Espero que en alguna próxima versión den con la forma de hacerlo. Al menos la agrupación de diapositivas y las notas si que está disponibles y eso es para mí algo digno de mención. Para que os hagáis una idea, este es el corazón de mi presentación: el fichero &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md&quot;&gt;presentation.md&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;¿Cómo hice mi presentación?&lt;/h2&gt;
-
-&lt;p&gt;Lo primero que hice fue clonar el repositorio original de &lt;a href=&quot;https://github.com/hakimel/reveal.js&quot;&gt;reveal.js&lt;/a&gt; y cambiar el fichero index.html. La mayor parte de la presentación estaría en el fichero markdown pero en la primera diapositiva quería usar una vista fragmentada (de esas en las que las frases o las palabras van apareciendo poco a poco). Debido a esto, el código de mi presentación quedaría así:&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;Fragmento HTML para definir la presentación&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;reveal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Any section element inside of this container is displayed as a slide --&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;slides&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;8&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Helios&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;9&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;y su integración en iOS&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;10&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;fragment fade-in&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;¿Es &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://twitter.com/mattt&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;@mattt&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/small&amp;gt;&lt;/span&gt; una persona o una legión?&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;11&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;12&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;                &lt;span class=&quot;nt&quot;&gt;&amp;lt;small&amp;gt;&lt;/span&gt;Created by &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://javimoreno.me&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Javier Moreno&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; / &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://twitter.com/jmoreno78&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;@jmoreno78&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;13&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;14&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;15&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;16&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;section&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;presentation.md&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-separator=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;^\n\n\n&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-vertical=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;^\n\n&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-notes=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;^Note:&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;17&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;18&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;section&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;19&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;THE END&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;20&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;BY Javier Moreno / javimoreno.me&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;21&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;fragment fade-in&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;22&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;                &lt;span class=&quot;nt&quot;&gt;&amp;lt;small&amp;gt;&lt;/span&gt;Created by &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://javimoreno.me&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Javier Moreno&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; / &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://twitter.com/jmoreno78&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;@jmoreno&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;23&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;24&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;25&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;26&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;27&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;28&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;p&gt;Eso es todo, aparentemente tres diapositivas. La sección que se nutre de un fichero markdown tiene los siguientes atributos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;data-markdown&lt;/code&gt;: La ubicación del fichero&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;data-separator&lt;/code&gt;: Lo que vaya a identificar la separación entre diapositivas horizontales. En mi caso, tres líneas en blanco.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;data-vertical&lt;/code&gt;: Lo que vaya a identificar la separación entre diapositivas verticales. En mi caso, dos líneas en blanco.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;data-notes&lt;/code&gt;: Lo que identifique que el texto a continuación no es parte visual de la diapositivas si no de las notas.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;data-charset&lt;/code&gt;: Muy importante para nosotros, que usamos muchos caracteres especiales como tildes, eñes, signos de interrogación y admiración el poner UTF-8.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Y eso es todo, si echáis un vistazo al fichero &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md&quot;&gt;presentation.md&lt;/a&gt; comprobaréis lo que acabo de comentar.&lt;/p&gt;
-
-&lt;p&gt;Una vez hecho esto, para probarlo en local hay que tener instalado &lt;a href=&quot;http://nodejs.org&quot;&gt;node.js&lt;/a&gt; y &lt;a href=&quot;http://gruntjs.com/getting-started#installing-the-cli&quot;&gt;grunt&lt;/a&gt;. Si ya tenemos estos servicios instalados lo único que hay que hacer es ir hasta la carpeta donde está reveal, instalar las dependencias con &lt;code&gt;$ npm install&lt;/code&gt; y arrancar la presentación con &lt;code&gt;$ grunt serve&lt;/code&gt;. La presentación se verá en &lt;a href=&quot;http://localhost:8000&quot;&gt;http://localhost:8000&lt;/a&gt;. &lt;/p&gt;
-
-&lt;h2&gt;Despliegue en Heroku.&lt;/h2&gt;
-
-&lt;p&gt;Si hacer lo anterior me llevo un rato de nada, conseguir desplegar en Heroku me llevó un mes: subí con éxito el martes y la presentación a los asistentes de la NSCoderMAD fue el miércoles.&lt;br&gt;
-Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fracaso. Por lo visto &lt;em&gt;grunt&lt;/em&gt; está muy bien para entornos de desarrollo pero los hosting de node.js prefieren otras cosas. Búsquedas en Google hablan de versiones diferentes de la Heroku Toolbet para desplegar aplicaciones node.js con grub pero a mi no me funcionó ninguna de las recomendaciones que encontré.&lt;/p&gt;
-
-&lt;p&gt;A última hora encontré este &lt;a href=&quot;https://github.com/willy-vvu/reveal.js&quot;&gt;fork de reveal.js&lt;/a&gt; que se podía previsualizar en Heroku y de ahí tomé las configuraciones que necesitaba para que funcionará mi presentación en Heroku.&lt;/p&gt;
-
-&lt;p&gt;Lo primero fue crear un fichero llamado &lt;code&gt;server.js&lt;/code&gt; con el siguiente contenido:&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;Fichero server.js&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fs&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;  &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;mime&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;8&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;9&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;10&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;11&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/index.html&amp;#39;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;12&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;p&quot;&gt;&amp;#x7d;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;13&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/%20/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;14&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;15&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;16&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;17&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;18&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;19&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;           &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeHead&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;20&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Error loading file...&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;              
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;21&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;p&quot;&gt;&amp;#x7d;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;22&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Content-type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lookup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;23&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeHead&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;24&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;25&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;p&quot;&gt;&amp;#x7d;)&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;26&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;p&gt;Este fichero contiene la información mínima que node.js necesita para arrancar la aplicación. Para que lea de este fichero, hubo que modificar el fichero &lt;code&gt;Procfile&lt;/code&gt;&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;Fichero Procfile&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;web: node server.js&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;p&gt;Y por último, cambiar el fichero de dependencias &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;Fichero package.json&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Javi Moreno featuring (reveal.js by Hakim El Hattab)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;revealjs&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Helios y su integración con iOS&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2.5.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;repository&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;git&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;8&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;git@github.com:jmoreno/HeliosTalk.git&amp;quot;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;9&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;    &lt;span class=&quot;p&quot;&gt;&amp;#x7d;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;10&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;nt&quot;&gt;&amp;quot;engines&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;11&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;node&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.8.x&amp;quot;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;12&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;p&quot;&gt;&amp;#x7d;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;13&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;nt&quot;&gt;&amp;quot;dependencies&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;#x7b;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;14&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;mime&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1.2.7&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;15&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;       &lt;span class=&quot;nt&quot;&gt;&amp;quot;npm&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;1.2.x&amp;quot;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;16&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;   &lt;span class=&quot;p&quot;&gt;&amp;#x7d;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;17&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;p&quot;&gt;&amp;#x7d;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;p&gt;Ya solo quedaba hacer commit y seguir los pasos para desplegar en Heroku:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;$ heroku create&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ git push heroku master&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ heroku open&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;No os podéis hacer a la idea de la alegría que me llevé.&lt;/p&gt;
-
-&lt;h2&gt;Para acabar&lt;/h2&gt;
-
-&lt;p&gt;Creo que, en su momento, este tweet no se entendió:&lt;/p&gt;
-
-&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p&gt;Si no me falla el valor, la presentación que estoy haciendo para la &lt;a href=&quot;https://twitter.com/nscoder_mad&quot;&gt;@nscoder_mad&lt;/a&gt; se podrá ver en slideshare, Github y Heroku…&lt;/p&gt;&amp;mdash; Javi Moreno (@jmoreno78) &lt;a href=&quot;https://twitter.com/jmoreno78/status/377465465054191616&quot;&gt;September 10, 2013&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
-
-&lt;p&gt;Como al final no me faltó el valor, ahí está la presentación: en &lt;a href=&quot;http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os&quot;&gt;slideshare&lt;/a&gt;, &lt;a href=&quot;https://github.com/jmoreno/HeliosTalk&quot;&gt;Github&lt;/a&gt; y &lt;a href=&quot;http://slides.helios.javimoreno.me/#/&quot;&gt;Heroku&lt;/a&gt;. \o/&lt;/p&gt;
-</description>
-        <pubDate>Sat, 05 Oct 2013 03:07:00 +0200</pubDate>
-				 
-        <link>http://javimoreno.me/blog/2013/10/05/adios-keynote/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.me/blog/2013/10/05/adios-keynote/</guid>
-        
-        <category>reveal.js</category>
-        
-        <category>node.js</category>
-        
-        <category>Heroku</category>
         
         
       </item>
