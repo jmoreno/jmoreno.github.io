@@ -1,26 +1,25 @@
 GIT
   remote: git://github.com/octopress/codeblock.git
-  revision: 9d9b53de8ef102379f5dd209729c02ed73c38f54
+  revision: ae3bf5182f619e18f847d31a03efac177a7a64a3
   specs:
-    octopress-codeblock (1.0.4)
+    octopress-codeblock (1.0.5)
       octopress-code-highlighter (~> 4.2)
 
 GIT
   remote: git://github.com/octopress/codefence.git
-  revision: f1a652ce878f98e0c2123ba29d250ed8c9313f33
+  revision: b34d6f9fac799b4179ead6e254702699c7d911c1
   specs:
-    octopress-codefence (1.4.5)
+    octopress-codefence (1.5.1)
       octopress-code-highlighter (~> 4.2)
       octopress-hooks (~> 2.1)
 
 GIT
   remote: git://github.com/octopress/ink.git
-  revision: e2ccebee651b597be5cf1bcd9cff84e100621655
+  revision: 9469add75d9636b886401a1fe3bc5d4fec48d46c
   specs:
-    octopress-ink (1.0.0.rc.21)
+    octopress-ink (1.0.0.rc.27)
       jekyll (~> 2.0)
       octopress (~> 3.0.0.rc)
-      octopress-docs
       octopress-filters (~> 1.1)
       octopress-hooks (~> 2.2)
       octopress-include-tag (~> 1.0)
@@ -28,24 +27,25 @@ GIT
 
 GIT
   remote: git://github.com/octopress/linkblog.git
-  revision: c62f208382c6d14370a2a0544238659ee8e1a2ab
+  revision: f43af46312f8b0a61a8d26406a5cf95f81836106
   specs:
-    octopress-linkblog (1.2.0)
+    octopress-linkblog (2.0.0)
       octopress-hooks (~> 2.1)
       titlecase
 
 GIT
   remote: git://github.com/octopress/quote-tag.git
-  revision: f00d9b573855424401597c3fa7af501d002a0db3
+  revision: 3c886be5d9fb4e782420a6e16f70aa66239ec6e0
   specs:
-    octopress-quote-tag (1.0.0)
+    octopress-quote-tag (1.0.3)
       jekyll
+      rubypants
 
 GIT
   remote: git://github.com/octopress/solarized.git
-  revision: 7c1bea831814de4f8d5df5e644cab614fea23185
+  revision: 14d37b9059010677d1b3f21ecf914e5d1be5bd63
   specs:
-    octopress-solarized (1.0.2)
+    octopress-solarized (1.0.3)
       octopress-ink (~> 1.0.0.rc)
 
 GEM
@@ -65,7 +65,7 @@ GEM
     colorator (0.1)
     equalizer (0.0.9)
     execjs (2.2.2)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fast-stemmer (1.0.2)
     ffi (1.9.6)
@@ -97,10 +97,10 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.2.0)
       listen (~> 2.7)
-    json (1.8.1)
+    json (1.8.2)
     kramdown (1.5.0)
     liquid (2.6.1)
-    listen (2.8.4)
+    listen (2.8.5)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -109,31 +109,27 @@ GEM
     mercenary (0.3.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    octopress (3.0.0.rc.23)
+    octopress (3.0.0.rc.26)
       jekyll (~> 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
-      octopress-docs
+      octopress-escape-code (~> 2.0)
+      octopress-hooks (~> 2.0)
       titlecase
     octopress-code-highlighter (4.2.3)
       colorator (~> 0.1)
-    octopress-deploy (1.0.0)
+    octopress-deploy (1.0.3)
       colorator
-      octopress-docs
-    octopress-docs (0.0.13)
-      jekyll (~> 2.0)
-      octopress-escape-code (~> 2.0)
-      octopress-hooks (~> 2.0)
-    octopress-escape-code (2.0.1)
+    octopress-escape-code (2.0.6)
       octopress-hooks (~> 2.0)
     octopress-filters (1.2.0)
       jekyll
       octopress-hooks (~> 2.0)
       rubypants-unicode
       titlecase
-    octopress-hooks (2.2.3)
+    octopress-hooks (2.3.2)
       jekyll (~> 2.0)
-    octopress-include-tag (1.0.0)
+    octopress-include-tag (1.0.3)
       jekyll (~> 2.0)
       octopress-tag-helpers (~> 1.0)
     octopress-tag-helpers (1.0.2)
@@ -148,10 +144,11 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.2.2)
+    rubypants (0.2.0)
     rubypants-unicode (0.2.5)
     safe_yaml (1.0.4)
     sass (3.4.9)
-    simple_oauth (0.3.0)
+    simple_oauth (0.3.1)
     thread_safe (0.3.4)
     timers (4.0.1)
       hitimes
@@ -169,7 +166,7 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    uglifier (2.6.0)
+    uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     yajl-ruby (1.1.0)
