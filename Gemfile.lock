@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/octopress/codefence.git
-  revision: b34d6f9fac799b4179ead6e254702699c7d911c1
+  revision: a5ec93000cec1be9aaa48a78dbf590e63d0cba4d
   specs:
     octopress-codefence (1.5.1)
       octopress-code-highlighter (~> 4.2)
@@ -15,9 +15,9 @@ GIT
 
 GIT
   remote: git://github.com/octopress/ink.git
-  revision: 9469add75d9636b886401a1fe3bc5d4fec48d46c
+  revision: b92529b036c34ac11d472f949dedbca0abb974a7
   specs:
-    octopress-ink (1.0.0.rc.27)
+    octopress-ink (1.0.0.rc.29)
       jekyll (~> 2.0)
       octopress (~> 3.0.0.rc)
       octopress-filters (~> 1.1)
@@ -109,7 +109,7 @@ GEM
     mercenary (0.3.5)
     multipart-post (2.0.0)
     naught (1.0.0)
-    octopress (3.0.0.rc.26)
+    octopress (3.0.0.rc.29)
       jekyll (~> 2.0)
       mercenary (~> 0.3.2)
       octopress-deploy
@@ -118,7 +118,7 @@ GEM
       titlecase
     octopress-code-highlighter (4.2.3)
       colorator (~> 0.1)
-    octopress-deploy (1.0.3)
+    octopress-deploy (1.0.4)
       colorator
     octopress-escape-code (2.0.6)
       octopress-hooks (~> 2.0)
@@ -147,7 +147,7 @@ GEM
     rubypants (0.2.0)
     rubypants-unicode (0.2.5)
     safe_yaml (1.0.4)
-    sass (3.4.9)
+    sass (3.4.10)
     simple_oauth (0.3.1)
     thread_safe (0.3.4)
     timers (4.0.1)
