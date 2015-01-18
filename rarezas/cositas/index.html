@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -8,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Javi Moreno</title>
+  <title>Cositas</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -17,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="canonical" href="http://javimoreno.me/404.html">
+  <link rel="canonical" href="http://javimoreno.me/rarezas/cositas/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -40,40 +39,61 @@
   </script>
 	<link href='/stylesheets/all-eb9a6c26e994f83474381d15c750705f.css' media='all' rel='stylesheet' type='text/css'>
 </head>
-
-  <body>
-
+  <body itemscope itemtype="http://schema.org/Article">
     <!-- header start -->
 
 <a href="http://javimoreno.me" class="logo-readium"><span class="logo" style="background-image: url(/assets/images/df-logo.png)"></span></a>
 
 <!-- header end -->
+    <main class="content" role="main">
+      <article class="post">
+        
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/images/octoberry_pi_reloadedcositas.md.jpg)">
+            Article Image
+          </div>
+          <div class="post-meta">
+            <h1 class="post-title">Cositas</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Javi</h4>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h1>Comandos útiles con la Raspberry Pi</h1>
 
-    <!-- content start -->
+<p><code>chown</code>permite cambiar el propietario de un fichero. Esto es util cuando tienes un script dentro de la carpeta de usuario y quieres que se ejecute en un cron.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo chown root:root /home/pi/scripts/publicar.sh
+</code></pre></div>
+<p>Para listar el contenido del mail:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail /var/mail/pi
+</code></pre></div>
+<p>Para ver el log del sistema:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail /var/log/syslog
 
-    <div class="page-content">
-      <div class="wrapper">
-        <h1 class="post-title-h1" style="text-align:center">404 - Página no encontrada</h1>
-
-<img src="http://octodex.github.com/images/heisencat.png" style="max-width: 50%; margin: 0 auto; display: block" />
-<h1 style="text-align: center">"¡Aléjate de mi territorio!".</h1>
-<p style="text-align:center">No hemos encontrado lo que estabas buscando y este señor tiene bastante mal genio. Estarás más seguro <a href="/archivo/">aquí</a> o, quizás, <a href="/">aquí</a>.</p>
+/home/pi/.rvm/gems/ruby-2.1.0/bin/rake
+</code></pre></div>
+        </section>
+        </div>
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Javi Moreno</h1>
+        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+</h2>
+        <a href="/" class="btn">Vuelve al resumen</a>
       </div>
     </div>
-
-    <!-- content end -->
-
-    <!-- footer start -->
-
-<footer class="site-footer">
-  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
-    <div class="inner">
-         <section class="copyright">Todo el contenido protegido <a href="mailto:javi@javimoreno.me">Javi Moreno</a> &copy; 2014 &bull; Todos los derechos reservados.</section>
-         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
-    </div>
-</footer>
-
-<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -112,7 +132,5 @@
   });
 }(jQuery));
 </script>
-
   </body>
-
 </html>
