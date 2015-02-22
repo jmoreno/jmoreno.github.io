@@ -623,7 +623,7 @@ body {
   text-overflow: ellipsis; }
 .post .post-content {
   width: 100%;
-  font-family: Linux Libertine;
+  font-family: "Sanchez", Linux Libertine, serif;
   color: #333; }
   .post .post-content h1, .post .post-content h2, .post .post-content h3 {
     font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica, sans-serif; }
