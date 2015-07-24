@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="canonical" href="http://javimoreno.me/blog/2013/05/02/helios-ii-houston/">
+  <link rel="canonical" href="http://javimoreno.es/blog/2013/05/02/helios-ii-houston/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -142,7 +142,7 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
 
 <p>Y en el panel de administración de Helios veremos lo siguiente:</p>
 
-<p><img src="http://javimoreno.me/assets/photos/2013/admin-helios-tokens.png" alt=""></p>
+<p><img src="http://javimoreno.es/assets/photos/2013/admin-helios-tokens.png" alt=""></p>
 
 <p>Ahora tenemos que preparar nuestro servidor para que realice el envío de notificaciones Push. Como ya hemos comentado al principio, esta funcionalidad no la traía Helios en su primera versión y nos obligaba a nosotros a incluir y configurar esta gema. Hace pocas horas han actualizado el repositorio de Helios incluyendo la funcionalidad de envío de mensajes mediante Houston. Como el merge en GitHub es tan reciente, la gema que hay en <a href="http://rubygems.org/gems/helios">RubyGems.org</a> todavía no está actualizada así que para poder usarla en nuestro proyecto Rails he tenido que indicar en el <em>gemfile</em> que tome el fuente de GitHub. Al hacerlo de esta forma, las dependencias no son visibles por el Bundler por lo que, para evitar errores, he indicado también que necesitamos la gema <strong>Houston</strong>.</p>
 
@@ -172,7 +172,7 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
 
 <p>Listo, parece que ya tenemos comunicación con Houston... o por lo menos recibimos sus mensajes. ;-)</p>
 
-<p><img src="http://javimoreno.me/assets/photos/2013/notificacion-iphone.png" alt=""></p>
+<p><img src="http://javimoreno.es/assets/photos/2013/notificacion-iphone.png" alt=""></p>
 
 <p>Houston incluye una utilidad de terminal a la que le pasamos un token, la ubicación del certificado y el mensaje que queremos enviar. Esto no verifica que hayamos configurado correctamente ningún servidor, solo que el certificado y el token sean correctos:</p>
 
@@ -233,7 +233,7 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Helios+II.+Houston%2C+Tenemos+Un+Problema.&amp;url=http://kcy.me/vc79"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Helios+II.+Houston%2C+Tenemos+Un+Problema.&amp;url=http://kcy.me/25vjf"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -250,8 +250,8 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
     
       
       // var disqus_developer = 1;
-      var disqus_identifier = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
-      var disqus_url = 'http://javimoreno.me/blog/2013/05/02/helios-ii-houston/';
+      var disqus_identifier = 'http://javimoreno.es/blog/2013/05/02/helios-ii-houston/';
+      var disqus_url = 'http://javimoreno.es/blog/2013/05/02/helios-ii-houston/';
       var disqus_script = 'embed.js';
     
         (function() {
