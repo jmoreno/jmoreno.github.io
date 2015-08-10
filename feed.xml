@@ -6,9 +6,24 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 30 Jul 2015 09:30:27 +0200</pubDate>
-    <lastBuildDate>Thu, 30 Jul 2015 09:30:27 +0200</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 18:04:40 +0200</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 18:04:40 +0200</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+				 
+        <title>Cuestiona Permanentemente Tus Fortalezas, Por Kim&amp;nbsp;Faura&amp;nbsp;&lt;span class=&#39;post-marker post-marker-after&#39;&gt;→&lt;/span&gt;</title>
+				 
+        <description>&lt;p&gt;No me canso de leer este &lt;em&gt;caso de estudio&lt;/em&gt;. La pena es que no podamos leer la visión de la otra parte. Sería super interesante ver como vivieron la &lt;em&gt;&amp;quot;derrota&amp;quot;&lt;/em&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 10 Aug 2015 17:53:00 +0200</pubDate>
+				 
+        <link>http://kimfaura.es/cuestiona-permanentemente-tus-fortalezas/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/10/cuestiona-permanentemente-tus-fortalezas,-por-kim-faura/</guid>
+        
+        
+      </item>
     
       <item>
 				 
@@ -474,67 +489,6 @@ Mi única duda es si usar un signo de infinito, una estrella negra de cinco punt
         <link>http://octopress.org/docs/blogging/linklog/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
-        
-        
-      </item>
-    
-      <item>
-				 
-        <title>Workflows De Editorial Para Octopress</title>
-				 
-        <description>&lt;p&gt;He estado creando una serie de workflows en &lt;a href=&quot;https://itunes.apple.com/es/app/editorial/id673907758?mt=8&quot;&gt;Editorial&lt;/a&gt; que creo serán de gran ayuda a todos los que usen esta fantástica herramienta de edición para iPad al escribir las entradas de su blog Octopress.    &lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Aunque Octopress se basta y se sobra con textos en markdown, tiene una serie de plugins muy potentes que son de gran ayuda para insertar citas, vídeos, imágenes, tweets embebidos o código fuente.&lt;br&gt;
-Yo me he centrado en lo que me hacían falta para los &lt;em&gt;posts&lt;/em&gt; que suelo escribir pero como podréis ver, una vez hecho el primero, el resto son sota, caballo y rey. &lt;/p&gt;
-
-&lt;p&gt;Os dejo los enlaces por sí les queréis echar un ojo. &lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/5252485694357504/5M7iTYKP5ak&quot;&gt;Creacion de fichero &lt;em&gt;octopress&lt;/em&gt; a partir de fichero &lt;em&gt;markdown&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/5309436960702464/jobUl19TzXk&quot;&gt;Marca de continuación. (&amp;quot;Seguir leyendo&amp;quot;)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/6341637861015552/zFyzbnTW9QY&quot;&gt;Texto seleccionado como cita&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/5269098627858432/7jGKDINoyJQ&quot;&gt;Texto seleccionado como código fuente&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/5877028700028928/9eyEep5t6f4&quot;&gt;Texto seleccionado como gist embebido&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://editorial-app.appspot.com/workflow/5795046364282880/fc1_oaplErs&quot;&gt;URL seleccionada como tweet embebido&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;¿Cómo se usan?&lt;/h2&gt;
-
-&lt;p&gt;Pues para empezar, hay que escribir todo el post en markdown en un fichero sin extensión cuyo nombre sea el título que va a tener el post. ¿Un poco cutre? Es mi workflow, ¿qué pasa? 
-Si se hace de esta forma, el primer workflow creara un fichero octopress a la primera. &lt;/p&gt;
-
-&lt;p&gt;El segundo workflow no tiene mucho misterio, inserta el &lt;em&gt;excerp&lt;/em&gt; donde le digamos. &lt;/p&gt;
-
-&lt;p&gt;El resto transforma esto:&lt;/p&gt;
-
-&lt;p&gt;Las rosas son rosas, el cielo es azul y tú eres tú. &lt;/p&gt;
-
-&lt;p&gt;puts &amp;quot;Hello, world!&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;5467313&lt;/p&gt;
-
-&lt;p&gt;https://twitter.com/jmoreno78/statuses/427223495794520064&lt;/p&gt;
-
-&lt;p&gt;En esto otro:&lt;/p&gt;
-
-&lt;figure class=&#39;quote&#39;&gt;&lt;blockquote&gt;&lt;p&gt;Las rosas son rosas, el cielo es azul y tú eres tú. &lt;/p&gt;&lt;/blockquote&gt;&lt;figcaption class=&#39;quote-source&#39;&gt;&lt;span class=&#39;quote-author&#39;&gt;Un poeta urbano  &lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;Hola mundo en COBOL.&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;script src=&quot;https://gist.github.com/5467313.js&quot;&gt; &lt;/script&gt;
-
-&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p&gt;Después de llevar un tiempo en el dique seco, creo que la semana que viene voy a publicar bastantes posts. Delirios todo, por supuesto. 😄&lt;/p&gt;&amp;mdash; Javi Moreno (@jmoreno78) &lt;a href=&quot;https://twitter.com/jmoreno78/status/427223495794520064&quot;&gt;January 25, 2014&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
-
-&lt;p&gt;Mola, ¿eh?&lt;/p&gt;
-</description>
-        <pubDate>Sun, 26 Jan 2014 00:59:00 +0100</pubDate>
-				 
-        <link>http://javimoreno.es/blog/2014/01/26/workflows-de-editorial-para-octopress/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2014/01/26/workflows-de-editorial-para-octopress/</guid>
         
         
       </item>
