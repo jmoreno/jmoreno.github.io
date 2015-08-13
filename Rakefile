@@ -24,7 +24,7 @@ task :share_with_twitter do
   @tweets.each{ |tweet|
     if tweet["tweet"] == ""
       puts "Publicando tweet: " + tweet["title"]
-      tweet_response = client.update("He escrito \"#{tweet["title"]}\": #{tweet["klink"]}")
+      tweet_response = client.update("#{tweet["title"]} #{tweet["klink"]}")
       tweet["tweet"] = tweet_response
     end
   }
