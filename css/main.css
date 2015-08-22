@@ -446,6 +446,12 @@ body {
         text-decoration: none; }
         .content article .post-meta a:hover {
           text-decoration: underline; }
+    .content article .post-image-image {
+      background-size: cover;
+      position: relative;
+      text-indent: -9999px;
+      padding-top: 33%;
+      z-index: 1; }
 
 .container.featured {
   padding-bottom: 40px; }
@@ -513,18 +519,10 @@ body {
 .post .article-image {
   position: absolute;
   background-color: #000;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   overflow: hidden; }
   .post .article-image .post-image-image {
     background-size: cover;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     text-indent: -9999px;
     padding-top: 33%;
     z-index: 1; }
@@ -587,9 +585,14 @@ body {
       color: #fff; }
   .post .article-image .topofpage {
     text-decoration: underline; }
+.post .noarticleimage .post-image-image {
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding-top: 33%;
+  z-index: 1; }
 .post .noarticleimage .post-meta {
-  font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica, sans-serif;
-  padding-top: 60px; }
+  font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica, sans-serif; }
 .post .noarticleimage .post-title {
   font-weight: 700;
   font-style: normal;

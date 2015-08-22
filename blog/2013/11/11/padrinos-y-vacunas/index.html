@@ -46,19 +46,15 @@
 <!-- header end -->
     <main class="content" role="main">
       <article class="post">
-        
         <div class="noarticleimage">
           <div class="post-meta">
-						 
-				    <h1 class="post-title">Padrinos Y Vacunas</h1>
-						 
             <div class="cf post-meta-text">
               <i class="fa fa-calendar"></i>  
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Javi</h4>
               a
               <time datetime="2013-11-11 01:31">11 de noviembre de 2013</time>
               <br>
-              <i class="fa fa-clock-o"> </i>  
+              <i class="fa fa-clock-o"></i>  
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">
               
               
@@ -68,12 +64,12 @@
               </h4>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
+				   
+				  <h1 class="post-title">Padrinos Y Vacunas</h1>
+				   
           </div>
+          
         </div>
-        <br>
-        <br>
-        <br>
-        
         <section class="post-content">
           <a name="topofpage"></a>
           <figure class='quote'><blockquote><p>Le haré una oferta que no podrá rechazar.</p></blockquote><figcaption class='quote-source'><span class='quote-author'>Vito Corleone </span><cite class='quote-title'>El Padrino</cite></figcaption></figure>
@@ -284,46 +280,9 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
         <h1 class="blog-title">Javi Moreno</h1>
         <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </h2>
-        <a href="/" class="btn">Vuelve al resumen</a>
+        <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/index.js"></script>
-<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
-<script>
-(function ($) {
-  "use strict";
-  $(document).ready(function(){
-
-    var $window = $(window),
-    $image = $('.post-image-image, .teaserimage-image');
-    $window.on('scroll', function() {
-      var top = $window.scrollTop();
-
-      if (top < 0 || top > 1500) { return; }
-      $image
-        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-        .css('opacity', 1-Math.max(top/700, 0));
-    });
-    $window.trigger('scroll');
-
-    var height = $('.article-image').height();
-    $('.post-content').css('padding-top', height + 'px');
-
-    $('a[href*=#]:not([href=#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-       && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({ scrollTop: target.offset().top }, 500);
-          return false;
-        }
-      }
-    });
-  });
-}(jQuery));
-</script>
+    
   </body>
 </html>
