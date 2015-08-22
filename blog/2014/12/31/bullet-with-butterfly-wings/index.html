@@ -46,15 +46,8 @@
 <!-- header end -->
     <main class="content" role="main">
       <article class="post">
-        
-        <div class="article-image">
-          <div class="post-image-image" style="background-image: url(/assets/images/bullet.jpg)">
-            Article Image
-          </div>
+        <div class="noarticleimage">
           <div class="post-meta">
-						 
-				    <h1 class="post-title">Bullet With Butterfly Wings</h1>
-						 
             <div class="cf post-meta-text">
               <i class="fa fa-calendar"></i>  
               <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Javi</h4>
@@ -71,12 +64,14 @@
               </h4>
               <!-- , tagged on <span class="post-tag-">, <a href="/tag/"></a></span> -->
             </div>
-            <div style="text-align:center">
-              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
-            </div>
+				   
+				  <h1 class="post-title">Bullet With Butterfly Wings</h1>
+				   
           </div>
+          
+          <div class="post-image-image" style="background-image: url(/assets/images/bullet.jpg)">I</div>
+          
         </div>
-        
         <section class="post-content">
           <a name="topofpage"></a>
           <figure class='quote'><blockquote><p>Despite all my rage I&#39;m still just a rat in a cage.</p></blockquote><figcaption class='quote-source'><span class='quote-author'>The Smashing Pumpkins - Bullet with butterfly wings </span></figcaption></figure>
@@ -173,46 +168,9 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
         <h1 class="blog-title">Javi Moreno</h1>
         <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 </h2>
-        <a href="/" class="btn">Vuelve al resumen</a>
+        <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/index.js"></script>
-<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
-<script>
-(function ($) {
-  "use strict";
-  $(document).ready(function(){
-
-    var $window = $(window),
-    $image = $('.post-image-image, .teaserimage-image');
-    $window.on('scroll', function() {
-      var top = $window.scrollTop();
-
-      if (top < 0 || top > 1500) { return; }
-      $image
-        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-        .css('opacity', 1-Math.max(top/700, 0));
-    });
-    $window.trigger('scroll');
-
-    var height = $('.article-image').height();
-    $('.post-content').css('padding-top', height + 'px');
-
-    $('a[href*=#]:not([href=#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-       && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({ scrollTop: target.offset().top }, 500);
-          return false;
-        }
-      }
-    });
-  });
-}(jQuery));
-</script>
+    
   </body>
 </html>

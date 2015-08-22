@@ -84,46 +84,6 @@
 	   <a class="page-link" href="mailto:hola@javimoreno.es?Subject=Hola%20Javi">
 			<i class="fa fa-send"></i>
 	   </a>
-      
-       	
-      
-       	
-         	&nbsp;&nbsp;·&nbsp;&nbsp;
-        		<a class="page-link" href="/archivo/">Archivo</a>
-        	
-      
-       	
-      
-       	
-      
-       	
-         	&nbsp;&nbsp;·&nbsp;&nbsp;
-        		<a class="page-link" href="/links.html">Enlaces</a>
-        	
-      
-       	
-      
-       	
-         	&nbsp;&nbsp;·&nbsp;&nbsp;
-        		<a class="page-link" href="/rarezas/">Rarezas</a>
-        	
-      
-       	
-         	&nbsp;&nbsp;·&nbsp;&nbsp;
-        		<a class="page-link" href="/recetas/">Recetas</a>
-        	
-      
-       	
-         	&nbsp;&nbsp;·&nbsp;&nbsp;
-        		<a class="page-link" href="/sobre-mi.html">Sobre Mi</a>
-        	
-      
-       	
-      
-       	
-      
-       	
-      
     </div>
 </header>
 
@@ -416,6 +376,47 @@ Para echar un poco más de leña al fuego, Brent Simmons escribía <a href="http
     <!-- footer start -->
 
 <footer class="site-footer">
+      
+        
+      
+        
+        <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+        
+      
+        
+      
+        
+      
+        
+        <a class="page-link" href="/links.html">Enlaces</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+        
+      
+        
+      
+        
+        <a class="page-link" href="/rarezas/">Rarezas</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+        
+      
+        
+        <a class="page-link" href="/recetas/">Recetas</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+        
+      
+        
+        <a class="page-link" href="/sobre-mi.html">Sobre Mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+        
+      
+        
+      
+        
+      
+        
+      
+
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
     <div class="inner">
          <section class="copyright">Todo el contenido protegido <a href="mailto:hola@javimoreno.es">Javi Moreno</a> &copy; 2014 &bull; Todos los derechos reservados.</section>
@@ -424,44 +425,7 @@ Para echar un poco más de leña al fuego, Brent Simmons escribía <a href="http
 </footer>
 
 <!-- footer end -->
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/assets/js/index.js"></script>
-<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
-<script>
-(function ($) {
-  "use strict";
-  $(document).ready(function(){
-
-    var $window = $(window),
-    $image = $('.post-image-image, .teaserimage-image');
-    $window.on('scroll', function() {
-      var top = $window.scrollTop();
-
-      if (top < 0 || top > 1500) { return; }
-      $image
-        .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-        .css('opacity', 1-Math.max(top/700, 0));
-    });
-    $window.trigger('scroll');
-
-    var height = $('.article-image').height();
-    $('.post-content').css('padding-top', height + 'px');
-
-    $('a[href*=#]:not([href=#])').click(function() {
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
-       && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({ scrollTop: target.offset().top }, 500);
-          return false;
-        }
-      }
-    });
-  });
-}(jQuery));
-</script>
+    
 
   </body>
 
