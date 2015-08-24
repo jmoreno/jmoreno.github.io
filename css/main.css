@@ -519,10 +519,18 @@ body {
 .post .article-image {
   position: absolute;
   background-color: #000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden; }
   .post .article-image .post-image-image {
     background-size: cover;
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     text-indent: -9999px;
     padding-top: 33%;
     z-index: 1; }
@@ -650,7 +658,7 @@ body {
   .post .post-content p {
     font-weight: 400;
     font-style: normal;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 30px;
     margin: 0;
     padding-bottom: 30px;
