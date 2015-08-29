@@ -47,17 +47,17 @@
     <main class="content" role="main">
       <article class="post">
         
-        <div class="noarticleimage">
-          <div class="post-image-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">I</div>
-        </div>
-        
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">
+            Article Image
+          </div>
+          <div class="post-meta">
+						 
+				  	<h1 class="post-title">Octoberry Pi Reloaded</h1>
+				  	 
+            <div class="cf post-meta-text">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Javi</h4>
               <p class="published"><i class="fa fa-calendar"></i><time datetime="2015-01-12 00:31"> 12 de enero de 2015</time></p>
               <p class="published"><i class="fa fa-clock-o"></i>  
               
@@ -66,16 +66,13 @@
               
               de lectura
               </p>
-            </section>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
           </div>
         </div>
-        <div class="noarticleimage">
-          <div class="post-meta">
-				   
-				  <h1 class="post-title">Octoberry Pi Reloaded</h1>
-				   
-          </div>
-        </div>
+        
         <section class="post-content">
           <a name="topofpage"></a>
           <p>Desde que escribí <a href="/blog/2014/04/07/octoberry-pi/">Octoberry Pi</a> tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar <em>cron</em> pero hasta estas navidades no he terminado de dejarlo listo.</p>
@@ -214,7 +211,7 @@ Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imag
       </article>
     </main>
     <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover.jpg)">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
       <div class="inner">
@@ -224,7 +221,45 @@ Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imag
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-    <script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
 </script>
   </body>
 </html>
