@@ -47,6 +47,13 @@
     <main class="content" role="main">
       <article class="post">
         
+        <div class="noarticleimage">
+          <div class="post-meta">
+						 
+				  	<h1 class="post-title">Sobre Memorión</h1>
+				  	 
+          </div>
+        </div>
         <div class="bottom-teaser cf">
           <div class="isLeft">
             <section class="author">
@@ -65,13 +72,7 @@
             </section>
           </div>
         </div>
-        <div class="noarticleimage">
-          <div class="post-meta">
-				   
-				  <h1 class="post-title">Sobre Memorión</h1>
-				   
-          </div>
-        </div>
+        
         <section class="post-content">
           <a name="topofpage"></a>
           <p>Hablando un día por Twitter, Miguel Díaz Rubio (aka <a href="http://twitter.com/migueldiazrubio">@migueldiazrubio</a>) cometió la imprudencia de animarme a escribir algo en su blog: <a href="http://www.migueldiazrubio.com">www.migueldiazrubio.com</a>. Obviamente le dije que si, el blog de Miguel junto con el de <a href="http://objective-c.es">Objective-C.es</a> son de lo mejorcito que hay ahora mismo en castellano para aprender Objective-C y Cocoa Touch, las herramientas necesarias para hacer aplicaciones iOS y una oportunidad para ayudar a estos <em>máquinas</em> no podía desperdiciarse. </p>
@@ -136,7 +137,7 @@ Recordé que en la aplicación Phytonista había un ejemplo que consistía preci
       </article>
     </main>
     <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover.jpg)">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
       <div class="inner">
@@ -146,7 +147,45 @@ Recordé que en la aplicación Phytonista había un ejemplo que consistía preci
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-    <script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
 </script>
   </body>
 </html>
