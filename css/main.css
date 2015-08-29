@@ -655,6 +655,19 @@ body {
     .share a:hover {
       color: #333; }
 
+.post-cover {
+  width: 100%;
+  position: relative;
+  padding-top: 33%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-indent: -9999px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
 .bottom-closer {
   width: 100%;
   position: relative;
