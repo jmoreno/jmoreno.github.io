@@ -5,6 +5,26 @@ twitter_consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
 twitter_access_token        = "99518813-yNGjsxxBSWQYcluuY16lB4lYgel7xgR2S0jry53n5"
 twitter_access_token_secret = "gh8LPBMtAjYyqkz3wckwEHu3zMsHaNFVyMcIVsKHBOmO2"
 
+task :clean_tweet_list do
+ 
+  if File.exists? ".karmaplugin/tweets.info"
+    File.open(".karmaplugin/tweets.info", 'rb') {|f| @tweets = Marshal::load(f)}
+  else
+    @tweets = []
+  end
+   
+  @tweets.each{ |tweet|
+    if tweet["tweet"] == ""
+      puts "Omitiendo tweet: " + tweet["title"]
+      tweet["tweet"] = "Tweet omitido. Pruebas"
+    end
+  }
+ 
+  File.open(".karmaplugin/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
+ 
+end
+ 
+
 task :share_with_twitter do
  
   # Twitter config (for tweeting posts)
