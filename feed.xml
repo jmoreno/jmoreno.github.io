@@ -6,9 +6,37 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 30 Aug 2015 19:31:58 +0200</pubDate>
-    <lastBuildDate>Sun, 30 Aug 2015 19:31:58 +0200</lastBuildDate>
+    <pubDate>Mon, 31 Aug 2015 09:30:39 +0200</pubDate>
+    <lastBuildDate>Mon, 31 Aug 2015 09:30:39 +0200</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+				 
+        <title>iBooks O Kindle</title>
+				 
+        <description>&lt;p&gt;Últimamente me he estado &lt;em&gt;pegando&lt;/em&gt; con las aplicaciones de iBooks y Kindle para sincronizar los libros que he comprado fuera de las propias tiendas de Apple y Amazon. Es curioso como cada una adolece de las ventajas de la otra. Es como si se hubieran puesto de acuerdo para que no exista la &lt;em&gt;aplicación con sincronización perfecta&lt;/em&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Siempre he tenido predilección por la aplicación de Kindle. Me gustan mas las fuentes que incluye (de hecho este blog usa una fuente gratuita que imita a &lt;a href=&quot;https://www.myfonts.com/fonts/linotype/pmn-caecilia/&quot;&gt;Caecilia&lt;/a&gt;), tengo la sensación de que el código fuente de los ejemplos se ve mejor y en general funciona bien a la hora de sincronizar marcadores, notas y la posición de lectura. No es difícil subir tus propios libros a Kindle Documents pero, desgraciadamente, no puedes subirlo desde la app. El proceso de subida no es complejo: basta con enviar el archivo .mobi o .az1 por correo electrónico a tu cuenta de kindle y listo pero, en estos tiempos que corren esto me parece un coñazo. Problemas del primer mundo, vaya. &lt;/p&gt;
+
+&lt;p&gt;Una vez que el archivo esta en Documents ya lo puedes descargar en la aplicación de iPad, iPhone, Mac, Windows, Android, Fire OS,... y todo va como la seda. Sin embargo, si ese mismo archivo lo has abierto desde la propia App de Kindle por un link o por cualquiera de las formas en las que se pueden abrir archivos en los diferentes dispositivos nunca sincronizara. Verás dos archivos idénticos, el abierto desde local y el descargado de los servidores de Amazon. 😢&lt;/p&gt;
+
+&lt;p&gt;La aplicación de iBooks no ofrece sincronización de libros comprados fuera de la iBook Store pero, por esas cosas de iCloud que nunca sabes si son incidencia o característica mágica, los libros abiertos en diferentes dispositivos sincronizan entre si.  Me explico un poco mejor: un ePub descargado desde Dropbox en un iPhone y abierto con la aplicación de iBooks sincronizara sus notas, marcadores y posición con el mismo ePub descargado desde Dropbox en un iPad y abierto con la aplicación de iBooks si ambos dispositivos comparten cuenta de iCloud. De hecho, no es necesario que en ambos dispositivos se descargue el archivo desde Dropbox, basta con que el fichero tenga el mismo nombre, tamaño, metadatos,... &lt;strong&gt;It just works!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Mi problema en este sentido es que las fuentes en la aplicación de Apple me parecen malas... Parece mentira que con lo que era Steve para la tipografía la aplicación de iBooks sea tan parca en ellas.&lt;br&gt;
+Además, al no haber proceso de sincronización de ficheros desde la app tenemos el mismo problema que con la de Kindle: el archivo esta en un dispositivo pero no puede ser descargado desde otro. Solo funciona la sincronización cuando el mismo archivo esta en los dos dispositivos... Escalofriante. &lt;/p&gt;
+
+&lt;p&gt;Con todo esto no he terminado de tomar una decisión. Para algunos libros uso iBooks y para otros uso Kindle. Principalmente si tengo el libro ya en formato Kindle uso Kindle. Si solo lo tengo en ePub uso iBooks aunque ya he dicho que, para mi, la experiencia de lectura no es tan placentera. Estoy pensando en hacer algún script que convierta de ePub a Kindle y envíe un mail a mi cuenta de Amazon para cargar Amazon Documents pero de momento es solo una idea. Tendré que seguir &lt;em&gt;apañandomelas&lt;/em&gt;. &lt;/p&gt;
+</description>
+        <pubDate>Mon, 31 Aug 2015 00:05:00 +0200</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/08/31/ibooks-o-kindle/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/31/ibooks-o-kindle/</guid>
+        
+        
+      </item>
     
       <item>
 				 
@@ -473,22 +501,6 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
         <link>http://pow.cx</link>
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2014/02/25/pow-es-poderoso/</guid>
-        
-        
-      </item>
-    
-      <item>
-				 
-        <title>Jugando a Ser John&amp;nbsp;Gruber&amp;nbsp;&lt;span class=&#39;post-marker post-marker-after&#39;&gt;→&lt;/span&gt;</title>
-				 
-        <description>&lt;p&gt;En el fondo, una parte de mi desea ser un guru. Por eso estoy haciendo experimentos con Octopress para poder publicar enlaces al más puro estilo &lt;a href=&quot;http://www.marco.org&quot;&gt;Marco Arment&lt;/a&gt; o &lt;a href=&quot;http://daringfireball.net&quot;&gt;Daring Fireball&lt;/a&gt;.&lt;br&gt;
-Mi única duda es si usar un signo de infinito, una estrella negra de cinco puntas o un caracter emoji para los permalinks. Creo que ese simbolo debe representar el tipo de contenido que genera el autor. 😜&lt;/p&gt;
-</description>
-        <pubDate>Tue, 25 Feb 2014 01:30:00 +0100</pubDate>
-				 
-        <link>http://octopress.org/docs/blogging/linklog/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2014/02/25/jugando-a-ser-john-gruber/</guid>
         
         
       </item>
