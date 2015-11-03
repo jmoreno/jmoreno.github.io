@@ -1,4 +1,8 @@
 require 'twitter'
+require 'net/http'
+require 'net/https'
+require 'uri'
+require 'cgi'
 
 twitter_consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
 twitter_consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
@@ -50,6 +54,46 @@ task :share_with_twitter do
   }
  
   File.open(".karmaplugin/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
+ 
+end
+
+desc "Post to Medium"
+task :post_to_medium do
+ 
+  if File.exists? ".medium/posts.info"
+    File.open(".medium/posts.info", 'rb') {|f| @posts = Marshal::load(f)}
+  else
+    @posts = []
+  end
+   
+  @posts.each{ |post|
+    if post["posted"] == "NO"
+      puts "Publicando en Medium: " + post["title"]
+      url = URI.parse("https://api.medium.com/v1/users/115595d86fa77c73315eee59c5e3db78c1611d9dbd0ec85ad19f1a80e110583a8/posts")
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
+      data = {
+      "title" => post["title"],
+      "contentFormat" => "markdown",
+      "content" => post["content"],
+      "publishStatus" => "draft",
+      "canonicalUrl" => post["permalink"]
+      }
+      data = URI.encode_www_form(data)
+      puts data
+      headers = {
+      "Authorization" => "Bearer 2fa749744efd787deafdf7819aa67da0f51943f574356529722aba8073978cd81", 
+      "User-agent" => 'Mozilla/5.0', 
+      "Content-Type" => 'application/json',
+      "Accept" => 'application/json',
+      "Accept-Charset" => 'utf-8'
+      }
+      resp = http.post(url.path, data, headers)
+      puts resp.value
+    end
+  }
+ 
+  File.open(".medium/posts.info", 'wb') {|f| f.write(Marshal.dump(@posts)) }
  
 end
 
