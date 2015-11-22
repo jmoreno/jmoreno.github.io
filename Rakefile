@@ -69,27 +69,27 @@ task :post_to_medium do
   @posts.each{ |post|
     if post["posted"] == "NO"
       puts "Publicando en Medium: " + post["title"]
-      url = URI.parse("https://api.medium.com/v1/users/115595d86fa77c73315eee59c5e3db78c1611d9dbd0ec85ad19f1a80e110583a8/posts")
+      url = URI.parse("https://api.medium.com")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Post.new("/v1/users/115595d86fa77c73315eee59c5e3db78c1611d9dbd0ec85ad19f1a80e110583a8/posts")
+      request.add_field("Authorization", "Bearer 2fa749744efd787deafdf7819aa67da0f51943f574356529722aba8073978cd81")
+      request.add_field("User-agent", 'Mozilla/5.0')
+      request.add_field("Content-Type", 'application/json')
+      request.add_field("Accept", 'application/json')
+      request.add_field("Accept-Charset", 'utf-8')
       data = {
-      "title" => post["title"],
-      "contentFormat" => "markdown",
-      "content" => post["content"],
-      "publishStatus" => "draft",
-      "canonicalUrl" => post["permalink"]
-      }
-      data = URI.encode_www_form(data)
-      puts data
-      headers = {
-      "Authorization" => "Bearer 2fa749744efd787deafdf7819aa67da0f51943f574356529722aba8073978cd81", 
-      "User-agent" => 'Mozilla/5.0', 
-      "Content-Type" => 'application/json',
-      "Accept" => 'application/json',
-      "Accept-Charset" => 'utf-8'
-      }
-      resp = http.post(url.path, data, headers)
-      puts resp.value
+      	"title" => post["title"], 
+      	"contentFormat" => "html",
+      	"content" => post["content"],
+      	"publishStatus" => "draft",
+      	"canonicalUrl" => post["permalink"]
+      	}
+      request.body = data.to_json
+      puts "antes"
+      response = http.request(request)
+      puts "despues"
     end
   }
  

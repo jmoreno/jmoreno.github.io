@@ -6,9 +6,42 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 03 Nov 2015 09:30:36 +0100</pubDate>
-    <lastBuildDate>Tue, 03 Nov 2015 09:30:36 +0100</lastBuildDate>
+    <pubDate>Sun, 22 Nov 2015 22:35:06 +0100</pubDate>
+    <lastBuildDate>Sun, 22 Nov 2015 22:35:06 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+				 
+        <title>TasaTuCoche 2.0</title>
+				 
+        <description>&lt;p&gt;Después de un gran parón en mis hábitos nocturnos de desarrollo he vuelto a las andadas. Hace un par de semanas me dio por mirar las valoraciones de TasaTuCoche y me quede muy sorprendido al ver que todavía tenia buenos comentarios pese a no haber sido actualizada desde hace más de tres años. Se que la aplicación se sigue descargando porque todos los meses recibo un pago de Apple por un importe más o menos constante y durante todo este tiempo he ido reflexionando, a cuentagotas, sobre como evolucionarla ya que se ha quedado bastante atrás, principalmente en el diseño (todavía no esta adaptada a iOS 7).&lt;/p&gt;
+
+&lt;p&gt;El caso es que al ver los comentarios tan positivos y aprovechando que vuelvo a tener una vida relativamente normal (al menos tan normal como la tenía allá por 2011 o 2012) me he decido a crear la versión 2.0 de TasaTuCoche.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;El primer cambio está en el nombre: TasaTuCoche pasará a llamarse TasaCoches. De esta forma la aplicación estará alineada con &lt;a href=&quot;http://tasacoches.net&quot;&gt;tasacoches.net&lt;/a&gt;, una web que hice en 2013 y que tiene el mismo origen de información. La web todavía tiene bastantes fallos que espero ir solucionando poco a poco. &lt;/p&gt;
+
+&lt;p&gt;Como han pasado bastantes años desde la última actualización se me han ido acumulando los cambios tecnologicos: adaptación a iOS 7, storyboards, autolayout, swift... ¿qué tendrá TasaCoches? pues todo, para que nos vamos a andar con remilgos.     &lt;/p&gt;
+
+&lt;p&gt;TasaCoches está completamente escrita desde 0. Bueno, desde 0 no. El modelo y la base de datos es la misma, las funcionalidades presentes en la aplicación serán, de partida, las mismas lo que me permite
+avanzar relativamente rápido al tener un &lt;em&gt;buen documento&lt;/em&gt; de requisitos. En lugar de estar en Objective-C la estoy programando toda en Swift. En este punto he de decir que me he quedado gratamente sorprendido con el nuevo lenguaje de programación de Apple. No me siento muy incomodo con el lenguaje a pesar de las interrogaciones, las admiraciones y los continuos consejos del compilador (que me recuerda a Clippy, todo sea dicho). 
+Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a objetos ni en el lenguaje de programación. Leía mucho y tenía en la cabeza muchas ideas de reutilización y construcción de clases sofisticadas que me hicieran la vida, en el futuro, más fácil. El resultado es un código caótico a más no poder. En la nueva versión estoy siendo mucho más práctico. Seguro que muchos lo verán y dirán: &amp;quot;yo no repitiría este código aquí y buscaría una forma de forma de reusarlo de forma generica...&amp;quot;. Mi realidad es que quizá no vuelva a tocar esté código hasta dentro de un mes. Entonces no tendré tiempo de preguntarme a mi yo de hace un mes en que estaba pensando cuando escondía tanto la funcionalidad. &lt;/p&gt;
+
+&lt;p&gt;Otra diferencia es el uso de Storyboards. La versión 1.x  no usa ni storyboards ni xibs, toda la navegación se orquesta mediante programación. El uso de Stoyboards en este punto de la película (finales de 2015) me está permitiendo usar todas las ventajas de Autolayout para que la aplicación sea multidispositivo así como incluir alguna característica de forma más sencilla.  Aquí también he de destacar que me está resultando todo mucho más sencillo que en 2013, cuando empecé una versión inacabada de esta aplicación con Storyboards y Autolayout. &lt;/p&gt;
+
+&lt;p&gt;El caso es que estoy bastante contento con el resultado: me lo estoy pasando bien programando en Swift, no me estoy encontrando grandes problemas en el desarrollo y lo que voy haciendo funciona como espero... Esto último es mucho más de lo que sentía con Objective-C. ;-)&lt;/p&gt;
+
+&lt;p&gt;Mi idea es tener una versión estable para testing en una o dos semanas, como mucho. Voy a colgar un formulario de Google para que los que estéis interesados en echarme una mano con las pruebas os apuntéis. Tampoco esperéis gran cosa, es una aplicación bastante sencilla. &lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Nov 2015 21:43:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/</guid>
+        
+        
+      </item>
     
       <item>
 				 
@@ -333,9 +366,9 @@ Vaya por delante que yo mismo hago este tipo de comentarios &lt;em&gt;habitualme
 </description>
         <pubDate>Sun, 04 Jan 2015 19:15:00 +0100</pubDate>
 				 
-        <link>http://javimoreno.es/blog/2015/01/04/empati%CC%81a-por-el-diablo/</link>
+        <link>http://javimoreno.es/blog/2015/01/04/empat%C3%ADa-por-el-diablo/</link>
 				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/04/empati%CC%81a-por-el-diablo/</guid>
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/04/empat%C3%ADa-por-el-diablo/</guid>
         
         
       </item>
@@ -389,121 +422,6 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
         <link>http://javimoreno.es/blog/2014/11/19/motivacion-al-poder/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2014/11/19/motivacion-al-poder/</guid>
-        
-        
-      </item>
-    
-      <item>
-				 
-        <title>Octoberry Pi</title>
-				 
-        <description>&lt;p&gt;Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta.&lt;br&gt;
-Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.&lt;br&gt;
-Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;Lo nuestro es el plomo.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;Claro, que un poco más adelante, en la misma película también dijo:&lt;/p&gt;
-
-&lt;blockquote&gt;&lt;p&gt;En aquel momento parecía una buena idea.&lt;/p&gt;&lt;/blockquote&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;Este año, los Reyes Magos me trajeron una Raspberry Pi. Si ya se que ya no está tan de moda pero después de una conversación con &lt;a href=&quot;http://twitter.com/jdortiz&quot;&gt;Jorge Ortiz&lt;/a&gt; allá por Octubre me picó el gusanillo de usar este dispositivo para hacer pruebas de configuración de un servidor Rails. Después, pensando en lo poco que consume, que puede estar siempre encendido, que soporta ssh,… pensé que a lo mejor esta era la forma de poder publicar cosas en el blog cuando no estuviera en casa. &lt;/p&gt;
-
-&lt;h2&gt;Organización: Borradores y Blog.&lt;/h2&gt;
-
-&lt;p&gt;Supongo que ya lo sabréis pero Octopress se apoya mucho en git. Inicialmente pensé en tener toda la carpeta del proyecto en Dropbox para que estuviera sincronizado el contenido tanto en la Raspberry, como en el Mac, el iPhone o el iPad. Si esto funcionaba, lo único que tendría que hacer cuando hubiera terminado de escribir algo sería entrar en la RPi y hacer el &lt;strong&gt;deploy&lt;/strong&gt; desde allí.&lt;br&gt;
-No fue una buena idea, primero porque la RPi no es el más rápido de los dispositivos y segundo porque la carpeta de un proyecto Octopress con la rama &lt;strong&gt;source&lt;/strong&gt; tiene un número de ficheros que tiende a infinito y Dropbox es genial excepto cuando tienes un número muy grande de ficheros.&lt;br&gt;
-El plan B fue tener una carpeta en Dropbox para los borradores, tener el repositorio del blog sincronizado también con la Raspberry y mover los &lt;strong&gt;borradores&lt;/strong&gt; al proyecto cuando fuera a publicar algo.&lt;/p&gt;
-
-&lt;h2&gt;Crear una carpeta de borradores en Dropbox.&lt;/h2&gt;
-
-&lt;p&gt;Prácticamente todos los editores markdown que hay tanto para iPhone, como para iPad como para Mac permiten guardar en Dropbox. En mi caso particular uso iA Writer en el iPhone, Editorial en el iPad y nvAlt, iA Writer o Textmate en el Mac (según me de). En todos estos editores puedo escribir los artículos, en el iPad y en el Mac además puedo hacer la &lt;strong&gt;postprodución&lt;/strong&gt; del post, es decir la maquetación y uso de los plugins que aporta Octopress para que las entradas queden más vitaminadas. Además, el tener todo en Dropbox me permite empezar a escribir en el Mac, seguir escribiendo en el iPhone mientras voy en el Metro y terminar de maquetar en el iPad (porque mola mucho usar Editorial).&lt;/p&gt;
-
-&lt;p&gt;Para poder usar Dropbox en la Raspberry me basé en &lt;a href=&quot;http://raspi.tv/2013/how-to-use-dropbox-with-raspberry-pi&quot;&gt;esta entrada&lt;/a&gt;. Es importante destacar que Dropbox en la Raspberry todavía no funciona (y no se si algún día funcionará) como funciona en nuestros dispositivos habituales: no hay sincronización. &lt;a href=&quot;https://github.com/andreafabrizi/Dropbox-Uploader&quot;&gt;Dropbox Uploader&lt;/a&gt; lo que permite es descargar, subir, borrar, crear directorios y demás historias pero la sincronización es algo que, si lo quieres, te lo tienes que currar tu. En mi caso, con la descarga de Dropbox a la Raspberry es suficiente.&lt;/p&gt;
-
-&lt;h2&gt;GitHub, Bitbucket y ramas remotas.&lt;/h2&gt;
-
-&lt;p&gt;Aunque este blog está hospedado en GitHub, el repositorio completo (Octopress consta de dos ramas: &lt;strong&gt;master&lt;/strong&gt; y &lt;strong&gt;source&lt;/strong&gt;) está alojado en Bitbucket. No es que tenga nada que ocultar, simplemente que tengo cosas a medio escribir que no me apetece que se vean hasta que estén terminadas. 
-Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repositorio remoto, lo único que hay que hacer es crear una clave ssh en la Raspberry (&lt;a href=&quot;https://help.github.com/articles/generating-ssh-keys&quot;&gt;en GitHub tienen muy buenos tutoriales de como hacerlo&lt;/a&gt;), vincular esta clave tanto al repositorio de Bitbucket como al de GitHub y disfrutar: ya podemos clonar, hacer pull, hacer push y todas esas cosas que hacen que Octopress mole tanto. Como a todos los efectos es una nueva instalación. Cuando clonamos el proyecto tenemos que hacer el &amp;quot;bundle install&amp;quot; y volver a configurar el sistema de despliegue. Con las &lt;a href=&quot;http://octopress.org/docs/deploying/&quot;&gt;instrucciones del sitio de Octopress&lt;/a&gt; es más que suficiente.&lt;/p&gt;
-
-&lt;h2&gt;El proceso de publicación.&lt;/h2&gt;
-
-&lt;p&gt;Creo que todavía no lo había dicho pero en todo momento he estado accediendo a la Raspberry vía ssh. Si usas git y octopress no deberías tenerle ningún miedo al terminal por lo que acceder vía ssh al dispositivo no será tampoco un problema. Para facilitarme un poco la tarea me he creado una serie de scripts para las situaciones que me puedo encontrar con más frecuencia:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Descargar los borradores y previsualizar&lt;/li&gt;
-&lt;li&gt;Publicar lo que haya en la Raspberry&lt;/li&gt;
-&lt;li&gt;Descargar los borradores y publicar&lt;/li&gt;
-&lt;li&gt;Descargar el repositorio y previsualizar&lt;/li&gt;
-&lt;li&gt;Descargar el repositorio y publicar&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;En todos los casos, después de publicar se hace commit en el repositorio y se suben los cambios a los servidores remotos.&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;quickpost.sh&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;mv ./drafts/*.markdown ./blog/source/_posts
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake generate
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake deploy
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git add .
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;8&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Nuevo publicación con quickpost.sh&amp;quot;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;9&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;p&gt;El script anterior descarga los ficheros que estén en la carpeta de &lt;em&gt;borradores&lt;/em&gt;. A continuación, mueve los ficheros con extensión &lt;em&gt;markdown&lt;/em&gt; a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace &lt;code&gt;commit&lt;/code&gt;en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.&lt;/p&gt;
-
-&lt;p&gt;El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un &lt;code&gt;pulo&lt;/code&gt; al repositorio remoto,…&lt;/p&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;gitpost.sh&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git pull origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake generate
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake deploy
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git add .
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git commit -m &lt;span class=&quot;err&quot;&gt;&amp;quot;&lt;/span&gt;Nuevo publicación con gitpost.sh”
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;8&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;quickpreview.sh&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;mv ./drafts/*.markdown ./blog/source/_posts
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake generate
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake preview&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;quickdeploy.sh&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake generate
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake deploy
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git add .
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;6&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Nuevo publicación con quickdeploy.sh&amp;quot;&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;7&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;figure class=&#39;code-highlight-figure&#39;&gt;&lt;figcaption class=&#39;code-highlight-caption&#39;&gt;&lt;span class=&#39;code-highlight-caption-title&#39;&gt;gitpreview.sh&lt;/span&gt;&lt;/figcaption&gt;&lt;div class=&#39;code-highlight&#39;&gt;&lt;pre class=&#39;code-highlight-pre&#39;&gt;&lt;div data-line=&#39;1&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;2&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;3&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;git pull origin &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;4&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake generate
-&lt;/div&gt;&lt;/div&gt;&lt;div data-line=&#39;5&#39; class=&#39;code-highlight-row numbered&#39;&gt;&lt;div class=&#39;code-highlight-line&#39;&gt;rake preview&lt;/div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/figure&gt;
-
-&lt;h2&gt;Wherever I may roam&lt;/h2&gt;
-
-&lt;p&gt;Y aquí llega el punto por el que decidí montar todo este tinglado: tenemos el repositorio del blog clonado en la Raspberry Pi, hemos creado una serie de scripts para facilitar el proceso de descarga y publicación. Para poder publicar en cualquier momento y allá donde nos encontremos solo nos faltan dos cosas: poder acceder a la Raspberry desde fuera de la red local y tener una aplicación en el iPhone o en el iPad que permitan hacer un ssh.&lt;/p&gt;
-
-&lt;p&gt;Lo primero lo he resuelto con &lt;a href=&quot;http://www.noip.com&quot;&gt;no-ip&lt;/a&gt; un servicio gratuito que mediante la instalación de un paquete en la Raspberry y la configuración de una cuenta nos permite acceder a nuestra red como si de un servicio web se tratara. Ya no recuerdo cual es el tutorial que usé yo para configurarlo pero cualquiera que aparece al buscar “no-ip raspberry” en Google valdrá. Es algo extremadamente sencillo.&lt;/p&gt;
-
-&lt;p&gt;Y para lo segundo, hacía ya bastante tiempo que le había echado el ojo a &lt;a href=&quot;https://itunes.apple.com/es/app/prompt/id421507115?mt=8&quot;&gt;Prompt&lt;/a&gt; de la gente de &lt;a href=&quot;http://www.panic.com&quot;&gt;Panic&lt;/a&gt;. Quizá sea una aplicación cara (cuesta 7€) pero cumple su cometido a la perfección.&lt;/p&gt;
-
-&lt;h2&gt;Conclusión.&lt;/h2&gt;
-
-&lt;p&gt;Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.&lt;br&gt;
-Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante &lt;code&gt;crontab&lt;/code&gt; me daría mucha agilidad.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 07 Apr 2014 09:30:00 +0200</pubDate>
-				 
-        <link>http://javimoreno.es/blog/2014/04/07/octoberry-pi/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2014/04/07/octoberry-pi/</guid>
         
         
       </item>
