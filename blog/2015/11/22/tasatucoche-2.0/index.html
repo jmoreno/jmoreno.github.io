@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Jugando Con La App Store</title>
+  <title>TasaTuCoche 2.0</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="canonical" href="http://javimoreno.es/blog/2012/09/27/jugando-con-la-app-store/">
+  <link rel="canonical" href="http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 <!--  <link rel="stylesheet" href=""> -->
@@ -50,7 +50,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Jugando Con La App Store</h1>
+				  	<h1 class="post-title">TasaTuCoche 2.0</h1>
 				  	 
           </div>
         </div>
@@ -61,11 +61,11 @@
               <h4>Javi</h4>
               <p class="bio"></p>
               <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2012-09-27 08:00"> 27 de septiembre de 2012</time></p>
+              <p class="published"><i class="fa fa-calendar"></i><time datetime="2015-11-22 21:43"> 22 de noviembre de 2015</time></p>
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              1 minuto
+              3 minutos
               
               de lectura
               </p>
@@ -74,24 +74,32 @@
         </div>
         <section class="post-content">
           <a name="topofpage"></a>
-          <p>El miércoles 26 de septiembre tuve la oportunidad de dar otra charla en la NSCoderMAD. Volvió a ser en el CIBALL un sitio que parece que visitaremos mucho en los próximos meses si todo va bien. En esta ocasión mi charla giró sobre la experiencia de usar los servicios de AppGratis, una aplicación que envía newsletter y hace notificaciones push cada día hablando de una aplicación que baja de precio o pasa a ser gratis. Creo que la charla es bastante interesante por la experiencia en si y porque aporta datos no muy habituales: las ganancias de una aplicación del Top 25 de pago.</p>
+          <p>Después de un gran parón en mis hábitos nocturnos de desarrollo he vuelto a las andadas. Hace un par de semanas me dio por mirar las valoraciones de TasaTuCoche y me quede muy sorprendido al ver que todavía tenia buenos comentarios pese a no haber sido actualizada desde hace más de tres años. Se que la aplicación se sigue descargando porque todos los meses recibo un pago de Apple por un importe más o menos constante y durante todo este tiempo he ido reflexionando, a cuentagotas, sobre como evolucionarla ya que se ha quedado bastante atrás, principalmente en el diseño (todavía no esta adaptada a iOS 7).</p>
 
-<!--more--> 
+<p>El caso es que al ver los comentarios tan positivos y aprovechando que vuelvo a tener una vida relativamente normal (al menos tan normal como la tenía allá por 2011 o 2012) me he decido a crear la versión 2.0 de TasaTuCoche.</p>
 
-<p>He subido la presentacion a slideshare en dos versiones, con las &quot;notas del presentador&quot; y sin ellas. También se van a enlazar desde el tumblr de <a href="http://nscoder-mad.tumblr.com/">NSCoderMAD</a> junto con la presentación que hizo <a href="https://twitter.com/j4n0">Alejandro</a> sobre el runtime de Objective-C; una presentación profunda de contenido, como no podía ser de otra forma, muy interesante e ilustrativa. Os recomiendo que la veáis. Espero que guste:</p>
+<!--more-->
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/14474794 " width="595" height="446" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe> 
+<p>El primer cambio está en el nombre: TasaTuCoche pasará a llamarse TasaCoches. De esta forma la aplicación estará alineada con <a href="http://tasacoches.net">tasacoches.net</a>, una web que hice en 2013 y que tiene el mismo origen de información. La web todavía tiene bastantes fallos que espero ir solucionando poco a poco. </p>
 
-<p>Esta es la presentación pero con mis notas:  </p>
+<p>Como han pasado bastantes años desde la última actualización se me han ido acumulando los cambios tecnologicos: adaptación a iOS 7, storyboards, autolayout, swift... ¿qué tendrá TasaCoches? pues todo, para que nos vamos a andar con remilgos.     </p>
 
-<iframe src="http://www.slideshare.net/slideshow/embed_code/14474831 " width="595" height="446" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen></iframe> 
+<p>TasaCoches está completamente escrita desde 0. Bueno, desde 0 no. El modelo y la base de datos es la misma, las funcionalidades presentes en la aplicación serán, de partida, las mismas lo que me permite
+avanzar relativamente rápido al tener un <em>buen documento</em> de requisitos. En lugar de estar en Objective-C la estoy programando toda en Swift. En este punto he de decir que me he quedado gratamente sorprendido con el nuevo lenguaje de programación de Apple. No me siento muy incomodo con el lenguaje a pesar de las interrogaciones, las admiraciones y los continuos consejos del compilador (que me recuerda a Clippy, todo sea dicho). 
+Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a objetos ni en el lenguaje de programación. Leía mucho y tenía en la cabeza muchas ideas de reutilización y construcción de clases sofisticadas que me hicieran la vida, en el futuro, más fácil. El resultado es un código caótico a más no poder. En la nueva versión estoy siendo mucho más práctico. Seguro que muchos lo verán y dirán: &quot;yo no repitiría este código aquí y buscaría una forma de forma de reusarlo de forma generica...&quot;. Mi realidad es que quizá no vuelva a tocar esté código hasta dentro de un mes. Entonces no tendré tiempo de preguntarme a mi yo de hace un mes en que estaba pensando cuando escondía tanto la funcionalidad. </p>
+
+<p>Otra diferencia es el uso de Storyboards. La versión 1.x  no usa ni storyboards ni xibs, toda la navegación se orquesta mediante programación. El uso de Stoyboards en este punto de la película (finales de 2015) me está permitiendo usar todas las ventajas de Autolayout para que la aplicación sea multidispositivo así como incluir alguna característica de forma más sencilla.  Aquí también he de destacar que me está resultando todo mucho más sencillo que en 2013, cuando empecé una versión inacabada de esta aplicación con Storyboards y Autolayout. </p>
+
+<p>El caso es que estoy bastante contento con el resultado: me lo estoy pasando bien programando en Swift, no me estoy encontrando grandes problemas en el desarrollo y lo que voy haciendo funciona como espero... Esto último es mucho más de lo que sentía con Objective-C. ;-)</p>
+
+<p>Mi idea es tener una versión estable para testing en una o dos semanas, como mucho. Voy a colgar un formulario de Google para que los que estéis interesados en echarme una mano con las pruebas os apuntéis. Tampoco esperéis gran cosa, es una aplicación bastante sencilla. </p>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Jugando+Con+La+App+Store&amp;url=http://kcy.me/25vj4"
+                <a class="icon-twitter" href="http://twitter.com/share?text=TasaTuCoche+2.0&amp;url=http://kcy.me/2977z"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -100,14 +108,14 @@
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Jugando+Con+La+App+Store&amp;u=http://kcy.me/25vj4"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=TasaTuCoche+2.0&amp;u=http://kcy.me/2977z"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Jugando+Con+La+App+Store&amp;url=http://kcy.me/25vj4"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=TasaTuCoche+2.0&amp;url=http://kcy.me/2977z"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -122,8 +130,8 @@
     
       
       // var disqus_developer = 1;
-      var disqus_identifier = 'http://javimoreno.es/blog/2012/09/27/jugando-con-la-app-store/';
-      var disqus_url = 'http://javimoreno.es/blog/2012/09/27/jugando-con-la-app-store/';
+      var disqus_identifier = 'http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/';
+      var disqus_url = 'http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/';
       var disqus_script = 'embed.js';
     
         (function() {
