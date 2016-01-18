@@ -6,9 +6,39 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 16 Dec 2015 11:00:33 +0100</pubDate>
-    <lastBuildDate>Wed, 16 Dec 2015 11:00:33 +0100</lastBuildDate>
+    <pubDate>Mon, 18 Jan 2016 11:00:49 +0100</pubDate>
+    <lastBuildDate>Mon, 18 Jan 2016 11:00:49 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+				 
+        <title>Publicando en Medium... Imágenes!!!</title>
+				 
+        <description>&lt;p&gt;Muchas empresas se gastan auténticas montañas de dinero en formar a sus directivos para que obtengan mucho más rendimiento de sus equipos enseñándoles avanzadas técnicas de motivación personal. El problema de esas empresas es que sus directivos han olvidado, si es que en algún momento lo han sabido, que en realidad la técnica más sencilla y barata de motivación es esta:&lt;/p&gt;
+
+&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;es&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/jmoreno78&quot;&gt;@jmoreno78&lt;/a&gt; hola, estoy usando tu workflow para hacer un post a Medium y trabaja de maravilla podrías agregar la opción para la imagen ?&lt;/p&gt;&amp;mdash; Diego Clavijo (@DCKhalifa) &lt;a href=&quot;https://twitter.com/DCKhalifa/status/685439025046548481&quot;&gt;January 8, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Cuando se publicó el API de Medium hice un workflow de Editorial para publicar en Medium directamente desde el iPad o el iPhone. Tenía pendiente hacer otro para subir imágenes que pudieran ser utilizadas luego en las publicaciones... Ya no ;-)&lt;/p&gt;
+
+&lt;p&gt;He partido del workflow para enviar imágenes por SFTP de &lt;a href=&quot;http://www.macdrifter.com/2013/09/editorial-workflow-for-sizing-and-uploading-images.html&quot;&gt;Macdrifter&lt;/a&gt; cambiando el script del último paso.&lt;/p&gt;
+
+&lt;p&gt;El resultado es este:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/proxy/1*Tuhk5xFjbkEYmPsvb5A56A.png&quot; alt=&quot;clouds_2016-01-10-095030.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Podéis echarle un vistazo al workflow e instalarlo si tenéis Editorial desde aquí: &lt;a href=&quot;http://www.editorial-workflows.com/workflow/5820181922185216/hSbbcIYr04E&quot;&gt;Images to Medium&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jan 2016 20:02:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/</guid>
+        
+        
+      </item>
     
       <item>
 				 
@@ -407,21 +437,6 @@ En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole 
         <link>http://javimoreno.es/blog/2014/12/31/bullet-with-butterfly-wings/</link>
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2014/12/31/bullet-with-butterfly-wings/</guid>
-        
-        
-      </item>
-    
-      <item>
-				 
-        <title>Motivación Al Poder</title>
-				 
-        <description>&lt;p&gt;&lt;a href=&quot;http://dilbert.com/strip/1997-11-05&quot;&gt;&lt;img src=&quot;http://assets.amuniversal.com/69cc4730a085012f2fe600163e41dd5b&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 19 Nov 2014 21:50:00 +0100</pubDate>
-				 
-        <link>http://javimoreno.es/blog/2014/11/19/motivacion-al-poder/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2014/11/19/motivacion-al-poder/</guid>
         
         
       </item>
