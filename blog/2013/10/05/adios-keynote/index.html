@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Adios Keynote, hola reveal.js</title>
+  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/blog/2013/10/05/adios-keynote/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+  <body itemscope itemtype="http://schema.org/Article">
+	 <!-- header start -->
+
+<!-- header end -->
+    
+    <main class="content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+						 
+				  	<h1 class="post-title">Adios Keynote, hola reveal.js</h1>
+				  	 
+          </div>
+        </div>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Javi</h4>
+              <p class="bio"></p>
+              <hr>
+              <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-10-05 03:07"> 05 de octubre de 2013</time></p>
+              <p class="published"><i class="fa fa-clock-o"></i>  
+              
+              
+              9 minutos
+              
+              de lectura
+              </p>
+            </section>
+          </div>
+        </div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <p>El día que empecé a preparar la presentación <a href="http://slides.helios.javimoreno.me">Helios y su integración en iOS</a> me pregunté si habría alguna forma de utilizar markdown con Keynote. Iban a ser unas cuantas diapositivas de texto y manejar títulos, negritas, cursivas, listas, links,... con markdown me parecía triunfal. Después de una búsqueda rápida en Google y ver un par de enlaces descubrí <a href="https://github.com/hakimel/reveal.js">reveal.js</a>... y decidí no volver a abrir Keynote nunca más.</p>
+
+<!--more-->
+
+<p>La <a href="http://lab.hakim.se/reveal-js/#/">presentación de ejemplo</a> ya te da una idea general de toda la potencia de este framework. Inicialmente, a mi me bastaba con poder reutilizar un fichero en markdown en la presentación y al ver que dentro de cada <code>section</code>, que es como se identifican las <em>slides</em>, se podía introducir texto en markdown me daba por satisfecho. Luego seguí navegando y vi que, en realidad, podía utilizar un texto entero en markdown ya que con una seríe de convenciones en la escritura y arrancando reveal.js como una aplicación node.js, esta aplicación se encargaba de generar la presentación completa... reveal.js FTW!    </p>
+
+<h2>Atajos de teclado</h2>
+
+<p>Un poco más adelante explicaré como hacer que reveal.js lea de un fichero <code>.md</code> pero antes quiero destacar la funcionalidad de reveal.js accesible a través de teclado.</p>
+
+<ul>
+<li>Avance de diapositivas. Una característica muy llamativa de reveal.js es que las presentaciones tienen dos dimensiones. Estamos acostumbrados a avanzar y a retroceder pero con este framework también podemos subir y bajar. Esto, desde mi punto de vista, es muy útil cuando quieres ampliar la información de una diapositiva en varias diapositivas más. En el eje horizontal (avance-retroceso) estarían las diapositivas principales y algunas de ellas podrían tener un eje vertical (arriba-abajo). La navegación se controla con las teclas de cursor pero si la presentación se visualiza en un dispositivo táctil el control de la navegación se hace con el dedo. Impresionante, no?</li>
+<li>Vistazo general. Pulsando la tecla <em>escape</em> se hace un zoom y puedes ver todas las diapositivas en miniatura lo que te permite navegar más rápidamente a una en concreto. Además, en caso de que tengas secciones de diapositivas (grupos en vertical) puedes ver la diapositiva que se mostraría en un flujo de navegación horizontal.</li>
+<li>Modo Pausa. Pulsando la tecla &quot;b&quot; se hace un fundido a negro, de esta forma puedes forzar al público a centrar su atención en ti en lugar de hacerlo sobre la presentación. Para salir de la <em>pausa</em> hay que volver a pulsar la &quot;b&quot;.</li>
+<li>Pantalla completa. Pulsando la tecla &quot;f&quot;</li>
+</ul>
+
+<p>Nada que envidiar a los programas típicos de presentaciones como Powerpoint (perdón por ponerlo en primer lugar) o Keynote.</p>
+
+<h2>Funcionalidad avanzada</h2>
+
+<p>Tener reveal.js dentro de una aplicación node.js también te permite visualizar las notas del presentador y alguna otra funcionalidad más sofisticada como sincronizar la presentación con todos los que la estén viendo al mismo tiempo que tu en sus dispositivos, actualizar el contenido de las diapositivas en tiempo real, etc..
+La verdad es que toda esas funcionalidades pintan muy bien pero yo lo único que quería era:</p>
+
+<h2>¡Una presentación hecha con markdown!</h2>
+
+<p>Hay que destacar que, al combinar reveal.js con un fichero .md donde están recogidas todas las diapositivas no se explota toda la potencia del framework como las diferentes transiciones, enlaces internos, colores de fondo diferentes, imágenes de fondo diferentes, vistas fragmentadas, etc. En mi humilde opinión, abusar de las transiciones, cambios de colores o de imágenes suele cargar bastante una presentación, pero vamos, que eso es cuestión de gustos.<br>
+Si que eché de menos el no poder hacer vistas fragmentadas. Espero que en alguna próxima versión den con la forma de hacerlo. Al menos la agrupación de diapositivas y las notas si que está disponibles y eso es para mí algo digno de mención. Para que os hagáis una idea, este es el corazón de mi presentación: el fichero <a href="https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md">presentation.md</a>.</p>
+
+<h2>¿Cómo hice mi presentación?</h2>
+
+<p>Lo primero que hice fue clonar el repositorio original de <a href="https://github.com/hakimel/reveal.js">reveal.js</a> y cambiar el fichero index.html. La mayor parte de la presentación estaría en el fichero markdown pero en la primera diapositiva quería usar una vista fragmentada (de esas en las que las frases o las palabras van apareciendo poco a poco). Debido a esto, el código de mi presentación quedaría así:</p>
+
+<h6>Fragmento HTML para definir la presentación</h6>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">  
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reveal"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>
+
+
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>Helios<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>y su integración en iOS<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"fragment fade-in"</span><span class="nt">&gt;</span>¿Es <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/mattt"</span><span class="nt">&gt;</span>@mattt<span class="nt">&lt;/a&gt;&lt;/small&gt;</span> una persona o una legión?<span class="nt">&lt;/h3&gt;</span>
+            <span class="nt">&lt;p&gt;</span>
+                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://javimoreno.me"</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/jmoreno78"</span><span class="nt">&gt;</span>@jmoreno78<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+
+        <span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">"presentation.md"</span> <span class="na">data-separator=</span><span class="s">"^\n\n\n"</span> <span class="na">data-vertical=</span><span class="s">"^\n\n"</span> <span class="na">data-notes=</span><span class="s">"^Note:"</span> <span class="na">data-charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;&lt;/section&gt;</span>
+
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>THE END<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;h3&gt;</span>BY Javier Moreno / javimoreno.me<span class="nt">&lt;/h3&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment fade-in"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://javimoreno.me"</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/jmoreno78"</span><span class="nt">&gt;</span>@jmoreno<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>Eso es todo, aparentemente tres diapositivas. La sección que se nutre de un fichero markdown tiene los siguientes atributos:</p>
+
+<ul>
+<li><code>data-markdown</code>: La ubicación del fichero</li>
+<li><code>data-separator</code>: Lo que vaya a identificar la separación entre diapositivas horizontales. En mi caso, tres líneas en blanco.</li>
+<li><code>data-vertical</code>: Lo que vaya a identificar la separación entre diapositivas verticales. En mi caso, dos líneas en blanco.</li>
+<li><code>data-notes</code>: Lo que identifique que el texto a continuación no es parte visual de la diapositivas si no de las notas.</li>
+<li><code>data-charset</code>: Muy importante para nosotros, que usamos muchos caracteres especiales como tildes, eñes, signos de interrogación y admiración el poner UTF-8.</li>
+</ul>
+
+<p>Y eso es todo, si echáis un vistazo al fichero <a href="https://github.com/jmoreno/HeliosTalk/blob/master/presentation.md">presentation.md</a> comprobaréis lo que acabo de comentar.</p>
+
+<p>Una vez hecho esto, para probarlo en local hay que tener instalado <a href="http://nodejs.org">node.js</a> y <a href="http://gruntjs.com/getting-started#installing-the-cli">grunt</a>. Si ya tenemos estos servicios instalados lo único que hay que hacer es ir hasta la carpeta donde está reveal, instalar las dependencias con <code>$ npm install</code> y arrancar la presentación con <code>$ grunt serve</code>. La presentación se verá en <a href="http://localhost:8000">http://localhost:8000</a>. </p>
+
+<h2>Despliegue en Heroku.</h2>
+
+<p>Si hacer lo anterior me llevo un rato de nada, conseguir desplegar en Heroku me llevó un mes: subí con éxito el martes y la presentación a los asistentes de la NSCoderMAD fue el miércoles.<br>
+Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fracaso. Por lo visto <em>grunt</em> está muy bien para entornos de desarrollo pero los hosting de node.js prefieren otras cosas. Búsquedas en Google hablan de versiones diferentes de la Heroku Toolbet para desplegar aplicaciones node.js con grub pero a mi no me funcionó ninguna de las recomendaciones que encontré.</p>
+
+<p>A última hora encontré este <a href="https://github.com/willy-vvu/reveal.js">fork de reveal.js</a> que se podía previsualizar en Heroku y de ahí tomé las configuraciones que necesitaba para que funcionará mi presentación en Heroku.</p>
+
+<p>Lo primero fue crear un fichero llamado <code>server.js</code> con el siguiente contenido:</p>
+
+<h6>Fichero server.js</h6>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'url'</span><span class="p">)</span>
+  <span class="p">,</span><span class="nx">mime</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">'mime'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="o">||</span><span class="mi">5000</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">handler</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">uri</span><span class="o">==</span><span class="s1">'/'</span><span class="p">){</span>
+        <span class="nx">uri</span><span class="o">=</span><span class="s1">'/index.html'</span>
+    <span class="p">}</span>
+    <span class="nx">uri</span><span class="o">=</span><span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span><span class="s1">' '</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">uri</span><span class="p">);</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Error loading file...'</span><span class="p">);</span>              
+        <span class="p">}</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-type'</span><span class="p">,</span><span class="nx">mime</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Este fichero contiene la información mínima que node.js necesita para arrancar la aplicación. Para que lea de este fichero, hubo que modificar el fichero <code>Procfile</code></p>
+
+<h6>Fichero Procfile</h6>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">web: node server.js</code></pre></figure>
+
+<p>Y por último, cambiar el fichero de dependencias <code>package.json</code>:</p>
+
+<h6>Fichero package.json</h6>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="s2">"author"</span><span class="err">:</span> <span class="s2">"Javi Moreno featuring (reveal.js by Hakim El Hattab)"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"revealjs"</span><span class="p">,</span>
+    <span class="s2">"description"</span><span class="err">:</span> <span class="s2">"Helios y su integración con iOS"</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"2.5.1"</span><span class="p">,</span>
+    <span class="s2">"repository"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="err">:</span> <span class="s2">"git"</span><span class="p">,</span>
+        <span class="s2">"url"</span><span class="err">:</span> <span class="s2">"git@github.com:jmoreno/HeliosTalk.git"</span>
+    <span class="p">},</span>
+    <span class="s2">"engines"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"node"</span><span class="err">:</span> <span class="s2">"0.8.x"</span>
+    <span class="p">},</span>
+    <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"mime"</span><span class="err">:</span><span class="s2">"1.2.7"</span><span class="p">,</span>
+        <span class="s2">"npm"</span><span class="err">:</span><span class="s2">"1.2.x"</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Ya solo quedaba hacer commit y seguir los pasos para desplegar en Heroku:</p>
+
+<ol>
+<li><code>$ heroku create</code></li>
+<li><code>$ git push heroku master</code></li>
+<li><code>$ heroku open</code></li>
+</ol>
+
+<p>No os podéis hacer a la idea de la alegría que me llevé.</p>
+
+<h2>Para acabar</h2>
+
+<p>Creo que, en su momento, este tweet no se entendió:</p>
+
+<div class='embed tweet'><blockquote class="twitter-tweet"><p>Si no me falla el valor, la presentación que estoy haciendo para la <a href="https://twitter.com/nscoder_mad">@nscoder_mad</a> se podrá ver en slideshare, Github y Heroku…</p>&mdash; Javi Moreno (@jmoreno78) <a href="https://twitter.com/jmoreno78/status/377465465054191616">September 10, 2013</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+
+<p>Como al final no me faltó el valor, ahí está la presentación: en <a href="http://www.slideshare.net/jmoreno78/helios-y-su-integracin-en-i-os">slideshare</a>, <a href="https://github.com/jmoreno/HeliosTalk">Github</a> y <a href="http://slides.helios.javimoreno.me/#/">Heroku</a>. \o/</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=Adios+Keynote%2C+hola+reveal.js&amp;url=http://kcy.me/25vjk"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+            
+              
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Adios+Keynote%2C+hola+reveal.js&amp;u=http://kcy.me/25vjk"
+                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+                </a>
+              
+            
+              
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Adios+Keynote%2C+hola+reveal.js&amp;url=http://kcy.me/25vjk"
+                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+                </a>
+              
+            
+          </section>
+					
+				  <comments class="post-comments">
+				    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.es/blog/2013/10/05/adios-keynote/';
+      var disqus_url = 'http://javimoreno.es/blog/2013/10/05/adios-keynote/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				  </comments>
+					
+        </footer>
+      </article>
+    </main>
+        <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Javi Moreno</h1>
+        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+</h2>
+        <a href="/" class="btn">Ir a la página principal</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

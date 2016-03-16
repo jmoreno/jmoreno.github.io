@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Octoberry Pi Reloaded</title>
+  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+  <body itemscope itemtype="http://schema.org/Article">
+	 <!-- header start -->
+
+<!-- header end -->
+    
+	 <div class="teaserimage">
+    	<div class="teaserimage-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">
+        Teaser Image
+    	</div>
+	 </div>
+    
+    <main class="content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+						 
+				  	<h1 class="post-title">Octoberry Pi Reloaded</h1>
+				  	 
+          </div>
+        </div>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Javi</h4>
+              <p class="bio"></p>
+              <hr>
+              <p class="published"><i class="fa fa-calendar"></i><time datetime="2015-01-12 00:31"> 12 de enero de 2015</time></p>
+              <p class="published"><i class="fa fa-clock-o"></i>  
+              
+              
+              7 minutos
+              
+              de lectura
+              </p>
+            </section>
+          </div>
+        </div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <p>Desde que escribí <a href="/blog/2014/04/07/octoberry-pi/">Octoberry Pi</a> tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar <em>cron</em> pero hasta estas navidades no he terminado de dejarlo listo.</p>
+
+<!--more-->
+
+<p>Hace poco migré el blog de <a href="http://octopress.org/">Octopress</a> a la ultima versión de <a href="http://jekyllrb.com/">Jekyll</a>. Principalmente porque, aunque Octopress es sencillo, creo que viene demasiado cargado de plugins, la organización de las carpetas me parece un poco confusa  y además, la versión 3.0 de Octopress no tendrá nada que ver con la actual ya que se transforma en una serie de plugins <em>avanzados</em> para Jekyll así que me pareció conveniente adentrarme en la austeridad del framework original. </p>
+
+<p>Pese al cambio, el montaje no ha variado mucho del descrito en el articulo arriba mencionado. Lo resumo a continuación por si no queréis leerlo:</p>
+
+<ol>
+<li>Carpeta en Dropbox donde están los borradores de los artículos que voy escribiendo y los que están para publicar. Tanto en el iPad como en el iPhone uso <a href="http://omz-software.com/editorial/">Editorial</a> para escribir, maquetar, buscar enlaces, fotos,... En el MacBook Pro, si edito algún artículo, ahora mismo usaría Textmate 2 que es el que tengo más preparado</li>
+<li>Raspberry Pi. No tiene gran cosa instalada: ruby con <a href="https://rvm.io/">rvm</a>, unas cuantas gemas necesarias para publicar este blog y git para subir los cambios en el proyecto tanto al repositorio de Github que permite que leas esto como al repositorio privado de Bitbucket donde está la chicha que no quiero que se vea... ;-)</li>
+</ol>
+
+<p>La automatización de la publicación la consigo con dos scripts. El primero es una tarea de Rake en el que se  indican todos los pasos para publicar el blog:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">desc</span> <span class="s2">"Publicación automática"</span>
+<span class="n">task</span> <span class="ss">:publicar</span> <span class="k">do</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Generación del sitio estático con Octopress"</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"jekyll build"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Despliegue del sitio en Github Pages"</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"octopress deploy"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Staging modified files"</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git add -A"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Committing a site build at </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">utc</span><span class="si">}</span><span class="s2">"</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="s2">"Build site at </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">utc</span><span class="si">}</span><span class="s2">"</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git commit -m </span><span class="se">\"</span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Pushing commits to remote"</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git push origin source"</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Publicando tweet de último post escrito"</span>
+  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="p">[</span><span class="ss">:share_with_twitter</span><span class="p">].</span><span class="nf">execute</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>La mezcla de castellano e ingles se debe a que me base en un Rakefile que ya tenía parte de lo que yo necesitaba. En general no me gusta traducir lo que han escrito otros en ingles y no me gusta escribir en ingles lo que, normalmente, solo voy a ver yo. Sois libres de criticarme por esto, no me vais a quitar el sueño.</p>
+
+<p>Aunque está clarito lo que hace este script, un poco más de detalle nunca viene mal:</p>
+
+<ol>
+<li>Generación del sitio. Jekyll construye un sitio hmtl completo que guarda en la carpeta _site</li>
+<li>Despligue en Github. Un nuevo plugin de Octopress 3.0, Octopress Deploy, hace un push de la carpeta _site a la rama master del repositorio de Github vinculado a Github Pages, que es, por así decirlo, mi hosting.</li>
+<li>Commit de los cambios realizados. Siempre, después de publicar en Github Pages hago un commit y subo los cambios al repositorio de Bitbucket. Normalmente, lo único que se añade es el nuevo post y las imágenes que pueda incluir pero a veces realizo modificaciones desde la raspberry.</li>
+<li>Publico el tweet de <em>spam</em>. Cada vez que escribo un nuevo artículo, publico un tweet para que la gente que me sigue se pueda enterar. Este tweet contiene un enlace acortado con <a href="https://karmacracy.com/">Karmacracy</a> mediante un plugin de cosecha propia. Es de los poquitos plugins que tiene este blog.</li>
+</ol>
+
+<p>Esta tarea no es exclusiva para la raspberry, la uso también en el Mac cuando publico desde allí.</p>
+
+<p>El script específico de la Raspberry es el que pongo a continuación. Inicialmente hice unos cuantos más pero con esta versión me es suficiente:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> -e
+./Dropbox-Uploader/dropbox_uploader.sh download /drafts/Blog ./drafts/
+mv ./drafts/Blog/<span class="k">*</span>.markdown ./blog/_posts
+<span class="nb">cd </span>blog
+/home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar</code></pre></figure>
+
+<p>Otro script que no es gran cosa:</p>
+
+<ol>
+<li>Descarga de la carpeta de Dropbox donde guardo los post a la Raspberry.</li>
+<li>Mueve los ficheros con extensión <em>markdown</em> a la carpeta del blog donde se almacenan. Mis borradores no tienen extensión <em>markdown</em> sino <em>md</em>. Igual esto está un poco cogido con pinzas pero a mi me vale.</li>
+<li>Cambia al directorio del blog. Ahora que lo veo, creo que esto no sería necesario. Como no he probado otra cosa, lo dejo. Igual más adelante lo actualizo.</li>
+<li>Ejecuta la tarea con rake. He probado de muchas maneras, la única que me ha funcionado es la que, de forma unívoca, dice la versión de <em>rake</em> que debe usar.</li>
+</ol>
+
+<p>Aunque parezca mentira, la automatización ha llevado más tiempo del que podría pensarse. Para empezar no estoy muy familiarizado con el mundo Linux. Tengo una tarea planificada con <em>cron</em> en el Mac, la descarga de los informes de iTunes Connect, lo que no me convierte en ningún experto. Además, cualquiera que haya trabajado con Ruby sabrá el dolor de cabeza que suponen las gemas, las versiones de Ruby y todo lo relacionado. Durante varios días me estuve pegando con esto porque, cuando se ejecutaba la tarea con <em>cron</em> se produción errores que cuando ejecutaba el script a mano no se daban.</p>
+
+<p>Inicialmente, la tarea en cron era así:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">30 9 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /home/pi/scripts/publicar.sh</code></pre></figure>
+
+<p>Y lo único que veía eran los típicos mensajes diciendo que la versión de la gema fulanita en Ruby patatín no  encuentran la dependencia de la gema menganita en Ruby patatán... lógico: patatín y patatán no tendrían que mezclarse.<br>
+Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imagen de la Raspberry dos veces encontré las palabrás mágicas en la página de rvm, ese ser tan querido y odiado al mismo tiempo. Decían así:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rvm cron setup</code></pre></figure>
+
+<p>A partir de ese momento, mi crontab quedó así:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#sm start rvm</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">"/home/pi/.rvm/gems/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.
+1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
+in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin"</span>
+<span class="nv">GEM_HOME</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/gems/ruby-2.1.0'</span>
+<span class="nv">GEM_PATH</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/gems/ruby-2.1.0:/home/pi/.rvm/gems/ruby-2.1.0@global'</span>
+<span class="nv">MY_RUBY_HOME</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/rubies/ruby-2.1.0'</span>
+<span class="nv">IRBRC</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/rubies/ruby-2.1.0/.irbrc'</span>
+<span class="c">#sm end rvm</span>
+30 9 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /home/pi/scripts/publicar.sh</code></pre></figure>
+
+<p>Al parecer, no es suficiente con tocar los <em>.profile</em> y <em>.bash_profile</em> para que coger la versión buena con rvm si no que es necesario informar al inicio del <em>cron</em> la ruta que tiene que seguir para encontrar la versión correcta. No es lo más bonito del mundo pero desde entonces, a eso de las nueve y media de la mañana, puedes encontrarte artículos recién publicados, como este.</p>
+
+<p><em>Imagen de cabecera obtenida de <a href="http://www.resplashed.com/"><strong>re</strong>:splashed</a></em></p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=Octoberry+Pi+Reloaded&amp;url=http://kcy.me/25vju"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+            
+              
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Octoberry+Pi+Reloaded&amp;u=http://kcy.me/25vju"
+                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+                </a>
+              
+            
+              
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Octoberry+Pi+Reloaded&amp;url=http://kcy.me/25vju"
+                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+                </a>
+              
+            
+          </section>
+					
+				  <comments class="post-comments">
+				    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/';
+      var disqus_url = 'http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				  </comments>
+					
+        </footer>
+      </article>
+    </main>
+        <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Javi Moreno</h1>
+        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+</h2>
+        <a href="/" class="btn">Ir a la página principal</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>

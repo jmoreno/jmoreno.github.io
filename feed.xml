@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javi Moreno</title>
+    <description>En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+</description>
+    <link>http://javimoreno.es/</link>
+    <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 16 Mar 2016 23:34:26 +0100</pubDate>
+    <lastBuildDate>Wed, 16 Mar 2016 23:34:26 +0100</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+				 
+        <title>Publicando en Medium... imágenes!!!</title>
+				 
+        <description>&lt;p&gt;Muchas empresas se gastan auténticas montañas de dinero en formar a sus directivos para que obtengan mucho más rendimiento de sus equipos enseñándoles avanzadas técnicas de motivación personal. El problema de esas empresas es que sus directivos han olvidado, si es que en algún momento lo han sabido, que en realidad la técnica más sencilla y barata de motivación es esta:&lt;/p&gt;
+
+&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;es&quot; dir=&quot;ltr&quot;&gt;&lt;a href=&quot;https://twitter.com/jmoreno78&quot;&gt;@jmoreno78&lt;/a&gt; hola, estoy usando tu workflow para hacer un post a Medium y trabaja de maravilla podrías agregar la opción para la imagen ?&lt;/p&gt;&amp;mdash; Diego Clavijo (@DCKhalifa) &lt;a href=&quot;https://twitter.com/DCKhalifa/status/685439025046548481&quot;&gt;January 8, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Cuando se publicó el API de Medium hice un workflow de Editorial para publicar en Medium directamente desde el iPad o el iPhone. Tenía pendiente hacer otro para subir imágenes que pudieran ser utilizadas luego en las publicaciones... Ya no ;-)&lt;/p&gt;
+
+&lt;p&gt;He partido del workflow para enviar imágenes por SFTP de &lt;a href=&quot;http://www.macdrifter.com/2013/09/editorial-workflow-for-sizing-and-uploading-images.html&quot;&gt;Macdrifter&lt;/a&gt; cambiando el script del último paso.&lt;/p&gt;
+
+&lt;p&gt;El resultado es este:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn-images-1.medium.com/proxy/1*Tuhk5xFjbkEYmPsvb5A56A.png&quot; alt=&quot;clouds_2016-01-10-095030.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Podéis echarle un vistazo al workflow e instalarlo si tenéis Editorial desde aquí: &lt;a href=&quot;http://www.editorial-workflows.com/workflow/5820181922185216/hSbbcIYr04E&quot;&gt;Images to Medium&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jan 2016 20:02:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>TasaTuCoche 2.0</title>
+				 
+        <description>&lt;p&gt;Después de un gran parón en mis hábitos nocturnos de desarrollo he vuelto a las andadas. Hace un par de semanas me dio por mirar las valoraciones de TasaTuCoche y me quede muy sorprendido al ver que todavía tenia buenos comentarios pese a no haber sido actualizada desde hace más de tres años. Se que la aplicación se sigue descargando porque todos los meses recibo un pago de Apple por un importe más o menos constante y durante todo este tiempo he ido reflexionando, a cuentagotas, sobre como evolucionarla ya que se ha quedado bastante atrás, principalmente en el diseño (todavía no esta adaptada a iOS 7).&lt;/p&gt;
+
+&lt;p&gt;El caso es que al ver los comentarios tan positivos y aprovechando que vuelvo a tener una vida relativamente normal (al menos tan normal como la tenía allá por 2011 o 2012) me he decido a crear la versión 2.0 de TasaTuCoche.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;El primer cambio está en el nombre: TasaTuCoche pasará a llamarse TasaCoches. De esta forma la aplicación estará alineada con &lt;a href=&quot;http://tasacoches.net&quot;&gt;tasacoches.net&lt;/a&gt;, una web que hice en 2013 y que tiene el mismo origen de información. La web todavía tiene bastantes fallos que espero ir solucionando poco a poco. &lt;/p&gt;
+
+&lt;p&gt;Como han pasado bastantes años desde la última actualización se me han ido acumulando los cambios tecnologicos: adaptación a iOS 7, storyboards, autolayout, swift... ¿qué tendrá TasaCoches? pues todo, para que nos vamos a andar con remilgos.     &lt;/p&gt;
+
+&lt;p&gt;TasaCoches está completamente escrita desde 0. Bueno, desde 0 no. El modelo y la base de datos es la misma, las funcionalidades presentes en la aplicación serán, de partida, las mismas lo que me permite
+avanzar relativamente rápido al tener un &lt;em&gt;buen documento&lt;/em&gt; de requisitos. En lugar de estar en Objective-C la estoy programando toda en Swift. En este punto he de decir que me he quedado gratamente sorprendido con el nuevo lenguaje de programación de Apple. No me siento muy incomodo con el lenguaje a pesar de las interrogaciones, las admiraciones y los continuos consejos del compilador (que me recuerda a Clippy, todo sea dicho). 
+Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a objetos ni en el lenguaje de programación. Leía mucho y tenía en la cabeza muchas ideas de reutilización y construcción de clases sofisticadas que me hicieran la vida, en el futuro, más fácil. El resultado es un código caótico a más no poder. En la nueva versión estoy siendo mucho más práctico. Seguro que muchos lo verán y dirán: &amp;quot;yo no repitiría este código aquí y buscaría una forma de forma de reusarlo de forma generica...&amp;quot;. Mi realidad es que quizá no vuelva a tocar esté código hasta dentro de un mes. Entonces no tendré tiempo de preguntarme a mi yo de hace un mes en que estaba pensando cuando escondía tanto la funcionalidad. &lt;/p&gt;
+
+&lt;p&gt;Otra diferencia es el uso de Storyboards. La versión 1.x  no usa ni storyboards ni xibs, toda la navegación se orquesta mediante programación. El uso de Stoyboards en este punto de la película (finales de 2015) me está permitiendo usar todas las ventajas de Autolayout para que la aplicación sea multidispositivo así como incluir alguna característica de forma más sencilla.  Aquí también he de destacar que me está resultando todo mucho más sencillo que en 2013, cuando empecé una versión inacabada de esta aplicación con Storyboards y Autolayout. &lt;/p&gt;
+
+&lt;p&gt;El caso es que estoy bastante contento con el resultado: me lo estoy pasando bien programando en Swift, no me estoy encontrando grandes problemas en el desarrollo y lo que voy haciendo funciona como espero... Esto último es mucho más de lo que sentía con Objective-C. ;-)&lt;/p&gt;
+
+&lt;p&gt;Mi idea es tener una versión estable para testing en una o dos semanas, como mucho. Voy a colgar un formulario de Google para que los que estéis interesados en echarme una mano con las pruebas os apuntéis. Tampoco esperéis gran cosa, es una aplicación bastante sencilla. &lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Nov 2015 21:43:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Workflow de Editorial para publicar en Medium</title>
+				 
+        <description>&lt;p&gt;He creado un workflow de Editorial para publicar en Medium. No es que sea algo excesivamente complicado pero creo que puede ser de gran utilidad para los que utilicen este servicio de publicación y quieran probar otras alternativas para cargar sus contenidos. Lo único que se necesita es un token de integración que puedes conseguir en tus ajustes de Medium.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.editorial-workflows.com/workflow/5899384340348928/zDQGLjLUt4s&quot;&gt;El workflow puedes verlo o instalarlo desde aquí&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;No tiene mucha configuración, en el mismo lugar del workflow donde se indica el token de integración se puede seleccionar si la publicación quedará en borrador, se hará publica inmediatamente o no aparecerá listada. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://photos-2.dropbox.com/t/2/AAAae3fBY3ez-QARusAtr3eMHEGmVIU7YtMiUBP45Q2WyA/12/7383676/png/32x32/1/1444784400/0/2/img_0061.png/CPzUwgMgASACIAMgBSAHKAIoBw/O-YTO-Zw7B-VMaeV6N-9TMfGFBO8wMv4gDHsudVB0WA?size=1024x768&amp;amp;size_mode=2&quot; alt=&quot;Detalle del workflow&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;El workflow toma un texto en markdown y lo envía a Medium. Antes de esto pedirá confirmación del título de la publicación.  &lt;/p&gt;
+
+&lt;p&gt;El script en Python que gobierna el workflow es, con algunas variaciones, el siguiente:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib2&lt;/span&gt;                 
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;contentTypeHeader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;application/json&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;acceptHeader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;&#39;application/json&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;acceptCharsetHeader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;utf-8&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;integrationToken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;tu propio token de integracion&#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;urlUserInfo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;https://api.medium.com/v1/me&#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlUserInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authorization&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bearer &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;integrationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contentTypeHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accept-Charset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptCharsetHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HTTPError&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;The integration token is invalid&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;responseJson&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;authorId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseJson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;urlPost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&#39;https://api.medium.com/v1/users/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s/posts&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authorId&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;title&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hola Medium!&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;contentFormath&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;html&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;content&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;h1&amp;gt;Hola Medium!&amp;lt;/h1&amp;gt;&amp;lt;p&amp;gt;Probando el API de Medium desde Pythonista.&amp;lt;/p&amp;gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;publishStatus&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;draft&quot;&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlPost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authorization&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bearer &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;integrationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contentTypeHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accept-Charset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;acceptCharsetHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;urlopen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HTTPError&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Incorrect fields. Bad request&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;401&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;The integration token is invalid&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;User without permission to publish.&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;User unknown&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Ups! something is wrong with the world today...&quot;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reason&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+        <pubDate>Wed, 14 Oct 2015 01:22:00 +0200</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Me lo apunto para ver si se cumple. →</title>
+				 
+        <description>&lt;p&gt;Ya veremos si se cumple la profecía:&lt;/p&gt;
+
+&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;es&quot; dir=&quot;ltr&quot;&gt;En tres años la competencia en móviles será Apple vs Microsoft. Google (Android) quedará en un medio incómodo.&lt;/p&gt;&amp;mdash; Eduardo Arcos (@earcos) &lt;a href=&quot;https://twitter.com/earcos/status/374808740652122112&quot;&gt;September 3, 2013&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 08 Sep 2015 09:28:00 +0200</pubDate>
+				 
+        <link>http://twitter.com/earcos/status/374808740652122112</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/09/08/me-lo-apunto-para-ver-si-se-cumple</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>iBooks o Kindle</title>
+				 
+        <description>&lt;p&gt;Últimamente me he estado &lt;em&gt;pegando&lt;/em&gt; con las aplicaciones de iBooks y Kindle para sincronizar los libros que he comprado fuera de las propias tiendas de Apple y Amazon. Es curioso como cada una adolece de las ventajas de la otra. Es como si se hubieran puesto de acuerdo para que no exista la &lt;em&gt;aplicación con sincronización perfecta&lt;/em&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Siempre he tenido predilección por la aplicación de Kindle. Me gustan mas las fuentes que incluye (de hecho este blog usa una fuente gratuita que imita a &lt;a href=&quot;https://www.myfonts.com/fonts/linotype/pmn-caecilia/&quot;&gt;Caecilia&lt;/a&gt;), tengo la sensación de que el código fuente de los ejemplos se ve mejor y en general funciona bien a la hora de sincronizar marcadores, notas y la posición de lectura. No es difícil subir tus propios libros a Kindle Documents pero, desgraciadamente, no puedes subirlo desde la app. El proceso de subida no es complejo: basta con enviar el archivo .mobi o .az1 por correo electrónico a tu cuenta de kindle y listo pero, en estos tiempos que corren esto me parece un coñazo. Problemas del primer mundo, vaya. &lt;/p&gt;
+
+&lt;p&gt;Una vez que el archivo esta en Documents ya lo puedes descargar en la aplicación de iPad, iPhone, Mac, Windows, Android, Fire OS,... y todo va como la seda. Sin embargo, si ese mismo archivo lo has abierto desde la propia App de Kindle por un link o por cualquiera de las formas en las que se pueden abrir archivos en los diferentes dispositivos nunca sincronizara. Verás dos archivos idénticos, el abierto desde local y el descargado de los servidores de Amazon. 😢&lt;/p&gt;
+
+&lt;p&gt;La aplicación de iBooks no ofrece sincronización de libros comprados fuera de la iBook Store pero, por esas cosas de iCloud que nunca sabes si son incidencia o característica mágica, los libros abiertos en diferentes dispositivos sincronizan entre si.  Me explico un poco mejor: un ePub descargado desde Dropbox en un iPhone y abierto con la aplicación de iBooks sincronizara sus notas, marcadores y posición con el mismo ePub descargado desde Dropbox en un iPad y abierto con la aplicación de iBooks si ambos dispositivos comparten cuenta de iCloud. De hecho, no es necesario que en ambos dispositivos se descargue el archivo desde Dropbox, basta con que el fichero tenga el mismo nombre, tamaño, metadatos,... &lt;strong&gt;It just works!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Mi problema en este sentido es que las fuentes en la aplicación de Apple me parecen malas... Parece mentira que con lo que era Steve para la tipografía la aplicación de iBooks sea tan parca en ellas.&lt;br&gt;
+Además, al no haber proceso de sincronización de ficheros desde la app tenemos el mismo problema que con la de Kindle: el archivo esta en un dispositivo pero no puede ser descargado desde otro. Solo funciona la sincronización cuando el mismo archivo esta en los dos dispositivos... Escalofriante. &lt;/p&gt;
+
+&lt;p&gt;Con todo esto no he terminado de tomar una decisión. Para algunos libros uso iBooks y para otros uso Kindle. Principalmente si tengo el libro ya en formato Kindle uso Kindle. Si solo lo tengo en ePub uso iBooks aunque ya he dicho que, para mi, la experiencia de lectura no es tan placentera. Estoy pensando en hacer algún script que convierta de ePub a Kindle y envíe un mail a mi cuenta de Amazon para cargar Amazon Documents pero de momento es solo una idea. Tendré que seguir &lt;em&gt;apañandomelas&lt;/em&gt;. &lt;/p&gt;
+</description>
+        <pubDate>Mon, 31 Aug 2015 00:05:00 +0200</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/08/31/ibooks-o-kindle/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/31/ibooks-o-kindle/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Cuestiona permanentemente tus fortalezas, por Kim Faura→</title>
+				 
+        <description>&lt;p&gt;No me canso de leer este &lt;em&gt;caso de estudio&lt;/em&gt;. La pena es que no podamos leer la visión de la otra parte. Sería super interesante ver como vivieron la &lt;em&gt;&amp;quot;derrota&amp;quot;&lt;/em&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 10 Aug 2015 17:53:00 +0200</pubDate>
+				 
+        <link>http://kimfaura.es/cuestiona-permanentemente-tus-fortalezas/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/10/cuestiona-permanentemente-tus-fortalezas,-por-kim-faura/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Pebble, soporte técnico</title>
+				 
+        <description>&lt;p&gt;Aunque ha pasado bastante tiempo, voy a contar mi experiencia con el soporte técnico de Pebble. No se que plazos se estarán manejando ahora pero, desde luego, yo no tuve la mala suerte de &lt;a href=&quot;https://twitter.com/pepeyebra68&quot;&gt;@pepeyebra68&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&#39;embed tweet&#39;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://twitter.com/Bloguintosh&quot;&gt;@Bloguintosh&lt;/a&gt; &lt;a href=&quot;https://twitter.com/ILoveMyPebble&quot;&gt;@ILoveMyPebble&lt;/a&gt; &lt;a href=&quot;https://twitter.com/macsoluciones&quot;&gt;@macsoluciones&lt;/a&gt; ,el problema es q cuando se estropea,no hay solución ,5 meses y esperando el cambio&lt;/p&gt;&amp;mdash; pp yebra   (@pepeyebra68) &lt;a href=&quot;https://twitter.com/pepeyebra68/status/562539995287015424&quot;&gt;February 3, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Decidí comprarme el Pebble Steel nada más verlo en el CES del 2014. No recuerdo cuando abrieron la lista de espera pero me suena que no tardé mucho en apuntarme. El correo electrónico que recibí con la confirmación de la compra es del 1 de febrero de 2014 a las 14:44. &lt;/p&gt;
+
+&lt;p&gt;El reloj se hizo esperar, en principio el tiempo de espera era de un mes pero al llegar el 28 de Febrero ya decían que podría tardar entre 4 y 8 semanas (es lo que tiene ser un caprichoso). El 27 de Marzo recibí un correo electrónico en el que me confirmaban que ya me habían realizado el envío y que estimaban que para el 7 de Abril lo tendría en casa.
+Para mi sorpresa, el 2 de Abril ya lo había recibido. Como un niño con zapatos nuevos, me lo puse con la intención de no quitármelo jamás. La gran desilusión fue que a las pocas horas empecé a ver que hacía cosas un poco extrañas: la pantalla a veces se quedaba en blanco, otras veces el contenido se desplazaba hacia arriba como la imagen de los televisores en los años ochenta,... vamos que aquello tenía mala pinta.&lt;/p&gt;
+
+&lt;p&gt;Después de hacer numerosos &lt;em&gt;restores&lt;/em&gt;, apagados y demás pruebas sin ningún tipo de éxito decidí ponerme en contacto con Pebble a través del soporte técnico de la app, que no es más que un mail a support@getpebble.com con todo el log que tiene registrado la propia app. Este mail lo mandé el 8 de Abril  a las 23:48. Al minuto (no exagero, lo recibí a las 23:49) recibí una respuesta automática en la que me decían que en poco tiempo alguien del equipo se pondría en contacto conmigo.&lt;/p&gt;
+
+&lt;p&gt;El 13 de Abril (domingo) a las dos de la mañana recibí un correo de un ser humano de nombre Eyad en el que se lamentaba de que tuviera problemas con el Pebble. Me pidió que le enviará unas fotos con el reloj mostrando el problema y que le contara algunas cosillas:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Si el reloj ya funcionaba mal nada más sacarlo de la caja o si se estropeó con el uso. En mi caso fue algo gradual.&lt;/li&gt;
+&lt;li&gt;Si hubo algún indicador que presagiase que el reloj se iba a estropear. En mi caso, de la noche a la mañana empezó a dar estos fallos, no se producían siempre pero cuando se producían eran muy molestos.&lt;/li&gt;
+&lt;li&gt;Si los botones respondían correctamente cuando fallaba. En mi caso la respuesta fue afirmativa.&lt;/li&gt;
+&lt;li&gt;Si la caja llegó con algún daño o incluso si el reloj llegó dañado. En mi caso, esta respuesta fue negativa. Tanto la caja como el reloj estaban en perfecto estado.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Por diferentes motivos que no vienen al caso, hasta el 19 de Abril por la noche (21:24) no respondí al mail. Le envié tres fotos y los comentarios oportunos. El 20 de Abril a las 21:36 recibí una respuesta de Eyad en la que me confirmaba que por los problemas que tenía mi Pebble era candidato a un RMA (Autorización para devolución de mercancía). En otro mail me facilitaban un link donde tendría que volver a introducir algunos datos que ya había introducido, volver a adjuntar las fotos, enviar el número de serie del dispositivo... finalizado ese proceso, con el link que me habían facilitado podría volver a consultar el estado en el que se encontraba el proceso de devolución.&lt;/p&gt;
+
+&lt;p&gt;Esa misma noche seguí los pasos que me habían indicado. Durante los siguientes días consultaba la web para ver si había algún avance. En las instrucciones que me pasaron decían que, cuando volvieran a enviarme el reloj, me avisarían por mail. Después de estar dos meses esperando para tenerlo no contaba con que fuesen a tardar poco y menos cuando todos los días el estado en el que se encontraba el RMA era el mismo.&lt;/p&gt;
+
+&lt;p&gt;Para mi sorpresa, el 8 de Mayo (día de mi cumpleaños, curiosamente) recibí un paquete. Dentro estaba el Pebble Steel que actualmente llevo en la muñeca. No me mandaron ningún mail para avisarme de que me lo habían vuelto a enviar, pero tampoco me hicieron pagar nada (ni siquiera aranceles de aduana) ni devolver el primer reloj que recibí.&lt;/p&gt;
+
+&lt;p&gt;Y hasta aquí llega mi experiencia. En total: una semana para responder a mi incidencia. A partir de ese momento, las respuestas no tardaban más de 24 horas desde que yo aportaba más información. En volver a enviarme el reloj tardaron algo menos de tres semanas, en una época en la que el plazo estimado de entrega era de cuatro a ocho semanas si lo comprabas nuevo.&lt;/p&gt;
+
+&lt;p&gt;El nuevo Pebble ya no me ha dado ningún problema. De vez en cuando hace algunos &lt;em&gt;extraños&lt;/em&gt; (notificaciones que se ven mal) pero en general, funciona perfectamente. &lt;/p&gt;
+</description>
+        <pubDate>Wed, 04 Feb 2015 00:11:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/02/04/pebble-soporte-tecnico/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/02/04/pebble-soporte-tecnico/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Octoberry Pi Reloaded</title>
+				 
+        <description>&lt;p&gt;Desde que escribí &lt;a href=&quot;/blog/2014/04/07/octoberry-pi/&quot;&gt;Octoberry Pi&lt;/a&gt; tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar &lt;em&gt;cron&lt;/em&gt; pero hasta estas navidades no he terminado de dejarlo listo.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Hace poco migré el blog de &lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress&lt;/a&gt; a la ultima versión de &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;. Principalmente porque, aunque Octopress es sencillo, creo que viene demasiado cargado de plugins, la organización de las carpetas me parece un poco confusa  y además, la versión 3.0 de Octopress no tendrá nada que ver con la actual ya que se transforma en una serie de plugins &lt;em&gt;avanzados&lt;/em&gt; para Jekyll así que me pareció conveniente adentrarme en la austeridad del framework original. &lt;/p&gt;
+
+&lt;p&gt;Pese al cambio, el montaje no ha variado mucho del descrito en el articulo arriba mencionado. Lo resumo a continuación por si no queréis leerlo:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Carpeta en Dropbox donde están los borradores de los artículos que voy escribiendo y los que están para publicar. Tanto en el iPad como en el iPhone uso &lt;a href=&quot;http://omz-software.com/editorial/&quot;&gt;Editorial&lt;/a&gt; para escribir, maquetar, buscar enlaces, fotos,... En el MacBook Pro, si edito algún artículo, ahora mismo usaría Textmate 2 que es el que tengo más preparado&lt;/li&gt;
+&lt;li&gt;Raspberry Pi. No tiene gran cosa instalada: ruby con &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt;, unas cuantas gemas necesarias para publicar este blog y git para subir los cambios en el proyecto tanto al repositorio de Github que permite que leas esto como al repositorio privado de Bitbucket donde está la chicha que no quiero que se vea... ;-)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;La automatización de la publicación la consigo con dos scripts. El primero es una tarea de Rake en el que se  indican todos los pasos para publicar el blog:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Publicación automática&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:publicar&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Generación del sitio estático con Octopress&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jekyll build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Todo ha ido bien&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Algo ha salido mal&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Despliegue del sitio en Github Pages&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;octopress deploy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Todo ha ido bien&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Algo ha salido mal&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Staging modified files&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git add -A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Todo ha ido bien&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Algo ha salido mal&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Committing a site build at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Build site at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;utc&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git commit -m &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Todo ha ido bien&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Algo ha salido mal&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Pushing commits to remote&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git push origin source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Todo ha ido bien&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Algo ha salido mal&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;## Publicando tweet de último post escrito&quot;&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:share_with_twitter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;La mezcla de castellano e ingles se debe a que me base en un Rakefile que ya tenía parte de lo que yo necesitaba. En general no me gusta traducir lo que han escrito otros en ingles y no me gusta escribir en ingles lo que, normalmente, solo voy a ver yo. Sois libres de criticarme por esto, no me vais a quitar el sueño.&lt;/p&gt;
+
+&lt;p&gt;Aunque está clarito lo que hace este script, un poco más de detalle nunca viene mal:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Generación del sitio. Jekyll construye un sitio hmtl completo que guarda en la carpeta _site&lt;/li&gt;
+&lt;li&gt;Despligue en Github. Un nuevo plugin de Octopress 3.0, Octopress Deploy, hace un push de la carpeta _site a la rama master del repositorio de Github vinculado a Github Pages, que es, por así decirlo, mi hosting.&lt;/li&gt;
+&lt;li&gt;Commit de los cambios realizados. Siempre, después de publicar en Github Pages hago un commit y subo los cambios al repositorio de Bitbucket. Normalmente, lo único que se añade es el nuevo post y las imágenes que pueda incluir pero a veces realizo modificaciones desde la raspberry.&lt;/li&gt;
+&lt;li&gt;Publico el tweet de &lt;em&gt;spam&lt;/em&gt;. Cada vez que escribo un nuevo artículo, publico un tweet para que la gente que me sigue se pueda enterar. Este tweet contiene un enlace acortado con &lt;a href=&quot;https://karmacracy.com/&quot;&gt;Karmacracy&lt;/a&gt; mediante un plugin de cosecha propia. Es de los poquitos plugins que tiene este blog.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Esta tarea no es exclusiva para la raspberry, la uso también en el Mac cuando publico desde allí.&lt;/p&gt;
+
+&lt;p&gt;El script específico de la Raspberry es el que pongo a continuación. Inicialmente hice unos cuantos más pero con esta versión me es suficiente:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
+./Dropbox-Uploader/dropbox_uploader.sh download /drafts/Blog ./drafts/
+mv ./drafts/Blog/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.markdown ./blog/_posts
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;blog
+/home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Otro script que no es gran cosa:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Descarga de la carpeta de Dropbox donde guardo los post a la Raspberry.&lt;/li&gt;
+&lt;li&gt;Mueve los ficheros con extensión &lt;em&gt;markdown&lt;/em&gt; a la carpeta del blog donde se almacenan. Mis borradores no tienen extensión &lt;em&gt;markdown&lt;/em&gt; sino &lt;em&gt;md&lt;/em&gt;. Igual esto está un poco cogido con pinzas pero a mi me vale.&lt;/li&gt;
+&lt;li&gt;Cambia al directorio del blog. Ahora que lo veo, creo que esto no sería necesario. Como no he probado otra cosa, lo dejo. Igual más adelante lo actualizo.&lt;/li&gt;
+&lt;li&gt;Ejecuta la tarea con rake. He probado de muchas maneras, la única que me ha funcionado es la que, de forma unívoca, dice la versión de &lt;em&gt;rake&lt;/em&gt; que debe usar.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Aunque parezca mentira, la automatización ha llevado más tiempo del que podría pensarse. Para empezar no estoy muy familiarizado con el mundo Linux. Tengo una tarea planificada con &lt;em&gt;cron&lt;/em&gt; en el Mac, la descarga de los informes de iTunes Connect, lo que no me convierte en ningún experto. Además, cualquiera que haya trabajado con Ruby sabrá el dolor de cabeza que suponen las gemas, las versiones de Ruby y todo lo relacionado. Durante varios días me estuve pegando con esto porque, cuando se ejecutaba la tarea con &lt;em&gt;cron&lt;/em&gt; se produción errores que cuando ejecutaba el script a mano no se daban.&lt;/p&gt;
+
+&lt;p&gt;Inicialmente, la tarea en cron era así:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;30 9 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /home/pi/scripts/publicar.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Y lo único que veía eran los típicos mensajes diciendo que la versión de la gema fulanita en Ruby patatín no  encuentran la dependencia de la gema menganita en Ruby patatán... lógico: patatín y patatán no tendrían que mezclarse.&lt;br&gt;
+Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imagen de la Raspberry dos veces encontré las palabrás mágicas en la página de rvm, ese ser tan querido y odiado al mismo tiempo. Decían así:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rvm cron setup&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A partir de ese momento, mi crontab quedó así:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#sm start rvm&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/home/pi/.rvm/gems/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.
+1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
+in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;GEM_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/home/pi/.rvm/gems/ruby-2.1.0&#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;GEM_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/home/pi/.rvm/gems/ruby-2.1.0:/home/pi/.rvm/gems/ruby-2.1.0@global&#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;MY_RUBY_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/home/pi/.rvm/rubies/ruby-2.1.0&#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IRBRC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;/home/pi/.rvm/rubies/ruby-2.1.0/.irbrc&#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#sm end rvm&lt;/span&gt;
+30 9 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /home/pi/scripts/publicar.sh&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Al parecer, no es suficiente con tocar los &lt;em&gt;.profile&lt;/em&gt; y &lt;em&gt;.bash_profile&lt;/em&gt; para que coger la versión buena con rvm si no que es necesario informar al inicio del &lt;em&gt;cron&lt;/em&gt; la ruta que tiene que seguir para encontrar la versión correcta. No es lo más bonito del mundo pero desde entonces, a eso de las nueve y media de la mañana, puedes encontrarte artículos recién publicados, como este.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Imagen de cabecera obtenida de &lt;a href=&quot;http://www.resplashed.com/&quot;&gt;&lt;strong&gt;re&lt;/strong&gt;:splashed&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 12 Jan 2015 00:31:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Empatía por el diablo</title>
+				 
+        <description>&lt;blockquote&gt;
+&lt;p&gt;Please allow me to introduce myself
+I´m a man of wealth and taste&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Rolling Stones,&lt;/strong&gt; &lt;em&gt;Sympathy for the devil&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En nuestro entorno es habitual hacer chistes sobre el usuario... por lo mal que hace los requisitos (cuando los hace), porque no sabe lo que quiere y cambia continuamente de opinión, porque no tiene ni idea de nada mientras que nosotros tenemos claro que es lo que necesita, etc, etc.
+Vaya por delante que yo mismo hago este tipo de comentarios &lt;em&gt;habitualmente&lt;/em&gt; y que discutir con el usuario es parte principal de mi día a día pero eso no quita para que, a veces, sienta &lt;em&gt;empatía por el &lt;del&gt;diablo&lt;/del&gt; usuario&lt;/em&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;El año pasado pudimos leer alguna píldora de un usuario que, cansado de buscar desarrolladores en España que entendieran lo que el necesitaba, había encontrado lo que buscaba en Polonia y a un menor coste. Al margen de temas económicos, que también los hay, lo brutal de ese artículo es concluir que es más fácil encontrar a un técnico que entienda lo que quieres aunque no hable tu mismo idioma. &lt;/p&gt;
+
+&lt;p&gt;El lenguaje si que tiene que ver. En un dialogo usuario-técnico, uno de los principales problemas es que uno no sabe expresar en el lenguaje del otro lo que quiere y el otro no sabe expresar en el lenguaje del uno lo que pretende hacer. Esto no es exclusivo del desarrollo de software, ocurre cuando contratas a un albañil para que te haga una reforma, cuando llevas el coche al taller, cuando vas al médico... En esas situaciones tu tratas de expresar lo que quieres, lo que le pasa al coche, lo que te sucede a tí y al otro lado hay, normalmente, una persona que te mira y en cuyos ojos puedes leer: &lt;strong&gt;&lt;em&gt;este tío no tiene ni puta idea&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Una vez superada la barrera del lenguaje, al problema le añadimos nuestro ego porque, no nos engañemos, tenemos mucho ego. Tenemos claro lo que quiere el usuario, al pobre le cuesta expresarse pero como nosotros somos muy buenos hemos entendido su problema. Habitualmente prestamos mucha atención a lo que hacemos, ya que nuestro trabajo requiere un montón de cualidades: dominio de un lenguaje de programación, conocimientos de base datos, usabilidad de aplicaciones,... pero esta vez, como lo que quiere el usuario es tan sencillo y nosotros lo hemos hecho tantas y tantas veces vamos un poco deprisa y... zas... el usuario nos saca fallos, dice que es una mierda, que si no tenemos sentido común, bla, bla, bla...&lt;/p&gt;
+
+&lt;p&gt;Si volvemos a los ejemplos anteriores, nos encontramos con el mismo albañil que nos miraba con aire arrogante y al que ahora le tenemos que decir que ha puesto los azulejos del revés, o al mecánico que nos dice que ha cambiado nosecuantas historias y nosotros le decimos que el coche sigue haciendo el mismo ruido por el que lo habíamos llevado al taller, o al médico que nos pregunta si hemos tenido fiebre mientras nos osculta y nosotros le decimos que si, que ya se lo dijimos cuando nos preguntó que nos pasaba... vamos deprisa, no prestamos atención, somos unos sobradetes... y la cagamos.&lt;/p&gt;
+
+&lt;p&gt;Y con esto no quiero decir que el usuario sea bueno, joder, estoy hablando del diablo, pero también hay que tener en cuenta que el diablo sabe más por viejo, que por &lt;del&gt;usuario&lt;/del&gt; diablo. &lt;/p&gt;
+</description>
+        <pubDate>Sun, 04 Jan 2015 19:15:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2015/01/04/empat%C3%ADa-por-el-diablo/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/04/empat%C3%ADa-por-el-diablo/</guid>
+        
+        
+      </item>
+    
+      <item>
+				 
+        <title>Bullet with butterfly wings</title>
+				 
+        <description>&lt;blockquote&gt;
+&lt;p&gt;Despite all my rage I&amp;#39;m still just a rat in a cage.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Smashing Pumpkins,&lt;/strong&gt; &lt;em&gt;Bullet with butterfly wings&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Siempre es bueno pararse a pensar que estamos haciendo, como lo estamos haciendo y ver si hay alguna forma de mejorar. En esta época del año, bien sea por las Navidades o porque precisamente se acaba un año y empieza otro, es un momento habitual para hacer uno de estos &lt;em&gt;puntos de situación&lt;/em&gt;.&lt;br&gt;
+En mi caso no ha sido al llegar el final de año. Llevo bastante tiempo dandole vueltas a como me encuentro.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;2014 ha sido un año raro, muy raro y tengo ganas de que acabe. No porque piense que un nuevo año va a hacer que todo mejore o empiece a tener sentido si no porque, esta vez, el cambio de año llega al mismo tiempo que en mi cabeza empiezan a encajar muchas de las piezas sobre las que quiero asentar mi futuro próximo.&lt;/p&gt;
+
+&lt;p&gt;A nivel laboral llevo un par de años &lt;em&gt;trepidantes&lt;/em&gt;. Estoy metido en un proyecto bastante complicado que me absorbe mucho tiempo y que además me deja agotado. Parte de como enfoco las cosas ahora (o como las quiero enfocar) están influidas por este proyecto en el que estoy aprendiendo de todo: lo que se debe hacer, lo que no se debe hacer,  lo que quiero hacer, lo que no quiero hacer, lo que quiero ser, lo que no quiero ser... En muchos aspectos me estoy sorpendiendo a mi mismo ya que he descubierto facetas de mi personalidad que no sabía ni que tenía. Otros aspectos me han causado una gran decepción y tengo claro que he de acabar con ellos. Confio en que la finalización de este proyecto (que debería tener lugar en torno a Semana Santa) vaya unida a la finalización de mis objetivos personales en terreno laboral.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The world is a vampire,  sent to drain&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Smashing Pumpkins,&lt;/strong&gt; &lt;em&gt;Bullet with butterfly wings&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Para recuperar la energía que me &lt;em&gt;chupan los vampiros&lt;/em&gt; nada mejor que mi familia. En los últimos meses ha sido una gran fuente de inspiración para diseñar esas piezas de las que hablaba al principio. Mi mujer me ha ayudado mucho en lo que ella llama &amp;quot;madurar&amp;quot; (aunque a mi me duela esa expresión, se que tiene razón) y mis hijos Entropía (la mayor) y Entalpía (el enano) me ayudan a olvidar las mordeduras con las que llego todos los días a casa.&lt;/p&gt;
+
+&lt;p&gt;Poco a poco, durante el 2015, me gustaría ir retomando algunas aficiones que también me hacen sentir bien: escribir más en el blog, volver a aprender a hacer aplicaciones iOS (entre Swift y las últimas versiones del sistema operativo me he quedado más obsoleto que un Samsung Galaxy Ace con Froyo) y seguir aprendiendo a hacer aplicaciones web con frameworks basados en Ruby como Rails, Sinatra o Padrino. Además, no quiero que se me escape el tren de los &lt;em&gt;wearables&lt;/em&gt; así que tengo que sacar tiempo para hacer cosicas con el Pebble y, si me dejan darme el capricho, con el Apple Watch.&lt;/p&gt;
+
+&lt;p&gt;También quiero volver a frecuentar la NSCoderMAD. Con todo el ajetreo del último año y pico  no he ido prácticamente a ninguna. Solo he ido a las cenas y aunque es una buena forma de mantener el contacto con toda esa buena gente, las reuniones y las charlas aportan mucho a todos los niveles: personal, profesional, técnico...&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;And I still believe that I cannot be saved&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Smashing Pumpkins,&lt;/strong&gt; &lt;em&gt;Bullet with butterfly wings&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Y no, en esta última cita ya no estoy de acuerdo con Billy Corgan. Creo que me puedo salvar, tengo muchas ganas de 2015, 2016, 2017,... estoy seguro de que muchas cosas buenas están por pasar y que todo lo que tengo en mente me va a ayudar a que suceda... cuanto antes.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Imagen de cabecera obtenida de &lt;a href=&quot;http://www.resplashed.com/&quot;&gt;&lt;strong&gt;re&lt;/strong&gt;:splashed&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Dec 2014 00:00:00 +0100</pubDate>
+				 
+        <link>http://javimoreno.es/blog/2014/12/31/bullet-with-butterfly-wings/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2014/12/31/bullet-with-butterfly-wings/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
