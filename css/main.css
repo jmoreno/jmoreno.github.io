@@ -184,6 +184,27 @@ body {
     .pagination a:hover {
       color: #333; }
 
+.post-pagination-previous {
+  float: right;
+  padding: 48px 0 0; }
+  .post-pagination-previous a {
+    color: #999;
+    text-decoration: none; }
+    .post-pagination-previous a:hover {
+      color: #333; }
+
+.post-pagination-next {
+  float: left;
+  padding: 48px 0 0; }
+  .post-pagination-next a {
+    color: #999;
+    text-decoration: none; }
+    .post-pagination-next a:hover {
+      color: #333; }
+
+.post-pagination-clear {
+  clear: both; }
+
 .post-reading {
   position: absolute;
   top: 10px;
