@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Planificando La Descarga De Informes De iTunes Connect</title>
+  <title>Planificando la descarga de informes de iTunes Connect</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Planificando La Descarga De Informes De iTunes Connect</h1>
+				  	<h1 class="post-title">Planificando la descarga de informes de iTunes Connect</h1>
 				  	 
           </div>
         </div>
@@ -65,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              7 minutos
+              9 minutos
               
               de lectura
               </p>
@@ -98,22 +99,22 @@ USER</em>NAME es nuestro usuario de acceso al iTC, USER<em>PASSWD la contraseña
 Los siguientes pasos ya hay que darlos en el Terminal.</p>
 
 <p>4.- Si queremos ejecutar manualmente el script, escribimos en el terminal lo siguiente:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ ~/bin/itc/download_itc_reports.sh
+<div class="highlight"><pre><code class="language-" data-lang="">$ ~/bin/itc/download_itc_reports.sh
 </code></pre></div>
 <p>5.- Para planificarlo tendremos que usar otra herramienta escondida dentro del Terminal: Crontab</p>
 
 <p>6.- Para editar las entradas de Crontab escribimos lo siguiente en el terminal:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ crontab -e
+<div class="highlight"><pre><code class="language-" data-lang="">$ crontab -e
 </code></pre></div>
 <p>7.- En una nueva linea en blanco (o en la primera si no tenemos nada) escribimos lo siguiente</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">0 13,14,16 * * * ~/bin/itc/download_itc_reports.sh
+<div class="highlight"><pre><code class="language-" data-lang="">0 13,14,16 * * * ~/bin/itc/download_itc_reports.sh
 </code></pre></div>
 <p>8.- Breve explicación sobre crontab. Cada registro consta de seis argumentos: minutos, horas, día del mes, mes, día de la semana y comando a ejecutar. Varios valores para el mismo argumento se separan por comas. El ejemplo se entiende como: &quot;en el minuto cero de las 13, 14 y 16 horas de cualquier día, de cualquier mes y cualquier día de la semana ejecutar el comando ~/bin/itc/download<em>itc</em>reports.sh. Puedes encontrar más información de crontab en este <a href="http://benr75.com/pages/using_crontab_mac_os_x_unix_linux">enlace</a>.</p>
 
 <p>9.- Si ya hemos creado otro script (por ejemplo: uno para informes diarios y otro para los semanales) habría que incluir otra linea con la planificación deseada y el nombre del script.</p>
 
 <p>10.- Una vez que hemos terminado de editar, guardamos y comprobamos nuestro trabajo escribiendo en el terminal:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ crontab -l
+<div class="highlight"><pre><code class="language-" data-lang="">$ crontab -l
 </code></pre></div>
 <p>11.- Y ya está, si el Mac está encendido a las horas planificadas se ejecutarán los scripts.</p>
 
@@ -124,136 +125,136 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
 
 <p>Script para descarga de informes diarios:</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#!/usr/bin/env bash</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Released under the MIT license</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Configuration</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># ITC user name</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">&quot;user name&quot;</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># ITC user password</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">&quot;user password&quot;</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">&quot;vendor Id&quot;</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
-</div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">NUM_OF_DAYS_TO_DOWNLOAD</span><span class="o">=</span>14
-</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Currently only Sales reports are supported</span>
-</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">&quot;S&quot;</span>
-</div></div><div data-line='21' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Currently only Daily report frequency is supported</span>
-</div></div><div data-line='22' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">&quot;D&quot;</span>
-</div></div><div data-line='23' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='24' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Program start</span>
-</div></div><div data-line='25' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='26' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Adjust input vars</span>
-</div></div><div data-line='27' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='28' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;$DIR_DEST&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
-</div></div><div data-line='29' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Print info</span>
-</div></div><div data-line='30' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='31' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_DAYS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
-</div></div><div data-line='32' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># set CLASSPATH which should point the this script location</span>
-</div></div><div data-line='33' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='34' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
-</div></div><div data-line='35' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
-</div></div><div data-line='36' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
-</div></div><div data-line='37' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># set dir where the reports are downloaded to</span>
-</div></div><div data-line='38' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='39' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
-</div></div><div data-line='40' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># loop for requested NUM_OF_DAYS_TO_DOWNLOAD</span>
-</div></div><div data-line='41' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='42' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">for</span> <span class="o">((</span> <span class="nv">DAY</span><span class="o">=</span>NUM_OF_DAYS_TO_DOWNLOAD<span class="p">;</span> DAY&gt;0<span class="p">;</span> DAY-- <span class="o">))</span>
-</div></div><div data-line='43' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">do</span>
-</div></div><div data-line='44' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">&quot;date -v-$&#x7b;DAY&#x7d;d +%Y%m%d&quot;</span>
-</div></div><div data-line='45' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
-</div></div><div data-line='46' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">&quot;$&#x7b;REPORT_TYPE&#x7d;_$&#x7b;REPORT_FREQ&#x7d;_$&#x7b;VENDOR_ID&#x7d;_$&#x7b;DT_CUR&#x7d;.txt.gz&quot;</span>
-</div></div><div data-line='47' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth <span class="m">1</span> -type f <span class="p">|</span> wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span> <span class="o">]</span>
-</div></div><div data-line='48' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">then</span>
-</div></div><div data-line='49' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Report is missing so download one</span>
-</div></div><div data-line='50' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='51' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
-</div></div><div data-line='52' class='code-highlight-row numbered'><div class='code-highlight-line'>java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
-</div></div><div data-line='53' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">else</span>
-</div></div><div data-line='54' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Report is found</span>
-</div></div><div data-line='55' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='56' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo</span> <span class="s2">&quot;$DT_CUR: already here&quot;</span>
-</div></div><div data-line='57' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">fi</span>
-</div></div><div data-line='58' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">done</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<span class="c">#</span>
+<span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
+<span class="c"># Released under the MIT license</span>
+<span class="c">#</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Configuration</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># ITC user name</span>
+<span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">"user name"</span>
+<span class="c"># ITC user password</span>
+<span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">"user password"</span>
+<span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
+<span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">"vendor Id"</span>
+<span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
+<span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
+<span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
+<span class="nv">NUM_OF_DAYS_TO_DOWNLOAD</span><span class="o">=</span>14
+<span class="c"># Currently only Sales reports are supported</span>
+<span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">"S"</span>
+<span class="c"># Currently only Daily report frequency is supported</span>
+<span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">"D"</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Program start</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Adjust input vars</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>; <span class="k">fi</span>
+<span class="c"># Print info</span>
+<span class="c">#</span>
+<span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_DAYS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
+<span class="c"># set CLASSPATH which should point the this script location</span>
+<span class="c">#</span>
+<span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
+<span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
+<span class="c"># set dir where the reports are downloaded to</span>
+<span class="c">#</span>
+<span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
+<span class="c"># loop for requested NUM_OF_DAYS_TO_DOWNLOAD</span>
+<span class="c">#</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">DAY</span><span class="o">=</span>NUM_OF_DAYS_TO_DOWNLOAD; DAY&gt;0; DAY-- <span class="o">))</span>
+<span class="k">do
+</span><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
+<span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
+<span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth 1 -type f | wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">then</span>
+<span class="c"># Report is missing so download one</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
+java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+<span class="k">else</span>
+<span class="c"># Report is found</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$DT_CUR</span><span class="s2">: already here"</span>
+<span class="k">fi
+done</span></code></pre></figure>
 
 <p>Script para descarga de informes semanales:</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#!/usr/bin/env bash</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Released under the MIT license</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Configuration</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># ITC user name</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">&quot;user name&quot;</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># ITC user password</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">&quot;user password&quot;</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">&quot;vendor Id&quot;</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
-</div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">NUM_OF_WEEKS_TO_DOWNLOAD</span><span class="o">=</span>13
-</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Currently only Sales reports are supported</span>
-</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">&quot;S&quot;</span>
-</div></div><div data-line='21' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Currently only Daily report frequency is supported</span>
-</div></div><div data-line='22' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">&quot;W&quot;</span>
-</div></div><div data-line='23' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='24' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Program start</span>
-</div></div><div data-line='25' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#-------------------------------------------------------------------------------</span>
-</div></div><div data-line='26' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Adjust input vars</span>
-</div></div><div data-line='27' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='28' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;$DIR_DEST&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
-</div></div><div data-line='29' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Print info</span>
-</div></div><div data-line='30' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='31' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_WEEKS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
-</div></div><div data-line='32' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># set CLASSPATH which should point the this script location</span>
-</div></div><div data-line='33' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='34' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
-</div></div><div data-line='35' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
-</div></div><div data-line='36' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
-</div></div><div data-line='37' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># set dir where the reports are downloaded to</span>
-</div></div><div data-line='38' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='39' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
-</div></div><div data-line='40' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># loop for requested NUM_OF_WEEKS_TO_DOWNLOAD</span>
-</div></div><div data-line='41' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='42' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">for</span> <span class="o">((</span> <span class="nv">WEEK</span><span class="o">=</span>NUM_OF_WEEKS_TO_DOWNLOAD<span class="p">;</span> WEEK&gt;0<span class="p">;</span> WEEK-- <span class="o">))</span>
-</div></div><div data-line='43' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">do</span>
-</div></div><div data-line='44' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># set value for last sunday</span>
-</div></div><div data-line='45' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='46' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DT_DAY_OF_WEEK</span><span class="o">=</span><span class="sb">`</span>date +%w<span class="sb">`</span>
-</div></div><div data-line='47' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">let </span><span class="nv">DAYS</span><span class="o">=(</span>WEEK-1<span class="o">)</span>*7+DT_DAY_OF_WEEK
-</div></div><div data-line='48' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">&quot;date -v-$&#x7b;DAY&#x7d;d +%Y%m%d&quot;</span>
-</div></div><div data-line='49' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
-</div></div><div data-line='50' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">&quot;$&#x7b;REPORT_TYPE&#x7d;_$&#x7b;REPORT_FREQ&#x7d;_$&#x7b;VENDOR_ID&#x7d;_$&#x7b;DT_CUR&#x7d;.txt.gz&quot;</span>
-</div></div><div data-line='51' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth <span class="m">1</span> -type f <span class="p">|</span> wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span> <span class="o">]</span>
-</div></div><div data-line='52' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">then</span>
-</div></div><div data-line='53' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Report is missing so download one</span>
-</div></div><div data-line='54' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='55' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
-</div></div><div data-line='56' class='code-highlight-row numbered'><div class='code-highlight-line'>java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
-</div></div><div data-line='57' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">else</span>
-</div></div><div data-line='58' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c"># Report is found</span>
-</div></div><div data-line='59' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c">#</span>
-</div></div><div data-line='60' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">echo</span> <span class="s2">&quot;$DT_CUR: already here&quot;</span>
-</div></div><div data-line='61' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">fi</span>
-</div></div><div data-line='62' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">done</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<span class="c">#</span>
+<span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
+<span class="c"># Released under the MIT license</span>
+<span class="c">#</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Configuration</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># ITC user name</span>
+<span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">"user name"</span>
+<span class="c"># ITC user password</span>
+<span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">"user password"</span>
+<span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
+<span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">"vendor Id"</span>
+<span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
+<span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
+<span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
+<span class="nv">NUM_OF_WEEKS_TO_DOWNLOAD</span><span class="o">=</span>13
+<span class="c"># Currently only Sales reports are supported</span>
+<span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">"S"</span>
+<span class="c"># Currently only Daily report frequency is supported</span>
+<span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">"W"</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Program start</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Adjust input vars</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>; <span class="k">fi</span>
+<span class="c"># Print info</span>
+<span class="c">#</span>
+<span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_WEEKS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
+<span class="c"># set CLASSPATH which should point the this script location</span>
+<span class="c">#</span>
+<span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
+<span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
+<span class="c"># set dir where the reports are downloaded to</span>
+<span class="c">#</span>
+<span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
+<span class="c"># loop for requested NUM_OF_WEEKS_TO_DOWNLOAD</span>
+<span class="c">#</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">WEEK</span><span class="o">=</span>NUM_OF_WEEKS_TO_DOWNLOAD; WEEK&gt;0; WEEK-- <span class="o">))</span>
+<span class="k">do</span>
+<span class="c"># set value for last sunday</span>
+<span class="c">#</span>
+<span class="nv">DT_DAY_OF_WEEK</span><span class="o">=</span><span class="sb">`</span>date +%w<span class="sb">`</span>
+<span class="nb">let </span><span class="nv">DAYS</span><span class="o">=(</span>WEEK-1<span class="o">)</span><span class="k">*</span>7+DT_DAY_OF_WEEK
+<span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
+<span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
+<span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth 1 -type f | wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">then</span>
+<span class="c"># Report is missing so download one</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
+java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+<span class="k">else</span>
+<span class="c"># Report is found</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$DT_CUR</span><span class="s2">: already here"</span>
+<span class="k">fi
+done</span></code></pre></figure>
 
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Planificando+La+Descarga+De+Informes+De+iTunes+Connect&amp;url=http://kcy.me/25viw"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://kcy.me/25viw"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -262,14 +263,14 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Planificando+La+Descarga+De+Informes+De+iTunes+Connect&amp;u=http://kcy.me/25viw"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;u=http://kcy.me/25viw"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Planificando+La+Descarga+De+Informes+De+iTunes+Connect&amp;url=http://kcy.me/25viw"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://kcy.me/25viw"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -300,7 +301,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -311,6 +312,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -351,5 +353,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>

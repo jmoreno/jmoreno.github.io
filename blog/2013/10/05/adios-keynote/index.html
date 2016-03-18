@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Adios Keynote, Hola reveal.js</title>
+  <title>Adios Keynote, hola reveal.js</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/10/05/adios-keynote/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Adios Keynote, Hola reveal.js</h1>
+				  	<h1 class="post-title">Adios Keynote, hola reveal.js</h1>
 				  	 
           </div>
         </div>
@@ -65,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              7 minutos
+              9 minutos
               
               de lectura
               </p>
@@ -107,27 +108,37 @@ Si que eché de menos el no poder hacer vistas fragmentadas. Espero que en algun
 
 <p>Lo primero que hice fue clonar el repositorio original de <a href="https://github.com/hakimel/reveal.js">reveal.js</a> y cambiar el fichero index.html. La mayor parte de la presentación estaría en el fichero markdown pero en la primera diapositiva quería usar una vista fragmentada (de esas en las que las frases o las palabras van apareciendo poco a poco). Debido a esto, el código de mi presentación quedaría así:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Fragmento HTML para definir la presentación</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;reveal&quot;</span><span class="nt">&gt;</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="c">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;slides&quot;</span><span class="nt">&gt;</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&lt;section&gt;</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;h1&gt;</span>Helios<span class="nt">&lt;/h1&gt;</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;h2&gt;</span>y su integración en iOS<span class="nt">&lt;/h2&gt;</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>¿Es <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/mattt&quot;</span><span class="nt">&gt;</span>@mattt<span class="nt">&lt;/a&gt;&lt;/small&gt;</span> una persona o una legión?<span class="nt">&lt;/h3&gt;</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;p&gt;</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno78<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;/p&gt;</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&lt;/section&gt;</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">&quot;presentation.md&quot;</span> <span class="na">data-separator=</span><span class="s">&quot;^\n\n\n&quot;</span> <span class="na">data-vertical=</span><span class="s">&quot;^\n\n&quot;</span> <span class="na">data-notes=</span><span class="s">&quot;^Note:&quot;</span> <span class="na">data-charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;&lt;/section&gt;</span>
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&lt;section&gt;</span>
-</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;h1&gt;</span>THE END<span class="nt">&lt;/h1&gt;</span>
-</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;h3&gt;</span>BY Javier Moreno / javimoreno.me<span class="nt">&lt;/h3&gt;</span>
-</div></div><div data-line='21' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;fragment fade-in&quot;</span><span class="nt">&gt;</span>
-</div></div><div data-line='22' class='code-highlight-row numbered'><div class='code-highlight-line'>                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://javimoreno.me&quot;</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://twitter.com/jmoreno78&quot;</span><span class="nt">&gt;</span>@jmoreno<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
-</div></div><div data-line='23' class='code-highlight-row numbered'><div class='code-highlight-line'>            <span class="nt">&lt;/p&gt;</span>
-</div></div><div data-line='24' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&lt;/section&gt;</span>
-</div></div><div data-line='25' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='26' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&lt;/div&gt;</span>
-</div></div><div data-line='27' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='28' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nt">&lt;/div&gt;</span></div></div></pre></div></figure>
+<h6>Fragmento HTML para definir la presentación</h6>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">  
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"reveal"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Any section element inside of this container is displayed as a slide --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"slides"</span><span class="nt">&gt;</span>
+
+
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>Helios<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>y su integración en iOS<span class="nt">&lt;/h2&gt;</span>
+            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"fragment fade-in"</span><span class="nt">&gt;</span>¿Es <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/mattt"</span><span class="nt">&gt;</span>@mattt<span class="nt">&lt;/a&gt;&lt;/small&gt;</span> una persona o una legión?<span class="nt">&lt;/h3&gt;</span>
+            <span class="nt">&lt;p&gt;</span>
+                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://javimoreno.me"</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/jmoreno78"</span><span class="nt">&gt;</span>@jmoreno78<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+
+        <span class="nt">&lt;section</span> <span class="na">data-markdown=</span><span class="s">"presentation.md"</span> <span class="na">data-separator=</span><span class="s">"^\n\n\n"</span> <span class="na">data-vertical=</span><span class="s">"^\n\n"</span> <span class="na">data-notes=</span><span class="s">"^Note:"</span> <span class="na">data-charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;&lt;/section&gt;</span>
+
+        <span class="nt">&lt;section&gt;</span>
+            <span class="nt">&lt;h1&gt;</span>THE END<span class="nt">&lt;/h1&gt;</span>
+            <span class="nt">&lt;h3&gt;</span>BY Javier Moreno / javimoreno.me<span class="nt">&lt;/h3&gt;</span>
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"fragment fade-in"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;small&gt;</span>Created by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://javimoreno.me"</span><span class="nt">&gt;</span>Javier Moreno<span class="nt">&lt;/a&gt;</span> / <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://twitter.com/jmoreno78"</span><span class="nt">&gt;</span>@jmoreno<span class="nt">&lt;/a&gt;&lt;/small&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/section&gt;</span>
+
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>Eso es todo, aparentemente tres diapositivas. La sección que se nutre de un fichero markdown tiene los siguientes atributos:</p>
 
@@ -152,55 +163,62 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
 
 <p>Lo primero fue crear un fichero llamado <code>server.js</code> con el siguiente contenido:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Fichero server.js</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="p">,</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="p">,</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="p">,</span><span class="nx">mime</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mime&#39;</span><span class="p">)</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="o">||</span><span class="mi">5000</span><span class="p">);</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="kd">function</span> <span class="nx">handler</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">if</span><span class="p">(</span><span class="nx">uri</span><span class="o">==</span><span class="s1">&#39;/&#39;</span><span class="p">)&#x7b;</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nx">uri</span><span class="o">=</span><span class="s1">&#39;/index.html&#39;</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">&#x7d;</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="nx">uri</span><span class="o">=</span><span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">uri</span><span class="p">);</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span>
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
-</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Error loading file...&#39;</span><span class="p">);</span>              
-</div></div><div data-line='21' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="p">&#x7d;</span>
-</div></div><div data-line='22' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span><span class="nx">mime</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
-</div></div><div data-line='23' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-</div></div><div data-line='24' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-</div></div><div data-line='25' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">&#x7d;)</span>
-</div></div><div data-line='26' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span></div></div></pre></div></figure>
+<h6>Fichero server.js</h6>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'url'</span><span class="p">)</span>
+  <span class="p">,</span><span class="nx">mime</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="s1">'mime'</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="o">||</span><span class="mi">5000</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">handler</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">).</span><span class="nx">pathname</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">uri</span><span class="o">==</span><span class="s1">'/'</span><span class="p">){</span>
+        <span class="nx">uri</span><span class="o">=</span><span class="s1">'/index.html'</span>
+    <span class="p">}</span>
+    <span class="nx">uri</span><span class="o">=</span><span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span><span class="s1">' '</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">uri</span><span class="p">);</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">'Error loading file...'</span><span class="p">);</span>              
+        <span class="p">}</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-type'</span><span class="p">,</span><span class="nx">mime</span><span class="p">.</span><span class="nx">lookup</span><span class="p">(</span><span class="nx">uri</span><span class="p">));</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>Este fichero contiene la información mínima que node.js necesita para arrancar la aplicación. Para que lea de este fichero, hubo que modificar el fichero <code>Procfile</code></p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Fichero Procfile</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'>web: node server.js</div></div></pre></div></figure>
+<h6>Fichero Procfile</h6>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">web: node server.js</code></pre></figure>
 
 <p>Y por último, cambiar el fichero de dependencias <code>package.json</code>:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Fichero package.json</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7b;</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Javi Moreno featuring (reveal.js by Hakim El Hattab)&quot;</span><span class="p">,</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;revealjs&quot;</span><span class="p">,</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Helios y su integración con iOS&quot;</span><span class="p">,</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.5.1&quot;</span><span class="p">,</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nt">&quot;repository&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;git&quot;</span><span class="p">,</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;git@github.com:jmoreno/HeliosTalk.git&quot;</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="p">&#x7d;,</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="nt">&quot;engines&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;0.8.x&quot;</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">&#x7d;,</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">&#x7b;</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nt">&quot;mime&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.7&quot;</span><span class="p">,</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="nt">&quot;npm&quot;</span><span class="p">:</span><span class="s2">&quot;1.2.x&quot;</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">&#x7d;</span>
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span></div></div></pre></div></figure>
+<h6>Fichero package.json</h6>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="s2">"author"</span><span class="err">:</span> <span class="s2">"Javi Moreno featuring (reveal.js by Hakim El Hattab)"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"revealjs"</span><span class="p">,</span>
+    <span class="s2">"description"</span><span class="err">:</span> <span class="s2">"Helios y su integración con iOS"</span><span class="p">,</span>
+    <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"2.5.1"</span><span class="p">,</span>
+    <span class="s2">"repository"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="err">:</span> <span class="s2">"git"</span><span class="p">,</span>
+        <span class="s2">"url"</span><span class="err">:</span> <span class="s2">"git@github.com:jmoreno/HeliosTalk.git"</span>
+    <span class="p">},</span>
+    <span class="s2">"engines"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"node"</span><span class="err">:</span> <span class="s2">"0.8.x"</span>
+    <span class="p">},</span>
+    <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"mime"</span><span class="err">:</span><span class="s2">"1.2.7"</span><span class="p">,</span>
+        <span class="s2">"npm"</span><span class="err">:</span><span class="s2">"1.2.x"</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>Ya solo quedaba hacer commit y seguir los pasos para desplegar en Heroku:</p>
 
@@ -226,7 +244,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Adios+Keynote%2C+Hola+reveal.js&amp;url=http://kcy.me/25vjk"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Adios+Keynote%2C+hola+reveal.js&amp;url=http://kcy.me/25vjk"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -235,14 +253,14 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Adios+Keynote%2C+Hola+reveal.js&amp;u=http://kcy.me/25vjk"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Adios+Keynote%2C+hola+reveal.js&amp;u=http://kcy.me/25vjk"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Adios+Keynote%2C+Hola+reveal.js&amp;url=http://kcy.me/25vjk"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Adios+Keynote%2C+hola+reveal.js&amp;url=http://kcy.me/25vjk"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -273,7 +291,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -284,6 +302,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -324,5 +343,7 @@ Lo primero que probé fue desplegar tal y como estaba la aplicación: fue un fra
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>

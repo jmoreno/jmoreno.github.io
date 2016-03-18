@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Helios I. Guardando Datos</title>
+  <title>Helios I. Guardando datos</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/04/11/helios-i-guardando-datos/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Helios I. Guardando Datos</h1>
+				  	<h1 class="post-title">Helios I. Guardando datos</h1>
 				  	 
           </div>
         </div>
@@ -65,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              8 minutos
+              9 minutos
               
               de lectura
               </p>
@@ -116,66 +117,66 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
 
 <p>En el terminal escribiremos lo siguiente: </p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>rails new DealerErgoGo -d postgresql</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rails new DealerErgoGo -d postgresql</code></pre></figure>
 
 <p>Directamente trabajaremos con PostgreSQL desde desarrollo por lo que tenemos que tener instalado en nuestro equipo este gestor de base de datos. Mi recomendación es usar Postgres.app, desarrollada por Mattt (que tío) que funciona muy bien y es fácil de instalar (relativamente).</p>
 
 <p>Lo primero que haremos en nuestro proyecto Rails es configurar el acceso a la base de datos, solo cambiamos el usuario y le indicamos el puerto y el host. Creamos las bases de datos y a disfrutar.</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>rake db:create</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake db:create</code></pre></figure>
 
 <p>A continuación incluimos todo lo necesario para usar Helios.</p>
 
 <p>Instalamos la gema y creamos la base de datos</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>rake db:create</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake db:create</code></pre></figure>
 
 <p>Siguiendo las instrucciones del repositorio, configuramos Helios como un middleware en application.rb. Aprovecharemos para incluir el modelo de datos que hemos creado en la aplicación iOS dentro de la carpeta de configuración de la aplicación Rails. En local no es necesario pero cuando hagamos el despliegue en Heroku, tendremos que subir el modelo junto con la aplicación.</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>"fragmento de código en .config/application.rb"</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Using framework Helios as a middleware for our app</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">use</span> <span class="no">Helios</span><span class="o">::</span><span class="no">Application</span> <span class="k">do</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="n">service</span> <span class="ss">:data</span><span class="p">,</span> <span class="ss">model</span><span class="p">:</span> <span class="s1">&#39;./config/DealerErgoGo.xcdatamodel&#39;</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="n">service</span> <span class="ss">:push_notification</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="n">service</span> <span class="ss">:in_app_purchase</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="n">service</span> <span class="ss">:passbook</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="k">end</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Using framework Helios as a middleware for our app</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">use</span> <span class="no">Helios</span><span class="o">::</span><span class="no">Application</span> <span class="k">do</span>
+        <span class="n">service</span> <span class="ss">:data</span><span class="p">,</span> <span class="ss">model: </span><span class="s1">'./config/DealerErgoGo.xcdatamodel'</span>
+        <span class="n">service</span> <span class="ss">:push_notification</span>
+        <span class="n">service</span> <span class="ss">:in_app_purchase</span>
+        <span class="n">service</span> <span class="ss">:passbook</span>
+    <span class="k">end</span></code></pre></figure>
 
 <p>Securizamos desarrollo y producción con seguridad HTTP básica</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>"fragmento de código en .config/environments/development.rb y .config/environments/production.rb"</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Autenticación HTTP Básica para no dejar al descubierto los datos de la aplicación</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">insert_after</span><span class="p">(</span><span class="o">::</span><span class="no">Rack</span><span class="o">::</span><span class="no">Lock</span><span class="p">,</span> <span class="s2">&quot;::Rack::Auth::Basic&quot;</span><span class="p">,</span> <span class="s2">&quot;Who R&#39; U?&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">u</span><span class="p">,</span> <span class="nb">p</span><span class="o">|</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">u</span> <span class="o">==</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;USERNAME&quot;</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">p</span> <span class="o">==</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;PASSWORD&quot;</span><span class="o">]</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="k">end</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Autenticación HTTP Básica para no dejar al descubierto los datos de la aplicación</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">insert_after</span><span class="p">(</span><span class="o">::</span><span class="no">Rack</span><span class="o">::</span><span class="no">Lock</span><span class="p">,</span> <span class="s2">"::Rack::Auth::Basic"</span><span class="p">,</span> <span class="s2">"Who R' U?"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">u</span><span class="p">,</span> <span class="nb">p</span><span class="o">|</span>
+    <span class="n">u</span> <span class="o">==</span> <span class="no">ENV</span><span class="p">[</span><span class="s2">"USERNAME"</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nb">p</span> <span class="o">==</span> <span class="no">ENV</span><span class="p">[</span><span class="s2">"PASSWORD"</span><span class="p">]</span>
+  <span class="k">end</span></code></pre></figure>
 
 <p>Cargamos las variables de entorno de nuestro fichero</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Load the environment variables at beginning</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">before_configuration</span> <span class="k">do</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;local_env.yml&#39;</span><span class="p">)</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="no">ENV</span><span class="o">[</span><span class="n">key</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="k">end</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Load the environment variables at beginning</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">before_configuration</span> <span class="k">do</span>
+    <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">,</span> <span class="s1">'config'</span><span class="p">,</span> <span class="s1">'local_env.yml'</span><span class="p">)</span>
+    <span class="no">YAML</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">)).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+    <span class="no">ENV</span><span class="p">[</span><span class="n">key</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
+  <span class="k">end</span></code></pre></figure>
 
 <p>Para terminar, cambiamos el adaptador de postgresql a postgres porque sequel, una dependencia que trae Helios, lo usa. Debido a esto es muy importante configurar y crear la base de datos antes de introducir Helios en la aplicación ya que de lo contrario entraremos en un bucle infinito de cambio de adapatores. También cambiamos el usuario de la base de datos ya que, por defecto, PostgreSQL solo tendrá nuestro usuario local.</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">development</span><span class="p-Indicator">:</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="err">  </span><span class="l-Scalar-Plain">adapter</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">postgres</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="err">   </span><span class="l-Scalar-Plain">encoding</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">unicode</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="err">   </span><span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DealerErgoGo_development</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="err">   </span><span class="l-Scalar-Plain">pool</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">5</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="err">  </span><span class="l-Scalar-Plain">username</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">javi</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="err">   </span><span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="err">  </span><span class="l-Scalar-Plain">host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">localhost</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="err">  </span><span class="l-Scalar-Plain">port</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">5432</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">development</span><span class="pi">:</span>
+<span class="err">  </span><span class="s">adapter</span><span class="pi">:</span> <span class="s">postgres</span>
+   <span class="err">   </span><span class="s">encoding</span><span class="pi">:</span> <span class="s">unicode</span>
+   <span class="err">   </span><span class="s">database</span><span class="pi">:</span> <span class="s">DealerErgoGo_development</span>
+   <span class="err">   </span><span class="s">pool</span><span class="pi">:</span> <span class="s">5</span>
+<span class="err">  </span><span class="s">username</span><span class="pi">:</span> <span class="s">javi</span>
+   <span class="err">   </span><span class="s">password</span><span class="pi">:</span>
+<span class="err">  </span><span class="s">host</span><span class="pi">:</span> <span class="s">localhost</span>
+<span class="err">  </span><span class="s">port</span><span class="pi">:</span> <span class="s">5432</span></code></pre></figure>
 
 <p>Y con esto ya tendríamos listo el backend. Podríamos probarlo en nuestra máquina local o desplegar directamente en Heroku. Para ello solo hay que tener <a href="https://toolbelt.heroku.com">Heroku toolbelt</a> instalado, haber hecho commit de todos los cambios en la rama y principal y desde la carpeta del proyecto en el terminal escribir lo siguiente:</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>heroku create</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>heroku create</code></pre></figure>
 
 <p>Para crear la aplicación y</p>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>git push heroku master</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>git push heroku master</code></pre></figure>
 
 <p>Para desplegar la aplicación en Heroku. Listo, ya podemos disfrutar de nuestras 750 horas gratuitas al mes.</p>
 
@@ -196,7 +197,7 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Helios+I.+Guardando+Datos&amp;url=http://kcy.me/25vje"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Helios+I.+Guardando+datos&amp;url=http://kcy.me/25vje"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -205,14 +206,14 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+I.+Guardando+Datos&amp;u=http://kcy.me/25vje"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+I.+Guardando+datos&amp;u=http://kcy.me/25vje"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+I.+Guardando+Datos&amp;url=http://kcy.me/25vje"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+I.+Guardando+datos&amp;url=http://kcy.me/25vje"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -243,7 +244,7 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -254,6 +255,7 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -294,5 +296,7 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>

@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Variables De Entorno en Rails</title>
+  <title>Variables de entorno en Rails</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/03/25/variables-de-entorno-en-rails/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Variables De Entorno en Rails</h1>
+				  	<h1 class="post-title">Variables de entorno en Rails</h1>
 				  	 
           </div>
         </div>
@@ -65,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              4 minutos
+              5 minutos
               
               de lectura
               </p>
@@ -88,64 +89,65 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
 
 <p>Lo primero es crear el fichero <em>local_env.yml</em> e incluirlo en <em>.gitignore</em> para que no lo veáis jamás. ;-)</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>/config/local_env.yml</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Rename this file to local_env.yml</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Add account settings and API keys here.</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># This file should be listed in .gitignore to keep your settings secret!</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Each entry gets set as a local environment variable.</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># This file overrides ENV variables in the Unix shell.</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># For example, setting:</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># GMAIL_USERNAME: &#39;Your_Gmail_Username&#39;</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># makes &#39;Your_Gmail_Username&#39; available as ENV[&quot;GMAIL_USERNAME&quot;]</span>
-</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Twitter Variables</span>
-</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">CONSUMER_KEY</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Consumer_Key&#39;</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">CONSUMER_SECRET</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Consumer_Secret&#39;</span>
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">OAUTH_TOKEN</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Oauth_Token&#39;</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">OAUTH_TOKEN_SECRET</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_Oauth_Token_Secret&#39;</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># New Relic Parameters</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="l-Scalar-Plain">NEW_RELIC_LICENSE_KEY</span><span class="p-Indicator">:</span> <span class="s">&#39;Your_New_Relic_License_Key&#39;</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># Rename this file to local_env.yml</span>
+<span class="c1"># Add account settings and API keys here.</span>
+<span class="c1"># This file should be listed in .gitignore to keep your settings secret!</span>
+<span class="c1"># Each entry gets set as a local environment variable.</span>
+<span class="c1"># This file overrides ENV variables in the Unix shell.</span>
+<span class="c1"># For example, setting:</span>
+<span class="c1"># GMAIL_USERNAME: 'Your_Gmail_Username'</span>
+<span class="c1"># makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]</span>
+
+<span class="c1"># Twitter Variables</span>
+<span class="s">CONSUMER_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Key'</span>
+<span class="s">CONSUMER_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Secret'</span>
+<span class="s">OAUTH_TOKEN</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token'</span>
+<span class="s">OAUTH_TOKEN_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token_Secret'</span>
+<span class="c1"># New Relic Parameters</span>
+<span class="s">NEW_RELIC_LICENSE_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_New_Relic_License_Key'</span></code></pre></figure>
 
 <p>En el fichero podéis ver como no solo he creado variables de entorno para Twitter si no también para New Relic, eso es porque al margen de los cambios en el estilo de URLHunter, el uso de los Tweets Embeds y algunas mejoras en la cache también he incluido New Relic para monitorizar su comportamiento y buscar formas de mejorar el rendimiento.</p>
 
 <p>Ahora hay que incluir las variables de entorno en los ficheros correspondientes. El fichero de configuración <em>twitter.rb</em> quedará de la siguiente manera:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>/config/initializers/twitter.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="no">Twitter</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_key</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;CONSUMER_KEY&quot;</span><span class="o">]</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">consumer_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;CONSUMER_SECRET&quot;</span><span class="o">]</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;OAUTH_TOKEN&quot;</span><span class="o">]</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">config</span><span class="o">.</span><span class="n">oauth_token_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;OAUTH_TOKEN_SECRET&quot;</span><span class="o">]</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-uby" data-lang="uby">Twitter.configure do |config|
+  config.consumer_key = ENV["CONSUMER_KEY"]
+  config.consumer_secret = ENV["CONSUMER_SECRET"]
+  config.oauth_token = ENV["OAUTH_TOKEN"]
+  config.oauth_token_secret = ENV["OAUTH_TOKEN_SECRET"]
+end</code></pre></figure>
 
 <p>Y en el fichero de configuración de New Relic lo único que hay que tener en cuenta es que hay usar ruby embebido para nombra la variable de entorno:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>/config/newrelic.yml</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># You must specify the license key associated with your New Relic</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="c1"># account.  This key binds your Agent&#39;s data to your account in the</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="c1"># New Relic service.</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="l-Scalar-Plain">license_key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;%= ENV[&#39;NEW_RELIC_LICENSE_KEY&#39;] %&gt;</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># You must specify the license key associated with your New Relic</span>
+  <span class="c1"># account.  This key binds your Agent's data to your account in the</span>
+  <span class="c1"># New Relic service.</span>
+  <span class="s">license_key</span><span class="pi">:</span> <span class="s">&lt;%= ENV['NEW_RELIC_LICENSE_KEY'] %&gt;</span></code></pre></figure>
 
 <h2>Cargando las variables de entorno.</h2>
 
 <p>Para que la aplicación cargue las variables de entorno, tendremos que indicarle en el fichero de configuración que lo primero que tiene que hacer, antes que configurar cualquier otro ajuste es cargar las variables de nuestro fichero. Esto lo tendremos que hacer en el fichero <em>application.rb</em>:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>/config/application.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="c1"># Load the environment variables at beginning</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">config</span><span class="o">.</span><span class="n">before_configuration</span> <span class="k">do</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>      <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;local_env.yml&#39;</span><span class="p">)</span>
-</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>      <span class="no">YAML</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">))</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>        <span class="no">ENV</span><span class="o">[</span><span class="n">key</span><span class="o">.</span><span class="n">to_s</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>      <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="k">end</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="c1"># Load the environment variables at beginning</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">before_configuration</span> <span class="k">do</span>
+      <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">,</span> <span class="s1">'config'</span><span class="p">,</span> <span class="s1">'local_env.yml'</span><span class="p">)</span>
+      <span class="no">YAML</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">)).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+        <span class="no">ENV</span><span class="p">[</span><span class="n">key</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+      <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
+    <span class="k">end</span></code></pre></figure>
 
 <p>Si hemos hecho todo esto correctamente, al ejecutar la aplicación en local todo debería funcionar perfectamente. El problema nos lo vamos a encontrar cuando despleguemos en Heroku. Heroku se apoya en el fichero git de nuestro proyecto para tomar toda la información. Del mismo modo que el fichero donde hemos incluido las variables de entorno no es visible en el repositorio (GitHub, Bitbucket,...) tampoco lo es para Heroku por lo que las variables de entorno nunca se cargarán al iniciar la aplicación. Hemos de cargar estas variables de forma manual.</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Carga de variables de entorno en Heroku</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Key&#39;</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span></code></pre></figure>
 
 <p>Podemos hacer un fichero bash que ejecutaremos después de hacer el despliegue en heroku. Este script tendría la siguiente estructura:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Script para cargar variables de entorno en Heroku heroku.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Key&#39;</span> <span class="nv">CONSUMER_SECRET</span><span class="o">=</span><span class="s1">&#39;Your_Consumer_Secret&#39;</span> <span class="nv">OAUTH_TOKEN</span><span class="o">=</span><span class="s1">&#39;Your_Oauth_Token&#39;</span> <span class="nv">OAUTH_TOKEN_SECRET</span><span class="o">=</span><span class="s1">&#39;Your_Oauth_Token_Secret&#39;</span> <span class="nv">NEW_RELIC_LICENSE_KEY</span><span class="o">=</span><span class="s1">&#39;Your_New_Relic_License_Key&#39;</span><span class="p">;</span>
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>heroku info --app urlhunter-314159<span class="p">;</span></div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span> <span class="nv">CONSUMER_SECRET</span><span class="o">=</span><span class="s1">'Your_Consumer_Secret'</span> <span class="nv">OAUTH_TOKEN</span><span class="o">=</span><span class="s1">'Your_Oauth_Token'</span> <span class="nv">OAUTH_TOKEN_SECRET</span><span class="o">=</span><span class="s1">'Your_Oauth_Token_Secret'</span> <span class="nv">NEW_RELIC_LICENSE_KEY</span><span class="o">=</span><span class="s1">'Your_New_Relic_License_Key'</span>;
+heroku info --app urlhunter-314159;</code></pre></figure>
 
 <p>Y lo ejecutamos escribiendo en el terminal:</p>
 
-<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Script para cargar variables de entorno en Heroku</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>sh heroku.sh</div></div></pre></div></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sh heroku.sh</code></pre></figure>
 
 <p>Listo. Ya podemos compartir el código fuente del proyecto sin temor a que nadie pueda hacer uso de nuestras claves de terceros.</p>
 
@@ -154,7 +156,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Variables+De+Entorno+en+Rails&amp;url=http://kcy.me/25vjb"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Variables+de+entorno+en+Rails&amp;url=http://kcy.me/25vjb"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -163,14 +165,14 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Variables+De+Entorno+en+Rails&amp;u=http://kcy.me/25vjb"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Variables+de+entorno+en+Rails&amp;u=http://kcy.me/25vjb"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Variables+De+Entorno+en+Rails&amp;url=http://kcy.me/25vjb"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Variables+de+entorno+en+Rails&amp;url=http://kcy.me/25vjb"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -201,7 +203,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -212,6 +214,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -252,5 +255,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>
