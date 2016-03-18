@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Plugins de Karmacracy para Jekyll</title>
+  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+  <body itemscope itemtype="http://schema.org/Article">
+	 <!-- header start -->
+
+<!-- header end -->
+    
+    <main class="content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+						 
+				  	<h1 class="post-title">Plugins de Karmacracy para Jekyll</h1>
+				  	 
+          </div>
+        </div>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Javi</h4>
+              <p class="bio"></p>
+              <hr>
+              <p class="published"><i class="fa fa-calendar"></i><time datetime="2016-03-19 00:01"> 19 de marzo de 2016</time></p>
+              <p class="published"><i class="fa fa-clock-o"></i>  
+              
+              
+              5 minutos
+              
+              de lectura
+              </p>
+            </section>
+          </div>
+        </div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <p>Debo estar pasando por un momento minimalista porque cada vez que me pongo un rato con el blog no es para escribir nada nuevo sino para quitar dependencias. Hace tiempo que pase de Octopress 2.x a Jekyll pero todavía seguía usando algunos Plugins de Octopress 3.0 y otros míos. </p>
+
+<p>Esta semana he eliminado todas las dependencias de Octopress excepto la que facilita el despliegue. Hoy, después de hacer algunos pequeños ajustes en los estilos he decidido también eliminar los Plugins que hice para usar Karmacracy como a cortador de url´s.</p>
+
+<!--more-->
+
+<p>El único motivo es que cada día comparto menos enlaces y no estoy muy pendiente de si lo que comparto se mira mucho o poco... Como tampoco quiero que se pierda mi trabajillo, si alguien lo considera útil, aquí tiene mis Plugins</p>
+
+<p>El primero es un fichero llamado karmacracy.rb y que se encarga de acortar los enlaces a los nuevos post que vamos creando:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Karmacracy</span>
+  <span class="k">class</span> <span class="nc">Generator</span> <span class="o">&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Generator</span>
+    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="s2">".karmaplugin/tweets.info"</span>
+        <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".karmaplugin/tweets.info"</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@tweets</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+      <span class="k">else</span>
+        <span class="vi">@tweets</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">end</span>
+      
+      <span class="n">site</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+        
+        <span class="n">url</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">configuration</span><span class="p">({})[</span><span class="s1">'url'</span><span class="p">]</span>
+        <span class="n">permalink</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="n">post</span><span class="p">.</span><span class="nf">url</span> 
+
+        <span class="n">tweet_posted</span> <span class="o">=</span> <span class="vi">@tweets</span><span class="p">.</span><span class="nf">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">tweet</span><span class="o">|</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"post"</span><span class="p">]</span> <span class="o">==</span> <span class="n">permalink</span> <span class="p">}</span>
+        <span class="k">if</span> <span class="o">!</span><span class="p">(</span><span class="n">tweet_posted</span><span class="p">)</span>
+          <span class="nb">puts</span> <span class="s2">"## Creando karmalinks para nuevas entradas: "</span> <span class="o">+</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span>
+          <span class="n">karmacracy_user</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">configuration</span><span class="p">({})[</span><span class="s1">'karmacracy_user'</span><span class="p">]</span>
+          <span class="n">karmacracy_key</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">configuration</span><span class="p">({})[</span><span class="s1">'karmacracy_key'</span><span class="p">]</span>
+          <span class="n">kcyshorter</span> <span class="o">=</span> <span class="s2">"http://kcy.me/api/?u=</span><span class="si">#{</span><span class="n">karmacracy_user</span><span class="si">}</span><span class="s2">&amp;key=</span><span class="si">#{</span><span class="n">karmacracy_key</span><span class="si">}</span><span class="s2">&amp;url=</span><span class="si">#{</span><span class="no">CGI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">permalink</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">kcyshorter</span><span class="p">))</span>
+          <span class="n">tweet</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"post"</span> <span class="o">=&gt;</span> <span class="n">permalink</span><span class="p">,</span> <span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span><span class="p">,</span> <span class="s2">"klink"</span> <span class="o">=&gt;</span> <span class="n">result</span><span class="p">,</span> <span class="s2">"tweet"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">}</span>
+          <span class="vi">@tweets</span> <span class="o">&lt;&lt;</span> <span class="n">tweet</span>
+        <span class="k">end</span> 
+      <span class="p">}</span>
+      
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".karmaplugin/tweets.info"</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="no">Marshal</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="vi">@tweets</span><span class="p">))</span> <span class="p">}</span>
+      
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Para que este plugin funcione, en el fichero _config.yml tienen que existir los parámetros karmacracy<em>user y karmacracy</em>key. En estos parámetros se debe indicar el usuario de karmacracy y la clave para acortar urls.</p>
+
+<p>Este plugin se ejecuta cada vez que se genera el blog, comprueba si cada enlace ya está acortado y si existe algún enlace sin acortar utiliza el API de Karmacracy para acortarlo. Como el objetivo de acortar los enlaces es para publicar en Twitter, se guarda un objeto con el nombre del fichero, el título, el permalink y el enlace acortado. También existe un campo para almacenar el tweet una vez se haya publicado.</p>
+
+<p>Este enlace acortado lo usaba en dos sitios. El primero de ellos es en el botón para compartir en redes sociales que está al final de cada post. Para poder incluir este enlace tuve que hacer otro pequeño plugin. En un alarde de originalidad, a este lo llame kcy.rb:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">KcyFilter</span>
+    
+    <span class="k">def</span> <span class="nf">kcy</span><span class="p">(</span><span class="n">permalink</span><span class="p">)</span>
+        <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="s2">".karmaplugin/tweets.info"</span>
+            <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".karmaplugin/tweets.info"</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@tweets</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">configuration</span><span class="p">({})[</span><span class="s1">'url'</span><span class="p">]</span>
+            <span class="n">permalink</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="n">permalink</span>
+            <span class="n">tweet_posted</span> <span class="o">=</span> <span class="vi">@tweets</span><span class="p">.</span><span class="nf">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">tweet</span><span class="o">|</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"post"</span><span class="p">]</span> <span class="o">==</span> <span class="n">permalink</span> <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">tweet_posted</span><span class="p">)</span>
+                <span class="s2">"</span><span class="si">#{</span><span class="n">tweet_posted</span><span class="p">[</span><span class="s2">"klink"</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">else</span>
+                <span class="s2">"</span><span class="si">#{</span><span class="n">permalink</span><span class="si">}</span><span class="s2">"</span>   
+            <span class="k">end</span>
+        <span class="k">else</span>
+            <span class="s2">"</span><span class="si">#{</span><span class="n">permalink</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">KcyFilter</span><span class="p">)</span></code></pre></figure>
+
+<p>Lo último es la tarea de publicar el tweet en el momento en el que se está desplegando la nueva versión del blog. En mi caso, tengo un rakefile donde están diferentes tareas que ayudan a la publicación. La que se encarga de publicar el tweet es esta:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">task</span> <span class="ss">:share_with_twitter</span> <span class="k">do</span>
+ 
+  <span class="c1"># Twitter config (for tweeting posts)</span>
+  <span class="n">client</span> <span class="o">=</span> <span class="no">Twitter</span><span class="o">::</span><span class="no">REST</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">consumer_key</span>        <span class="o">=</span> <span class="n">twitter_consumer_key</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">consumer_secret</span>     <span class="o">=</span> <span class="n">twitter_consumer_secret</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">access_token</span>        <span class="o">=</span> <span class="n">twitter_access_token</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">access_token_secret</span> <span class="o">=</span> <span class="n">twitter_access_token_secret</span>
+  <span class="k">end</span>
+ 
+  <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="s2">".karmaplugin/tweets.info"</span>
+    <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".karmaplugin/tweets.info"</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@tweets</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+  <span class="k">else</span>
+    <span class="vi">@tweets</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+   
+  <span class="vi">@tweets</span><span class="p">.</span><span class="nf">each</span><span class="p">{</span> <span class="o">|</span><span class="n">tweet</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">""</span>
+      <span class="nb">puts</span> <span class="s2">"Publicando tweet: "</span> <span class="o">+</span> <span class="n">tweet</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span>
+      <span class="n">tweet_response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">tweet</span><span class="p">[</span><span class="s2">"klink"</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+      <span class="n">tweet</span><span class="p">[</span><span class="s2">"tweet"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet_response</span>
+    <span class="k">end</span>
+  <span class="p">}</span>
+ 
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".karmaplugin/tweets.info"</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="no">Marshal</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="vi">@tweets</span><span class="p">))</span> <span class="p">}</span>
+ 
+<span class="k">end</span></code></pre></figure>
+
+<p>Espero que sea de utilidad.</p>
+
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            
+              
+                <a class="icon-twitter" href="http://twitter.com/share?text=Plugins+de+Karmacracy+para+Jekyll&amp;url=/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/"
+                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+                </a>
+              
+            
+              
+            
+              
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Plugins+de+Karmacracy+para+Jekyll&amp;u=/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/"
+                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+                </a>
+              
+            
+              
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Plugins+de+Karmacracy+para+Jekyll&amp;url=/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/"
+                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+                </a>
+              
+            
+          </section>
+          <nav class="post-pagination-next" role="navigation">
+            
+          </nav>
+          <nav class="post-pagination-previous" role="navigation">
+            
+              <a class="previous" href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/">Publicando en Medium... imágenes!!! &rarr;</a>
+            
+          </nav>
+          <nav class="post-pagination-clear" role="navigation">
+          </nav>
+		  
+		  <comments class="post-comments">
+		    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    var disqus_shortname = 'eloctoblog';
+    
+      
+      // var disqus_developer = 1;
+      var disqus_identifier = 'http://javimoreno.es/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/';
+      var disqus_url = 'http://javimoreno.es/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/';
+      var disqus_script = 'embed.js';
+    
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		  </comments>
+		  
+        </footer>
+      </article>
+    </main>
+        <div class="bottom-closer">
+      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">Javi Moreno</h1>
+        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+</h2>
+        <a href="/" class="btn">Ir a la página principal</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+
+  </body>
+</html>
