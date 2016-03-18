@@ -57,46 +57,6 @@ task :share_with_twitter do
  
 end
 
-desc "Post to Medium"
-task :post_to_medium do
- 
-  if File.exists? ".medium/posts.info"
-    File.open(".medium/posts.info", 'rb') {|f| @posts = Marshal::load(f)}
-  else
-    @posts = []
-  end
-   
-  @posts.each{ |post|
-    if post["posted"] == "NO"
-      puts "Publicando en Medium: " + post["title"]
-      url = URI.parse("https://api.medium.com")
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      request = Net::HTTP::Post.new("/v1/users/115595d86fa77c73315eee59c5e3db78c1611d9dbd0ec85ad19f1a80e110583a8/posts")
-      request.add_field("Authorization", "Bearer 2fa749744efd787deafdf7819aa67da0f51943f574356529722aba8073978cd81")
-      request.add_field("User-agent", 'Mozilla/5.0')
-      request.add_field("Content-Type", 'application/json')
-      request.add_field("Accept", 'application/json')
-      request.add_field("Accept-Charset", 'utf-8')
-      data = {
-      	"title" => post["title"], 
-      	"contentFormat" => "html",
-      	"content" => post["content"],
-      	"publishStatus" => "draft",
-      	"canonicalUrl" => post["permalink"]
-      	}
-      request.body = data.to_json
-      puts "antes"
-      response = http.request(request)
-      puts "despues"
-    end
-  }
- 
-  File.open(".medium/posts.info", 'wb') {|f| f.write(Marshal.dump(@posts)) }
- 
-end
-
 desc "Publicación automática"
 task :publicar do
   puts "\n## Generación del sitio estático con Octopress"
