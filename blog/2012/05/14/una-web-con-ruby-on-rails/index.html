@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Una Web Con Ruby on Rails</title>
+  <title>Una web con Ruby on Rails</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2012/05/14/una-web-con-ruby-on-rails/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Una Web Con Ruby on Rails</h1>
+				  	<h1 class="post-title">Una web con Ruby on Rails</h1>
 				  	 
           </div>
         </div>
@@ -104,21 +105,21 @@ El objetivo que nos hemos marcado para esta sesión de 45 minutos es grande: no 
 
 <p>Una aplicación web que llamaremos MegaLists y que tendrá vistas para dar de alta elementos en una lista (algo de lo más original).
 Al introducir por terminal:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ rails new MegaLists
+<div class="highlight"><pre><code class="language-" data-lang="">$ rails new MegaLists
 </code></pre></div>
 <p>rails nos crea todo proyecto de la aplicación, ahora necesitamos las vistas y la tabla donde almacenaremos nuestra lista. Si hemos decidido llamar a la tabla List  y solo necesitamos un campo para el nombre de la nota y otro para el detalle, las palabras mágicas son estas:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ rails generate scaffold List name:string description:string
+<div class="highlight"><pre><code class="language-" data-lang="">$ rails generate scaffold List name:string description:string
 $ rake db:migrate
 </code></pre></div>
 <p>Al pedirle a rails que nos genere un andamio (scaffold) este nos crea todo lo que necesitamos para disfrutar de nuestra nueva web y de los servicios que nuestra app va a consumir. La segunda instrucción se encarga de realizar una migración en la base de datos para incluir los cambios que hemos solicitado, en este caso, crear una nueva tabla con dos campos.</p>
 
 <p>Podemos tener un fichero con datos de prueba para cargar nuestra base de datos con una única instrucción en caso de que queramos volver a generarlos.  La primera instrucción nos abriría el fichero en nuestro editor de texto, la segunda instrucción es la que cargaría la base de datos.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ edit db/seeds.rb
+<div class="highlight"><pre><code class="language-" data-lang="">$ edit db/seeds.rb
 
 $ rake db:seed
 </code></pre></div>
 <p>Aunque parezca mentira, con lo poco que hemos hecho hasta ahora ya tenemos una web creada con toda la funcionalidad necesaria para alimentar la entidad lists. Lo único que nos falta para verla en funcionamiento es arrancar el servidor.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">$ rails server
+<div class="highlight"><pre><code class="language-" data-lang="">$ rails server
 </code></pre></div>
 <p>El servidor... ¿cuando lo has instalado? ¿como sabe donde está alojado el proyecto? magia... las gemas tienen poderes y se encargan de estas cosas. Igual que no tenemos que preocuparnos por la base de datos, ya que rails gestiona las conexiones por nosotros, también incluye un pequeño servidor que nos permitirá hacer nuestras pruebas. Cuando se despliegue la aplicación en producción si que será necesario configurar un servidor Apache, instalar y configurar una base de datos, etc pero para desarrollo no necesitamos nada más.</p>
 
@@ -137,7 +138,7 @@ $ rake db:seed
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Una+Web+Con+Ruby+on+Rails&amp;url=http://kcy.me/25vj0"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Una+web+con+Ruby+on+Rails&amp;url=http://kcy.me/25vj0"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -146,14 +147,14 @@ $ rake db:seed
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Una+Web+Con+Ruby+on+Rails&amp;u=http://kcy.me/25vj0"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Una+web+con+Ruby+on+Rails&amp;u=http://kcy.me/25vj0"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Una+Web+Con+Ruby+on+Rails&amp;url=http://kcy.me/25vj0"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Una+web+con+Ruby+on+Rails&amp;url=http://kcy.me/25vj0"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -184,7 +185,7 @@ $ rake db:seed
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -195,6 +196,7 @@ $ rake db:seed
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -235,5 +237,7 @@ $ rake db:seed
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>

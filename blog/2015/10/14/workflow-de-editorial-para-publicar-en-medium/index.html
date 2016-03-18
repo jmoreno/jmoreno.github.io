@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Workflow De Editorial Para Publicar en Medium</title>
+  <title>Workflow de Editorial para publicar en Medium</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,7 +19,6 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,7 +26,8 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	<script type="text/javascript">
+	
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,7 +38,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
+
+
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -50,7 +51,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Workflow De Editorial Para Publicar en Medium</h1>
+				  	<h1 class="post-title">Workflow de Editorial para publicar en Medium</h1>
 				  	 
           </div>
         </div>
@@ -65,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              1 minuto
+              3 minutos
               
               de lectura
               </p>
@@ -87,68 +88,73 @@
 <p>El workflow toma un texto en markdown y lo envía a Medium. Antes de esto pedirá confirmación del título de la publicación.  </p>
 
 <p>El script en Python que gobierna el workflow es, con algunas variaciones, el siguiente:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib2</span>                 
+<span class="kn">import</span> <span class="nn">json</span>
 
-<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="kn">import</span> <span class="nn">urllib2</span>                 
-</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="kn">import</span> <span class="nn">json</span>
-</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">contentTypeHeader</span> <span class="o">=</span> <span class="s">&#39;application/json&#39;</span>
-</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">acceptHeader</span> <span class="o">=</span>  <span class="s">&#39;application/json&#39;</span>
-</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">acceptCharsetHeader</span> <span class="o">=</span> <span class="s">&#39;utf-8&#39;</span>
-</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">integrationToken</span> <span class="o">=</span> <span class="s">&#39;tu propio token de integracion&#39;</span>
-</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">urlUserInfo</span> <span class="o">=</span> <span class="s">&#39;https://api.medium.com/v1/me&#39;</span>
-</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">urlUserInfo</span><span class="p">)</span>
-</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">integrationToken</span><span class="p">)</span>   
-</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="n">contentTypeHeader</span><span class="p">)</span>
-</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span> <span class="n">acceptHeader</span><span class="p">)</span>
-</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Accept-Charset&quot;</span><span class="p">,</span> <span class="n">acceptCharsetHeader</span><span class="p">)</span>
-</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">try</span><span class="p">:</span>
-</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">except</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
-</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">print</span> <span class="s">&quot;The integration token is invalid&quot;</span>
-</div></div><div data-line='21' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='22' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">else</span><span class="p">:</span> 
-</div></div><div data-line='23' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">responseJson</span> <span class="o">=</span>  <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</div></div><div data-line='24' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">authorId</span> <span class="o">=</span> <span class="n">responseJson</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">][</span><span class="s">&quot;id&quot;</span><span class="p">]</span>
-</div></div><div data-line='25' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='26' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="n">urlPost</span> <span class="o">=</span> <span class="s">&#39;https://api.medium.com/v1/users/</span><span class="si">%s</span><span class="s">/posts&#39;</span> <span class="o">%</span> <span class="n">authorId</span>
-</div></div><div data-line='27' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='28' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="n">values</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-</div></div><div data-line='29' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">values</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Hola Medium!&quot;</span>
-</div></div><div data-line='30' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">values</span><span class="p">[</span><span class="s">&#39;contentFormath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;html&quot;</span>
-</div></div><div data-line='31' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">values</span><span class="p">[</span><span class="s">&#39;content&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&lt;h1&gt;Hola Medium!&lt;/h1&gt;&lt;p&gt;Probando el API de Medium desde Pythonista.&lt;/p&gt;&quot;</span>
-</div></div><div data-line='32' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">values</span><span class="p">[</span><span class="s">&#39;publishStatus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;draft&quot;</span> 
-</div></div><div data-line='33' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-</div></div><div data-line='34' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='35' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">urlPost</span><span class="p">)</span>
-</div></div><div data-line='36' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">integrationToken</span><span class="p">)</span>   
-</div></div><div data-line='37' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="n">contentTypeHeader</span><span class="p">)</span>
-</div></div><div data-line='38' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span> <span class="n">acceptHeader</span><span class="p">)</span>
-</div></div><div data-line='39' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Accept-Charset&quot;</span><span class="p">,</span> <span class="n">acceptCharsetHeader</span><span class="p">)</span>
-</div></div><div data-line='40' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">request</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</div></div><div data-line='41' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">try</span><span class="p">:</span>
-</div></div><div data-line='42' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</div></div><div data-line='43' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">except</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</div></div><div data-line='44' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">400</span><span class="p">:</span>
-</div></div><div data-line='45' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="s">&quot;Incorrect fields. Bad request&quot;</span>
-</div></div><div data-line='46' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='47' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
-</div></div><div data-line='48' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="s">&quot;The integration token is invalid&quot;</span>
-</div></div><div data-line='49' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='50' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
-</div></div><div data-line='51' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="s">&quot;User without permission to publish.&quot;</span>
-</div></div><div data-line='52' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='53' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
-</div></div><div data-line='54' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="s">&quot;User unknown&quot;</span>
-</div></div><div data-line='55' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='56' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">else</span><span class="p">:</span>
-</div></div><div data-line='57' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="s">&quot;Ups! something is wrong with the world today...&quot;</span>
-</div></div><div data-line='58' class='code-highlight-row numbered'><div class='code-highlight-line'>           <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
-</div></div><div data-line='59' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">else</span><span class="p">:</span> 
-</div></div><div data-line='60' class='code-highlight-row numbered'><div class='code-highlight-line'>       <span class="k">print</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div></div></pre></div></figure>
+<span class="n">contentTypeHeader</span> <span class="o">=</span> <span class="s">'application/json'</span>
+<span class="n">acceptHeader</span> <span class="o">=</span>  <span class="s">'application/json'</span>
+<span class="n">acceptCharsetHeader</span> <span class="o">=</span> <span class="s">'utf-8'</span>
+<span class="n">integrationToken</span> <span class="o">=</span> <span class="s">'tu propio token de integracion'</span>
 
+<span class="n">urlUserInfo</span> <span class="o">=</span> <span class="s">'https://api.medium.com/v1/me'</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">urlUserInfo</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="n">integrationToken</span><span class="p">)</span>   
+<span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="n">contentTypeHeader</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="n">acceptHeader</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Accept-Charset"</span><span class="p">,</span> <span class="n">acceptCharsetHeader</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">"The integration token is invalid"</span>
+        <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">responseJson</span> <span class="o">=</span>  <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="n">authorId</span> <span class="o">=</span> <span class="n">responseJson</span><span class="p">[</span><span class="s">"data"</span><span class="p">][</span><span class="s">"id"</span><span class="p">]</span>
+
+    <span class="n">urlPost</span> <span class="o">=</span> <span class="s">'https://api.medium.com/v1/users/</span><span class="si">%</span><span class="s">s/posts'</span> <span class="o">%</span> <span class="n">authorId</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">values</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Hola Medium!"</span>
+    <span class="n">values</span><span class="p">[</span><span class="s">'contentFormath'</span><span class="p">]</span> <span class="o">=</span> <span class="s">"html"</span>
+    <span class="n">values</span><span class="p">[</span><span class="s">'content'</span><span class="p">]</span> <span class="o">=</span> <span class="s">"&lt;h1&gt;Hola Medium!&lt;/h1&gt;&lt;p&gt;Probando el API de Medium desde Pythonista.&lt;/p&gt;"</span>
+    <span class="n">values</span><span class="p">[</span><span class="s">'publishStatus'</span><span class="p">]</span> <span class="o">=</span> <span class="s">"draft"</span> 
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="n">request</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">urlPost</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span> <span class="s">"Bearer </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="n">integrationToken</span><span class="p">)</span>   
+    <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="n">contentTypeHeader</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="n">acceptHeader</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">"Accept-Charset"</span><span class="p">,</span> <span class="n">acceptCharsetHeader</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">400</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"Incorrect fields. Bad request"</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+        <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">401</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"The integration token is invalid"</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+        <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">403</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"User without permission to publish."</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+        <span class="k">elif</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"User unknown"</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"Ups! something is wrong with the world today..."</span>
+            <span class="k">print</span> <span class="n">e</span><span class="o">.</span><span class="n">reason</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">print</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
         </section>
         <footer class="post-footer">
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Workflow+De+Editorial+Para+Publicar+en+Medium&amp;url=http://kcy.me/284rw"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Workflow+de+Editorial+para+publicar+en+Medium&amp;url=http://kcy.me/284rw"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -157,14 +163,14 @@
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Workflow+De+Editorial+Para+Publicar+en+Medium&amp;u=http://kcy.me/284rw"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Workflow+de+Editorial+para+publicar+en+Medium&amp;u=http://kcy.me/284rw"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Workflow+De+Editorial+Para+Publicar+en+Medium&amp;url=http://kcy.me/284rw"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Workflow+de+Editorial+para+publicar+en+Medium&amp;url=http://kcy.me/284rw"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -195,7 +201,7 @@
         </footer>
       </article>
     </main>
-    <div class="bottom-closer">
+        <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -206,6 +212,7 @@
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -246,5 +253,7 @@
   });
 }(jQuery));
 </script>
+
+
   </body>
 </html>
