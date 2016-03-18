@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2014/04/07/octoberry-pi/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -66,7 +65,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              7 minutos
+              8 minutos
               
               de lectura
               </p>
@@ -79,15 +78,11 @@
 Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.<br>
 Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:</p>
 
-<blockquote>
-<p>Lo nuestro es el plomo.</p>
-</blockquote>
+<blockquote><p>Lo nuestro es el plomo.</p></blockquote>
 
 <p>Claro, que un poco más adelante, en la misma película también dijo:</p>
 
-<blockquote>
-<p>En aquel momento parecía una buena idea.</p>
-</blockquote>
+<blockquote><p>En aquel momento parecía una buena idea.</p></blockquote>
 
 <!--more-->
 
@@ -124,49 +119,49 @@ Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repo
 
 <p>En todos los casos, después de publicar se hace commit en el repositorio y se suben los cambios a los servidores remotos.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
-mv ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
-<span class="nb">set</span> -e
-<span class="nb">cd </span>blog
-rake generate
-rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con quickpost.sh"</span>
-git push origin <span class="nb">source</span></code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>quickpost.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>mv ./drafts/*.markdown ./blog/source/_posts
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">set</span> -e
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd </span>blog
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>rake generate
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>rake deploy
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>git add .
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickpost.sh&quot;</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>git push origin <span class="nb">source</span></div></div></pre></div></figure>
 
 <p>El script anterior descarga los ficheros que estén en la carpeta de <em>borradores</em>. A continuación, mueve los ficheros con extensión <em>markdown</em> a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace <code>commit</code>en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.</p>
 
 <p>El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un <code>pulo</code> al repositorio remoto,…</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
-<span class="nb">cd </span>blog
-git pull origin <span class="nb">source
-</span>rake generate
-rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con gitpost.sh”
-git push origin source</span></code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>gitpost.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">set</span> -e
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd </span>blog
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>git pull origin <span class="nb">source</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>rake generate
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>rake deploy
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>git add .
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>git commit -m <span class="err">&quot;</span>Nuevo publicación con gitpost.sh”
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>git push origin <span class="nb">source</span></div></div></pre></div></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
-./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
-mv ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
-<span class="nb">cd </span>blog
-rake generate
-rake preview</code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>quickpreview.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">set</span> -e
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>mv ./drafts/*.markdown ./blog/source/_posts
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd </span>blog
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>rake generate
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>rake preview</div></div></pre></div></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
-<span class="nb">cd </span>blog
-rake generate
-rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con quickdeploy.sh"</span>
-git push origin <span class="nb">source</span></code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>quickdeploy.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">set</span> -e
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd </span>blog
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>rake generate
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>rake deploy
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>git add .
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>git commit -m <span class="s2">&quot;Nuevo publicación con quickdeploy.sh&quot;</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>git push origin <span class="nb">source</span></div></div></pre></div></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
-<span class="nb">cd </span>blog
-git pull origin <span class="nb">source
-</span>rake generate
-rake preview</code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>gitpreview.sh</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">set</span> -e
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nb">cd </span>blog
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>git pull origin <span class="nb">source</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>rake generate
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>rake preview</div></div></pre></div></figure>
 
 <h2>Wherever I may roam</h2>
 
@@ -233,7 +228,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -244,7 +239,6 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -285,7 +279,5 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>

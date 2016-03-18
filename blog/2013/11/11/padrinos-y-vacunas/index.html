@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Padrinos y vacunas</title>
+  <title>Padrinos Y Vacunas</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -51,7 +50,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Padrinos y vacunas</h1>
+				  	<h1 class="post-title">Padrinos Y Vacunas</h1>
 				  	 
           </div>
         </div>
@@ -75,11 +74,7 @@
         </div>
         <section class="post-content">
           <a name="topofpage"></a>
-          <blockquote>
-<p>Le haré una oferta que no podrá rechazar.</p>
-
-<p><strong>Vito Corleone,</strong> <em>El Padrino</em></p>
-</blockquote>
+          <figure class='quote'><blockquote><p>Le haré una oferta que no podrá rechazar.</p></blockquote><figcaption class='quote-source'><span class='quote-author'>Vito Corleone </span> <cite class='quote-title'>El Padrino</cite></figcaption></figure>
 
 <p>En la misma película de la que he sacado esta cita se dice que los italianos piensan que el mundo es tan duro que hay que tener dos padres y por eso todos tienen un padrino. Quizá esto es lo que pensaron los desarrolladores del nuevo framework del que me he hecho fan, Padrino, por que el nombre le viene que ni pintado. </p>
 
@@ -109,7 +104,8 @@
 
 <p>Siguiendo la estela de Rails, Padrino tiene generadores que nos vendrán muy bien en diferentes fases del desarrollo. El primero que utilizaremos es el que permite crear el proyecto. </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g project VacScheduler -t shoulda -e haml -c sass -s jquery -d activerecord -b</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g project VacScheduler -t shoulda -e haml -c sass -s jquery -d activerecord -b</div></div></pre></div></figure>
+    
 
 <p>La mejor forma de saber que significan todos estos términos es mirar la <a href="http://www.padrinorb.com/guides/generators">documentación de Padrino sobre los generadores</a>. Yo he puesto todo esto, no porque sea un listillo, sino porque para hacer está aplicación me he fusilado el <a href="http://www.padrinorb.com/guides/blog-tutorial">tutorial sobre como hacer un blog</a>.<br>
 Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para el testing, haml para el renderizado de las páginas, sass para los estilos, jquery para la parte de scripting y activerecord para el orm. Además, cuando termine la creación del proyecto, forzaremos una instalación de las gemas que nos faltan con Bundle.</p>
@@ -118,78 +114,74 @@ Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para 
 
 <p>Una gran diferencia con respecto a Rails es que, en Padrino han pensado que la existencia de un grupo de usuarios encargados de mantener las tablas que forman el modelo de la aplicación es un escenario lo suficientemente habitual como para crear una funcionalidad de Administración. A nosotros esto nos viene genial porque lo que queremos es tener una aplicación que devuelva una versión actualizada de los diferentes calendarios de vacunación y para actualizar esos datos tendremos a un usuario responsable de dicho mantenimiento. Las instrucciones para crear el panel de administración son las siguientes:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g admin --theme warehouse
-<span class="gp">$ </span>bundle install
-
-<span class="gp">$ </span>padrino rake ar:create
-<span class="gp">$ </span>padrino rake ar:migrate
-<span class="gp">$ </span>padrino rake seed</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin --theme warehouse
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>bundle install
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino rake ar:create
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino rake ar:migrate
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino rake seed</div></div></pre></div></figure>
 
 <p>Este último paso nos pedirá un correo electrónico y una contraseña para poder acceder al panel de administración. Si después de hacer esto, arrancamos la aplicación podremos ver el bonito panel de administración.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino start</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino start</div></div></pre></div></figure>
 
 <h3>Creación de los modelos</h3>
 
 <p>Si estuviéramos en Rails, generaríamos un scaffold. Padrino no tiene scaffold... o si? igual nos llevamos una sorpresa más adelante.<br>
 De momento vamos a crear los modelos de las cinco tablas que forman nuestro modelo de datos.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g model age short_name:string name:string months:integer -a app
-<span class="gp">$ </span>padrino g model calendar name:string country_id:integer -a app
-<span class="gp">$ </span>padrino g model country name:string -a app
-<span class="gp">$ </span>padrino g model event notes:text calendar_id:integer age_id:integer vaccine_id:integer -a app
-<span class="gp">$ </span>padrino g model vaccine short_name:string name:string description:text link_info:string -a app</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g model age short_name:string name:string months:integer -a app
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g model calendar name:string country_id:integer -a app
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g model country name:string -a app
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g model event notes:text calendar_id:integer age_id:integer vaccine_id:integer -a app
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g model vaccine short_name:string name:string description:text link_info:string -a app</div></div></pre></div></figure>
 
 <p>y hacemos la migración correspondiente para crear las entidades en la base de datos:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino rake ar:migrate</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino rake ar:migrate</div></div></pre></div></figure>
 
 <h3>Modificación de los modelos para incluir las relaciones y validaciones</h3>
 
 <p>Sobre los modelos que nos ha creado Padrino, hacemos las modificaciones oportunas para indicar las relaciones entre las entidades así como los campos que son obligatorios:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Age</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">has_many</span> <span class="ss">:events</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:short_name</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:months</span>
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Age.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">class</span> <span class="nc">Age</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">has_many</span> <span class="ss">:events</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:short_name</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:months</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Calendar</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">has_many</span> <span class="ss">:events</span>
-    <span class="n">belongs_to</span> <span class="ss">:country</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
-<span class="k">end</span></code></pre></figure>
-    
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Calendar.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">class</span> <span class="nc">Calendar</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">has_many</span> <span class="ss">:events</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">belongs_to</span> <span class="ss">:country</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>    
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Country</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">has_many</span> <span class="ss">:calendars</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
-<span class="k">end</span></code></pre></figure>
-    
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Country.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">class</span> <span class="nc">Country</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">has_many</span> <span class="ss">:calendars</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>    
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Event</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">belongs_to</span> <span class="ss">:calendar</span>
-    <span class="n">belongs_to</span> <span class="ss">:age</span>
-    <span class="n">belongs_to</span> <span class="ss">:vaccine</span>
-<span class="k">end</span></code></pre></figure>
-    
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Event.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">class</span> <span class="nc">Event</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">belongs_to</span> <span class="ss">:calendar</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">belongs_to</span> <span class="ss">:age</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">belongs_to</span> <span class="ss">:vaccine</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>    
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Vaccine</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-    <span class="n">has_many</span> <span class="ss">:events</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:short_name</span>
-    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><figcaption class='code-highlight-caption'><span class='code-highlight-caption-title'>Vaccine.rb</span></figcaption><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">class</span> <span class="nc">Vaccine</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">has_many</span> <span class="ss">:events</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:short_name</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="n">validates_presence_of</span> <span class="ss">:name</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <h3>Creación de los paneles de administración de cada uno de los modelos anteriores</h3>
 
 <p>Esto es lo que me ha ganado de Padrino. Las admin_page son unas pantallas de mantenimiento de datos semejantes a las creadas al hacer un scaffold de Rails pero vinculadas al panel de administración. Es decir, que solo serán visibles si estás autenticado en el sistema. Parece una chorrada, pero para hacer esto en Rails hay que picar un poquito.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g admin_page age
-<span class="gp">$ </span>padrino g admin_page calendar
-<span class="gp">$ </span>padrino g admin_page country
-<span class="gp">$ </span>padrino g admin_page event
-<span class="gp">$ </span>padrino g admin_page vaccine</code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin_page age
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin_page calendar
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin_page country
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin_page event
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="nv">$ </span>padrino g admin_page vaccine</div></div></pre></div></figure>
 
 <p>Cuando refresquemos, veremos algo tan bonito como esto:</p>
 
@@ -204,17 +196,16 @@ De momento vamos a crear los modelos de las cinco tablas que forman nuestro mode
 <p>El objetivo de la aplicación es enviar un JSON con la versión más actual de todos y cada uno de los calendarios para que una aplicación móvil refresque su base de datos y pueda informar a sus usuarios de cuales son las próximas vacunas que tienen que poner a sus criaturas.<br>
 Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y escribimos el siguiente trozo de código en app.rb:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">get</span> <span class="s2">"/"</span> <span class="k">do</span>
-    <span class="no">Country</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">to_json</span><span class="p">(</span><span class="ss">:include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:calendars</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                            <span class="ss">:include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:events</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                                <span class="ss">:include</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                                    <span class="p">{</span> <span class="ss">:vaccine</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:short_name</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:link_info</span><span class="p">]}},</span> 
-                                    <span class="p">{</span> <span class="ss">:age</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:months</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:short_name</span><span class="p">]}}],</span>
-                                <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:notes</span><span class="p">}},</span>
-                            <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">]</span> <span class="p">}},</span> 
-                        <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">])</span>
-
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="n">get</span> <span class="s2">&quot;/&quot;</span> <span class="k">do</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="no">Country</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="ss">:include</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span> <span class="ss">:calendars</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>                            <span class="ss">:include</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span> <span class="ss">:events</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>                                <span class="ss">:include</span> <span class="o">=&gt;</span> <span class="o">[</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>                                    <span class="p">&#x7b;</span> <span class="ss">:vaccine</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:short_name</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:link_info</span><span class="o">]</span><span class="p">&#x7d;&#x7d;,</span> 
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>                                    <span class="p">&#x7b;</span> <span class="ss">:age</span> <span class="o">=&gt;</span> <span class="p">&#x7b;</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:months</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:short_name</span><span class="o">]</span><span class="p">&#x7d;&#x7d;</span><span class="o">]</span><span class="p">,</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>                                <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="ss">:notes</span><span class="p">&#x7d;&#x7d;,</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>                            <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="o">]</span> <span class="p">&#x7d;&#x7d;,</span> 
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>                        <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="o">]</span><span class="p">)</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Y listo, con este <em>sencillo</em> fragmento de código toda la funcionalidad <em>publica</em> de nuestra aplicación web está construida. Ya podemos llamar desde la aplicación.</p>
 
@@ -227,7 +218,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Padrinos+y+vacunas&amp;url=http://kcy.me/25vjl"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Padrinos+Y+Vacunas&amp;url=http://kcy.me/25vjl"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -236,14 +227,14 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Padrinos+y+vacunas&amp;u=http://kcy.me/25vjl"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Padrinos+Y+Vacunas&amp;u=http://kcy.me/25vjl"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Padrinos+y+vacunas&amp;url=http://kcy.me/25vjl"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Padrinos+Y+Vacunas&amp;url=http://kcy.me/25vjl"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -274,7 +265,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -285,7 +276,6 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -326,7 +316,5 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>

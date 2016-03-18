@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Cursores dinámicos y NSCompoundPredicate</title>
+  <title>Cursores Dinámicos Y NSCompoundPredicate</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -51,7 +50,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Cursores dinámicos y NSCompoundPredicate</h1>
+				  	<h1 class="post-title">Cursores Dinámicos Y NSCompoundPredicate</h1>
 				  	 
           </div>
         </div>
@@ -66,7 +65,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              5 minutos
+              4 minutos
               
               de lectura
               </p>
@@ -85,13 +84,13 @@
 
 <p>Lo que hacían era montar el <em>where</em> de tal forma que incluían todos los campos por los que se podría preguntar y comprobaban si el campo de la tabla era igual a la variable o si la variable estaba vacía. Esto tenía dos resultados: con un único cursor se obtenían los mismo resultados que con cursores ad-hoc (menos código que picar) y al abrir el cursor, el DB2 hacía un TABLESPACE SCAN y el programa aparecía en todas las estadísticas de pésimo rendimiento (gran bronca del DBA).</p>
 
-<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">PERSONAS</span>
- <span class="k">WHERE</span> <span class="p">(</span><span class="n">EDAD</span> <span class="o">=</span> <span class="p">:</span><span class="n">EDAD</span> <span class="k">OR</span> <span class="p">:</span><span class="n">EDAD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="k">AND</span> <span class="p">(</span><span class="n">SEXO</span> <span class="o">=</span> <span class="p">:</span><span class="n">SEXO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">SEXO</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
-   <span class="k">AND</span> <span class="p">(</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="k">OR</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="k">AND</span> <span class="p">(</span><span class="n">PESO</span> <span class="o">=</span> <span class="p">:</span><span class="n">PESO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">PESO</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-   <span class="k">AND</span> <span class="p">(</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
-   <span class="k">AND</span> <span class="p">(</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">);</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">PERSONAS</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">WHERE</span> <span class="p">(</span><span class="n">EDAD</span> <span class="o">=</span> <span class="p">:</span><span class="n">EDAD</span> <span class="k">OR</span> <span class="p">:</span><span class="n">EDAD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">SEXO</span> <span class="o">=</span> <span class="p">:</span><span class="n">SEXO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">SEXO</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="k">OR</span> <span class="p">:</span><span class="n">ALTURA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">PESO</span> <span class="o">=</span> <span class="p">:</span><span class="n">PESO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">PESO</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLOROJOS</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">AND</span> <span class="p">(</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="k">OR</span> <span class="p">:</span><span class="n">COLORPELO</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">);</span></div></div></pre></div></figure>
 
 <p>Por eso, cuando la semana pasada me empeñe en montar un predicado variable para un proyecto de iOS y termine encontrando NSCompoundPredicate, pensé: &quot;Esto si que es un cursor dinámico&quot;</p>
 
@@ -99,8 +98,8 @@
 
 <p>Por ejemplo: tenemos un array llamado <em>personas</em> que contiene objetos de tipo _Individuo. _El objeto individuo tiene diferentes propiedades: edad, sexo, altura, peso, colorOjos, colorPelo, etc. Si queremos tener un array más pequeño con las personas que son mujeres y tiene los ojos azules haríamos lo siguiente:</p>
 
-<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(sexo == %@ AND colorOjos == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">];</span>
-<span class="n">NSArray</span> <span class="o">*</span><span class="n">mujeresDeOjosAzules</span> <span class="o">=</span> <span class="p">[</span><span class="n">personas</span> <span class="nf">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">predicate</span><span class="p">];</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(sexo == %@ AND colorOjos == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">];</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">mujeresDeOjosAzules</span> <span class="o">=</span> <span class="p">[</span><span class="n">personas</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">predicate</span><span class="p">];</span></div></div></pre></div></figure>
 
 <p>En el ejemplo anterior, <em>individuo.sexo</em> contendría el valor &quot;Mujer&quot; e <em>individuo.colorOjos</em> contendría el valor &quot;Azul&quot;. Bastante fácil, no?.</p>
 
@@ -109,26 +108,26 @@ Con pocas propiedades es asumible montar los diferentes NSPredicate, con seis pr
 
 <p>El ejemplo quedaría así:</p>
 
-<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">predicateArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">array</span><span class="p">];</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(edad == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(sexo == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(altura == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(peso == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(colorOjos == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">[</span><span class="n">predicateArray</span> <span class="nf">addObject</span><span class="p">:[</span><span class="n">NSPredicate</span> <span class="nf">predicateWithFormat</span><span class="p">:</span><span class="s">@"(colorPelo == %@)"</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">]];</span>
-<span class="p">}</span>
-<span class="n">NSCompoundPredicate</span> <span class="o">*</span><span class="n">compoundPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCompoundPredicate</span> <span class="nf">andPredicateWithSubpredicates</span><span class="p">:</span><span class="n">predicateArray</span><span class="p">];</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">predicateArray</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(edad == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">edad</span><span class="p">]];</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(sexo == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">sexo</span><span class="p">]];</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(altura == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">altura</span><span class="p">]];</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(peso == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">peso</span><span class="p">]];</span>
+</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(colorOjos == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorOjos</span><span class="p">]];</span>
+</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='17' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">if</span> <span class="p">(</span><span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">)</span> <span class="p">&#x7b;</span>
+</div></div><div data-line='18' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="p">[</span><span class="n">predicateArray</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(colorPelo == %@)&quot;</span><span class="p">,</span> <span class="n">individuo</span><span class="p">.</span><span class="n">colorPelo</span><span class="p">]];</span>
+</div></div><div data-line='19' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="p">&#x7d;</span>
+</div></div><div data-line='20' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="bp">NSCompoundPredicate</span> <span class="o">*</span><span class="n">compoundPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCompoundPredicate</span> <span class="nl">andPredicateWithSubpredicates</span><span class="p">:</span><span class="n">predicateArray</span><span class="p">];</span></div></div></pre></div></figure>
 
 <p>Lo que hemos hecho es un NSPredicate por cada propiedad que tenemos que evaluar. Comprobando previamente que esa propiedad esté informada. Cada NSPredicate lo incluimos en un array que posteriormente le pasaremos a la clase NSCompoundPredicate a través del método correspondiente.
 Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recuperar los objetos que cumplan todas las condiciones, orPredicateWithSubpredicates para recuperar los objetos que cumplen alguna condición y notPredicateWithSubpredicates que, creo, sirve para recuperar los objetos que no cumplen ninguna condición.</p>
@@ -143,7 +142,7 @@ Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recupera
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Cursores+din%C3%A1micos+y+NSCompoundPredicate&amp;url=http://kcy.me/25vix"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Cursores+Din%C3%A1micos+Y+NSCompoundPredicate&amp;url=http://kcy.me/25vix"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -152,14 +151,14 @@ Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recupera
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Cursores+din%C3%A1micos+y+NSCompoundPredicate&amp;u=http://kcy.me/25vix"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Cursores+Din%C3%A1micos+Y+NSCompoundPredicate&amp;u=http://kcy.me/25vix"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Cursores+din%C3%A1micos+y+NSCompoundPredicate&amp;url=http://kcy.me/25vix"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Cursores+Din%C3%A1micos+Y+NSCompoundPredicate&amp;url=http://kcy.me/25vix"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -190,7 +189,7 @@ Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recupera
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -201,7 +200,6 @@ Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recupera
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -242,7 +240,5 @@ Esta clase solo posee tres métodos: andPredicateWithSubpredicates para recupera
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>

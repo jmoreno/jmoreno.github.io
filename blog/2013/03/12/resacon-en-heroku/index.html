@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/03/12/resacon-en-heroku/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -66,7 +65,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              4 minutos
+              3 minutos
               
               de lectura
               </p>
@@ -82,72 +81,64 @@ En un primer momento pensé que todo era provocado por unos cambios de ultima ho
 
 <p>Este es el método que se encarga de la grabación de los tweets en el modelo. Según el API de Twitter, cada tweet retweeteado estará contenido dentro de otro tweet. El tweet <em>padre</em> siempre pertenecerá al usuario que hace el retweet mientras que la información original estará en el anidado. Esta es la razón por la que al preguntar si el tweet es en realidad un retweet hay que hacer una sustitución del objeto <em>tweet</em>. El problema ha sido que la comprobación de que el tweet_id no existe en la tabla se hacía antes del cambio por lo que, en realidad, el que se terminaba grabando siempre era otro.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
- <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
-   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweet?</span>
-     <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweeted_status</span>
-   <span class="k">end</span>
-   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">urls</span><span class="p">.</span><span class="nf">any?</span>
-     <span class="n">create!</span><span class="p">(</span>
-         <span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
-         <span class="ss">content: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">text</span><span class="p">,</span>
-         <span class="ss">screen_name: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">screen_name</span><span class="p">,</span>
-         <span class="ss">profile_image: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">profile_image_url</span><span class="p">,</span>
-         <span class="ss">tweet_created_at: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">created_at</span><span class="p">,</span>
-     <span class="p">)</span>
-   <span class="k">end</span>
- <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'>     <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">end</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>     <span class="n">create!</span><span class="p">(</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'>     <span class="p">)</span>
+</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">end</span>
+</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">end</span>
+</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Este sería el código correcto:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
- <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweet?</span>
-   <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweeted_status</span>
- <span class="k">end</span>
- <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
-   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">urls</span><span class="p">.</span><span class="nf">any?</span>
-     <span class="n">create!</span><span class="p">(</span>
-         <span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
-         <span class="ss">content: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">text</span><span class="p">,</span>
-         <span class="ss">screen_name: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">screen_name</span><span class="p">,</span>
-         <span class="ss">profile_image: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">profile_image_url</span><span class="p">,</span>
-         <span class="ss">tweet_created_at: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">created_at</span><span class="p">,</span>
-     <span class="p">)</span>
-   <span class="k">end</span>
- <span class="k">end</span>
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet?</span>
+</div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">end</span>
+</div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">if</span> <span class="n">tweet</span><span class="o">.</span><span class="n">urls</span><span class="o">.</span><span class="n">any?</span>
+</div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>     <span class="n">create!</span><span class="p">(</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">tweet_id</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">content</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">screen_name</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="p">,</span>
+</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">profile_image</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">,</span>
+</div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'>         <span class="ss">tweet_created_at</span><span class="p">:</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span><span class="p">,</span>
+</div></div><div data-line='13' class='code-highlight-row numbered'><div class='code-highlight-line'>     <span class="p">)</span>
+</div></div><div data-line='14' class='code-highlight-row numbered'><div class='code-highlight-line'>   <span class="k">end</span>
+</div></div><div data-line='15' class='code-highlight-row numbered'><div class='code-highlight-line'> <span class="k">end</span>
+</div></div><div data-line='16' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <p>A veces sucede que un error compensa a otro error y esto es lo que ha pasado esta vez. Al incluir la paginación, se me olvido incluir un criterio de ordenación en la query correspondiente. Debido a esto, el orden de presentación era por inserción (ascendente). En la carga inicial se recuperan 200 tweets pero se empiezan a insertar de más reciente a más antiguo. Posteriormente, cada llamada a la página recupera los nuevos tweets y si corresponde insertarlos los inserta.<br>
 A lo largo de la mañana se podía ver como el número de páginas iba subiendo de seis hasta once que es a lo que ha llegado hasta que he podido hacer un pequeño arreglo en Heroku. Básicamente las cinco nuevas páginas contenían el mismo tweet, en concreto el RT de mi tweet de presentación... vamos un debut lamentable ;-)</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">home</span>
-
-  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">page: </span><span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">])</span>
-
-  <span class="vi">@tweetlinks</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">pull_tweets</span>
-
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># index.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@tweetlinks</span> <span class="p">}</span>
-  <span class="k">end</span>
-
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="k">end</span>
+</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <p>Este sería la forma correcta:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">home</span>
-
-  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">page: </span><span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">]).</span><span class="nf">order</span><span class="p">(</span><span class="s1">'tweet_id DESC'</span><span class="p">)</span>
-
-  <span class="vi">@tweetlinks</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">pull_tweets</span>
-
-  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># index.html.erb</span>
-    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@tweetlinks</span> <span class="p">}</span>
-  <span class="k">end</span>
-
-<span class="k">end</span></code></pre></figure>
+<figure class='code-highlight-figure'><div class='code-highlight'><pre class='code-highlight-pre'><div data-line='1' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">def</span> <span class="nf">home</span>
+</div></div><div data-line='2' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='3' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">paginate</span><span class="p">(</span><span class="ss">page</span><span class="p">:</span> <span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s1">&#39;tweet_id DESC&#39;</span><span class="p">)</span>
+</div></div><div data-line='4' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='5' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="vi">@tweetlinks</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="o">.</span><span class="n">pull_tweets</span>
+</div></div><div data-line='6' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='7' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+</div></div><div data-line='8' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="c1"># index.html.erb</span>
+</div></div><div data-line='9' class='code-highlight-row numbered'><div class='code-highlight-line'>    <span class="nb">format</span><span class="o">.</span><span class="n">json</span> <span class="p">&#x7b;</span> <span class="n">render</span> <span class="ss">json</span><span class="p">:</span> <span class="vi">@tweetlinks</span> <span class="p">&#x7d;</span>
+</div></div><div data-line='10' class='code-highlight-row numbered'><div class='code-highlight-line'>  <span class="k">end</span>
+</div></div><div data-line='11' class='code-highlight-row numbered'><div class='code-highlight-line'> </div></div><div data-line='12' class='code-highlight-row numbered'><div class='code-highlight-line'><span class="k">end</span></div></div></pre></div></figure>
 
 <h2>¿Cómo lo he podido arreglar sin tocar el código?</h2>
 
@@ -207,7 +198,7 @@ A lo largo de la mañana se podía ver como el número de páginas iba subiendo 
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -218,7 +209,6 @@ A lo largo de la mañana se podía ver como el número de páginas iba subiendo 
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -259,7 +249,5 @@ A lo largo de la mañana se podía ver como el número de páginas iba subiendo 
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>
