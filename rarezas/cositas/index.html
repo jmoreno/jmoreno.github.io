@@ -20,6 +20,7 @@
   <link rel="canonical" href="http://javimoreno.es/rarezas/cositas/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,8 +28,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -39,8 +39,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
 
   <body>
@@ -51,15 +50,16 @@
 
     <!-- content start -->
 
-    
-<div class="teaserimage">
+    <div class="teaserimage">
     <div class="teaserimage-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">
         Teaser Image
     </div>
 </div>
 
-
 <header class="blog-header">
+    
+      <a class="blog-logo" href="http://javimoreno.es" style="background-image: url('/assets/images/author.jpg')">Javi Moreno</a>
+    
     <h1 class="blog-title">Cositas</h1>
 </header>
 
@@ -67,16 +67,16 @@
 	<article class="post">
    	<section class="post-content">
       	<a name="topofpage"></a>
-         <h2>Comandos útiles</h2>
+         <h1>Comandos útiles</h1>
 
 <p><code>chown</code> permite cambiar el propietario de un fichero. Esto es util cuando tienes un script dentro de la carpeta de usuario y quieres que se ejecute en un cron.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo chown root:root /home/pi/scripts/publicar.sh
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo chown root:root /home/pi/scripts/publicar.sh
 </code></pre></div>
-<h3>Para listar el contenido del mail:</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">tail /var/mail/pi
+<h2>Para listar el contenido del mail:</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail /var/mail/pi
 </code></pre></div>
-<h3>Para ver el log del sistema:</h3>
-<div class="highlight"><pre><code class="language-" data-lang="">tail /var/log/syslog
+<h2>Para ver el log del sistema:</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail /var/log/syslog
 </code></pre></div>
       </section>   
 	</article>
@@ -100,7 +100,7 @@
         
       
         
-        <a class="page-link" href="/links/">Enlaces</a>
+        <a class="page-link" href="/links.html">Enlaces</a>
             &nbsp;&nbsp;·&nbsp;&nbsp;
         
       
@@ -117,7 +117,7 @@
         
       
         
-        <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+        <a class="page-link" href="/sobre-mi.html">Sobre Mi</a>
             &nbsp;&nbsp;·&nbsp;&nbsp;
         
       
@@ -132,7 +132,7 @@
 
   <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
     <div class="inner">
-         <section class="copyright">Todo el contenido protegido <a href="mailto:hola@javimoreno.es">Javi Moreno</a> &copy; 2016 &bull; Todos los derechos reservados.</section>
+         <section class="copyright">Todo el contenido protegido <a href="mailto:hola@javimoreno.es">Javi Moreno</a> &copy; 2014 &bull; Todos los derechos reservados.</section>
          <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
     </div>
 </footer>
@@ -178,8 +178,6 @@
   });
 }(jQuery));
 </script>
-
-
 
   </body>
 

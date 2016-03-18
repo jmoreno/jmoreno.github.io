@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -72,7 +71,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              7 minutos
+              6 minutos
               
               de lectura
               </p>
@@ -96,27 +95,27 @@
 
 <p>La automatización de la publicación la consigo con dos scripts. El primero es una tarea de Rake en el que se  indican todos los pasos para publicar el blog:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">desc</span> <span class="s2">"Publicación automática"</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">desc</span> <span class="s2">&quot;Publicación automática&quot;</span>
 <span class="n">task</span> <span class="ss">:publicar</span> <span class="k">do</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Generación del sitio estático con Octopress"</span>
-  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"jekyll build"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Despliegue del sitio en Github Pages"</span>
-  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"octopress deploy"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Staging modified files"</span>
-  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git add -A"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Committing a site build at </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">utc</span><span class="si">}</span><span class="s2">"</span>
-  <span class="n">message</span> <span class="o">=</span> <span class="s2">"Build site at </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">utc</span><span class="si">}</span><span class="s2">"</span>
-  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git commit -m </span><span class="se">\"</span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Pushing commits to remote"</span>
-  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">"git push origin source"</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">"Todo ha ido bien"</span> <span class="p">:</span> <span class="s2">"Algo ha salido mal"</span>
-  <span class="nb">puts</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">## Publicando tweet de último post escrito"</span>
-  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="p">[</span><span class="ss">:share_with_twitter</span><span class="p">].</span><span class="nf">execute</span>
-<span class="k">end</span></code></pre></figure>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Generación del sitio estático con Octopress&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;jekyll build&quot;</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">&quot;Todo ha ido bien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Algo ha salido mal&quot;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Despliegue del sitio en Github Pages&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;octopress deploy&quot;</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">&quot;Todo ha ido bien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Algo ha salido mal&quot;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Staging modified files&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;git add -A&quot;</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">&quot;Todo ha ido bien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Algo ha salido mal&quot;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Committing a site build at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">utc</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Build site at </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">utc</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;git commit -m </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">&quot;Todo ha ido bien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Algo ha salido mal&quot;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Pushing commits to remote&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;git push origin source&quot;</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">status</span> <span class="p">?</span> <span class="s2">&quot;Todo ha ido bien&quot;</span> <span class="p">:</span> <span class="s2">&quot;Algo ha salido mal&quot;</span>
+  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Publicando tweet de último post escrito&quot;</span>
+  <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="o">[</span><span class="ss">:share_with_twitter</span><span class="o">].</span><span class="n">execute</span>
+<span class="k">end</span></code></pre></div>
 
 <p>La mezcla de castellano e ingles se debe a que me base en un Rakefile que ya tenía parte de lo que yo necesitaba. En general no me gusta traducir lo que han escrito otros en ingles y no me gusta escribir en ingles lo que, normalmente, solo voy a ver yo. Sois libres de criticarme por esto, no me vais a quitar el sueño.</p>
 
@@ -133,13 +132,13 @@
 
 <p>El script específico de la Raspberry es el que pongo a continuación. Inicialmente hice unos cuantos más pero con esta versión me es suficiente:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
 
 <span class="nb">set</span> -e
 ./Dropbox-Uploader/dropbox_uploader.sh download /drafts/Blog ./drafts/
-mv ./drafts/Blog/<span class="k">*</span>.markdown ./blog/_posts
+mv ./drafts/Blog/*.markdown ./blog/_posts
 <span class="nb">cd </span>blog
-/home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar</code></pre></figure>
+/home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar</code></pre></div>
 
 <p>Otro script que no es gran cosa:</p>
 
@@ -154,25 +153,25 @@ mv ./drafts/Blog/<span class="k">*</span>.markdown ./blog/_posts
 
 <p>Inicialmente, la tarea en cron era así:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">30 9 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /home/pi/scripts/publicar.sh</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">30</span> <span class="m">9</span> * * * /home/pi/scripts/publicar.sh</code></pre></div>
 
 <p>Y lo único que veía eran los típicos mensajes diciendo que la versión de la gema fulanita en Ruby patatín no  encuentran la dependencia de la gema menganita en Ruby patatán... lógico: patatín y patatán no tendrían que mezclarse.<br>
 Después de probar muchas cosas, de buscar mucho en Google y de cargarme la imagen de la Raspberry dos veces encontré las palabrás mágicas en la página de rvm, ese ser tan querido y odiado al mismo tiempo. Decían así:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">rvm cron setup</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rvm cron setup</code></pre></div>
 
 <p>A partir de ese momento, mi crontab quedó así:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#sm start rvm</span>
-<span class="nv">PATH</span><span class="o">=</span><span class="s2">"/home/pi/.rvm/gems/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.
-1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
-in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin"</span>
-<span class="nv">GEM_HOME</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/gems/ruby-2.1.0'</span>
-<span class="nv">GEM_PATH</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/gems/ruby-2.1.0:/home/pi/.rvm/gems/ruby-2.1.0@global'</span>
-<span class="nv">MY_RUBY_HOME</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/rubies/ruby-2.1.0'</span>
-<span class="nv">IRBRC</span><span class="o">=</span><span class="s1">'/home/pi/.rvm/rubies/ruby-2.1.0/.irbrc'</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#sm start rvm</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/home/pi/.rvm/gems/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/home/pi/.rvm/gems/ruby-2.</span>
+<span class="s2">1.0/bin:/home/pi/.rvm/gems/ruby-2.1.0@global/bin:/home/pi/.rvm/rubies/ruby-2.1.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b</span>
+<span class="s2">in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin&quot;</span>
+<span class="nv">GEM_HOME</span><span class="o">=</span><span class="s1">&#39;/home/pi/.rvm/gems/ruby-2.1.0&#39;</span>
+<span class="nv">GEM_PATH</span><span class="o">=</span><span class="s1">&#39;/home/pi/.rvm/gems/ruby-2.1.0:/home/pi/.rvm/gems/ruby-2.1.0@global&#39;</span>
+<span class="nv">MY_RUBY_HOME</span><span class="o">=</span><span class="s1">&#39;/home/pi/.rvm/rubies/ruby-2.1.0&#39;</span>
+<span class="nv">IRBRC</span><span class="o">=</span><span class="s1">&#39;/home/pi/.rvm/rubies/ruby-2.1.0/.irbrc&#39;</span>
 <span class="c">#sm end rvm</span>
-30 9 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /home/pi/scripts/publicar.sh</code></pre></figure>
+<span class="m">30</span> <span class="m">9</span> * * * /home/pi/scripts/publicar.sh</code></pre></div>
 
 <p>Al parecer, no es suficiente con tocar los <em>.profile</em> y <em>.bash_profile</em> para que coger la versión buena con rvm si no que es necesario informar al inicio del <em>cron</em> la ruta que tiene que seguir para encontrar la versión correcta. No es lo más bonito del mundo pero desde entonces, a eso de las nueve y media de la mañana, puedes encontrarte artículos recién publicados, como este.</p>
 
@@ -230,7 +229,7 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -241,7 +240,6 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -282,7 +280,5 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>

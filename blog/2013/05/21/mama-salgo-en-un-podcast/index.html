@@ -7,7 +7,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Mamá, salgo en un podcast!</title>
+  <title>Mamá, Salgo en Un Podcast!</title>
   <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
 " />
 
@@ -19,6 +19,7 @@
   <link rel="canonical" href="http://javimoreno.es/blog/2013/05/21/mama-salgo-en-un-podcast/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+<!--  <link rel="stylesheet" href=""> -->
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,8 +27,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
   <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
-	
-  <script type="text/javascript">
+	<script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-38448478-1']);
     _gaq.push(['_trackPageview']);
@@ -38,8 +38,7 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
+    <link href='/stylesheets/all-5e6d544104748b57e904107c2833a2aa.css' media='all' rel='stylesheet' type='text/css'>
 </head>
   <body itemscope itemtype="http://schema.org/Article">
 	 <!-- header start -->
@@ -51,7 +50,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
 						 
-				  	<h1 class="post-title">Mamá, salgo en un podcast!</h1>
+				  	<h1 class="post-title">Mamá, Salgo en Un Podcast!</h1>
 				  	 
           </div>
         </div>
@@ -123,7 +122,7 @@ Eso no quita para que no haya que poner comentarios: la duda que nos surgirá cu
 <p>Es un lenguaje de tipado débil. Solo hay dos tipos de variables: numéricas y alfanuméricas. Dentro de las numéricas hay bastantes tipos de empaquetamientos: binario, hexadecimal, decimal comprimido, sin comprimir, editados... un lenguaje dedicado al mundo empresarial tiene que tener una buena gestión de variables numéricas. Es importante destacar que en la definición de la variable se indica explícitamente su longitud, es decir, el número de bytes que necesita. También pueden contruirse arrays.</p>
 
 <p>Las variables pueden agruparse dentro de otras variables (una especie de estructuras de C... pero solo una especie) identificandose la pertenencia a un grupo mediante la indentación por código de nivel. Un ejemplo sería una cuenta corriente: A nivel 01 estaría la variable CUENTA-CORRIENTE, a nivel 05 tendríamos CODIGO-BANCO, CODIGO-SUCURSAL, PRIMER-DIGITO-CONTROL, SEGUNDO-DIGITO-CONTROL y NUMERO-CUENTA. Si utilizamos numéricos de base decimal solo ocuparíamos 20 bytes, es decir, los 20 bytes estarían divididos en cinco bloques de 4, 4, 1, 1 y 10 bytes. </p>
-<div class="highlight"><pre><code class="language-" data-lang="">01  CUENTA-CORRIENTE
+<div class="highlight"><pre><code class="language-text" data-lang="text">01  CUENTA-CORRIENTE
     05  CODIGO-BANCO           PIC 9(4).
     05  CODIGO-SUCURSAL        PIC 9(4).
     05  PRIMER-DIGITO-CONTROL  PIC 9.
@@ -131,7 +130,7 @@ Eso no quita para que no haya que poner comentarios: la duda que nos surgirá cu
     05  NUMERO-CUENTA          PIC 9(10).
 </code></pre></div>
 <p>No es necesario definir el tipo y la longitud de la variable de primer nivel. Siempre será alfanumérica y ocupara los mismos bytes que las variables que agrupa. En este caso, si queremos tratarla como numérica tendríamos que redefinirla como numérica. Esto se hace con la instrucción REDEFINES.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">01 CUENTA-CORRIENTE-NUMERICA   PIC 9(20).
+<div class="highlight"><pre><code class="language-text" data-lang="text">01 CUENTA-CORRIENTE-NUMERICA   PIC 9(20).
 01 CUENTA-CORRIENTE REDEFINES CUENTA-CORRIENTE-NUMERICA.
 </code></pre></div>
 <p>No hay variables de tipo booleano, se construyen mediante niveles especiales de indentación pero en realidad se parecen mas a un <em>enum</em>. La diferencia con los enum es que podemos evaluar variables numéricas y alfanuméricas.</p>
@@ -220,7 +219,7 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
           <section class="share">
             
               
-                <a class="icon-twitter" href="http://twitter.com/share?text=Mam%C3%A1%2C+salgo+en+un+podcast%21&amp;url=http://kcy.me/25vjh"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Mam%C3%A1%2C+Salgo+en+Un+Podcast%21&amp;url=http://kcy.me/25vjh"
                   onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
                 <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
                 </a>
@@ -229,14 +228,14 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
               
             
               
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Mam%C3%A1%2C+salgo+en+un+podcast%21&amp;u=http://kcy.me/25vjh"
+                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Mam%C3%A1%2C+Salgo+en+Un+Podcast%21&amp;u=http://kcy.me/25vjh"
                   onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
                 <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
                 </a>
               
             
               
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Mam%C3%A1%2C+salgo+en+un+podcast%21&amp;url=http://kcy.me/25vjh"
+                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Mam%C3%A1%2C+Salgo+en+Un+Podcast%21&amp;url=http://kcy.me/25vjh"
                   onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
                 <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
                 </a>
@@ -267,7 +266,7 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
         </footer>
       </article>
     </main>
-        <div class="bottom-closer">
+    <div class="bottom-closer">
       <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
         Image
       </div>
@@ -278,7 +277,6 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -319,7 +317,5 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
   });
 }(jQuery));
 </script>
-
-
   </body>
 </html>
