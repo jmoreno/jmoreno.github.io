@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 26 Mar 2016 23:21:44 +0100</pubDate>
-    <lastBuildDate>Sat, 26 Mar 2016 23:21:44 +0100</lastBuildDate>
+    <pubDate>Sat, 26 Mar 2016 23:47:44 +0100</pubDate>
+    <lastBuildDate>Sat, 26 Mar 2016 23:47:44 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -122,6 +122,12 @@
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/</guid>
         
+        <category>Jekyll</category>
+        
+        <category>Karmacracy</category>
+        
+        
+        <category>Frikadas</category>
         
       </item>
     
@@ -152,6 +158,12 @@
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/</guid>
         
+        <category>Editorial</category>
+        
+        <category>Medium</category>
+        
+        
+        <category>Frikadas</category>
         
       </item>
     
@@ -185,6 +197,8 @@ Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a ob
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/11/22/tasatucoche-2.0/</guid>
         
+        
+        <category>Reflexiones</category>
         
       </item>
     
@@ -272,6 +286,12 @@ Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a ob
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/</guid>
         
+        <category>Editorial</category>
+        
+        <category>Medium</category>
+        
+        
+        <category>Frikadas</category>
         
       </item>
     
@@ -290,6 +310,8 @@ Cuando programé TasaTuCoche no tenía mucha experiencia ni en orientación a ob
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/09/08/me-lo-apunto-para-ver-si-se-cumple</guid>
         
+        
+        <category>Enlaces</category>
         
       </item>
     
@@ -319,6 +341,8 @@ Además, al no haber proceso de sincronización de ficheros desde la app tenemos
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/31/ibooks-o-kindle/</guid>
         
         
+        <category>Reflexiones</category>
+        
       </item>
     
       <item>
@@ -333,6 +357,8 @@ Además, al no haber proceso de sincronización de ficheros desde la app tenemos
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/10/cuestiona-permanentemente-tus-fortalezas,-por-kim-faura/</guid>
         
+        
+        <category>Enlaces</category>
         
       </item>
     
@@ -379,6 +405,10 @@ Para mi sorpresa, el 2 de Abril ya lo había recibido. Como un niño con zapatos
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/02/04/pebble-soporte-tecnico/</guid>
         
+        <category>Pebble</category>
+        
+        
+        <category>Reflexiones</category>
         
       </item>
     
@@ -489,6 +519,14 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/</guid>
         
+        <category>Octopress</category>
+        
+        <category>Raspberry Pi</category>
+        
+        <category>Jekyll</category>
+        
+        
+        <category>Frikadas</category>
         
       </item>
     
@@ -524,6 +562,8 @@ Vaya por delante que yo mismo hago este tipo de comentarios &lt;em&gt;habitualme
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/04/empatia-por-el-diablo/</guid>
         
+        
+        <category>Reflexiones</category>
         
       </item>
     
