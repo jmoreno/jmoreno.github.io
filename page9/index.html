@@ -17,7 +17,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="canonical" href="http://javimoreno.es/">
+  <link rel="canonical" href="http://javimoreno.es/page9/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
@@ -138,21 +138,100 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/" itemprop="url">Plugins de Karmacracy para Jekyll</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2012/01/17/un-group-by-con-core-data/" itemprop="url">Un "group by" con Core Data</a></h2>
 					 
             </header>
             <section class="post-content">
-              	<p><p>Debo estar pasando por un momento minimalista porque cada vez que me pongo un rato con el blog no es para escribir nada nuevo sino para quitar dependencias. Hace tiempo que pase de Octopress 2.x a Jekyll pero todavía seguía usando algunos Plugins de Octopress 3.0 y otros míos. </p>
-
-<p>Esta semana he eliminado todas las dependencias de Octopress excepto la que facilita el despliegue. Hoy, después de hacer algunos pequeños ajustes en los estilos he decidido también eliminar los Plugins que hice para usar Karmacracy como a cortador de url´s.</p>
+              	<p><p>Cuando se trabaja con bases de datos siempre llega un momento en el que hay que hacer algo más complejo que recuperar datos de forma directa y manipularlos. Saber cual es el registro que tiene el valor más alto o más bajo en una propiedad en concreto; identificar los valores diferentes que tienen una propiedad; etc, son situaciones que, aunque no sean cotidianas, vamos a tener que enfrentarnos con ellas.</p>
 </p>
 					
-						<p><a class="excerpt-link" href="/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/" align="right">Sigue leyendo</a></p>
+						<p><a class="excerpt-link" href="/blog/2012/01/17/un-group-by-con-core-data/" align="right">Sigue leyendo</a></p>
 						<div style="clear: both;"></div>
 					
             </section>
             <div class="post-meta">
-              	<time datetime="19 de marzo de 2016">19 de marzo de 2016 • 5 minutos de lectura • <a href="/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/" itemprop="url">permalink</a></time><p class="post-meta">
+              	<time datetime="17 de enero de 2012">17 de enero de 2012 • 2 minutos de lectura • <a href="/blog/2012/01/17/un-group-by-con-core-data/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/iOS">iOS</a>, <a href="/tag/Core Data">Core Data</a></span> -->
+            </div>
+          <div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          
+          <div class="article-item">
+            <header class="post-header">
+					 
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/" itemprop="url">Cursores dinámicos y NSCompoundPredicate</a></h2>
+					 
+            </header>
+            <section class="post-content">
+              	<p><p>Hace unos años, en un proyecto lleno de anécdotas y experiencias, el grupo de desarrolladores me contaba que habían creado servicios para cada una de las tablas del modelo de datos con el objetivo de centralizar los accesos a la tablas. La idea me pareció interesante: estaba harto de tocar programas que tenían la misma query y había cambiado algún criterio por lo que unificar las consultas en un único servicio era genial.</p>
+
+<p>Les sugerí que, a la hora de montar los cursores, preparasen toda salida de datos de forma que fuera reutilizable. De esta forma, a medida que se fueran creando nuevas consultas, solo habría que incluir la nueva query. &quot;No habrá que dar de alta nuevas consultas, hacemos cursores dinámicos...&quot; dijo uno de ellos con gran orgullo.</p>
+</p>
+					
+						<p><a class="excerpt-link" href="/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
+					
+            </section>
+            <div class="post-meta">
+              	<time datetime="12 de enero de 2012">12 de enero de 2012 • 5 minutos de lectura • <a href="/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/iOS">iOS</a>, <a href="/tag/Core Data">Core Data</a>, <a href="/tag/Objective-C">Objective-C</a></span> -->
+            </div>
+          <div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          
+          <div class="article-item">
+            <header class="post-header">
+					 
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" itemprop="url">Planificando la descarga de informes de iTunes Connect</a></h2>
+					 
+            </header>
+            <section class="post-content">
+              	<p><p>Hace poco me puse con una tarea que tenía pendiente desde el verano: automatizar la descarga de informes del iTunes Connect.</p>
+
+<p>El 30 de Agosto, en el Apple Developer Connection (en el iOS Developer News también) publicaron esto: <a href="http://developer.apple.com/news/index.php?id=08302011a">Automatically Download iTunes Connect Reports</a>. 
+Lo que nos contaban ahí es que habían desarrollado una nueva herramienta para poder descargar los informes de ventas del iTunes Connect sin tener que acceder a dicho portal. 
+Esto está muy bien, primero porque la descarga de varios informes es bastante tediosa, segundo porque es normal que no te acuerdes de entrar a descargarlos y puedes automatizar la descarga y tercero porque las herramientas para el seguimiento de las ventas brillan por su ausencia así que si empiezan a hacer alguna es una buena señal.</p>
+</p>
+					
+						<p><a class="excerpt-link" href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
+					
+            </section>
+            <div class="post-meta">
+              	<time datetime="03 de diciembre de 2011">03 de diciembre de 2011 • 9 minutos de lectura • <a href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/iTunes Connect">iTunes Connect</a></span> -->
+            </div>
+          <div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          
+          <div class="article-item">
+            <header class="post-header">
+					 
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/10/26/5/" itemprop="url">No empezamos muy bien... es difícil sacar tiempo para escribir un blog. </a></h2>
+					 
+            </header>
+            <section class="post-content">
+              	<p><p>De momento me conformo con dejar aquí un par de sitios web bastante interesantes que he encontrado últimamente:</p>
+
+<ul>
+<li><p><a href="http://www.maasive.co/">MaaSive</a>: Es un sitio web que ofrece persistencia en la nube. Lo encontré gracias a un tweet de <a href="http://twitter.com/brandontreb">Brandon Trebitowski</a> y el video demostrativo deja claro lo que es: un framework que podríamos utilizar para sustituir (o complementar según se quiera) a Core Data y almacenar todos los datos en la nube. Soluciones como esta hay unas cuantas: amazon cloud services, google app engine, etc. La ventaja de este framework es la clara orientación a iOS. Está todavía en fase alfa.</p></li>
+<li><p><a href="http://www.parse.com/">Parse:</a> Este es el que más impresionado me ha dejado. En algún momento pensarás en hacer una app que requiera notificaciones &quot;push&quot;. Al margen de lo engorroso que pueda resultar montar todo el servicio de notificaciones, lo más probable es que la solución que encontremos tenga un coste económico ya que requiere de un servidor.</p></li>
+</ul>
+
+<p>Parse encapsula todo el proceso de notificación en un framework para que sea sencillo de implementar en una app y además es gratuito para pocos usos (relativamente, que ya me gustaría a mí tener una app que hiciera más de un millón de push al mes).</p>
+
+<p>Hasta aquí por hoy. Estoy trabajando en algunas cosillas que me gustaría compartir pero todavía no están terminadas. Espero no tardar tanto en escribir el siguiente.</p>
+</p>
+					
+            </section>
+            <div class="post-meta">
+              	<time datetime="26 de octubre de 2011">26 de octubre de 2011 • 1 minuto de lectura • <a href="/blog/2011/10/26/5/" itemprop="url">permalink</a></time><p class="post-meta">
 			  <!--  -->
             </div>
           <div>
@@ -163,95 +242,24 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/" itemprop="url">Publicando en Medium... imágenes!!!</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/08/31/display-hola-mundo/" itemprop="url">DISPLAY ‘HOLA MUNDO’</a></h2>
 					 
             </header>
             <section class="post-content">
-              	<p><p>Muchas empresas se gastan auténticas montañas de dinero en formar a sus directivos para que obtengan mucho más rendimiento de sus equipos enseñándoles avanzadas técnicas de motivación personal. El problema de esas empresas es que sus directivos han olvidado, si es que en algún momento lo han sabido, que en realidad la técnica más sencilla y barata de motivación es esta:</p>
+              	<p><p>Espero que este no sea otro intento más de escribir un blog y pueda darle continuidad.</p>
 
-<div class='embed tweet'><blockquote class="twitter-tweet"><p lang="es" dir="ltr"><a href="https://twitter.com/jmoreno78">@jmoreno78</a> hola, estoy usando tu workflow para hacer un post a Medium y trabaja de maravilla podrías agregar la opción para la imagen ?</p>&mdash; Diego Clavijo (@DCKhalifa) <a href="https://twitter.com/DCKhalifa/status/685439025046548481">January 8, 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
-</p>
-					
-						<p><a class="excerpt-link" href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/" align="right">Sigue leyendo</a></p>
-						<div style="clear: both;"></div>
-					
-            </section>
-            <div class="post-meta">
-              	<time datetime="17 de enero de 2016">17 de enero de 2016 • 1 minuto de lectura • <a href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!--  -->
-            </div>
-          <div>
-        </article>
-      
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          
-          <div class="article-item">
-            <header class="post-header">
-					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2015/11/22/tasatucoche-2.0/" itemprop="url">TasaTuCoche 2.0</a></h2>
-					 
-            </header>
-            <section class="post-content">
-              	<p><p>Después de un gran parón en mis hábitos nocturnos de desarrollo he vuelto a las andadas. Hace un par de semanas me dio por mirar las valoraciones de TasaTuCoche y me quede muy sorprendido al ver que todavía tenia buenos comentarios pese a no haber sido actualizada desde hace más de tres años. Se que la aplicación se sigue descargando porque todos los meses recibo un pago de Apple por un importe más o menos constante y durante todo este tiempo he ido reflexionando, a cuentagotas, sobre como evolucionarla ya que se ha quedado bastante atrás, principalmente en el diseño (todavía no esta adaptada a iOS 7).</p>
+<p>Llevo muchos años pensando en lo que podría escribir en un blog... tantos que hasta ahora no había escrito ninguno. Como últimamente estoy muy centrado en el tema de la programación para iOS y leo muchos blogs donde la gente cuenta cosas que ha aprendido o sabe hacer para ayudar al resto de la comunidad de desarrolladores (entre ellos a mi), he pensado que una buena idea para empezar sería devolver los favores escribiendo mis &quot;avances&quot;. De eso es de lo que trata este blog... de como un triste programador de COBOL intenta hacer app´s para su iPhone.</p>
 
-<p>El caso es que al ver los comentarios tan positivos y aprovechando que vuelvo a tener una vida relativamente normal (al menos tan normal como la tenía allá por 2011 o 2012) me he decido a crear la versión 2.0 de TasaTuCoche.</p>
-</p>
-					
-						<p><a class="excerpt-link" href="/blog/2015/11/22/tasatucoche-2.0/" align="right">Sigue leyendo</a></p>
-						<div style="clear: both;"></div>
-					
-            </section>
-            <div class="post-meta">
-              	<time datetime="22 de noviembre de 2015">22 de noviembre de 2015 • 3 minutos de lectura • <a href="/blog/2015/11/22/tasatucoche-2.0/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!--  -->
-            </div>
-          <div>
-        </article>
-      
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          
-          <div class="article-item">
-            <header class="post-header">
-					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/" itemprop="url">Workflow de Editorial para publicar en Medium</a></h2>
-					 
-            </header>
-            <section class="post-content">
-              	<p><p>He creado un workflow de Editorial para publicar en Medium. No es que sea algo excesivamente complicado pero creo que puede ser de gran utilidad para los que utilicen este servicio de publicación y quieran probar otras alternativas para cargar sus contenidos. Lo único que se necesita es un token de integración que puedes conseguir en tus ajustes de Medium.</p>
+<p>Y para darle más cache a esta primera entrada, me voy a permitir el lujo de citar a Marcus Zarra que en su post &quot;Why so serious?&quot; hace una afirmación que ningún desarrollador debe olvidar jamás... o al menos eso pienso yo.</p>
 
-<p><a href="http://www.editorial-workflows.com/workflow/5899384340348928/zDQGLjLUt4s">El workflow puedes verlo o instalarlo desde aquí</a></p>
-</p>
-					
-						<p><a class="excerpt-link" href="/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/" align="right">Sigue leyendo</a></p>
-						<div style="clear: both;"></div>
-					
-            </section>
-            <div class="post-meta">
-              	<time datetime="14 de octubre de 2015">14 de octubre de 2015 • 3 minutos de lectura • <a href="/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!--  -->
-            </div>
-          <div>
-        </article>
-      
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
-          
-          <div class="article-item">
-            <header class="post-header">
-					 
-					    <h2 class="post-title" itemprop="name"><a href="http://twitter.com/earcos/status/374808740652122112" itemprop="url">Me lo apunto para ver si se cumple.  →</a></h1>
-					 
-            </header>
-            <section class="post-content">
-              	<p><p>Ya veremos si se cumple la profecía:</p>
-
-<div class='embed tweet'><blockquote class="twitter-tweet"><p lang="es" dir="ltr">En tres años la competencia en móviles será Apple vs Microsoft. Google (Android) quedará en un medio incómodo.</p>&mdash; Eduardo Arcos (@earcos) <a href="https://twitter.com/earcos/status/374808740652122112">September 3, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<blockquote>
+<p>&quot;We as developer must remember that we are not the target for 99% of the software that is written. We are not the final judge on what will or will not work. If anything, we are the last people that should have an opinion on what is good or bad. We should be the ones that step back and watch what the “normals” do with it. They determine the success or failure, not us&quot;</p>
+</blockquote>
 </p>
 					
             </section>
             <div class="post-meta">
-              	<time datetime="08 de septiembre de 2015">08 de septiembre de 2015 • Menos de un minuto de lectura • <a href="/blog/2015/09/08/me-lo-apunto-para-ver-si-se-cumple" itemprop="url">permalink</a></time><p class="post-meta">
+              	<time datetime="31 de agosto de 2011">31 de agosto de 2011 • 1 minuto de lectura • <a href="/blog/2011/08/31/display-hola-mundo/" itemprop="url">permalink</a></time><p class="post-meta">
 			  <!--  -->
             </div>
           <div>
@@ -261,9 +269,11 @@
 
     <nav class="pagination" role="navigation">
       
-        <a class="newer-posts" href="/page2">&larr; Entradas anteriores</a>
+      <span class="page-number">Página 9 de 9</span>
       
-      <span class="page-number">Página 1 de 9</span>
+        
+          <a class="older-posts" href="/page8">Entradas recientes &rarr;</a>
+        
       
     </nav>
 

@@ -138,24 +138,25 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" itemprop="url">Planificando la descarga de informes de iTunes Connect</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/11/como-se-hizo-urlhunter/" itemprop="url">Como se hizo URLHunter</a></h2>
 					 
             </header>
             <section class="post-content">
-              	<p><p>Hace poco me puse con una tarea que tenía pendiente desde el verano: automatizar la descarga de informes del iTunes Connect.</p>
+              	<p><p>Vamos a demostrar que no hace falta ser un figura para hacer algo muy util y aparente. Vaya por delante que, si somos capaces de hacer esto es porque existen páginas como las de <a href="http://railscasts.com" title="Railscasts">Railscasts</a>.<br>
+Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instalar las gemas necesarias para trabajar con Twitter Bootstrap, del que somos fans.</p>
 
-<p>El 30 de Agosto, en el Apple Developer Connection (en el iOS Developer News también) publicaron esto: <a href="http://developer.apple.com/news/index.php?id=08302011a">Automatically Download iTunes Connect Reports</a>. 
-Lo que nos contaban ahí es que habían desarrollado una nueva herramienta para poder descargar los informes de ventas del iTunes Connect sin tener que acceder a dicho portal. 
-Esto está muy bien, primero porque la descarga de varios informes es bastante tediosa, segundo porque es normal que no te acuerdes de entrar a descargarlos y puedes automatizar la descarga y tercero porque las herramientas para el seguimiento de las ventas brillan por su ausencia así que si empiezan a hacer alguna es una buena señal.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'therubyracer'</span>
+<span class="n">gem</span> <span class="s1">'less-rails'</span>
+<span class="n">gem</span> <span class="s1">'twitter-bootstrap-rails'</span></code></pre></figure>
 </p>
 					
-						<p><a class="excerpt-link" href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" align="right">Sigue leyendo</a></p>
+						<p><a class="excerpt-link" href="/blog/2013/03/11/como-se-hizo-urlhunter/" align="right">Sigue leyendo</a></p>
 						<div style="clear: both;"></div>
 					
             </section>
             <div class="post-meta">
-              	<time datetime="03 de diciembre de 2011">03 de diciembre de 2011 • 9 minutos de lectura • <a href="/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!-- <span class="post-tags-set">on <a href="/tag/iTunes Connect">iTunes Connect</a></span> -->
+              	<time datetime="11 de marzo de 2013">11 de marzo de 2013 • 8 minutos de lectura • <a href="/blog/2013/03/11/como-se-hizo-urlhunter/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/Ruby on Rails">Ruby on Rails</a>, <a href="/tag/URLHunter">URLHunter</a></span> -->
             </div>
           <div>
         </article>
@@ -165,26 +166,23 @@ Esto está muy bien, primero porque la descarga de varios informes es bastante t
           <div class="article-item">
             <header class="post-header">
 					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/10/26/5/" itemprop="url">No empezamos muy bien... es difícil sacar tiempo para escribir un blog. </a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/08/como-mola-octopress/" itemprop="url">Como mola Octopress</a></h2>
 					 
             </header>
             <section class="post-content">
-              	<p><p>De momento me conformo con dejar aquí un par de sitios web bastante interesantes que he encontrado últimamente:</p>
+              	<p><p>Estoy disfrutando como un enano con <a href="http://octopress.org">Octopress</a>. Como ya conté en el anterior post, he probado unos cuantos servicios para publicar blogs y a grandes rasgos todos me han parecido iguales: un menú de configuración en el que puedes tocar cuatro cosas, la promesa de que a través de CSS te lo puedes configurar a tu gusto y en ocasiones una oferta de plugins que nunca terminan de hacer lo que crees que deben hacer.</p>
 
-<ul>
-<li><p><a href="http://www.maasive.co/">MaaSive</a>: Es un sitio web que ofrece persistencia en la nube. Lo encontré gracias a un tweet de <a href="http://twitter.com/brandontreb">Brandon Trebitowski</a> y el video demostrativo deja claro lo que es: un framework que podríamos utilizar para sustituir (o complementar según se quiera) a Core Data y almacenar todos los datos en la nube. Soluciones como esta hay unas cuantas: amazon cloud services, google app engine, etc. La ventaja de este framework es la clara orientación a iOS. Está todavía en fase alfa.</p></li>
-<li><p><a href="http://www.parse.com/">Parse:</a> Este es el que más impresionado me ha dejado. En algún momento pensarás en hacer una app que requiera notificaciones &quot;push&quot;. Al margen de lo engorroso que pueda resultar montar todo el servicio de notificaciones, lo más probable es que la solución que encontremos tenga un coste económico ya que requiere de un servidor.</p></li>
-</ul>
-
-<p>Parse encapsula todo el proceso de notificación en un framework para que sea sencillo de implementar en una app y además es gratuito para pocos usos (relativamente, que ya me gustaría a mí tener una app que hiciera más de un millón de push al mes).</p>
-
-<p>Hasta aquí por hoy. Estoy trabajando en algunas cosillas que me gustaría compartir pero todavía no están terminadas. Espero no tardar tanto en escribir el siguiente.</p>
+<p>Si analizamos lo que ofrece Octopress, posiblemente Wordpress sea el que más se le parezca (no creo que el nombre sea casualidad). Se puede descargar toda el proyecto del blog desde la página de <a href="http://wordpress.org">wordpress.org</a>, se configura un MySQL, se tocan un par de ficheros, se sube a un hosting de php y a disfrutar del blog... todo un mundo de maravillosos plugins y temas está a tu disposición.<br>
+El problema es que php y yo no terminamos de llevarnos bien. </p>
 </p>
+					
+						<p><a class="excerpt-link" href="/blog/2013/03/08/como-mola-octopress/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
 					
             </section>
             <div class="post-meta">
-              	<time datetime="26 de octubre de 2011">26 de octubre de 2011 • 1 minuto de lectura • <a href="/blog/2011/10/26/5/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!--  -->
+              	<time datetime="08 de marzo de 2013">08 de marzo de 2013 • 4 minutos de lectura • <a href="/blog/2013/03/08/como-mola-octopress/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/Jekyll">Jekyll</a></span> -->
             </div>
           <div>
         </article>
@@ -194,25 +192,73 @@ Esto está muy bien, primero porque la descarga de varios informes es bastante t
           <div class="article-item">
             <header class="post-header">
 					 
-					   <h2 class="post-title" itemprop="name"><a href="/blog/2011/08/31/display-hola-mundo/" itemprop="url">DISPLAY ‘HOLA MUNDO’</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/02/12/y-otro/" itemprop="url">Y otro</a></h2>
 					 
             </header>
             <section class="post-content">
-              	<p><p>Espero que este no sea otro intento más de escribir un blog y pueda darle continuidad.</p>
-
-<p>Llevo muchos años pensando en lo que podría escribir en un blog... tantos que hasta ahora no había escrito ninguno. Como últimamente estoy muy centrado en el tema de la programación para iOS y leo muchos blogs donde la gente cuenta cosas que ha aprendido o sabe hacer para ayudar al resto de la comunidad de desarrolladores (entre ellos a mi), he pensado que una buena idea para empezar sería devolver los favores escribiendo mis &quot;avances&quot;. De eso es de lo que trata este blog... de como un triste programador de COBOL intenta hacer app´s para su iPhone.</p>
-
-<p>Y para darle más cache a esta primera entrada, me voy a permitir el lujo de citar a Marcus Zarra que en su post &quot;Why so serious?&quot; hace una afirmación que ningún desarrollador debe olvidar jamás... o al menos eso pienso yo.</p>
-
-<blockquote>
-<p>&quot;We as developer must remember that we are not the target for 99% of the software that is written. We are not the final judge on what will or will not work. If anything, we are the last people that should have an opinion on what is good or bad. We should be the ones that step back and watch what the “normals” do with it. They determine the success or failure, not us&quot;</p>
+              	<p><blockquote>
+<p>Lo reconozco, soy un culo inquieto. 
+Creo que he probado más sistemas de blogging que entradas he escrito.</p>
 </blockquote>
+
+<p>Siendo usuario de Gmail, cuando te animas a escribir en un blog lo más fácil es hacerlo en Blogger... y así empece yo: <a href="http://azctabend.blogspot.com.es" title="AZCT Abend">AZCT Abend</a> era la incursión de un Cobolero en el mundo del blogging y como de COBOL no había mucho que contar, la idea era ir contando mis avances en el aprendizaje de Objective-C y Cocoa Touch. </p>
 </p>
+					
+						<p><a class="excerpt-link" href="/blog/2013/02/12/y-otro/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
 					
             </section>
             <div class="post-meta">
-              	<time datetime="31 de agosto de 2011">31 de agosto de 2011 • 1 minuto de lectura • <a href="/blog/2011/08/31/display-hola-mundo/" itemprop="url">permalink</a></time><p class="post-meta">
-			  <!--  -->
+              	<time datetime="12 de febrero de 2013">12 de febrero de 2013 • 2 minutos de lectura • <a href="/blog/2013/02/12/y-otro/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/Octopress">Octopress</a>, <a href="/tag/Jekyll">Jekyll</a></span> -->
+            </div>
+          <div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          
+          <div class="article-item">
+            <header class="post-header">
+					 
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2012/12/23/soporte-nysno-para-macbook-pro/" itemprop="url">Soporte Nysnö para MacBook Pro</a></h2>
+					 
+            </header>
+            <section class="post-content">
+              	<p><p>No tenía pensado hablar de bricolaje en este blog pero una mención de <a href="http://twitter.com/rubdottocom">@rubdottocom</a> haciendo referencia a una entrada suya haciendo lo mismo pero <a href="http://putofreak.com/crea-un-dock-para-tu-macbook-con-un-servilletero-de-ikea">con otro modelo</a> me hizo plantearme una sección de &quot;Macnitas&quot; para este blog.</p>
+
+<p>Le he pedido a los Reyes Magos una pantalla de 24 pulgadas para conectar al MacBook Pro y poder hacer storyboards de aplicaciones para el iPad sin volverme loco. El caso es que, cuando lo tenga, el portátil pasará a ser un &quot;sobremesa&quot; y para que no me quite mucho espacio he estado mirando soportes verticales. Obviamente son todos muy buenos y caros pero como la economía española no está para tirar cohetes y hay que hacer mucha contención del gasto decidí explorar otras opciones: atriles, sujetalibros, etc, hasta que mi mujer me dijo: &quot;¿por qué no usas ese servilletero que compramos en Ikea y que nunca usamos?&quot;</p>
+</p>
+					
+						<p><a class="excerpt-link" href="/blog/2012/12/23/soporte-nysno-para-macbook-pro/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
+					
+            </section>
+            <div class="post-meta">
+              	<time datetime="23 de diciembre de 2012">23 de diciembre de 2012 • 1 minuto de lectura • <a href="/blog/2012/12/23/soporte-nysno-para-macbook-pro/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/Macnitas">Macnitas</a></span> -->
+            </div>
+          <div>
+        </article>
+      
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          
+          <div class="article-item">
+            <header class="post-header">
+					 
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2012/09/27/jugando-con-la-app-store/" itemprop="url">Jugando con la App Store</a></h2>
+					 
+            </header>
+            <section class="post-content">
+              	<p><p>El miércoles 26 de septiembre tuve la oportunidad de dar otra charla en la NSCoderMAD. Volvió a ser en el CIBALL un sitio que parece que visitaremos mucho en los próximos meses si todo va bien. En esta ocasión mi charla giró sobre la experiencia de usar los servicios de AppGratis, una aplicación que envía newsletter y hace notificaciones push cada día hablando de una aplicación que baja de precio o pasa a ser gratis. Creo que la charla es bastante interesante por la experiencia en si y porque aporta datos no muy habituales: las ganancias de una aplicación del Top 25 de pago.</p>
+</p>
+					
+						<p><a class="excerpt-link" href="/blog/2012/09/27/jugando-con-la-app-store/" align="right">Sigue leyendo</a></p>
+						<div style="clear: both;"></div>
+					
+            </section>
+            <div class="post-meta">
+              	<time datetime="27 de septiembre de 2012">27 de septiembre de 2012 • 1 minuto de lectura • <a href="/blog/2012/09/27/jugando-con-la-app-store/" itemprop="url">permalink</a></time><p class="post-meta">
+			  <!-- <span class="post-tags-set">on <a href="/tag/NSCoderMAD">NSCoderMAD</a>, <a href="/tag/App Store">App Store</a></span> -->
             </div>
           <div>
         </article>
@@ -221,7 +267,9 @@ Esto está muy bien, primero porque la descarga de varios informes es bastante t
 
     <nav class="pagination" role="navigation">
       
-      <span class="page-number">Página 7 de 7</span>
+        <a class="newer-posts" href="/page8">&larr; Entradas anteriores</a>
+      
+      <span class="page-number">Página 7 de 9</span>
       
         
           <a class="older-posts" href="/page6">Entradas recientes &rarr;</a>
