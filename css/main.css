@@ -437,6 +437,16 @@ body {
       padding: 0 0 1.618rem; }
   .post .post-content ol li {
     list-style-type: decimal; }
+  .post .post-content .post-tags-set a {
+    background-color: #F0F0F0;
+    border: 5px solid #F0F0F0;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-right: 5px; }
+    .post .post-content .post-tags-set a:hover {
+      background-color: #E0E0E0;
+      border: 5px solid #E0E0E0;
+      text-decoration: none; }
 .post .bottom-teaser {
   padding: 50px 0;
   font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica, sans-serif; }
@@ -444,8 +454,7 @@ body {
     border: 0;
     padding: 0;
     display: block;
-    width: 15%;
-    margin: 16px 0 16px 100px;
+    margin: 16px 1px 16px 100px;
     border: 0px solid #ddd;
     border-top: 1px solid #ddd; }
   .post .bottom-teaser .isLeft {
@@ -461,7 +470,7 @@ body {
     .post .bottom-teaser .isLeft .index-headline {
       padding-bottom: 32px; }
     .post .bottom-teaser .isLeft a {
-      color: #000;
+      color: #57ad68;
       text-decoration: none; }
       .post .bottom-teaser .isLeft a:hover {
         color: #333;
