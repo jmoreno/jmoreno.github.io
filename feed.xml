@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 27 Mar 2016 00:41:13 +0100</pubDate>
-    <lastBuildDate>Sun, 27 Mar 2016 00:41:13 +0100</lastBuildDate>
+    <pubDate>Sun, 27 Mar 2016 11:00:36 +0200</pubDate>
+    <lastBuildDate>Sun, 27 Mar 2016 11:00:36 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -122,12 +122,6 @@
 				 
         <guid isPermaLink="true">http://javimoreno.es/blog/2016/03/19/plugins-de-karmacracy-para-jekyll/</guid>
         
-        <category>Jekyll</category>
-        
-        <category>Karmacracy</category>
-        
-        
-        <category>Frikadas</category>
         
       </item>
     
