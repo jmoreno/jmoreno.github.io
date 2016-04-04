@@ -6,9 +6,26 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 04 Apr 2016 23:59:34 +0200</pubDate>
-    <lastBuildDate>Mon, 04 Apr 2016 23:59:34 +0200</lastBuildDate>
+    <pubDate>Tue, 05 Apr 2016 01:26:42 +0200</pubDate>
+    <lastBuildDate>Tue, 05 Apr 2016 01:26:42 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+				 
+        <title>#f42121 en DuckDuckGo→</title>
+				 
+        <description>&lt;p&gt;De las muchas cosas que me gustan de DuckDuckGo destacaría la sugerencia que muestra cómo &lt;em&gt;definitiva&lt;/em&gt; para algunas búsquedas. Si por ejemplo buscas un código de colores te precarga el color que estás buscando y alguno de sus equivalentes. Lo normal es que te muestre el artículo de la Wikipedia relacionado con la búsqueda pero esta de los colores o la de las respuestas de Stack Overflow es de lo mejorcito...&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Apr 2016 01:21:00 +0200</pubDate>
+				 
+        <link>https://duckduckgo.com/?q=%23f42121&t=ipad&ia=answer</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2016/04/05/f42121-en-duckduckgo/</guid>
+        
+        
+        <category>Enlaces</category>
+        
+      </item>
     
       <item>
 				 
@@ -521,43 +538,6 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
         
         
         <category>Frikadas</category>
-        
-      </item>
-    
-      <item>
-				 
-        <title>Empatía por el diablo</title>
-				 
-        <description>&lt;blockquote&gt;
-&lt;p&gt;Please allow me to introduce myself
-I´m a man of wealth and taste&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The Rolling Stones,&lt;/strong&gt; &lt;em&gt;Sympathy for the devil&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;En nuestro entorno es habitual hacer chistes sobre el usuario... por lo mal que hace los requisitos (cuando los hace), porque no sabe lo que quiere y cambia continuamente de opinión, porque no tiene ni idea de nada mientras que nosotros tenemos claro que es lo que necesita, etc, etc.
-Vaya por delante que yo mismo hago este tipo de comentarios &lt;em&gt;habitualmente&lt;/em&gt; y que discutir con el usuario es parte principal de mi día a día pero eso no quita para que, a veces, sienta &lt;em&gt;empatía por el &lt;del&gt;diablo&lt;/del&gt; usuario&lt;/em&gt;.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;El año pasado pudimos leer alguna píldora de un usuario que, cansado de buscar desarrolladores en España que entendieran lo que el necesitaba, había encontrado lo que buscaba en Polonia y a un menor coste. Al margen de temas económicos, que también los hay, lo brutal de ese artículo es concluir que es más fácil encontrar a un técnico que entienda lo que quieres aunque no hable tu mismo idioma. &lt;/p&gt;
-
-&lt;p&gt;El lenguaje si que tiene que ver. En un dialogo usuario-técnico, uno de los principales problemas es que uno no sabe expresar en el lenguaje del otro lo que quiere y el otro no sabe expresar en el lenguaje del uno lo que pretende hacer. Esto no es exclusivo del desarrollo de software, ocurre cuando contratas a un albañil para que te haga una reforma, cuando llevas el coche al taller, cuando vas al médico... En esas situaciones tu tratas de expresar lo que quieres, lo que le pasa al coche, lo que te sucede a tí y al otro lado hay, normalmente, una persona que te mira y en cuyos ojos puedes leer: &lt;strong&gt;&lt;em&gt;este tío no tiene ni puta idea&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Una vez superada la barrera del lenguaje, al problema le añadimos nuestro ego porque, no nos engañemos, tenemos mucho ego. Tenemos claro lo que quiere el usuario, al pobre le cuesta expresarse pero como nosotros somos muy buenos hemos entendido su problema. Habitualmente prestamos mucha atención a lo que hacemos, ya que nuestro trabajo requiere un montón de cualidades: dominio de un lenguaje de programación, conocimientos de base datos, usabilidad de aplicaciones,... pero esta vez, como lo que quiere el usuario es tan sencillo y nosotros lo hemos hecho tantas y tantas veces vamos un poco deprisa y... zas... el usuario nos saca fallos, dice que es una mierda, que si no tenemos sentido común, bla, bla, bla...&lt;/p&gt;
-
-&lt;p&gt;Si volvemos a los ejemplos anteriores, nos encontramos con el mismo albañil que nos miraba con aire arrogante y al que ahora le tenemos que decir que ha puesto los azulejos del revés, o al mecánico que nos dice que ha cambiado nosecuantas historias y nosotros le decimos que el coche sigue haciendo el mismo ruido por el que lo habíamos llevado al taller, o al médico que nos pregunta si hemos tenido fiebre mientras nos osculta y nosotros le decimos que si, que ya se lo dijimos cuando nos preguntó que nos pasaba... vamos deprisa, no prestamos atención, somos unos sobradetes... y la cagamos.&lt;/p&gt;
-
-&lt;p&gt;Y con esto no quiero decir que el usuario sea bueno, joder, estoy hablando del diablo, pero también hay que tener en cuenta que el diablo sabe más por viejo, que por &lt;del&gt;usuario&lt;/del&gt; diablo. &lt;/p&gt;
-</description>
-        <pubDate>Sun, 04 Jan 2015 19:15:00 +0100</pubDate>
-				 
-        <link>http://javimoreno.es/blog/2015/01/04/empatia-por-el-diablo/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2015/01/04/empatia-por-el-diablo/</guid>
-        
-        
-        <category>Reflexiones</category>
         
       </item>
     
