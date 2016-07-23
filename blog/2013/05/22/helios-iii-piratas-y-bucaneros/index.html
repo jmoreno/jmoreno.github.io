@@ -202,9 +202,9 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
     <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
     
     <span class="p">[</span><span class="n">AFJSONRequestOperation</span> <span class="nf">JSONRequestOperationWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">id</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">self</span> <span class="nf">getProductsInStoreKitFromArray</span><span class="p">:</span><span class="n">JSON</span><span class="p">]</span><span class="err">;</span>
-    <span class="p">}</span> <span class="nf">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">id</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">])</span><span class="err">;</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">getProductsInStoreKitFromArray</span><span class="p">:</span><span class="n">JSON</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">id</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span>
     
@@ -212,14 +212,14 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 <span class="p">{</span>
     <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">productsWithIdentifiers</span><span class="p">:[</span><span class="n">NSSet</span> <span class="nf">setWithArray</span><span class="p">:</span><span class="n">array</span><span class="p">]</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">products</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">invalidIdentifiers</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_productsArray</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableArray</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCapacity</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="err">;</span>
+            <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableArray</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCapacity</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
         <span class="p">}</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span><span class="err">;</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">)</span><span class="err">;</span>
-        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">]</span><span class="err">;</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">]</span><span class="err">;</span>
-    <span class="p">}</span> <span class="nf">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">);</span>
+        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
     <span class="p">}];</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -231,12 +231,12 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
     <span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://localhost:3000/products/identifiers/"</span><span class="p">];</span>
     <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
     <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">productsWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">products</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">invalidIdentifiers</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">)</span><span class="err">;</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">)</span><span class="err">;</span>
-        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">]</span><span class="err">;</span>
-        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">]</span><span class="err">;</span>
-    <span class="p">}</span> <span class="nf">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">])</span><span class="err">;</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">);</span>
+        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -307,22 +307,22 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 <span class="p">{</span>
     <span class="c1">// Payment Queue Observation with CargoBay
 </span>    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">setPaymentQueueUpdatedTransactionsBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SKPaymentQueue</span> <span class="o">*</span><span class="n">queue</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Updated Transactions: %@"</span><span class="p">,</span> <span class="n">transactions</span><span class="p">)</span><span class="err">;</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Updated Transactions: %@"</span><span class="p">,</span> <span class="n">transactions</span><span class="p">);</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="k">switch</span> <span class="p">(</span><span class="n">transaction</span><span class="p">.</span><span class="n">transactionState</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="k">case</span> <span class="n">SKPaymentTransactionStatePurchased</span><span class="p">:</span>
-                    <span class="p">[</span><span class="n">self</span> <span class="nf">oneStepVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">]</span><span class="err">;</span>
-                    <span class="k">break</span><span class="err">;</span>
+                    <span class="p">[</span><span class="n">self</span> <span class="nf">oneStepVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+                    <span class="k">break</span><span class="p">;</span>
                 <span class="k">case</span> <span class="n">SKPaymentTransactionStateFailed</span><span class="p">:</span>
                          <span class="c1">// TODO
-</span>                    <span class="k">break</span><span class="err">;</span>
+</span>                    <span class="k">break</span><span class="p">;</span>
                 <span class="k">case</span> <span class="n">SKPaymentTransactionStateRestored</span><span class="p">:</span>
                          <span class="c1">// TODO
-</span>                    <span class="k">break</span><span class="err">;</span>
-                <span class="nf">default</span><span class="p">:</span>
-                    <span class="k">break</span><span class="err">;</span>
+</span>                    <span class="k">break</span><span class="p">;</span>
+                <span class="nl">default:</span>
+                    <span class="k">break</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}];</span>
@@ -337,11 +337,11 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 
 <figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">oneStepVerification</span><span class="p">:(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="p">)</span><span class="nv">transaction</span>
 <span class="p">{</span>
-    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">verifyTransaction</span><span class="p">:</span><span class="n">transaction</span> <span class="nf">password</span><span class="p">:</span><span class="nb">nil</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">receipt</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">)</span><span class="err">;</span>
-        <span class="p">[</span><span class="n">self</span> <span class="nf">serverSideVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">]</span><span class="err">;</span>
-    <span class="p">}</span> <span class="nf">failure</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error %d (%@)"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">code</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">])</span><span class="err">;</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">verifyTransaction</span><span class="p">:</span><span class="n">transaction</span> <span class="nf">password</span><span class="p">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">receipt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">serverSideVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error %d (%@)"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">code</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">]);</span>
     <span class="p">}];</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -362,17 +362,17 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
     <span class="n">NSData</span> <span class="o">*</span><span class="n">httpBody</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span> <span class="nf">dataUsingEncoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
     <span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPBody</span><span class="p">:</span><span class="n">httpBody</span><span class="p">];</span>
     
-    <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">sendAsynchronousRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">queue</span><span class="p">:[</span><span class="n">NSOperationQueue</span> <span class="nf">mainQueue</span><span class="p">]</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span><span class="n">response</span><span class="err">;</span>
+    <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">sendAsynchronousRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">queue</span><span class="p">:[</span><span class="n">NSOperationQueue</span> <span class="nf">mainQueue</span><span class="p">]</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span><span class="n">response</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">200</span> <span class="o">||</span> <span class="n">httpResponse</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">203</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">id</span> <span class="n">receipt</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">JSONObjectWithData</span><span class="p">:</span><span class="n">data</span>
                                                          <span class="nf">options</span><span class="p">:</span><span class="mi">0</span>
-                                                           <span class="nf">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">]</span><span class="err">;</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">)</span><span class="err">;</span>
-            <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span> <span class="n">transaction</span><span class="p">]</span><span class="err">;</span>
+                                                           <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">);</span>
+            <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span> <span class="n">transaction</span><span class="p">];</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Body: %@"</span><span class="p">,</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithData</span><span class="p">:</span><span class="n">data</span> <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">])</span><span class="err">;</span>
-            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Body: %@"</span><span class="p">,</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithData</span><span class="p">:</span><span class="n">data</span> <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">]);</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}];</span>
 <span class="p">}</span></code></pre></figure>
