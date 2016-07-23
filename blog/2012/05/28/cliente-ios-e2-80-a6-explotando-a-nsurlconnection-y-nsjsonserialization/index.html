@@ -117,7 +117,7 @@
 
     <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">queryURL</span>
                                              <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestReloadIgnoringLocalCacheData</span>
-                                         <span class="nf">timeoutInterval</span><span class="p">:</span><span class="n">HTTP_TIMEOUT</span><span class="p">];</span>
+                                         <span class="n">timeoutInterval</span><span class="o">:</span><span class="n">HTTP_TIMEOUT</span><span class="p">];</span>
 
     <span class="c1">//ASINCRONOOOOOOOO
 </span>    <span class="n">NSURLConnection</span> <span class="o">*</span><span class="n">connection</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">connectionWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
@@ -163,7 +163,7 @@
     <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">;</span>
     <span class="n">NSArray</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">JSONObjectWithData</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span>
                                                     <span class="nf">options</span><span class="p">:</span><span class="n">kNilOptions</span>
-                                                      <span class="nf">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+                                                      <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSString</span> <span class="o">*</span><span class="n">receivedString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithData</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span>
                                                          <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
