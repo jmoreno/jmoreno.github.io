@@ -4,10 +4,14 @@ require 'net/https'
 require 'uri'
 require 'cgi'
 
-twitter_consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
-twitter_consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
-twitter_access_token        = "99518813-yNGjsxxBSWQYcluuY16lB4lYgel7xgR2S0jry53n5"
-twitter_access_token_secret = "gh8LPBMtAjYyqkz3wckwEHu3zMsHaNFVyMcIVsKHBOmO2"
+twitter_consumer_key        = "iKlFXudh6s2W8gdaGuf0KssIq"
+twitter_consumer_secret     = "ECgJAdc04KSH7tfJHZmb9mox6kXM7F9ld1W7ckrflf70sVU6YN"
+twitter_access_token        = "99518813-ocEhp9MmGmwkx1tMR15PNTddyYMG81ljAHq8I2cjw"
+twitter_access_token_secret = "fNxXteJ35AWf4JGYaPlPnIR2bAWgxnQPukMWNP6TgaSxE"
+# twitter_consumer_key        = "oowGNxGF38LlTYObqDlQCQ"
+# twitter_consumer_secret     = "EpErK20RlO9VPTPufExgeDzDQIJ1fkbr5dikT171Bg"
+# twitter_access_token        = "99518813-yNGjsxxBSWQYcluuY16lB4lYgel7xgR2S0jry53n5"
+# twitter_access_token_secret = "gh8LPBMtAjYyqkz3wckwEHu3zMsHaNFVyMcIVsKHBOmO2"
 
 task :clean_tweet_list do
  
