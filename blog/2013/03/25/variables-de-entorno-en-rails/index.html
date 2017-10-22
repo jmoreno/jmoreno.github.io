@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Variables de entorno en Rails</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -99,12 +99,12 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
 <span class="c1"># makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]</span>
 
 <span class="c1"># Twitter Variables</span>
-<span class="s">CONSUMER_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Key'</span>
-<span class="s">CONSUMER_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Secret'</span>
-<span class="s">OAUTH_TOKEN</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token'</span>
-<span class="s">OAUTH_TOKEN_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token_Secret'</span>
+<span class="na">CONSUMER_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Key'</span>
+<span class="na">CONSUMER_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Consumer_Secret'</span>
+<span class="na">OAUTH_TOKEN</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token'</span>
+<span class="na">OAUTH_TOKEN_SECRET</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_Oauth_Token_Secret'</span>
 <span class="c1"># New Relic Parameters</span>
-<span class="s">NEW_RELIC_LICENSE_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_New_Relic_License_Key'</span></code></pre></figure>
+<span class="na">NEW_RELIC_LICENSE_KEY</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Your_New_Relic_License_Key'</span></code></pre></figure>
 
 <p>En el fichero podéis ver como no solo he creado variables de entorno para Twitter si no también para New Relic, eso es porque al margen de los cambios en el estilo de URLHunter, el uso de los Tweets Embeds y algunas mejoras en la cache también he incluido New Relic para monitorizar su comportamiento y buscar formas de mejorar el rendimiento.</p>
 
@@ -122,7 +122,7 @@ end</code></pre></figure>
 <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml">  <span class="c1"># You must specify the license key associated with your New Relic</span>
   <span class="c1"># account.  This key binds your Agent's data to your account in the</span>
   <span class="c1"># New Relic service.</span>
-  <span class="s">license_key</span><span class="pi">:</span> <span class="s">&lt;%= ENV['NEW_RELIC_LICENSE_KEY'] %&gt;</span></code></pre></figure>
+  <span class="na">license_key</span><span class="pi">:</span> <span class="s">&lt;%= ENV['NEW_RELIC_LICENSE_KEY'] %&gt;</span></code></pre></figure>
 
 <h2>Cargando las variables de entorno.</h2>
 
@@ -138,16 +138,16 @@ end</code></pre></figure>
 
 <p>Si hemos hecho todo esto correctamente, al ejecutar la aplicación en local todo debería funcionar perfectamente. El problema nos lo vamos a encontrar cuando despleguemos en Heroku. Heroku se apoya en el fichero git de nuestro proyecto para tomar toda la información. Del mismo modo que el fichero donde hemos incluido las variables de entorno no es visible en el repositorio (GitHub, Bitbucket,...) tampoco lo es para Heroku por lo que las variables de entorno nunca se cargarán al iniciar la aplicación. Hemos de cargar estas variables de forma manual.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span></code></pre></figure>
 
 <p>Podemos hacer un fichero bash que ejecutaremos después de hacer el despliegue en heroku. Este script tendría la siguiente estructura:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span> <span class="nv">CONSUMER_SECRET</span><span class="o">=</span><span class="s1">'Your_Consumer_Secret'</span> <span class="nv">OAUTH_TOKEN</span><span class="o">=</span><span class="s1">'Your_Oauth_Token'</span> <span class="nv">OAUTH_TOKEN_SECRET</span><span class="o">=</span><span class="s1">'Your_Oauth_Token_Secret'</span> <span class="nv">NEW_RELIC_LICENSE_KEY</span><span class="o">=</span><span class="s1">'Your_New_Relic_License_Key'</span>;
-heroku info --app urlhunter-314159;</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">heroku config:add <span class="nv">CONSUMER_KEY</span><span class="o">=</span><span class="s1">'Your_Consumer_Key'</span> <span class="nv">CONSUMER_SECRET</span><span class="o">=</span><span class="s1">'Your_Consumer_Secret'</span> <span class="nv">OAUTH_TOKEN</span><span class="o">=</span><span class="s1">'Your_Oauth_Token'</span> <span class="nv">OAUTH_TOKEN_SECRET</span><span class="o">=</span><span class="s1">'Your_Oauth_Token_Secret'</span> <span class="nv">NEW_RELIC_LICENSE_KEY</span><span class="o">=</span><span class="s1">'Your_New_Relic_License_Key'</span><span class="p">;</span>
+heroku info <span class="nt">--app</span> urlhunter-314159<span class="p">;</span></code></pre></figure>
 
 <p>Y lo ejecutamos escribiendo en el terminal:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>sh heroku.sh</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sh heroku.sh</code></pre></figure>
 
 <p>Listo. Ya podemos compartir el código fuente del proyecto sin temor a que nadie pueda hacer uso de nuestras claves de terceros.</p>
 
@@ -221,7 +221,7 @@ heroku info --app urlhunter-314159;</code></pre></figure>
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>

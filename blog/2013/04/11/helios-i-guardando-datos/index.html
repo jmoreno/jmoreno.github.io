@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Helios I. Guardando datos</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -117,19 +117,19 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
 
 <p>En el terminal escribiremos lo siguiente: </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rails new DealerErgoGo -d postgresql</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rails new DealerErgoGo <span class="nt">-d</span> postgresql</code></pre></figure>
 
 <p>Directamente trabajaremos con PostgreSQL desde desarrollo por lo que tenemos que tener instalado en nuestro equipo este gestor de base de datos. Mi recomendación es usar Postgres.app, desarrollada por Mattt (que tío) que funciona muy bien y es fácil de instalar (relativamente).</p>
 
 <p>Lo primero que haremos en nuestro proyecto Rails es configurar el acceso a la base de datos, solo cambiamos el usuario y le indicamos el puerto y el host. Creamos las bases de datos y a disfrutar.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake db:create</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rake db:create</code></pre></figure>
 
 <p>A continuación incluimos todo lo necesario para usar Helios.</p>
 
 <p>Instalamos la gema y creamos la base de datos</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake db:create</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rake db:create</code></pre></figure>
 
 <p>Siguiendo las instrucciones del repositorio, configuramos Helios como un middleware en application.rb. Aprovecharemos para incluir el modelo de datos que hemos creado en la aplicación iOS dentro de la carpeta de configuración de la aplicación Rails. En local no es necesario pero cuando hagamos el despliegue en Heroku, tendremos que subir el modelo junto con la aplicación.</p>
 
@@ -160,23 +160,23 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
 
 <p>Para terminar, cambiamos el adaptador de postgresql a postgres porque sequel, una dependencia que trae Helios, lo usa. Debido a esto es muy importante configurar y crear la base de datos antes de introducir Helios en la aplicación ya que de lo contrario entraremos en un bucle infinito de cambio de adapatores. También cambiamos el usuario de la base de datos ya que, por defecto, PostgreSQL solo tendrá nuestro usuario local.</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">development</span><span class="pi">:</span>
-<span class="err">  </span><span class="s">adapter</span><span class="pi">:</span> <span class="s">postgres</span>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">development</span><span class="pi">:</span>
+<span class="err">  </span><span class="na">adapter</span><span class="pi">:</span> <span class="s">postgres</span>
    <span class="err">   </span><span class="s">encoding</span><span class="pi">:</span> <span class="s">unicode</span>
    <span class="err">   </span><span class="s">database</span><span class="pi">:</span> <span class="s">DealerErgoGo_development</span>
    <span class="err">   </span><span class="s">pool</span><span class="pi">:</span> <span class="s">5</span>
-<span class="err">  </span><span class="s">username</span><span class="pi">:</span> <span class="s">javi</span>
+<span class="err">  </span><span class="na">username</span><span class="pi">:</span> <span class="s">javi</span>
    <span class="err">   </span><span class="s">password</span><span class="pi">:</span>
-<span class="err">  </span><span class="s">host</span><span class="pi">:</span> <span class="s">localhost</span>
-<span class="err">  </span><span class="s">port</span><span class="pi">:</span> <span class="s">5432</span></code></pre></figure>
+<span class="err">  </span><span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+<span class="err">  </span><span class="na">port</span><span class="pi">:</span> <span class="s">5432</span></code></pre></figure>
 
 <p>Y con esto ya tendríamos listo el backend. Podríamos probarlo en nuestra máquina local o desplegar directamente en Heroku. Para ello solo hay que tener <a href="https://toolbelt.heroku.com">Heroku toolbelt</a> instalado, haber hecho commit de todos los cambios en la rama y principal y desde la carpeta del proyecto en el terminal escribir lo siguiente:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>heroku create</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>heroku create</code></pre></figure>
 
 <p>Para crear la aplicación y</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>git push heroku master</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git push heroku master</code></pre></figure>
 
 <p>Para desplegar la aplicación en Heroku. Listo, ya podemos disfrutar de nuestras 750 horas gratuitas al mes.</p>
 
@@ -262,7 +262,7 @@ Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la ap
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>

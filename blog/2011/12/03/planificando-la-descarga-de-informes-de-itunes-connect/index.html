@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Planificando la descarga de informes de iTunes Connect</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -152,7 +152,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
 <span class="c">#-------------------------------------------------------------------------------</span>
 <span class="c"># Adjust input vars</span>
 <span class="c">#</span>
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>; <span class="k">fi</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
 <span class="c"># Print info</span>
 <span class="c">#</span>
 <span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_DAYS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
@@ -160,23 +160,23 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
 <span class="c">#</span>
 <span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
 <span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
-<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
 <span class="c"># set dir where the reports are downloaded to</span>
 <span class="c">#</span>
 <span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
 <span class="c"># loop for requested NUM_OF_DAYS_TO_DOWNLOAD</span>
 <span class="c">#</span>
-<span class="k">for</span> <span class="o">((</span> <span class="nv">DAY</span><span class="o">=</span>NUM_OF_DAYS_TO_DOWNLOAD; DAY&gt;0; DAY-- <span class="o">))</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">DAY</span><span class="o">=</span>NUM_OF_DAYS_TO_DOWNLOAD<span class="p">;</span> DAY&gt;0<span class="p">;</span> DAY-- <span class="o">))</span>
 <span class="k">do
 </span><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
 <span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
 <span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
-<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth 1 -type f | wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | wc <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
 <span class="k">then</span>
 <span class="c"># Report is missing so download one</span>
 <span class="c">#</span>
 <span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
-java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+java <span class="nt">-cp</span> <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
 <span class="k">else</span>
 <span class="c"># Report is found</span>
 <span class="c">#</span>
@@ -213,7 +213,7 @@ done</span></code></pre></figure>
 <span class="c">#-------------------------------------------------------------------------------</span>
 <span class="c"># Adjust input vars</span>
 <span class="c">#</span>
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>; <span class="k">fi</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
 <span class="c"># Print info</span>
 <span class="c">#</span>
 <span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_WEEKS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
@@ -221,13 +221,13 @@ done</span></code></pre></figure>
 <span class="c">#</span>
 <span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
 <span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
-<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> -P<span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
 <span class="c"># set dir where the reports are downloaded to</span>
 <span class="c">#</span>
 <span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
 <span class="c"># loop for requested NUM_OF_WEEKS_TO_DOWNLOAD</span>
 <span class="c">#</span>
-<span class="k">for</span> <span class="o">((</span> <span class="nv">WEEK</span><span class="o">=</span>NUM_OF_WEEKS_TO_DOWNLOAD; WEEK&gt;0; WEEK-- <span class="o">))</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">WEEK</span><span class="o">=</span>NUM_OF_WEEKS_TO_DOWNLOAD<span class="p">;</span> WEEK&gt;0<span class="p">;</span> WEEK-- <span class="o">))</span>
 <span class="k">do</span>
 <span class="c"># set value for last sunday</span>
 <span class="c">#</span>
@@ -236,12 +236,12 @@ done</span></code></pre></figure>
 <span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
 <span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
 <span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
-<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find . -name <span class="nv">$FILE_CUR</span> -maxdepth 1 -type f | wc -l<span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | wc <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
 <span class="k">then</span>
 <span class="c"># Report is missing so download one</span>
 <span class="c">#</span>
 <span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
-java -cp <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+java <span class="nt">-cp</span> <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
 <span class="k">else</span>
 <span class="c"># Report is found</span>
 <span class="c">#</span>
@@ -319,7 +319,7 @@ done</span></code></pre></figure>
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>

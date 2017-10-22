@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Octoberry Pi</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -66,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              7 minutos
+              8 minutos
               
               de lectura
               </p>
@@ -126,43 +126,43 @@ Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repo
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
 mv ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
-<span class="nb">set</span> -e
+<span class="nb">set</span> <span class="nt">-e</span>
 <span class="nb">cd </span>blog
 rake generate
 rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con quickpost.sh"</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con quickpost.sh"</span>
 git push origin <span class="nb">source</span></code></pre></figure>
 
 <p>El script anterior descarga los ficheros que estén en la carpeta de <em>borradores</em>. A continuación, mueve los ficheros con extensión <em>markdown</em> a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace <code>commit</code>en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.</p>
 
 <p>El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un <code>pulo</code> al repositorio remoto,…</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
 <span class="nb">cd </span>blog
 git pull origin <span class="nb">source
 </span>rake generate
 rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con gitpost.sh”
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con gitpost.sh”
 git push origin source</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
 ./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
 mv ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
 <span class="nb">cd </span>blog
 rake generate
 rake preview</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
 <span class="nb">cd </span>blog
 rake generate
 rake deploy
-git add .
-git commit -m <span class="s2">"Nuevo publicación con quickdeploy.sh"</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con quickdeploy.sh"</span>
 git push origin <span class="nb">source</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> -e
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
 <span class="nb">cd </span>blog
 git pull origin <span class="nb">source
 </span>rake generate
@@ -251,7 +251,7 @@ Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa q
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
