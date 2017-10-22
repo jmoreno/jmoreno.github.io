@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Helios II. Houston, tenemos un problema.</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -122,23 +122,23 @@ Helios y Orbiter nos proporcionan un sistema para almacenar esos tokens en un se
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">2013-05-01 11:07:01.903 CAPCOM[24399:907] Registration Success: <span class="o">{</span>
 device <span class="o">=</span>     <span class="o">{</span>
-    <span class="nb">alias</span> <span class="o">=</span> ApoloXIII;
-    badge <span class="o">=</span> 0;
-    id <span class="o">=</span> 1;
-    <span class="s2">"ip_address"</span> <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span>;
-    language <span class="o">=</span> es;
-    lat <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span>;
-    lng <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span>;
-    locale <span class="o">=</span> <span class="s2">"es_ES"</span>;
+    <span class="nb">alias</span> <span class="o">=</span> ApoloXIII<span class="p">;</span>
+    badge <span class="o">=</span> 0<span class="p">;</span>
+    id <span class="o">=</span> 1<span class="p">;</span>
+    <span class="s2">"ip_address"</span> <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span><span class="p">;</span>
+    language <span class="o">=</span> es<span class="p">;</span>
+    lat <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span><span class="p">;</span>
+    lng <span class="o">=</span> <span class="s2">"&lt;null&gt;"</span><span class="p">;</span>
+    locale <span class="o">=</span> <span class="s2">"es_ES"</span><span class="p">;</span>
     tags <span class="o">=</span>         <span class="o">(</span>
         <span class="s2">"iPhone OS 6.1.3"</span>,
         <span class="s2">"v1.0"</span>,
         iPhone
-    <span class="o">)</span>;
-    timezone <span class="o">=</span> <span class="s2">"Europe/Madrid"</span>;
-    token <span class="o">=</span> 1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A;
-    tsv <span class="o">=</span> <span class="s2">"'1f0e7706d1a343bf17615051db944743f18156c52eff0f8dd43dda23f156862a':1 'apoloxiii':2 'es':3,4 'europe/madrid':5"</span>;
-    <span class="o">}</span>;
+    <span class="o">)</span><span class="p">;</span>
+    timezone <span class="o">=</span> <span class="s2">"Europe/Madrid"</span><span class="p">;</span>
+    token <span class="o">=</span> 1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A<span class="p">;</span>
+    tsv <span class="o">=</span> <span class="s2">"'1f0e7706d1a343bf17615051db944743f18156c52eff0f8dd43dda23f156862a':1 'apoloxiii':2 'es':3,4 'europe/madrid':5"</span><span class="p">;</span>
+    <span class="o">}</span><span class="p">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <p>Y en el panel de administración de Helios veremos lo siguiente:</p>
@@ -147,12 +147,12 @@ device <span class="o">=</span>     <span class="o">{</span>
 
 <p>Ahora tenemos que preparar nuestro servidor para que realice el envío de notificaciones Push. Como ya hemos comentado al principio, esta funcionalidad no la traía Helios en su primera versión y nos obligaba a nosotros a incluir y configurar esta gema. Hace pocas horas han actualizado el repositorio de Helios incluyendo la funcionalidad de envío de mensajes mediante Houston. Como el merge en GitHub es tan reciente, la gema que hay en <a href="http://rubygems.org/gems/helios">RubyGems.org</a> todavía no está actualizada así que para poder usarla en nuestro proyecto Rails he tenido que indicar en el <em>gemfile</em> que tome el fuente de GitHub. Al hacerlo de esta forma, las dependencias no son visibles por el Bundler por lo que, para evitar errores, he indicado también que necesitamos la gema <strong>Houston</strong>.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gem <span class="s1">'helios'</span>, :git <span class="o">=</span>&gt; <span class="s1">'git://github.com/helios-framework/helios.git'</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">gem <span class="s1">'helios'</span>, :git <span class="o">=&gt;</span> <span class="s1">'git://github.com/helios-framework/helios.git'</span>
 gem <span class="s1">'houston'</span></code></pre></figure>
 
 <p>Ahora tendremos que guardar el certificado para realizar APS en alguna carpeta de nuestro proyecto y decirle a Helios donde está. Los pasos que hay que seguir para trabajar con los certificados están en el post de Rafa, lo único que haremos diferente es el paso de exportación del certificado, al que le daremos un nombre más <em>comodo</em> para nuestra configuración:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>openssl pkcs12 -in CAPCOMAPNDEV.p12 -out apple_push_notification.pem -nodes -clcerts</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>openssl pkcs12 <span class="nt">-in</span> CAPCOMAPNDEV.p12 <span class="nt">-out</span> apple_push_notification.pem <span class="nt">-nodes</span> <span class="nt">-clcerts</span></code></pre></figure>
 
 <p>El fichero .pem resultante lo dejaremos en la carpeta <em>config</em> de nuestro proyecto (junto al xcdatamodel) y modificaremos la configuración de Helios en nuestro <em>application.rb</em> de la siguiente manera:</p>
 
@@ -166,7 +166,7 @@ gem <span class="s1">'houston'</span></code></pre></figure>
 
 <p>Para comprobar que todo está bien configurado, ejecutamos la siguiente instrucción desde el terminal (recordad que nuestro servidor tiene configurado usuario y contraseña):</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -X POST --user <span class="s2">"username:password"</span> -d <span class="s1">'payload={"aps": {"alert":"Okay, stand by Thirteen, we are looking at it.","badge":"13","sound":"default"}}'</span> http://localhost:3000/message </code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl <span class="nt">-X</span> POST <span class="nt">--user</span> <span class="s2">"username:password"</span> <span class="nt">-d</span> <span class="s1">'payload={"aps": {"alert":"Okay, stand by Thirteen, we are looking at it.","badge":"13","sound":"default"}}'</span> http://localhost:3000/message </code></pre></figure>
 
 <p>Listo, parece que ya tenemos comunicación con Houston... o por lo menos recibimos sus mensajes. ;-)</p>
 
@@ -174,7 +174,7 @@ gem <span class="s1">'houston'</span></code></pre></figure>
 
 <p>Houston incluye una utilidad de terminal a la que le pasamos un token, la ubicación del certificado y el mensaje que queremos enviar. Esto no verifica que hayamos configurado correctamente ningún servidor, solo que el certificado y el token sean correctos:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>apn push <span class="s2">"1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A"</span> -c <span class="s2">"config/apple_push_notification.pem"</span> -m <span class="s2">"Okay, stand by Thirteen, we're looking at it."</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>apn push <span class="s2">"1F0E7706D1A343BF17615051DB944743F18156C52EFF0F8DD43DDA23F156862A"</span> <span class="nt">-c</span> <span class="s2">"config/apple_push_notification.pem"</span> <span class="nt">-m</span> <span class="s2">"Okay, stand by Thirteen, we're looking at it."</span></code></pre></figure>
 
 <h2>Siguientes pasos</h2>
 
@@ -215,11 +215,11 @@ gem <span class="s1">'houston'</span></code></pre></figure>
 
 <p>En realidad <em>tsquery</em> devolverá todas las registros en los que aparezca el <strong>lexema</strong> que estamos buscando, esto es, si queremos buscar el token del Apolo XIII haríamos una llamada como la siguiente: </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>curl -X GET --user <span class="s2">"GoogleReader:F0r3v3r"</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXIII</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl <span class="nt">-X</span> GET <span class="nt">--user</span> <span class="s2">"GoogleReader:F0r3v3r"</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXIII</code></pre></figure>
 
 <p>Pero si, por ejemplo, quisiéramos buscar el token del Apolo XI:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>curl -X GET --user <span class="s2">"GoogleReader:F0r3v3r"</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXI</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl <span class="nt">-X</span> GET <span class="nt">--user</span> <span class="s2">"GoogleReader:F0r3v3r"</span> http://localhost:3000/devices?q<span class="o">=</span>ApoloXI</code></pre></figure>
 
 <p>Recuperariamos los tokens de los Apolos XI, XII, XIII y XIV. Es más, como la búsqueda se hace en todos los campos de la entidad Device, pudiera ser que recuperáramos algún otro registro más. Por ejemplo, si en vez de misiones espaciales utilizáramos como <em>alias</em> los nombres de las lunas de Jupiter. Al buscar el token de <em>Europe</em>, la consulta nos devolvería el token del alias <em>Europe</em> y el de todos los registros de dispositivos con <em>timezone</em> europeo.</p>
 
@@ -297,7 +297,7 @@ gem <span class="s1">'houston'</span></code></pre></figure>
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>

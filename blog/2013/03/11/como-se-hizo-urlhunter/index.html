@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Como se hizo URLHunter</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -66,7 +66,7 @@
               <p class="published"><i class="fa fa-clock-o"></i>  
               
               
-              8 minutos
+              9 minutos
               
               de lectura
               </p>
@@ -103,15 +103,15 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
   <span class="c">&lt;!--[if lt IE 9]&gt;
   &lt;script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"&gt;&lt;/script&gt;
   &lt;![endif]--&gt;</span>
-  <span class="err">&lt;</span>%= stylesheet_link_tag    "application", :media =&gt; "all" %&gt;
-  <span class="err">&lt;</span>%= javascript_include_tag "application" %&gt;
-  <span class="err">&lt;</span>%= csrf_meta_tags %&gt;
+  <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">stylesheet_link_tag</span>    <span class="err">"</span><span class="na">application</span><span class="err">",</span> <span class="na">:media =</span><span class="err">&gt; </span><span class="s">"all"</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">javascript_include_tag</span> <span class="err">"</span><span class="na">application</span><span class="err">"</span> <span class="err">%</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">csrf_meta_tags</span> <span class="err">%</span><span class="nt">&gt;</span>
   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"span9"</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= yield %&gt;<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"span9"</span><span class="nt">&gt;&lt;</span><span class="err">%=</span> <span class="na">yield</span> <span class="err">%</span><span class="nt">&gt;&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"span3"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;h2&gt;</span>¿Por qué?<span class="nt">&lt;/h2&gt;</span>
       <span class="nt">&lt;p&gt;</span>Porque alguien tenía que hacerlo. Si no, Twitter volvería a cambiar su API para eliminar la funcionalidad de favoritos.<span class="nt">&lt;/p&gt;</span>
@@ -141,9 +141,9 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tweets-with-links"</span><span class="nt">&gt;</span>
-  <span class="err">&lt;</span>% Twitter.user_timeline("objectivec_es", :count =&gt; 10, :exclude_replies =&gt; true).each do |tweet| %&gt;
-    <span class="nt">&lt;blockquote&gt;</span> <span class="err">&lt;</span>%= tweet.text %&gt; <span class="nt">&lt;/blockquote&gt;</span>
-  <span class="err">&lt;</span>% end %&gt;
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="na">Twitter</span><span class="err">.</span><span class="na">user_timeline</span><span class="err">("</span><span class="na">objectivec_es</span><span class="err">",</span> <span class="na">:count =</span><span class="err">&gt; </span><span class="s">10,</span> <span class="na">:exclude_replies =</span><span class="err">&gt; </span><span class="s">true).each</span> <span class="na">do</span> <span class="err">|</span><span class="na">tweet</span><span class="err">|</span> <span class="err">%</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">tweet</span><span class="err">.</span><span class="na">text</span> <span class="err">%</span><span class="nt">&gt;</span> <span class="nt">&lt;/blockquote&gt;</span>
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="na">end</span> <span class="err">%</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>¿Igualito que en iOS, eh? Bueno, cada uno tiene sus virtudes. En cualquier caso, aunque hemos obtenido rapidos resultados no podemos decir que sean <em>bonitos</em>. Lo suyo sería que los hashtags, las menciones y los links tuvieran los vinculos correspondientes. Para eso vamos a utilizar otra gema.</p>
@@ -160,7 +160,7 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
 
 <p>Y en <em>home.html.erb</em> cambiaremos el contenido de la cita por lo siguiente:</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span> <span class="nt">&lt;/blockquote&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;blockquote&gt;</span> <span class="nt">&lt;p&gt;&lt;</span><span class="err">%=</span> <span class="na">auto_link</span><span class="err">(</span><span class="na">tweetlink</span><span class="err">.</span><span class="na">content</span><span class="err">).</span><span class="na">html_safe</span> <span class="err">%</span><span class="nt">&gt;&lt;/p&gt;</span> <span class="nt">&lt;/blockquote&gt;</span></code></pre></figure>
 
 <blockquote>
 <p>Es necesario poner html_safe al final para que Rails interprete que le estamos pasando un texto que contiene etiquetas HTML, si no lo hicieramos las etiquetas se pintarían como si fuera texto plano.</p>
@@ -236,14 +236,14 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tweets-with-links"</span><span class="nt">&gt;</span>
-  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="err">@</span><span class="na">tweetlinks</span><span class="err">.</span><span class="na">each</span> <span class="na">do</span> <span class="err">|</span><span class="na">tweetlink</span><span class="err">|</span> <span class="err">%</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote&gt;</span>
-      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
-      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
-      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
-      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">image_tag</span> <span class="na">tweetlink</span><span class="err">.</span><span class="na">profile_image</span> <span class="err">%</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">tweetlink</span><span class="err">.</span><span class="na">screen_name</span> <span class="err">%</span><span class="nt">&gt;</span> wrote at
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">l</span> <span class="na">DateTime</span><span class="err">.</span><span class="na">parse</span><span class="err">(</span><span class="na">tweetlink</span><span class="err">.</span><span class="na">tweet_created_at</span><span class="err">),</span> <span class="na">:format =</span><span class="err">&gt; </span><span class="s">:long</span> <span class="err">%</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;</span><span class="err">%=</span> <span class="na">auto_link</span><span class="err">(</span><span class="na">tweetlink</span><span class="err">.</span><span class="na">content</span><span class="err">).</span><span class="na">html_safe</span> <span class="err">%</span><span class="nt">&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;/blockquote&gt;</span>
-  <span class="err">&lt;</span>% end %&gt;
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="na">end</span> <span class="err">%</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>Para terminar vamos a incluir paginación, esto reducirá el tiempo de carga de la página y mejorará la usabilidad. Otra vez más, podriamos escribir todo el código necesario para montar una paginación pero con un par de gemas lo podemos dejar solucionado:</p>
@@ -269,18 +269,18 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
 <p>En el layout, indicaremos donde queremos que aparezca el componente de paginación. La gema <em>bootstrap-will_paginate</em> aplica los estilos de Twitter Bootstrap a paginación.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>Todos los links de @objectivec_es<span class="nt">&lt;/h1&gt;</span>
-<span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;
+<span class="nt">&lt;</span><span class="err">%=</span> <span class="na">will_paginate</span> <span class="err">@</span><span class="na">tweetlinks</span> <span class="err">%</span><span class="nt">&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;</span>
-  <span class="err">&lt;</span>% @tweetlinks.each do |tweetlink| %&gt;
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="err">@</span><span class="na">tweetlinks</span><span class="err">.</span><span class="na">each</span> <span class="na">do</span> <span class="err">|</span><span class="na">tweetlink</span><span class="err">|</span> <span class="err">%</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote&gt;</span>
-      <span class="err">&lt;</span>%= image_tag tweetlink.profile_image %&gt;
-      <span class="err">&lt;</span>%= tweetlink.screen_name %&gt; wrote at
-      <span class="err">&lt;</span>%= l DateTime.parse(tweetlink.tweet_created_at), :format =&gt; :long %&gt;
-      <span class="nt">&lt;p&gt;</span><span class="err">&lt;</span>%= auto_link(tweetlink.content).html_safe %&gt;<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">image_tag</span> <span class="na">tweetlink</span><span class="err">.</span><span class="na">profile_image</span> <span class="err">%</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">tweetlink</span><span class="err">.</span><span class="na">screen_name</span> <span class="err">%</span><span class="nt">&gt;</span> wrote at
+      <span class="nt">&lt;</span><span class="err">%=</span> <span class="na">l</span> <span class="na">DateTime</span><span class="err">.</span><span class="na">parse</span><span class="err">(</span><span class="na">tweetlink</span><span class="err">.</span><span class="na">tweet_created_at</span><span class="err">),</span> <span class="na">:format =</span><span class="err">&gt; </span><span class="s">:long</span> <span class="err">%</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;p&gt;&lt;</span><span class="err">%=</span> <span class="na">auto_link</span><span class="err">(</span><span class="na">tweetlink</span><span class="err">.</span><span class="na">content</span><span class="err">).</span><span class="na">html_safe</span> <span class="err">%</span><span class="nt">&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;/blockquote&gt;</span>
-  <span class="err">&lt;</span>% end %&gt;
+  <span class="nt">&lt;</span><span class="err">%</span> <span class="na">end</span> <span class="err">%</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="err">&lt;</span>%= will_paginate @tweetlinks %&gt;</code></pre></figure>
+<span class="nt">&lt;</span><span class="err">%=</span> <span class="na">will_paginate</span> <span class="err">@</span><span class="na">tweetlinks</span> <span class="err">%</span><span class="nt">&gt;</span></code></pre></figure>
 
 <p>Y listo, podríamos seguir incluyendo muchas mejoras y posiblemente es lo que haga en los próximos días pero por el momento... esto es todo.</p>
 
@@ -360,7 +360,7 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>

@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Padrinos y vacunas</title>
-  <meta name="description" content="En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
   <meta name="HandheldFriendly" content="True" />
@@ -109,7 +109,7 @@
 
 <p>Siguiendo la estela de Rails, Padrino tiene generadores que nos vendrán muy bien en diferentes fases del desarrollo. El primero que utilizaremos es el que permite crear el proyecto. </p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g project VacScheduler -t shoulda -e haml -c sass -s jquery -d activerecord -b</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino g project VacScheduler <span class="nt">-t</span> shoulda <span class="nt">-e</span> haml <span class="nt">-c</span> sass <span class="nt">-s</span> jquery <span class="nt">-d</span> activerecord <span class="nt">-b</span></code></pre></figure>
 
 <p>La mejor forma de saber que significan todos estos términos es mirar la <a href="http://www.padrinorb.com/guides/generators">documentación de Padrino sobre los generadores</a>. Yo he puesto todo esto, no porque sea un listillo, sino porque para hacer está aplicación me he fusilado el <a href="http://www.padrinorb.com/guides/blog-tutorial">tutorial sobre como hacer un blog</a>.<br>
 Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para el testing, haml para el renderizado de las páginas, sass para los estilos, jquery para la parte de scripting y activerecord para el orm. Además, cuando termine la creación del proyecto, forzaremos una instalación de las gemas que nos faltan con Bundle.</p>
@@ -118,31 +118,31 @@ Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para 
 
 <p>Una gran diferencia con respecto a Rails es que, en Padrino han pensado que la existencia de un grupo de usuarios encargados de mantener las tablas que forman el modelo de la aplicación es un escenario lo suficientemente habitual como para crear una funcionalidad de Administración. A nosotros esto nos viene genial porque lo que queremos es tener una aplicación que devuelva una versión actualizada de los diferentes calendarios de vacunación y para actualizar esos datos tendremos a un usuario responsable de dicho mantenimiento. Las instrucciones para crear el panel de administración son las siguientes:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g admin --theme warehouse
-<span class="gp">$ </span>bundle install
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino g admin <span class="nt">--theme</span> warehouse
+<span class="nv">$ </span>bundle install
 
-<span class="gp">$ </span>padrino rake ar:create
-<span class="gp">$ </span>padrino rake ar:migrate
-<span class="gp">$ </span>padrino rake seed</code></pre></figure>
+<span class="nv">$ </span>padrino rake ar:create
+<span class="nv">$ </span>padrino rake ar:migrate
+<span class="nv">$ </span>padrino rake seed</code></pre></figure>
 
 <p>Este último paso nos pedirá un correo electrónico y una contraseña para poder acceder al panel de administración. Si después de hacer esto, arrancamos la aplicación podremos ver el bonito panel de administración.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino start</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino start</code></pre></figure>
 
 <h3>Creación de los modelos</h3>
 
 <p>Si estuviéramos en Rails, generaríamos un scaffold. Padrino no tiene scaffold... o si? igual nos llevamos una sorpresa más adelante.<br>
 De momento vamos a crear los modelos de las cinco tablas que forman nuestro modelo de datos.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g model age short_name:string name:string months:integer -a app
-<span class="gp">$ </span>padrino g model calendar name:string country_id:integer -a app
-<span class="gp">$ </span>padrino g model country name:string -a app
-<span class="gp">$ </span>padrino g model event notes:text calendar_id:integer age_id:integer vaccine_id:integer -a app
-<span class="gp">$ </span>padrino g model vaccine short_name:string name:string description:text link_info:string -a app</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino g model age short_name:string name:string months:integer <span class="nt">-a</span> app
+<span class="nv">$ </span>padrino g model calendar name:string country_id:integer <span class="nt">-a</span> app
+<span class="nv">$ </span>padrino g model country name:string <span class="nt">-a</span> app
+<span class="nv">$ </span>padrino g model event notes:text calendar_id:integer age_id:integer vaccine_id:integer <span class="nt">-a</span> app
+<span class="nv">$ </span>padrino g model vaccine short_name:string name:string description:text link_info:string <span class="nt">-a</span> app</code></pre></figure>
 
 <p>y hacemos la migración correspondiente para crear las entidades en la base de datos:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino rake ar:migrate</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino rake ar:migrate</code></pre></figure>
 
 <h3>Modificación de los modelos para incluir las relaciones y validaciones</h3>
 
@@ -185,11 +185,11 @@ De momento vamos a crear los modelos de las cinco tablas que forman nuestro mode
 
 <p>Esto es lo que me ha ganado de Padrino. Las admin_page son unas pantallas de mantenimiento de datos semejantes a las creadas al hacer un scaffold de Rails pero vinculadas al panel de administración. Es decir, que solo serán visibles si estás autenticado en el sistema. Parece una chorrada, pero para hacer esto en Rails hay que picar un poquito.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>padrino g admin_page age
-<span class="gp">$ </span>padrino g admin_page calendar
-<span class="gp">$ </span>padrino g admin_page country
-<span class="gp">$ </span>padrino g admin_page event
-<span class="gp">$ </span>padrino g admin_page vaccine</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino g admin_page age
+<span class="nv">$ </span>padrino g admin_page calendar
+<span class="nv">$ </span>padrino g admin_page country
+<span class="nv">$ </span>padrino g admin_page event
+<span class="nv">$ </span>padrino g admin_page vaccine</code></pre></figure>
 
 <p>Cuando refresquemos, veremos algo tan bonito como esto:</p>
 
@@ -292,7 +292,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
       </div>
       <div class="inner">
         <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">En este blog encontraras cosas de iOS, Ruby on Rails, Padrino, reflexiones informáticas y hasta algo de bricolaje.
+        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 </h2>
         <a href="/" class="btn">Ir a la página principal</a>
       </div>
