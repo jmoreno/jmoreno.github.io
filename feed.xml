@@ -6,8 +6,8 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Nov 2017 16:55:21 +0100</pubDate>
-    <lastBuildDate>Sun, 19 Nov 2017 16:55:21 +0100</lastBuildDate>
+    <pubDate>Sun, 19 Nov 2017 17:59:08 +0100</pubDate>
+    <lastBuildDate>Sun, 19 Nov 2017 17:59:08 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -18,7 +18,7 @@
 
 &lt;!--more--&gt;
 
-&lt;p&gt;La última entrada de este blog se publicó hace ya más de un año. En todo este tiempo he tenido muchas ganas de escribir cosas y contarles pero, como siempre, me he perdido en la configuración en lugar de sentarme directamente a escribir. &lt;/p&gt;
+&lt;p&gt;La última entrada de este blog se publicó hace ya más de un año. En todo este tiempo he tenido muchas ganas de escribir cosas y contarlas pero, como siempre, me he perdido en la configuración en lugar de sentarme directamente a escribir. &lt;/p&gt;
 
 &lt;p&gt;Hoy ha vuelto a pasar lo mismo. Me he levantado con la idea de retomar la escritura y me he puesto a jugar con Jekyll, a desarrollar un plugin que me permita publicar simultáneamente en Medium aquellos textos que sean más indicados para esa plataforma. &lt;/p&gt;
 
