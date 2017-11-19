@@ -128,11 +128,11 @@ task :publicar do
   else
     puts "Algo ha salido mal"
   end
-#   if status
-#     puts "Todo ha ido bien"
-#     puts "\n## Publicando tweet de último post escrito"
-#     Rake::Task[:share_with_twitter].execute
-#   end
+  if status
+    puts "Todo ha ido bien"
+    puts "\n## Publicando tweet de último post escrito"
+    Rake::Task[:share_with_twitter].execute
+  end
   if status
     puts "Todo ha ido bien"
     puts "\n## Publicando en Medium el último post escrito"
