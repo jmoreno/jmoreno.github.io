@@ -6,9 +6,26 @@
 </description>
     <link>http://javimoreno.es/</link>
     <atom:link href="http://javimoreno.es/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 28 Jan 2018 13:22:21 +0100</pubDate>
-    <lastBuildDate>Sun, 28 Jan 2018 13:22:21 +0100</lastBuildDate>
+    <pubDate>Mon, 29 Jan 2018 00:08:28 +0100</pubDate>
+    <lastBuildDate>Mon, 29 Jan 2018 00:08:28 +0100</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+				 
+        <title>Using GitHub Issues for Blog Comments→</title>
+				 
+        <description>&lt;p&gt;En este blog ni se publican artículos ni se suelen poner comentarios pero cada vez que veo algo que me llama la atención tengo que probarlo así que, desde hoy, para comentar en los artículos habrá que tener cuenta en Github en lugar de Disqus. Lo siento por los cuatro o cinco que pusieron comentarios en el pasado... siempre os llevaré en mi corazón.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 28 Jan 2018 23:02:00 +0100</pubDate>
+				 
+        <link>http://artsy.github.io/blog/2017/07/15/Comments-are-on/</link>
+				 
+        <guid isPermaLink="true">http://javimoreno.es/blog/2018/01/28/using-github-issues-for-blog-comments/</guid>
+        
+        
+        <category>Enlaces</category>
+        
+      </item>
     
       <item>
 				 
@@ -441,23 +458,6 @@ Además, al no haber proceso de sincronización de ficheros desde la app tenemos
         
         
         <category>Reflexiones</category>
-        
-      </item>
-    
-      <item>
-				 
-        <title>Cuestiona permanentemente tus fortalezas, por Kim Faura→</title>
-				 
-        <description>&lt;p&gt;No me canso de leer este &lt;em&gt;caso de estudio&lt;/em&gt;. La pena es que no podamos leer la visión de la otra parte. Sería super interesante ver como vivieron la &lt;em&gt;&amp;quot;derrota&amp;quot;&lt;/em&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 10 Aug 2015 17:53:00 +0200</pubDate>
-				 
-        <link>http://kimfaura.es/cuestiona-permanentemente-tus-fortalezas/</link>
-				 
-        <guid isPermaLink="true">http://javimoreno.es/blog/2015/08/10/cuestiona-permanentemente-tus-fortalezas,-por-kim-faura/</guid>
-        
-        
-        <category>Enlaces</category>
         
       </item>
     

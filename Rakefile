@@ -13,8 +13,8 @@ medium_user_id              = "115595d86fa77c73315eee59c5e3db78c1611d9dbd0ec85ad
 
 task :clean_tweet_list do
  
-  if File.exists? ".karmaplugin/tweets.info"
-    File.open(".karmaplugin/tweets.info", 'rb') {|f| @tweets = Marshal::load(f)}
+  if File.exists? ".tweets/tweets.info"
+    File.open(".tweets/tweets.info", 'rb') {|f| @tweets = Marshal::load(f)}
   else
     @tweets = []
   end
@@ -26,7 +26,7 @@ task :clean_tweet_list do
     end
   }
  
-  File.open(".karmaplugin/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
+  File.open(".tweets/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
  
 end 
 
@@ -40,8 +40,8 @@ task :share_with_twitter do
     config.access_token_secret = twitter_access_token_secret
   end
  
-  if File.exists? ".karmaplugin/tweets.info"
-    File.open(".karmaplugin/tweets.info", 'rb') {|f| @tweets = Marshal::load(f)}
+  if File.exists? ".tweets/tweets.info"
+    File.open(".tweets/tweets.info", 'rb') {|f| @tweets = Marshal::load(f)}
   else
     @tweets = []
   end
@@ -54,7 +54,7 @@ task :share_with_twitter do
     end
   }
  
-  File.open(".karmaplugin/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
+  File.open(".tweets/tweets.info", 'wb') {|f| f.write(Marshal.dump(@tweets)) }
  
 end
 
