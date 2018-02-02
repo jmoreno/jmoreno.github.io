@@ -314,14 +314,15 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
 
 
 		<script type="text/javascript">
-	var url = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
-	var api_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
+	var url_repository = "https://github.com/jmoreno/jmoreno.github.io"
+	var url_issue = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
+	var api_comments_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
 	$(document).ready(function () {
-	    $.ajax(api_url, {
+	    $.ajax(api_comments_url, {
 	        headers: {Accept: "application/vnd.github.v3.html+json"},
 	        dataType: "json",
 	        success: function(comments) {
-	            $("comments").append("<br><a href='" + url + "' class='btn'>Comenta en Github</a><p>");
+	            $("comments").append("<hr><h2 class='description'>Los comentarios de este blog se publican en su <a href='" + url_repository + "'>repositorio de Github</a>. Puedes escribir el tuyo <a href='" + url_issue + "'>aquí</a>.</h2>");
 	            $.each(comments, function(i, comment) {
 	
 	                var date = new Date(comment.created_at);
@@ -338,7 +339,7 @@ Actualmente, como para cualquier lenguaje, se puede aprender a programar en COBO
 	            });
 	        },
 	        error: function() {
-	            $("comments").append("Aparentemente este post no admite comentarios...");
+	            $("comments").append("<hr><h2 class='description'>Aparentemente este post no admite comentarios...</h2>");
 	        }
 	    });
 	});
