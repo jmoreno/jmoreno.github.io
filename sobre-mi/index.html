@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,47 +42,62 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	  <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
-		
-		<div class="teaserimage">
-		    <div class="teaserimage-image" style="background-image: url(/assets/images/about.jpg)">
-		        Teaser Image
-		    </div>
-		</div>
-		
 
-		<header class="blog-header">
-		    <h1 class="blog-title">Sobre mi</h1>
-		</header>
+    <!-- content start -->
 
-		<main class="content" role="main">
-			<article class="post">
-		   	<section class="post-content">
-		      	<a name="topofpage"></a>
-		         <p>Mi nombre es Javier Moreno. Me dedico <em>profesionalmente</em> a la informática desde el año 2003 aunque soy Licenciado en Química por la UCM (soy un intruso). Aunque pasé del Amstrad CPC 464 de mi infancia al Pentium MMX que me compre cuando entré en la universidad, he recuperado el tiempo perdido y ahora soy un <em>obseso</em> de la informática y la programación.</p>
+    
+<div class="teaserimage">
+    <div class="teaserimage-image" style="background-image: url(/assets/images/about.jpg)">
+        Teaser Image
+    </div>
+</div>
+
+
+<header class="blog-header">
+    <h1 class="blog-title">Sobre mi</h1>
+</header>
+
+<main class="content" role="main">
+	<article class="post">
+   	<section class="post-content">
+         <p>Mi nombre es Javier Moreno. Me dedico <em>profesionalmente</em> a la informática desde el año 2003 aunque soy Licenciado en Química por la UCM (soy un intruso). Aunque pasé del Amstrad CPC 464 de mi infancia al Pentium MMX que me compre cuando entré en la universidad, he recuperado el tiempo perdido y ahora soy un <em>obseso</em> de la informática y la programación.</p>
 
 <p>Trabajo en el departamento de sistemas de una compañia de seguros y en mi tiempo libre me dedico a hacer a aplicaciones para dispositivos iOS. También intento hacer algo de desarrollo web con Ruby on Rails. Esta fiebre me entró hace cuatro años, cuando nació mi hija María y me compré un iPhone... dos grandes cambios en mi vida.</p>
 
 <p>Antes de eso, mis aficiones principales eran leer, escuchar música (principalmente rock) y tocar el bajo eléctrico. El que más ha sentido mi cambio de hábitos ha sido un Fender Jaguar Bass de color rojo que lleva mucho tiempo sin salir de su funda.</p>
 
-		      </section>   
-			</article>
-		</main>	
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+      </section>   
+	</article>
+</main>	
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -124,5 +140,40 @@
 </script>
 
 
+		<script type="text/javascript">
+	var url_repository = "https://github.com/jmoreno/jmoreno.github.io"
+	var url_issue = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
+	var api_comments_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
+	$(document).ready(function () {
+	    $.ajax(api_comments_url, {
+          headers: {Accept: "application/vnd.github.v3.html+json"},
+	        dataType: "json",
+	        success: function(comments) {
+	            $("comments").append("<hr><h2 class='description'>Los comentarios de este blog se publican en su <a href='" + url_repository + "'>repositorio de Github</a>. Puedes escribir el tuyo <a href='" + url_issue + "'>aquí</a>.</h2>");
+	            $.each(comments, function(i, comment) {
+	
+	                var date = new Date(comment.created_at);
+	
+	                var t = "<blockquote id='gh-comment'>";
+	                t += "<img src='" + comment.user.avatar_url + "' width='24px'>";
+	                t += "<b><a href='" + comment.user.html_url + "'> " + comment.user.login + "</a></b>";
+	                t += " publicó este comentario el ";
+	                t += "<em>" + date.toLocaleDateString() + " a las " + date.toLocaleTimeString() + "</em>";
+	                t += "<div id='gh-comment-hr'></div>";
+	                t += comment.body_html;
+	                t += "</blockquote>";
+	                $("comments").append(t);
+	            });
+	        },
+	        error: function() {
+	            $("comments").append("<hr><h2 class='description'>Aparentemente este post no admite comentarios...</h2>");
+	        }
+	    });
+	});
+</script>
+<noscript>Si quieres ver los comentarios tendrás que activar Javascript.
+</noscript>
+
   </body>
+
 </html>

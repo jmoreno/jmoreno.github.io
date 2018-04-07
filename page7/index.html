@@ -102,7 +102,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2013/03/31/una-decada/" itemprop="url">Una decada</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/31/una-decada/" itemprop="url">Una decada</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -131,7 +131,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2013/03/25/variables-de-entorno-en-rails/" itemprop="url">Variables de entorno en Rails</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/25/variables-de-entorno-en-rails/" itemprop="url">Variables de entorno en Rails</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -158,7 +158,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2013/03/22/send-to-kindle-para-octopress/" itemprop="url">Send to kindle para Octopress</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/22/send-to-kindle-para-octopress/" itemprop="url">Send to kindle para Octopress</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -181,7 +181,7 @@ Segundo, porque me encantaría que la gente clonara el proyecto, hiciera forks, 
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2013/03/12/resacon-en-heroku/" itemprop="url">Resacón en Heroku</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/12/resacon-en-heroku/" itemprop="url">Resacón en Heroku</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -205,7 +205,7 @@ En un primer momento pensé que todo era provocado por unos cambios de ultima ho
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2013/03/11/como-se-hizo-urlhunter/" itemprop="url">Como se hizo URLHunter</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2013/03/11/como-se-hizo-urlhunter/" itemprop="url">Como se hizo URLHunter</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -243,17 +243,17 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
     </nav>
 </main>
 
-
     <!-- content end -->
 
     <!-- footer start -->
 
 <footer class="site-footer">
-	  <a class="page-link" href="/archivo/">Archivo</a>
-            &nbsp;&nbsp;·&nbsp;&nbsp;
     <a class="page-link" href="/sobre-mi/">Sobre mi</a>
             &nbsp;&nbsp;·&nbsp;&nbsp;
-
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
     <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
     <div class="inner">
     	<br>
@@ -307,6 +307,39 @@ Lo primero que hacemos después de crear nuestro nuevo proyecto Rails es instala
 </script>
 
 
+		<script type="text/javascript">
+	var url_repository = "https://github.com/jmoreno/jmoreno.github.io"
+	var url_issue = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
+	var api_comments_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
+	$(document).ready(function () {
+	    $.ajax(api_comments_url, {
+          headers: {Accept: "application/vnd.github.v3.html+json"},
+	        dataType: "json",
+	        success: function(comments) {
+	            $("comments").append("<hr><h2 class='description'>Los comentarios de este blog se publican en su <a href='" + url_repository + "'>repositorio de Github</a>. Puedes escribir el tuyo <a href='" + url_issue + "'>aquí</a>.</h2>");
+	            $.each(comments, function(i, comment) {
+	
+	                var date = new Date(comment.created_at);
+	
+	                var t = "<blockquote id='gh-comment'>";
+	                t += "<img src='" + comment.user.avatar_url + "' width='24px'>";
+	                t += "<b><a href='" + comment.user.html_url + "'> " + comment.user.login + "</a></b>";
+	                t += " publicó este comentario el ";
+	                t += "<em>" + date.toLocaleDateString() + " a las " + date.toLocaleTimeString() + "</em>";
+	                t += "<div id='gh-comment-hr'></div>";
+	                t += comment.body_html;
+	                t += "</blockquote>";
+	                $("comments").append(t);
+	            });
+	        },
+	        error: function() {
+	            $("comments").append("<hr><h2 class='description'>Aparentemente este post no admite comentarios...</h2>");
+	        }
+	    });
+	});
+</script>
+<noscript>Si quieres ver los comentarios tendrás que activar Javascript.
+</noscript>
 
   </body>
 

@@ -102,7 +102,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/" itemprop="url">Publicando en Medium... imágenes!!!</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2016/01/17/publicando-en-medium...-im%C3%A1genes!!!/" itemprop="url">Publicando en Medium... imágenes!!!</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -128,7 +128,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2015/11/22/tasatucoche-2.0/" itemprop="url">TasaTuCoche 2.0</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2015/11/22/tasatucoche-2.0/" itemprop="url">TasaTuCoche 2.0</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -153,7 +153,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/" itemprop="url">Workflow de Editorial para publicar en Medium</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2015/10/14/workflow-de-editorial-para-publicar-en-medium/" itemprop="url">Workflow de Editorial para publicar en Medium</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -178,7 +178,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					    <h2 class="post-title" itemprop="name"><a href="/blog/2015/09/08/me-lo-apunto-para-ver-si-se-cumple" itemprop="url">Me lo apunto para ver si se cumple. </a> <a href="http://twitter.com/earcos/status/374808740652122112" itemprop="url">→</a></h2>
+					    <h2 class="post-title" itemprop="name"><a href="http://twitter.com/earcos/status/374808740652122112" itemprop="url">Me lo apunto para ver si se cumple.  →</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -201,7 +201,7 @@
           <div class="article-item">
             <header class="post-header">
 					 
-					   	<h2 class="post-title" itemprop="name"><a href="/blog/2015/08/31/ibooks-o-kindle/" itemprop="url">iBooks o Kindle</a></h2>
+					   <h2 class="post-title" itemprop="name"><a href="/blog/2015/08/31/ibooks-o-kindle/" itemprop="url">iBooks o Kindle</a></h2>
 					 
             </header>
             <section class="post-content">
@@ -234,17 +234,17 @@
     </nav>
 </main>
 
-
     <!-- content end -->
 
     <!-- footer start -->
 
 <footer class="site-footer">
-	  <a class="page-link" href="/archivo/">Archivo</a>
-            &nbsp;&nbsp;·&nbsp;&nbsp;
     <a class="page-link" href="/sobre-mi/">Sobre mi</a>
             &nbsp;&nbsp;·&nbsp;&nbsp;
-
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
     <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
     <div class="inner">
     	<br>
@@ -298,6 +298,39 @@
 </script>
 
 
+		<script type="text/javascript">
+	var url_repository = "https://github.com/jmoreno/jmoreno.github.io"
+	var url_issue = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
+	var api_comments_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
+	$(document).ready(function () {
+	    $.ajax(api_comments_url, {
+          headers: {Accept: "application/vnd.github.v3.html+json"},
+	        dataType: "json",
+	        success: function(comments) {
+	            $("comments").append("<hr><h2 class='description'>Los comentarios de este blog se publican en su <a href='" + url_repository + "'>repositorio de Github</a>. Puedes escribir el tuyo <a href='" + url_issue + "'>aquí</a>.</h2>");
+	            $.each(comments, function(i, comment) {
+	
+	                var date = new Date(comment.created_at);
+	
+	                var t = "<blockquote id='gh-comment'>";
+	                t += "<img src='" + comment.user.avatar_url + "' width='24px'>";
+	                t += "<b><a href='" + comment.user.html_url + "'> " + comment.user.login + "</a></b>";
+	                t += " publicó este comentario el ";
+	                t += "<em>" + date.toLocaleDateString() + " a las " + date.toLocaleTimeString() + "</em>";
+	                t += "<div id='gh-comment-hr'></div>";
+	                t += comment.body_html;
+	                t += "</blockquote>";
+	                $("comments").append(t);
+	            });
+	        },
+	        error: function() {
+	            $("comments").append("<hr><h2 class='description'>Aparentemente este post no admite comentarios...</h2>");
+	        }
+	    });
+	});
+</script>
+<noscript>Si quieres ver los comentarios tendrás que activar Javascript.
+</noscript>
 
   </body>
 
