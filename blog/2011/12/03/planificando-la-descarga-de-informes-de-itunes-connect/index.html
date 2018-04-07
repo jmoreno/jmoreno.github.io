@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,41 +42,46 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	 <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
+
+    <!-- content start -->
+
     
-    <main class="content" role="main">
-      <article class="post">
-        <div class="noarticleimage">
-          <div class="post-meta">
-					 
-				  	<h1 class="post-title">Planificando la descarga de informes de iTunes Connect</h1>
-				  	 
-          </div>
-        </div>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2011-12-03 16:46"> 03 de diciembre de 2011</time></p>
-              <p class="published"><i class="fa fa-clock-o"></i>  
-              
-              
-              9 minutos
-              
-              de lectura
-              </p>
-            </section>
-          </div>
-        </div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <p>Hace poco me puse con una tarea que tenía pendiente desde el verano: automatizar la descarga de informes del iTunes Connect.</p>
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Planificando la descarga de informes de iTunes Connect</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2011-12-03 16:46"> 03 de diciembre de 2011</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          9 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Hace poco me puse con una tarea que tenía pendiente desde el verano: automatizar la descarga de informes del iTunes Connect.</p>
 
 <p>El 30 de Agosto, en el Apple Developer Connection (en el iOS Developer News también) publicaron esto: <a href="http://developer.apple.com/news/index.php?id=08302011a">Automatically Download iTunes Connect Reports</a>. 
 Lo que nos contaban ahí es que habían desarrollado una nueva herramienta para poder descargar los informes de ventas del iTunes Connect sin tener que acceder a dicho portal. 
@@ -159,7 +165,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
 <span class="c"># set CLASSPATH which should point the this script location</span>
 <span class="c">#</span>
 <span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
-<span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nb">cd</span> <span class="sb">`</span><span class="nb">dirname</span> <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
 <span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
 <span class="c"># set dir where the reports are downloaded to</span>
 <span class="c">#</span>
@@ -171,7 +177,7 @@ Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy
 </span><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
 <span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
 <span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
-<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | wc <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
 <span class="k">then</span>
 <span class="c"># Report is missing so download one</span>
 <span class="c">#</span>
@@ -220,7 +226,7 @@ done</span></code></pre></figure>
 <span class="c"># set CLASSPATH which should point the this script location</span>
 <span class="c">#</span>
 <span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
-<span class="nb">cd</span> <span class="sb">`</span>dirname <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nb">cd</span> <span class="sb">`</span><span class="nb">dirname</span> <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
 <span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
 <span class="c"># set dir where the reports are downloaded to</span>
 <span class="c">#</span>
@@ -231,12 +237,12 @@ done</span></code></pre></figure>
 <span class="k">do</span>
 <span class="c"># set value for last sunday</span>
 <span class="c">#</span>
-<span class="nv">DT_DAY_OF_WEEK</span><span class="o">=</span><span class="sb">`</span>date +%w<span class="sb">`</span>
+<span class="nv">DT_DAY_OF_WEEK</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%w<span class="sb">`</span>
 <span class="nb">let </span><span class="nv">DAYS</span><span class="o">=(</span>WEEK-1<span class="o">)</span><span class="k">*</span>7+DT_DAY_OF_WEEK
 <span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
 <span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
 <span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
-<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | wc <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
 <span class="k">then</span>
 <span class="c"># Report is missing so download one</span>
 <span class="c">#</span>
@@ -249,62 +255,73 @@ java <span class="nt">-cp</span> <span class="nv">$CLASSPATH</span> Autoingestio
 <span class="k">fi
 done</span></code></pre></figure>
 
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
-                </a>
-              
-            
-              
-            
-              
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;u=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
-                </a>
-              
-            
-              
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
-                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
-                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
-                </a>
-              
-            
-          </section>
-          <nav class="post-pagination-next" role="navigation">
-            
-              <a class="next" href="/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/">&larr; Cursores dinámicos y NSCompoundPredicate</a>
-            
-          </nav>
-          <nav class="post-pagination-previous" role="navigation">
-            
-              <a class="previous" href="/blog/2011/10/26/5/">No empezamos muy bien... es difícil sacar tiempo para escribir un blog.  &rarr;</a>
-            
-          </nav>
-          <nav class="post-pagination-clear" role="navigation">
-          </nav>
-				  
-        </footer>
-      </article>
-    </main>
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;u=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/blog/2011/12/03/planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/blog/2012/01/12/cursores-dinamicos-y-nscompoundpredicate/">&larr; Cursores dinámicos y NSCompoundPredicate</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/blog/2011/10/26/5/">No empezamos muy bien... es difícil sacar tiempo para escribir un blog.  &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -380,5 +397,7 @@ done</span></code></pre></figure>
 </script>
 <noscript>Si quieres ver los comentarios tendrás que activar Javascript.
 </noscript>
+
   </body>
+
 </html>

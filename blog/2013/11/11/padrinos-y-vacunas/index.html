@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,41 +42,46 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	 <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
+
+    <!-- content start -->
+
     
-    <main class="content" role="main">
-      <article class="post">
-        <div class="noarticleimage">
-          <div class="post-meta">
-					 
-				  	<h1 class="post-title">Padrinos y vacunas</h1>
-				  	 
-          </div>
-        </div>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-11-11 01:31"> 11 de noviembre de 2013</time></p>
-              <p class="published"><i class="fa fa-clock-o"></i>  
-              
-              
-              8 minutos
-              
-              de lectura
-              </p>
-            </section>
-          </div>
-        </div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <blockquote>
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Padrinos y vacunas</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-11-11 01:31"> 11 de noviembre de 2013</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          8 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <blockquote>
 <p>Le haré una oferta que no podrá rechazar.</p>
 
 <p><strong>Vito Corleone,</strong> <em>El Padrino</em></p>
@@ -119,7 +125,7 @@ Basicamente, hemos creado un proyecto llamado VacScheduler que usa shoulda para 
 <p>Una gran diferencia con respecto a Rails es que, en Padrino han pensado que la existencia de un grupo de usuarios encargados de mantener las tablas que forman el modelo de la aplicación es un escenario lo suficientemente habitual como para crear una funcionalidad de Administración. A nosotros esto nos viene genial porque lo que queremos es tener una aplicación que devuelva una versión actualizada de los diferentes calendarios de vacunación y para actualizar esos datos tendremos a un usuario responsable de dicho mantenimiento. Las instrucciones para crear el panel de administración son las siguientes:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>padrino g admin <span class="nt">--theme</span> warehouse
-<span class="nv">$ </span>bundle install
+<span class="nv">$ </span>bundle <span class="nb">install</span>
 
 <span class="nv">$ </span>padrino rake ar:create
 <span class="nv">$ </span>padrino rake ar:migrate
@@ -222,62 +228,73 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
 
 <p>El código fuente de dicha aplicación lo podéis ver en <a href="https://github.com/jmoreno/VacScheduler">GitHub</a>.</p>
 
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=Padrinos+y+vacunas&amp;url=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
-                </a>
-              
-            
-              
-            
-              
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Padrinos+y+vacunas&amp;u=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
-                </a>
-              
-            
-              
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Padrinos+y+vacunas&amp;url=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
-                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
-                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
-                </a>
-              
-            
-          </section>
-          <nav class="post-pagination-next" role="navigation">
-            
-              <a class="next" href="/blog/2014/01/26/workflows-de-editorial-para-octopress/">&larr; Workflows de Editorial para Octopress</a>
-            
-          </nav>
-          <nav class="post-pagination-previous" role="navigation">
-            
-              <a class="previous" href="/blog/2013/10/05/adios-keynote/">Adios Keynote, hola reveal.js &rarr;</a>
-            
-          </nav>
-          <nav class="post-pagination-clear" role="navigation">
-          </nav>
-				  
-        </footer>
-      </article>
-    </main>
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Padrinos+y+vacunas&amp;url=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Padrinos+y+vacunas&amp;u=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Padrinos+y+vacunas&amp;url=http://javimoreno.es/blog/2013/11/11/padrinos-y-vacunas/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/blog/2014/01/26/workflows-de-editorial-para-octopress/">&larr; Workflows de Editorial para Octopress</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/blog/2013/10/05/adios-keynote/">Adios Keynote, hola reveal.js &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -353,5 +370,7 @@ Ahora es cuando nos aprovechamos de que Padrino está montado sobre Sinatra y es
 </script>
 <noscript>Si quieres ver los comentarios tendrás que activar Javascript.
 </noscript>
+
   </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,41 +42,46 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	 <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
+
+    <!-- content start -->
+
     
-    <main class="content" role="main">
-      <article class="post">
-        <div class="noarticleimage">
-          <div class="post-meta">
-					 
-				  	<h1 class="post-title">Cliente iOS… explotando a NSURLConnection y NSJSONSerialization</h1>
-				  	 
-          </div>
-        </div>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2012-05-28 02:27"> 28 de mayo de 2012</time></p>
-              <p class="published"><i class="fa fa-clock-o"></i>  
-              
-              
-              8 minutos
-              
-              de lectura
-              </p>
-            </section>
-          </div>
-        </div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <p>En la entrada anterior vimos como hacer una web con su API Rest con muy poco esfuerzo. En esta vamos a ver como conectar con ese API Rest con muy poco esfuerzo también. Eso si, vamos a centrarnos solamente en la clase NSURLConnection; la creación de la aplicación, modificación del modelo y del storyboard lo damos por supuesto.</p>
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Cliente iOS… explotando a NSURLConnection y NSJSONSerialization</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2012-05-28 02:27"> 28 de mayo de 2012</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          8 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>En la entrada anterior vimos como hacer una web con su API Rest con muy poco esfuerzo. En esta vamos a ver como conectar con ese API Rest con muy poco esfuerzo también. Eso si, vamos a centrarnos solamente en la clase NSURLConnection; la creación de la aplicación, modificación del modelo y del storyboard lo damos por supuesto.</p>
 
 <!--more-->
 
@@ -95,8 +101,8 @@
 <figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
 <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
-        <span class="c1">// Do any additional setup after loading the view, typically from a nib.
-</span>    <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">editButtonItem</span><span class="p">;</span>
+        <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">editButtonItem</span><span class="p">;</span>
     
     <span class="n">self</span><span class="p">.</span><span class="n">serverURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="n">SERVER_URL</span><span class="p">];</span>
     
@@ -119,15 +125,15 @@
                                              <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestReloadIgnoringLocalCacheData</span>
                                          <span class="n">timeoutInterval</span><span class="o">:</span><span class="n">HTTP_TIMEOUT</span><span class="p">];</span>
 
-    <span class="c1">//ASINCRONOOOOOOOO
-</span>    <span class="n">NSURLConnection</span> <span class="o">*</span><span class="n">connection</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">connectionWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+    <span class="c1">//ASINCRONOOOOOOOO</span>
+    <span class="n">NSURLConnection</span> <span class="o">*</span><span class="n">connection</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">connectionWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">connection</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Connecting..."</span><span class="p">);</span>
-        <span class="c1">// Create the NSMutableData to hold the received data.
-</span>        <span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableData</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+        <span class="c1">// Create the NSMutableData to hold the received data.</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableData</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="c1">// Inform the user that the connection failed.
-</span>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: Unable to create connection."</span><span class="p">);</span>
+        <span class="c1">// Inform the user that the connection failed.</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: Unable to create connection."</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -144,8 +150,8 @@
 
 <figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connection</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span> <span class="nf">didReceiveResponse</span><span class="p">:(</span><span class="n">NSURLResponse</span> <span class="o">*</span><span class="p">)</span><span class="nv">response</span> <span class="p">{</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received response: %@"</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
-    <span class="c1">// It can be called multiple times, for example in the case of a redirect, so each time we reset the data.
-</span>    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="nf">setLength</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="c1">// It can be called multiple times, for example in the case of a redirect, so each time we reset the data.</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="nf">setLength</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>En situaciones normales, solo deberíamos ver una sola vez el método <code>didReceiveResponse</code>, eso quiere decir que el servidor ha aceptado nuestra conexión y va a enviar datos. Si se envía más de un mensaje a este método querrá decir que algo ha ido mal en la conexión y los datos recibidos hasta el momento ya no son válidos. Es por ello que en este método se vuelve a inicializar el NSData.</p>
@@ -158,8 +164,8 @@
 
 <figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connectionDidFinishLoading</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span> <span class="n">connection</span> <span class="p">{</span>
 
-    <span class="c1">// Do the JSON parsing.
-</span>
+    <span class="c1">// Do the JSON parsing.</span>
+
     <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">;</span>
     <span class="n">NSArray</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">JSONObjectWithData</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span>
                                                     <span class="nf">options</span><span class="p">:</span><span class="n">kNilOptions</span>
@@ -176,8 +182,8 @@
     <span class="p">}</span>
 
     <span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-    <span class="c1">//    self.inProgress = NO;
-</span><span class="p">}</span>
+    <span class="c1">//    self.inProgress = NO;</span>
+<span class="p">}</span>
 
 <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">reloadManagedObjectContextWithData</span><span class="o">:</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">data</span> <span class="p">{</span>
     <span class="n">NSManagedObject</span> <span class="o">*</span><span class="n">managedObject</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
@@ -201,62 +207,73 @@
 
 <p>La clase NSFetchedResultsController (una de esas cosas que debemos agradecer al obsoleto iOS 3.0) es la que se va a encargar de mostrar los datos en la pantalla del iPhone. Nosotros, lo único que hemos hecho a la plantilla que ha creado XCode es cambiar los nombres de la entidad y los atributos para adaptarlos a los de nuestra base de datos en servidor. El código fuente de este proyecto lo podréis encontrar en GitHub. Es ligeramente diferente a lo que se ha visto aquí porque incluye el borrado de elementos desde la propia aplicación y código para gestionar la descarga de registros ya grabados.</p>
 
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
-                </a>
-              
-            
-              
-            
-              
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;u=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
-                </a>
-              
-            
-              
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
-                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
-                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
-                </a>
-              
-            
-          </section>
-          <nav class="post-pagination-next" role="navigation">
-            
-              <a class="next" href="/blog/2012/05/28/pintando-rutas-con-mapkit/">&larr; Pintando rutas con MapKit</a>
-            
-          </nav>
-          <nav class="post-pagination-previous" role="navigation">
-            
-              <a class="previous" href="/blog/2012/05/14/una-web-con-ruby-on-rails/">Una web con Ruby on Rails &rarr;</a>
-            
-          </nav>
-          <nav class="post-pagination-clear" role="navigation">
-          </nav>
-				  
-        </footer>
-      </article>
-    </main>
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;u=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/blog/2012/05/28/cliente-ios-e2-80-a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/blog/2012/05/28/pintando-rutas-con-mapkit/">&larr; Pintando rutas con MapKit</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/blog/2012/05/14/una-web-con-ruby-on-rails/">Una web con Ruby on Rails &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -332,5 +349,7 @@
 </script>
 <noscript>Si quieres ver los comentarios tendrás que activar Javascript.
 </noscript>
+
   </body>
+
 </html>

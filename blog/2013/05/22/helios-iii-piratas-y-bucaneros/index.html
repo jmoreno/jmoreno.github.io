@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,41 +42,46 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	 <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
+
+    <!-- content start -->
+
     
-    <main class="content" role="main">
-      <article class="post">
-        <div class="noarticleimage">
-          <div class="post-meta">
-					 
-				  	<h1 class="post-title">Helios III. Piratas y bucaneros.</h1>
-				  	 
-          </div>
-        </div>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-05-22 06:54"> 22 de mayo de 2013</time></p>
-              <p class="published"><i class="fa fa-clock-o"></i>  
-              
-              
-              18 minutos
-              
-              de lectura
-              </p>
-            </section>
-          </div>
-        </div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <blockquote>
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Helios III. Piratas y bucaneros.</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-05-22 06:54"> 22 de mayo de 2013</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          18 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <blockquote>
 <p>El puerto espacial de Mos Eisley. No encontrarás nunca un lugar como éste tan lleno de maldad y vileza. Debemos cuidarnos.  </p>
 
 <p><strong>Star Wars,</strong> <em>Ben Kenobi llegando a Mos Eisley con Luke Skywalker</em></p>
@@ -184,8 +190,8 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 <span class="p">{</span>
     <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
 
-    <span class="c1">// Comprobamos si hay alguna restricción configurada en el device respecto a las In-App Purchases.
-</span>    <span class="k">if</span> <span class="p">([</span><span class="n">SKPaymentQueue</span> <span class="nf">canMakePayments</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// Comprobamos si hay alguna restricción configurada en el device respecto a las In-App Purchases.</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">SKPaymentQueue</span> <span class="nf">canMakePayments</span><span class="p">])</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Puedo hacer pagos In-App"</span><span class="p">);</span>
         <span class="p">[</span><span class="n">self</span> <span class="nf">getProductsInStoreKitDirectlyFromHelios</span><span class="p">];</span>
     <span class="p">}</span>
@@ -259,14 +265,14 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 </span> 
  <span class="k">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">numberOfSectionsInTableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
  <span class="p">{</span>
-     <span class="c1">// Return the number of sections.
-</span>     <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+     <span class="c1">// Return the number of sections.</span>
+     <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
  <span class="p">}</span>
  
  <span class="k">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">numberOfRowsInSection</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span>
  <span class="p">{</span>
-     <span class="c1">// Return the number of rows in the section.
-</span>     <span class="k">return</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">count</span><span class="p">];</span>
+     <span class="c1">// Return the number of rows in the section.</span>
+     <span class="k">return</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">count</span><span class="p">];</span>
  <span class="p">}</span>
  
  <span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath</span><span class="p">:(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
@@ -274,8 +280,8 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
      <span class="k">static</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">CellIdentifier</span> <span class="o">=</span> <span class="s">@"Cell"</span><span class="p">;</span>
      <span class="n">UITableViewCell</span> <span class="o">*</span><span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">CellIdentifier</span> <span class="nf">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">];</span>
      
-     <span class="c1">// Configure the cell...
-</span>     <span class="n">SKProduct</span> <span class="o">*</span><span class="n">product</span> <span class="o">=</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
+     <span class="c1">// Configure the cell...</span>
+     <span class="n">SKProduct</span> <span class="o">*</span><span class="n">product</span> <span class="o">=</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
      
      <span class="n">cell</span><span class="p">.</span><span class="n">textLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">product</span><span class="p">.</span><span class="n">localizedTitle</span><span class="p">;</span>
      <span class="n">cell</span><span class="p">.</span><span class="n">detailTextLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">product</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">;</span>
@@ -292,11 +298,11 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 </span> 
  <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">didSelectRowAtIndexPath</span><span class="p">:(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
  <span class="p">{</span>
-     <span class="c1">// Añadimos el producto que recibimos en el método delegado productsRequest:didReceiveResponse:
-</span>     <span class="n">SKPayment</span> <span class="o">*</span><span class="n">pago</span> <span class="o">=</span> <span class="p">[</span><span class="n">SKPayment</span> <span class="nf">paymentWithProduct</span><span class="p">:[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]];</span>
-     <span class="c1">// Nos añadimos a nosotros mismos como observadores de la transacción.
-</span> <span class="c1">//    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-</span>     <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addPayment</span><span class="p">:</span><span class="n">pago</span><span class="p">];</span>
+     <span class="c1">// Añadimos el producto que recibimos en el método delegado productsRequest:didReceiveResponse:</span>
+     <span class="n">SKPayment</span> <span class="o">*</span><span class="n">pago</span> <span class="o">=</span> <span class="p">[</span><span class="n">SKPayment</span> <span class="nf">paymentWithProduct</span><span class="p">:[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]];</span>
+     <span class="c1">// Nos añadimos a nosotros mismos como observadores de la transacción.</span>
+ <span class="c1">//    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span>
+     <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addPayment</span><span class="p">:</span><span class="n">pago</span><span class="p">];</span>
  <span class="p">}</span></code></pre></figure>
 
 <h2>Que no se pierda ni un recibo.</h2>
@@ -305,8 +311,8 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 
 <figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
 <span class="p">{</span>
-    <span class="c1">// Payment Queue Observation with CargoBay
-</span>    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">setPaymentQueueUpdatedTransactionsBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SKPaymentQueue</span> <span class="o">*</span><span class="n">queue</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Payment Queue Observation with CargoBay</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">setPaymentQueueUpdatedTransactionsBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SKPaymentQueue</span> <span class="o">*</span><span class="n">queue</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Updated Transactions: %@"</span><span class="p">,</span> <span class="n">transactions</span><span class="p">);</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span>
         <span class="p">{</span>
@@ -316,11 +322,11 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
                     <span class="p">[</span><span class="n">self</span> <span class="nf">oneStepVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
                     <span class="k">break</span><span class="p">;</span>
                 <span class="k">case</span> <span class="n">SKPaymentTransactionStateFailed</span><span class="p">:</span>
-                         <span class="c1">// TODO
-</span>                    <span class="k">break</span><span class="p">;</span>
+                         <span class="c1">// TODO</span>
+                    <span class="k">break</span><span class="p">;</span>
                 <span class="k">case</span> <span class="n">SKPaymentTransactionStateRestored</span><span class="p">:</span>
-                         <span class="c1">// TODO
-</span>                    <span class="k">break</span><span class="p">;</span>
+                         <span class="c1">// TODO</span>
+                    <span class="k">break</span><span class="p">;</span>
                 <span class="nl">default:</span>
                     <span class="k">break</span><span class="p">;</span>
             <span class="p">}</span>
@@ -329,8 +335,8 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
     
     <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addTransactionObserver</span><span class="p">:[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]];</span>
     
-    <span class="c1">// Override point for customization after application launch.
-</span>    <span class="p">...</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+    <span class="p">...</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>Cuando la transacción pase a un estado de <em>purchased</em> es cuando deberemos realizar las acciones derivadas de la compra, antes de hacer nada es cuando deberíamos asegurarnos de que el recibo es verdadero. Las dos opciones que tenemos son verificar dentro de la propia aplicación accediendo a un servicio de Apple o llamar a un servicio nuestro que realice ese mismo acceso. Para el primer caso, CargoBay ya nos proporciona un método que realiza esa verificación:</p>
@@ -391,62 +397,73 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 <p>Ojito con las dependencias. No se que versión de Helios, CargoBay y AFNetworking estaréis utilizando pero se nota que estos frameworks se están tocando bastante estos días. Yo he tenido algún problemita que otro a la hora de preparar esta entrada. Nada que un par de horas de cabezazos en la pared no solucionen... ;-)</p>
 </blockquote>
 
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
-                </a>
-              
-            
-              
-            
-              
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+III.+Piratas+y+bucaneros.&amp;u=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
-                </a>
-              
-            
-              
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
-                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
-                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
-                </a>
-              
-            
-          </section>
-          <nav class="post-pagination-next" role="navigation">
-            
-              <a class="next" href="/blog/2013/07/06/markdown/">&larr; Markdown</a>
-            
-          </nav>
-          <nav class="post-pagination-previous" role="navigation">
-            
-              <a class="previous" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Mamá, salgo en un podcast! &rarr;</a>
-            
-          </nav>
-          <nav class="post-pagination-clear" role="navigation">
-          </nav>
-				  
-        </footer>
-      </article>
-    </main>
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+III.+Piratas+y+bucaneros.&amp;u=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/blog/2013/05/22/helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/blog/2013/07/06/markdown/">&larr; Markdown</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/blog/2013/05/21/mama-salgo-en-un-podcast/">Mamá, salgo en un podcast! &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -522,5 +539,7 @@ pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</spa
 </script>
 <noscript>Si quieres ver los comentarios tendrás que activar Javascript.
 </noscript>
+
   </body>
+
 </html>

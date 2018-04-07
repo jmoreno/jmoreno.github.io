@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
   <meta charset="utf-8">
   <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
@@ -41,47 +42,52 @@
 
 
 </head>
-  <body itemscope itemtype="http://schema.org/Article">
-	 <!-- header start -->
+
+  <body>
+
+    <!-- header start -->
 
 <!-- header end -->
+
+    <!-- content start -->
+
     
-	 <div class="teaserimage">
-    	<div class="teaserimage-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">
-        Teaser Image
-    	</div>
-	 </div>
-    
-    <main class="content" role="main">
-      <article class="post">
-        <div class="noarticleimage">
-          <div class="post-meta">
-					 
-				  	<h1 class="post-title">Octoberry Pi Reloaded</h1>
-				  	 
-          </div>
-        </div>
-        <div class="bottom-teaser cf">
-          <div class="isLeft">
-            <section class="author">
-              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
-              <h4>Javi</h4>
-              <p class="bio"></p>
-              <hr>
-              <p class="published"><i class="fa fa-calendar"></i><time datetime="2015-01-12 00:31"> 12 de enero de 2015</time></p>
-              <p class="published"><i class="fa fa-clock-o"></i>  
-              
-              
-              7 minutos
-              
-              de lectura
-              </p>
-            </section>
-          </div>
-        </div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <p>Desde que escribí <a href="/blog/2014/04/07/octoberry-pi/">Octoberry Pi</a> tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar <em>cron</em> pero hasta estas navidades no he terminado de dejarlo listo.</p>
+<div class="teaserimage">
+	<div class="teaserimage-image" style="background-image: url(/assets/images/octoberry_pi_reloaded.jpg)">
+    Teaser Image
+	</div>
+</div>
+
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Octoberry Pi Reloaded</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2015-01-12 00:31"> 12 de enero de 2015</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          7 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Desde que escribí <a href="/blog/2014/04/07/octoberry-pi/">Octoberry Pi</a> tenía pensado hacer algo para no publicar inmediatamente lo que hubiera escrito  y hacerlo a horas menos intempestivas que lo suele ser habitual ya que suelo terminar de escribir de madrugada. La solución pasaba por usar <em>cron</em> pero hasta estas navidades no he terminado de dejarlo listo.</p>
 
 <!--more-->
 
@@ -137,7 +143,7 @@
 
 <span class="nb">set</span> <span class="nt">-e</span>
 ./Dropbox-Uploader/dropbox_uploader.sh download /drafts/Blog ./drafts/
-mv ./drafts/Blog/<span class="k">*</span>.markdown ./blog/_posts
+<span class="nb">mv</span> ./drafts/Blog/<span class="k">*</span>.markdown ./blog/_posts
 <span class="nb">cd </span>blog
 /home/pi/.rvm/gems/ruby-2.1.0/bin/rake publicar</code></pre></figure>
 
@@ -178,62 +184,73 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
 
 <p><em>Imagen de cabecera obtenida de <a href="http://www.resplashed.com/"><strong>re</strong>:splashed</a></em></p>
 
-        </section>
-        <footer class="post-footer">
-          <section class="share">
-            
-              
-                <a class="icon-twitter" href="http://twitter.com/share?text=Octoberry+Pi+Reloaded&amp;url=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
-                  onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-                <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
-                </a>
-              
-            
-              
-            
-              
-                <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Octoberry+Pi+Reloaded&amp;u=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
-                  onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-                <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
-                </a>
-              
-            
-              
-                <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Octoberry+Pi+Reloaded&amp;url=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
-                  onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
-                <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
-                </a>
-              
-            
-          </section>
-          <nav class="post-pagination-next" role="navigation">
-            
-              <a class="next" href="/blog/2015/02/04/pebble-soporte-tecnico/">&larr; Pebble, soporte técnico</a>
-            
-          </nav>
-          <nav class="post-pagination-previous" role="navigation">
-            
-              <a class="previous" href="/blog/2015/01/04/empatia-por-el-diablo/">Empatía por el diablo &rarr;</a>
-            
-          </nav>
-          <nav class="post-pagination-clear" role="navigation">
-          </nav>
-				  
-        </footer>
-      </article>
-    </main>
-        <div class="bottom-closer">
-      <div class="background-closer-image"  style="background-image: url(/assets/images/cover-rails.jpg)">
-        Image
-      </div>
-      <div class="inner">
-        <h1 class="blog-title">Javi Moreno</h1>
-        <h2 class="blog-description">Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
-</h2>
-        <a href="/" class="btn">Ir a la página principal</a>
-      </div>
-    </div>
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Octoberry+Pi+Reloaded&amp;url=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Octoberry+Pi+Reloaded&amp;u=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Octoberry+Pi+Reloaded&amp;url=http://javimoreno.es/blog/2015/01/12/octoberry-pi-reloaded/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/blog/2015/02/04/pebble-soporte-tecnico/">&larr; Pebble, soporte técnico</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/blog/2015/01/04/empatia-por-el-diablo/">Empatía por el diablo &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
 
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
 <script type="text/javascript" src="/assets/js/index.js"></script>
@@ -309,5 +326,7 @@ in:/usr/local/games:/usr/games:/opt/node/bin:/home/pi/.rvm/bin:/home/pi/.rvm/bin
 </script>
 <noscript>Si quieres ver los comentarios tendrás que activar Javascript.
 </noscript>
+
   </body>
+
 </html>
