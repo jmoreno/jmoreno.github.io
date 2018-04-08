@@ -49,10 +49,18 @@
 
 <!-- header end -->
 
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/lecturas/">Fichas de Lectura</a>
+	<a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
     <!-- content start -->
 
     <div class="teaserimage">
-    <div class="teaserimage-image" style="background-image: url(/assets/images/cover-rails.jpg)">
+    <div class="teaserimage-image" style="background-image: url(/assets/images/lego_bricks.jpeg)">
         Teaser Image
     </div>
 </div>
@@ -287,7 +295,7 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
         if (top < 0 || top > 1500) { return; }
         $image
           .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
-          .css('opacity', 1-Math.max(top/700, 0));
+          .css('opacity', 1-Math.max(top/500, 0));
       });
       $window.trigger('scroll');
 
@@ -309,41 +317,19 @@ Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras ap
   });
 }(jQuery));
 </script>
-
-
-		<script type="text/javascript">
-	var url_repository = "https://github.com/jmoreno/jmoreno.github.io"
-	var url_issue = "https://github.com/jmoreno/jmoreno.github.io/issues/" + ''
-	var api_comments_url = "https://api.github.com/repos/jmoreno/jmoreno.github.io/issues/" + '' + "/comments"
-	$(document).ready(function () {
-	    $.ajax(api_comments_url, {
-          headers: {Accept: "application/vnd.github.v3.html+json"},
-	        dataType: "json",
-	        success: function(comments) {
-	            $("comments").append("<hr><h2 class='description'>Los comentarios de este blog se publican en su <a href='" + url_repository + "'>repositorio de Github</a>. Puedes escribir el tuyo <a href='" + url_issue + "'>aquí</a>.</h2>");
-	            $.each(comments, function(i, comment) {
-	
-	                var date = new Date(comment.created_at);
-	
-	                var t = "<blockquote id='gh-comment'>";
-	                t += "<img src='" + comment.user.avatar_url + "' width='24px'>";
-	                t += "<b><a href='" + comment.user.html_url + "'> " + comment.user.login + "</a></b>";
-	                t += " publicó este comentario el ";
-	                t += "<em>" + date.toLocaleDateString() + " a las " + date.toLocaleTimeString() + "</em>";
-	                t += "<div id='gh-comment-hr'></div>";
-	                t += comment.body_html;
-	                t += "</blockquote>";
-	                $("comments").append(t);
-	            });
-	        },
-	        error: function() {
-	            $("comments").append("<hr><h2 class='description'>Aparentemente este post no admite comentarios...</h2>");
-	        }
-	    });
-	});
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
 </script>
-<noscript>Si quieres ver los comentarios tendrás que activar Javascript.
-</noscript>
+
+
+		
 
   </body>
 
