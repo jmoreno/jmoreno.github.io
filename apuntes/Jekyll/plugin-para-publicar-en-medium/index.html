@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Plugin para publicar en Medium</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/apuntes/Jekyll/plugin-para-publicar-en-medium/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    <header class="blog-header">
+    <h1 class="blog-title">Plugin para publicar en Medium</h1>
+</header>
+
+<main class="content" role="main">
+	<article class="post">
+   	<section class="post-content">
+	   	<blockquote>Un plugin para poder publicar en Medium determinados artículos al mismo tiempo que los publicaba en el blog.</blockquote>
+      <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Medium</span>
+
+  <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+
+    <span class="c1"># code to call after Jekyll renders a post</span>
+
+    <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="s2">".medium/posts.info"</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".medium/posts.info"</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+    <span class="k">else</span>
+      <span class="vi">@posts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">end</span>
+
+    <span class="k">unless</span> <span class="n">post</span><span class="p">[</span><span class="s1">'keywords'</span><span class="p">].</span><span class="nf">nil?</span>
+      <span class="k">if</span> <span class="n">post</span><span class="p">[</span><span class="s1">'keywords'</span><span class="p">].</span><span class="nf">kind_of?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">post</span><span class="p">[</span><span class="s1">'keywords'</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"Medium"</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">configuration</span><span class="p">({})[</span><span class="s1">'url'</span><span class="p">]</span>
+        <span class="n">permalink</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="n">post</span><span class="p">.</span><span class="nf">url</span> 
+
+        <span class="n">post_posted</span> <span class="o">=</span> <span class="vi">@posts</span><span class="p">.</span><span class="nf">detect</span> <span class="p">{</span><span class="o">|</span><span class="n">post</span><span class="o">|</span> <span class="n">post</span><span class="p">[</span><span class="s2">"permalink"</span><span class="p">]</span> <span class="o">==</span> <span class="n">permalink</span> <span class="p">}</span>
+
+        <span class="k">if</span> <span class="o">!</span><span class="p">(</span><span class="n">post_posted</span><span class="p">)</span>
+          <span class="n">post</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"permalink"</span> <span class="o">=&gt;</span> <span class="n">permalink</span><span class="p">,</span> <span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'title'</span><span class="p">],</span> <span class="s2">"content"</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">.</span><span class="nf">content</span><span class="p">,</span> <span class="s2">"response"</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">}</span>
+          <span class="vi">@posts</span> <span class="o">&lt;&lt;</span> <span class="n">post</span>
+        <span class="k">end</span>             
+
+        <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".medium/posts.info"</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="no">Marshal</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="vi">@posts</span><span class="p">))</span> <span class="p">}</span>
+
+      <span class="k">end</span>
+
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div>
+<p>Y en el fichero rakefile hay una tarea para automatizar la publicación en Medium:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">medium_integration_token</span>    <span class="o">=</span> <span class="s2">"YOUR_MEDIUM_INTEGRATION_TOKEN"</span>
+<span class="n">medium_user_id</span>              <span class="o">=</span> <span class="s2">"YOUR_MEDIUM_USER_ID"</span>
+
+<span class="n">task</span> <span class="ss">:publish_on_medium</span> <span class="k">do</span>
+
+  <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="s2">".medium/posts.info"</span>
+    <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".medium/posts.info"</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Marshal</span><span class="o">::</span><span class="nb">load</span><span class="p">(</span><span class="n">f</span><span class="p">)}</span>
+  <span class="k">else</span>
+    <span class="vi">@posts</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="vi">@posts</span><span class="p">.</span><span class="nf">each</span><span class="p">{</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+    <span class="k">if</span> <span class="n">post</span><span class="p">[</span><span class="s2">"response"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">""</span>
+      <span class="nb">puts</span> <span class="s2">"Publicando en Medium: "</span> <span class="o">+</span> <span class="n">post</span><span class="p">[</span><span class="s2">"title"</span><span class="p">]</span>
+      <span class="n">content</span> <span class="o">=</span> <span class="s2">"&lt;h1&gt;</span><span class="si">#{</span><span class="n">post</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/h1&gt;</span><span class="si">#{</span><span class="n">post</span><span class="p">[</span><span class="s1">'content'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+
+      <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://api.medium.com/v1/users/</span><span class="si">#{</span><span class="n">medium_user_id</span><span class="si">}</span><span class="s2">/posts"</span><span class="p">)</span>
+
+      <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">uri</span><span class="p">.</span><span class="nf">port</span><span class="p">,</span> <span class="ss">:use_ssl</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">http</span><span class="o">|</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="p">{</span><span class="s2">"Authorization"</span> <span class="o">=&gt;</span> <span class="s2">"Bearer </span><span class="si">#{</span><span class="n">medium_integration_token</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+        <span class="n">request</span><span class="p">.</span><span class="nf">set_form_data</span><span class="p">(</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">[</span><span class="s1">'title'</span><span class="p">],</span> <span class="s1">'contentFormat'</span> <span class="o">=&gt;</span> <span class="s1">'html'</span><span class="p">,</span> <span class="s1">'content'</span> <span class="o">=&gt;</span> <span class="n">content</span><span class="p">,</span> <span class="s1">'canonicalUrl'</span> <span class="o">=&gt;</span> <span class="n">post</span><span class="p">[</span><span class="s1">'permalink'</span><span class="p">],</span> <span class="s1">'publishStatus'</span> <span class="o">=&gt;</span> <span class="s1">'public'</span><span class="p">,</span> <span class="s1">'notifyFollowers'</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span> <span class="n">request</span> <span class="c1"># Net::HTTPResponse object</span>
+        <span class="n">post</span><span class="p">[</span><span class="s1">'response'</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+      <span class="k">end</span>
+
+    <span class="k">end</span>
+  <span class="p">}</span>
+
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">".medium/posts.info"</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="no">Marshal</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="vi">@posts</span><span class="p">))</span> <span class="p">}</span>
+
+<span class="k">end</span>
+</code></pre></div>
+    </section>   
+	</article>
+</main>	
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>
