@@ -8,7 +8,7 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sobre este blog</title>
+  <title>Comandos útiles</title>
   <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
 " />
 
@@ -17,7 +17,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="canonical" href="http://javimoreno.es/rarezas/sobre-este-blog/">
+  <link rel="canonical" href="http://javimoreno.es/apuntes/Unix/comandos-%C3%BAtiles/">
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
@@ -51,66 +51,35 @@
 
     <div class="topnav" id="myTopnav">
 	<a class="brand" href="/">Javi Moreno</a>
-  <a href="/lecturas/">Fichas de Lectura</a>
-	<a href="/archivo/">Archivo</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
   <a href="/sobre-mi/">Sobre mi</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 
     <!-- content start -->
 
-    
-<div class="teaserimage">
-    <div class="teaserimage-image" style="background-image: url(/assets/images/about.jpg)">
-        Teaser Image
-    </div>
-</div>
-
-
-<header class="blog-header">
-    <h1 class="blog-title">Sobre este blog</h1>
+    <header class="blog-header">
+    <h1 class="blog-title">Comandos útiles</h1>
 </header>
 
 <main class="content" role="main">
 	<article class="post">
    	<section class="post-content">
-         <p>Este blog está realizado con <a href="http://jekyllrb.com/">Jekyll</a>, un generador de páginas web estáticas desarrollado en Ruby.<br>
-Sobre la configuración por defecto he realizado algunas modificaciones mínimas a los estilos e incorporado algunos <em>plugins</em> y fragmentos HTML.</p>
+	   	<blockquote>Algunos comandos útiles en entorno Unix (Mac, Rasberry pi,...)</blockquote>
+      <h2>Comandos útiles</h2>
 
-<p>Por si os interesan, estos son los añadidos:</p>
-
-<h2>1. Fragmentos HTML</h2>
-
-<ul>
-<li>Disqus: para gestionar los comentarios</li>
-<li>Google Analytics: para llorar un poco con la presencia del blog en internet.</li>
-<li>Compartir enlaces: para incluir el botón de Karmacracy y el de Twitter.</li>
-</ul>
-
-<h2>2. Plugins</h2>
-
-<ul>
-<li>i18n: permite traducir algunas variables de Jekyll, como las fecha de publicación.</li>
-<li>karmacracy: este es de cosecha propia. Acorta las url´s de los artículos para el tweet de publicación de nuevas entradas.</li>
-<li>slideshare: para incrustar presentaciones de Slideshare en los artículos.</li>
-<li>tweet_tag: para incrustar tweets en los artículos.</li>
-<li>vimeo: para incrustar videos de vimeo en los artículos.</li>
-</ul>
-
-<h2>3. Octopress 3.0</h2>
-
-<p>Octopress ha dejado de ser un generador de blogs basado en Jekyll y ahora es un conjunto de plugins que facilitan el mantenimiento de un blog hecho con Jekyll.
-Estos son los que se usan en este blog:</p>
-
-<ul>
-<li>Octopress 3.0: incluye ayudas para el mantenimiento del blog (creación de entradas, borradores) pero, sobre todo, simplifica enormemente el proceso de publicación en Github Pages.</li>
-<li>Octopress Solarized: modifica el css del código fuente encastrado dentro de los artículos.</li>
-<li>Octopress Quote Tag: facilita la creación de citas en los artículos.</li>
-<li>Octopress Blockquote: aunque estoy empezando a usar más la etiqueta <code>highligth</code> de Jekyll, todavía quedan unos cuantos artículos de la época en la que este blog estaba hecho en Octopress 2.0</li>
-<li>Octopress Linkblog: simplifica la creación de artículos en los que comento otros artículos o web. </li>
-</ul>
-
-      </section>   
+<p><code>chown</code> permite cambiar el propietario de un fichero. Esto es util cuando tienes un script dentro de la carpeta de usuario y quieres que se ejecute en un cron.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo chown </span>root:root /home/pi/scripts/publicar.sh
+</code></pre></div>
+<h3>Para listar el contenido del mail:</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">tail</span> /var/mail/pi
+</code></pre></div>
+<h3>Para ver el log del sistema:</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">tail</span> /var/log/syslog
+</code></pre></div>
+    </section>   
 	</article>
 </main>	
 
