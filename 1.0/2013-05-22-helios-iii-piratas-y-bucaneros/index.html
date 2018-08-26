@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Helios III. Piratas y bucaneros.</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2013-05-22-helios-iii-piratas-y-bucaneros/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Helios III. Piratas y bucaneros.</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-05-22 06:54"> 22 de mayo de 2013</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          18 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <blockquote>
+<p>El puerto espacial de Mos Eisley. No encontrarás nunca un lugar como éste tan lleno de maldad y vileza. Debemos cuidarnos.  </p>
+
+<p><strong>Star Wars,</strong> <em>Ben Kenobi llegando a Mos Eisley con Luke Skywalker</em></p>
+</blockquote>
+
+<p>Para esta tercera entrega volvemos a basarnos en unos artículos de Rafa Aguilar (aka <a href="http://twitter.com/rais38">@rais38</a>), recien publicados en <a href="http://objective-c.es">Objective-C.es</a>, donde primero nos explica las <a href="http://objective-c.es/in-app-purchases-en-ios-parte-1/">categorías y tipos de In-App Purchases</a> y después <a href="http://objective-c.es/in-app-purchases-en-ios-parte-2/">nos enseña con un ejemplo</a> lo sencillo que es incorporar a una aplicación esta excelente fuente de ingresos.<br>
+Nosotros aquí vamos a ver como simplifica CargoBay el uso de IAP en nuestras aplicaciones y también a verificar si la compra se ha realizado correctamente por el método más seguro: un servidor con Helios.</p>
+
+<!--more-->
+
+<p>He de reconocer que a medida que he ido avanzando en el análisis de Helios he ido apreciando la bien que esta planteado y lo que puede suponer para un desarrollador que se quiera aventurar en la creación de su propio backend. Cierto es que la primera parte, la que replica el modelo Core Data en el servidor me parece que está todavía un poco floja, así como la sincronización entre los dispositivos y el backend. El soporte para notificaciones push está bien, todavía le queda camino que recorrer pero es un buen punto de partida si quieres tener tu propio gestor de notificaciones. Pero con CargoBay y Venice, la gestión de las compras dentro de la aplicación se simplifican una barbaridad. </p>
+
+<p>CargoBay es una pequeña librería de Mattt Thompson (del que no hemos hablado prácticamente nada en este blog) que facilita la gestión de estas transacciones al reducir a unos pocos métodos con bloques la recuperación de productos, comprobación del estado de la compra así como la verificación del recibo siguiendo las recomendaciones de Apple para evitar los fraudes en este tipo de compras. </p>
+
+<p>Venice, es la gema que incluye Helios para realizar la verificación del recibo en servidor (otra recomendación de Apple para evitar fraudes). La otra funcionalidad que ofrece esta gema es devolver un listado de identificadores de IAP, esto será muy útil cuando queramos cambiar la oferta de productos en nuestra aplicación sin tener que actualizar la aplicación vía iTunes Connect. Para poder utilizar esta funcionalidad, nuestra aplicación debe estar preparada para trabajar con todos los productos que le vayan a llegar por este servicio.</p>
+
+<p>Con todo lo que ya sabemos gracias a Rafa, vamos a crear una aplicación que nos permita contratar los servicios de los piratas y cazarecompensas que habitan Mos Eisley. Sabemos que nadie es de fiar en este lugar así que mejor que incluyamos un sistema de verificación de las compras o nuestro jefe nos terminará dando de comer a un sarlacc (algo muy doloroso ya que recordemos que su digestión dura más de mil años).</p>
+
+<p>Para probar algunas bondades de CargoBay vamos a hacer lo siguiente: En iTunes Connect vamos a crear las siguientes IAP tal y como nos ha <a href="">contado Rafa</a>:</p>
+
+<p>Producto          | Identificador                             |
+----------------- | ----------------------------------------- |
+Han Solo          | com.cytdevteam.MosEisley.HanSolo
+Chewbacca         | com.cytdevteam.MosEisley.Chewbacca
+Millennium Falcon | com.cytdevteam.MosEisley.MillenniumFalcon
+Modal Nodes       | com.cytdevteam.MosEisley.ModalNodes          </p>
+
+<p>En nuestro repositorio de productos de Helios vamos a crear estos cuatro productos y dos más:      </p>
+
+<p>Producto          | Identificador                             |
+----------------- | ----------------------------------------- |
+Han Solo          | com.cytdevteam.MosEisley.HanSolo
+Chewbacca         | com.cytdevteam.MosEisley.Chewbacca
+Millennium Falcon | com.cytdevteam.MosEisley.MillenniumFalcon
+Modal Nodes       | com.cytdevteam.MosEisley.ModalNodes
+Greedo            | com.cytdevteam.MosEisley.Greedo
+Boba Fett         | com.cytdevteam.MosEisley.BobaFett         </p>
+
+<p>Si echamos un vistazo a la documentación de Helios, veremos que los únicos métodos que ofrece para In-App Purchases son un GET de productos y un POST para comprobar recibos... ¿Cómo grabamos entonces los productos en la tabla? pues como graban los hombres, con SQL directamente sobre la base de datos.</p>
+
+<p>Creamos un nuevo fichero <em>HeliosTasks.rake</em> en nuestro proyecto para poder lanzarlo tanto en local como en servidor de forma manual y escribimos lo siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">namespace</span> <span class="ss">:HeliosTasks</span> <span class="k">do</span>
+  <span class="n">desc</span> <span class="s2">"TODO"</span>
+  <span class="n">task</span> <span class="ss">:loadIdentifiers</span> <span class="o">=&gt;</span> <span class="ss">:environment</span> <span class="k">do</span>
+    <span class="nb">require</span> <span class="s1">'pg'</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">pw</span><span class="p">)</span>
+      <span class="no">PGconn</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'localhost'</span><span class="p">,</span> <span class="mi">5432</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">pw</span><span class="p">)</span> 
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">populate_products</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+      <span class="n">sql</span> <span class="o">=</span> <span class="s2">"DELETE FROM in_app_purchase_products;  -- empty contents of table
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (1, 'com.cytdevteam.MosEisley.HanSolo', 'Consumable', 'Han Solo', 'Han Solo The One And Only', 0.99, 'USD', 't');
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (2, 'com.cytdevteam.MosEisley.Chewbacca', 'Consumable', 'Chewbacca', 'Chewbacca', 0.99, 'USD', 't');
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (3, 'com.cytdevteam.MosEisley.MillenniumFalcon', 'Consumable', 'Millennium Falcon', 'Millennium Falcon', 4.99, 'USD', 't');
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (4, 'com.cytdevteam.MosEisley.ModalNodes', 'Consumable', 'Modal Nodes', 'A real Modal Nodes` gig', 4.99, 'USD', 't');
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (5, 'com.cytdevteam.MosEisley.Greedo', 'Consumable', 'Greedo', 'A coward that shot first', 4.99, 'USD', 't');
+             INSERT INTO in_app_purchase_products (id, product_identifier, type, title, description, price, price_locale, is_enabled) 
+                           VALUES (6, 'com.cytdevteam.MosEisley.BobaFett', 'Consumable', 'Boba Fett', 'He is no good to me dead', 4.99, 'USD', 't');"</span>
+      <span class="n">conn</span><span class="p">.</span><span class="nf">exec</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">begin</span>
+      <span class="n">conn</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="s1">'databaseName'</span><span class="p">,</span><span class="s1">'username'</span><span class="p">,</span><span class="s1">'password'</span><span class="p">)</span>
+      <span class="nb">puts</span> <span class="s2">"Connected to </span><span class="si">#{</span><span class="n">conn</span><span class="p">.</span><span class="nf">db</span><span class="si">}</span><span class="s2"> at </span><span class="si">#{</span><span class="n">conn</span><span class="p">.</span><span class="nf">host</span><span class="si">}</span><span class="s2">"</span>
+      <span class="n">populate_products</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>  
+    <span class="k">rescue</span> <span class="no">PGError</span><span class="o">=&gt;</span><span class="n">e</span> 
+      <span class="nb">puts</span> <span class="s2">"Oh Oh!"</span><span class="p">,</span> <span class="n">e</span>
+    <span class="k">ensure</span>
+      <span class="n">conn</span><span class="p">.</span><span class="nf">close</span> <span class="k">unless</span> <span class="n">conn</span><span class="p">.</span><span class="nf">nil?</span>
+      <span class="nb">puts</span> <span class="s2">"Connection closed"</span> 
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>No creo que os cueste mucho ver lo que hace: establece una conexión con la base de datos y a continuación borra e inserta seis registros. Si hubiera algún error saldría por la consola.</p>
+
+<p>Si ahora escribimos en un navegador <a href="http://localhost:3000/products/identifiers">http://localhost:3000/products/identifiers</a></p>
+
+<p>veríamos algo como esto:</p>
+
+<p><img src="http://javimoreno.es/assets/photos/2013/jsonResponse.png" alt=""></p>
+
+<p>Ya hemos creado todas las IAP en iTunes Connect (que coñazo) y hemos insertado los productos que vamos a ofrecer en nuestro servidor. Es el momento de liarnos la manta a la cabeza con la aplicación.</p>
+
+<p>Nos vamos a basar en la plantilla de Master-Detail con ARC, Storyboards y Core Data. La primera lista serán las compras que hayamos realizado. En Storyboard añadiremos un nuevo navigation controller con un UITableViewController donde mostraremos los productos que se pueden comprar a través del App Store. </p>
+
+<p>Si a estas alturas todavía no usas CocoaPods deberías hacerlo, es la forma más fácil de gestionar las librerías de terceros que usas en tus aplicaciones. En este caso, nuestro podfile incluirá AFNetworking, CargoBay y NSData+Base64:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">platform :ios, <span class="s1">'5.0'</span>
+pod <span class="s1">'AFNetworking'</span>, <span class="s1">'~&gt; 1.2'</span>
+pod <span class="s1">'CargoBay'</span>, <span class="s1">'~&gt; 0.3.2'</span>
+pod <span class="s1">'NSData+Base64'</span>, <span class="s1">'~&gt; 1.0.0'</span></code></pre></figure>
+
+<h2>Un pequeño expositor.</h2>
+
+<p>Ya sabemos que lo primero que hay que hacer es comprobar si nuestra aplicación tiene permiso para hacer compras dentro de la aplicación. En caso afirmativo podremos acceder a nuestros servidores para recuperar la información de los productos que tenemos a la venta:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+
+    <span class="c1">// Comprobamos si hay alguna restricción configurada en el device respecto a las In-App Purchases.</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">SKPaymentQueue</span> <span class="nf">canMakePayments</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Puedo hacer pagos In-App"</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">getProductsInStoreKitDirectlyFromHelios</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Control parental activado"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Para cargar el UITableView del viewController de productos necesitamos un array de productos. Toda la información del producto tal y como está en iTunes Connect la podemos obtener a través de StoreKit pero CargoBay nos proporciona unos métodos con bloques que recuperan está información. Podemos hacerlo de dos formas: recuperando primero la lista de identificadores y después pasándole esta lista al método correspondiente:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getProductsIdentifiersInHelios</span>
+<span class="p">{</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://localhost:3000/products/identifiers/"</span><span class="p">];</span>
+    <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">AFJSONRequestOperation</span> <span class="nf">JSONRequestOperationWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">id</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">getProductsInStoreKitFromArray</span><span class="p">:</span><span class="n">JSON</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span><span class="p">,</span> <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">,</span> <span class="n">id</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+    
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getProductsInStoreKitFromArray</span><span class="o">:</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">array</span>
+<span class="p">{</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">productsWithIdentifiers</span><span class="p">:[</span><span class="n">NSSet</span> <span class="nf">setWithArray</span><span class="p">:</span><span class="n">array</span><span class="p">]</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">products</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">invalidIdentifiers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_productsArray</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableArray</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithCapacity</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">);</span>
+        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+    <span class="p">}];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>O bien, si tenemos la certeza que el servicio ya nos devuelve los datos en una array únicamente con los identificadores (que es como espera CargoBay que se lo pasemos), podemos hacerlo todo en un único método:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">getProductsInStoreKitDirectlyFromHelios</span>
+<span class="p">{</span>
+    
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://localhost:3000/products/identifiers/"</span><span class="p">];</span>
+    <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">productsWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">products</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">invalidIdentifiers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Products: %@"</span><span class="p">,</span> <span class="n">products</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Invalid Identifiers: %@"</span><span class="p">,</span> <span class="n">invalidIdentifiers</span><span class="p">);</span>
+        <span class="n">_productsArray</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">arrayWithArray</span><span class="p">:</span><span class="n">products</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="nf">reloadData</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">description</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>En cualquiera de los dos casos, el resultado del log será el siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">2013-05-15 16:14:48.275 MosEisley[3242:c07] Products: <span class="o">(</span>
+    <span class="s2">"&lt;SKProduct: 0x77ad230&gt;"</span>,
+    <span class="s2">"&lt;SKProduct: 0x82a5ab0&gt;"</span>,
+    <span class="s2">"&lt;SKProduct: 0x8267f70&gt;"</span>,
+    <span class="s2">"&lt;SKProduct: 0x8263400&gt;"</span>
+<span class="o">)</span>
+2013-05-15 16:14:48.275 MosEisley[3242:c07] Invalid Identifiers: <span class="o">(</span>
+    <span class="s2">"com.cytdevteam.MosEisley.Greedo"</span>,
+    <span class="s2">"com.cytdevteam.MosEisley.BobaFett"</span>
+<span class="o">)</span></code></pre></figure>
+
+<p>Es decir, hemos recuperado seis registros de nuestro servidor de los cuales cuatro son productos correctos en iTunes Connect y dos no lo son. Solo mostraremos los productos correctos:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#pragma mark - Table view data source
+</span> 
+ <span class="k">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">numberOfSectionsInTableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
+ <span class="p">{</span>
+     <span class="c1">// Return the number of sections.</span>
+     <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="p">}</span>
+ 
+ <span class="k">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">numberOfRowsInSection</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span><span class="nv">section</span>
+ <span class="p">{</span>
+     <span class="c1">// Return the number of rows in the section.</span>
+     <span class="k">return</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">count</span><span class="p">];</span>
+ <span class="p">}</span>
+ 
+ <span class="k">-</span> <span class="p">(</span><span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">cellForRowAtIndexPath</span><span class="p">:(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
+ <span class="p">{</span>
+     <span class="k">static</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">CellIdentifier</span> <span class="o">=</span> <span class="s">@"Cell"</span><span class="p">;</span>
+     <span class="n">UITableViewCell</span> <span class="o">*</span><span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:</span><span class="n">CellIdentifier</span> <span class="nf">forIndexPath</span><span class="p">:</span><span class="n">indexPath</span><span class="p">];</span>
+     
+     <span class="c1">// Configure the cell...</span>
+     <span class="n">SKProduct</span> <span class="o">*</span><span class="n">product</span> <span class="o">=</span> <span class="p">[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
+     
+     <span class="n">cell</span><span class="p">.</span><span class="n">textLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">product</span><span class="p">.</span><span class="n">localizedTitle</span><span class="p">;</span>
+     <span class="n">cell</span><span class="p">.</span><span class="n">detailTextLabel</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">product</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">;</span>
+     <span class="k">return</span> <span class="n">cell</span><span class="p">;</span>
+ <span class="p">}</span></code></pre></figure>
+
+<p>Esta será, más o menos, la imagen de nuestro expositor:</p>
+
+<p><img src="http://javimoreno.es/assets/photos/2013/productsViewController.png" alt=""></p>
+
+<p>Para realizar las compras, CargoBay no tiene ninguna utilidad desarrollada por el momento, la única diferencia con el tutorial de Rafa es que el observer no es necesario incluirlo aquí ya que lo vamos a hacer en el <code>(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code> para que gestiones no solo estas compras si no también las compras que pudieran haber quedado pendientes al cerrar la aplicación:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#pragma mark - Table view delegate
+</span> 
+ <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">tableView</span><span class="p">:(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">didSelectRowAtIndexPath</span><span class="p">:(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span>
+ <span class="p">{</span>
+     <span class="c1">// Añadimos el producto que recibimos en el método delegado productsRequest:didReceiveResponse:</span>
+     <span class="n">SKPayment</span> <span class="o">*</span><span class="n">pago</span> <span class="o">=</span> <span class="p">[</span><span class="n">SKPayment</span> <span class="nf">paymentWithProduct</span><span class="p">:[</span><span class="n">_productsArray</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">]];</span>
+     <span class="c1">// Nos añadimos a nosotros mismos como observadores de la transacción.</span>
+ <span class="c1">//    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];</span>
+     <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addPayment</span><span class="p">:</span><span class="n">pago</span><span class="p">];</span>
+ <span class="p">}</span></code></pre></figure>
+
+<h2>Que no se pierda ni un recibo.</h2>
+
+<p>Tal y como acabamos de comentar, el <em>observer</em> de la cola de pagos lo vamos a incluir en <code>(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</code> para que no se pierda ni una sola operación. Además incluimos el bloque que se llamará cada vez que haya alguna actualización de una transacción:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+<span class="p">{</span>
+    <span class="c1">// Payment Queue Observation with CargoBay</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">setPaymentQueueUpdatedTransactionsBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">SKPaymentQueue</span> <span class="o">*</span><span class="n">queue</span><span class="p">,</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">transactions</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Updated Transactions: %@"</span><span class="p">,</span> <span class="n">transactions</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="n">transaction</span> <span class="k">in</span> <span class="n">transactions</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="n">transaction</span><span class="p">.</span><span class="n">transactionState</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">case</span> <span class="n">SKPaymentTransactionStatePurchased</span><span class="p">:</span>
+                    <span class="p">[</span><span class="n">self</span> <span class="nf">oneStepVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="n">SKPaymentTransactionStateFailed</span><span class="p">:</span>
+                         <span class="c1">// TODO</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="n">SKPaymentTransactionStateRestored</span><span class="p">:</span>
+                         <span class="c1">// TODO</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="nl">default:</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+    
+    <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">addTransactionObserver</span><span class="p">:[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]];</span>
+    
+    <span class="c1">// Override point for customization after application launch.</span>
+    <span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Cuando la transacción pase a un estado de <em>purchased</em> es cuando deberemos realizar las acciones derivadas de la compra, antes de hacer nada es cuando deberíamos asegurarnos de que el recibo es verdadero. Las dos opciones que tenemos son verificar dentro de la propia aplicación accediendo a un servicio de Apple o llamar a un servicio nuestro que realice ese mismo acceso. Para el primer caso, CargoBay ya nos proporciona un método que realiza esa verificación:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">oneStepVerification</span><span class="p">:(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="p">)</span><span class="nv">transaction</span>
+<span class="p">{</span>
+    <span class="p">[[</span><span class="n">CargoBay</span> <span class="nf">sharedManager</span><span class="p">]</span> <span class="nf">verifyTransaction</span><span class="p">:</span><span class="n">transaction</span> <span class="nf">password</span><span class="p">:</span><span class="nb">nil</span> <span class="n">success</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">receipt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">serverSideVerification</span><span class="p">:</span><span class="n">transaction</span><span class="p">];</span>
+    <span class="p">}</span> <span class="n">failure</span><span class="o">:^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error %d (%@)"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">code</span><span class="p">],</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Es de sobra conocido que tanto las IAP son fácilmente <em>pirateables</em> y aunque la verificación desde la propia aplicación aumenta la seguridad de nuestras ventas, también son conocidos los casos en los que esta verificación también ha sido <em>hackeada</em>. La otra utilidad de Venice es la realización de esta misma verificación en nuestro servidor:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">serverSideVerification</span><span class="p">:(</span><span class="n">SKPaymentTransaction</span> <span class="o">*</span><span class="p">)</span><span class="nv">transaction</span>
+<span class="p">{</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://localhost:3000/receipts/verify"</span><span class="p">];</span>
+    <span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableURLRequest</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPMethod</span><span class="p">:</span><span class="s">@"POST"</span><span class="p">];</span>
+    
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">paths</span> <span class="o">=</span> <span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSDocumentDirectory</span><span class="p">,</span> <span class="n">NSUserDomainMask</span><span class="p">,</span> <span class="nb">YES</span><span class="p">);</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">documentsDirectory</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">appFile</span> <span class="o">=</span> <span class="p">[</span><span class="n">documentsDirectory</span> <span class="nf">stringByAppendingPathComponent</span><span class="p">:</span><span class="s">@"TransactionReceipt"</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">transaction</span><span class="p">.</span><span class="n">transactionReceipt</span> <span class="nf">writeToFile</span><span class="p">:</span><span class="n">appFile</span> <span class="nf">atomically</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+    
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"receipt-data=%@"</span><span class="p">,</span> <span class="p">[</span><span class="n">transaction</span><span class="p">.</span><span class="n">transactionReceipt</span> <span class="nf">base64EncodedString</span><span class="p">]];</span>
+    <span class="n">NSData</span> <span class="o">*</span><span class="n">httpBody</span> <span class="o">=</span> <span class="p">[</span><span class="n">params</span> <span class="nf">dataUsingEncoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPBody</span><span class="p">:</span><span class="n">httpBody</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">sendAsynchronousRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">queue</span><span class="p">:[</span><span class="n">NSOperationQueue</span> <span class="nf">mainQueue</span><span class="p">]</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span><span class="n">response</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">200</span> <span class="o">||</span> <span class="n">httpResponse</span><span class="p">.</span><span class="n">statusCode</span> <span class="o">==</span> <span class="mi">203</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">id</span> <span class="n">receipt</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">JSONObjectWithData</span><span class="p">:</span><span class="n">data</span>
+                                                         <span class="nf">options</span><span class="p">:</span><span class="mi">0</span>
+                                                           <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received receipt: %@"</span><span class="p">,</span> <span class="n">receipt</span><span class="p">);</span>
+            <span class="p">[[</span><span class="n">SKPaymentQueue</span> <span class="nf">defaultQueue</span><span class="p">]</span> <span class="nf">finishTransaction</span><span class="p">:</span> <span class="n">transaction</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Body: %@"</span><span class="p">,</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithData</span><span class="p">:</span><span class="n">data</span> <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">]);</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>En el ejemplo de nuestra aplicación realizamos primero la verificación desde nuestra aplicación y posteriormente nos aseguramos repitiendo la verificación en nuestro servidor. Quizá sería más práctico hacerlo al revés: primero en nuestro servidor y si, por algún motivo, no hemos podido realizar la verificación hacerla desde nuestra aplicación como segunda opción.</p>
+
+<p>Ah, podemos dormir tranquilos. La verificación desde nuestro servidor deja registro para que podamos hacernos una idea del volumen de nuestras compras... y a lo mejor sorprender a algún tunante:</p>
+
+<p><img src="http://javimoreno.es/assets/photos/2013/helios-panel-admin.png" alt=""></p>
+
+<p>A partir de aquí, si la compra ha sido correcta, podemos insertar el registro en nuestra base de datos que le informa a la aplicación que la compra ha sido registrada con éxito. En el ejemplo de Rafa, en este momento habría que descargar la canción.</p>
+
+<p>Por esta vez nada más, si habéis leído los anteriores notaréis que esta vez estoy más entusiasmado con la funcionalidad de Helios. No me he pegado mucho con StoreKit, tan solo con la versión pro de una aplicación, pero la verdad es que ahora si que tengo claro que usaré CargoBay y con toda seguridad haré la verificación en servidor con Venice... aunque haya que tocar algo el código base.</p>
+
+<blockquote>
+<p>Ojito con las dependencias. No se que versión de Helios, CargoBay y AFNetworking estaréis utilizando pero se nota que estos frameworks se están tocando bastante estos días. Yo he tenido algún problemita que otro a la hora de preparar esta entrada. Nada que un par de horas de cabezazos en la pared no solucionen... ;-)</p>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/1.0/2013-05-22-helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+III.+Piratas+y+bucaneros.&amp;u=http://javimoreno.es/1.0/2013-05-22-helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+III.+Piratas+y+bucaneros.&amp;url=http://javimoreno.es/1.0/2013-05-22-helios-iii-piratas-y-bucaneros/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2013-07-06-markdown/">&larr; Markdown</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2013-05-21-mama-salgo-en-un-podcast/">Mamá, salgo en un podcast! &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Octoberry Pi</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2014-04-07-octoberry-pi/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Octoberry Pi</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2014-04-07 09:30"> 07 de abril de 2014</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          8 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Octopress mola pero también tiene sus limitaciones. No es que yo sea un gran comunicador que está publicando artículos continuamente pero a veces he echado de menos no poder publicar algo más rápidamente o a una hora concreta.<br>
+Octopress es un blog estático que se genera mediante unos scripts desarrollados en Ruby y que usa git para publicar en GitHub Pages, Heroku o sitios similares. Por eso normalmente se necesita un PC/mac.<br>
+Quizá haya que ser muy friky para preferir hacer todo lo que voy a contar ahora y no usar wordpress pero, como dijo Steve McQueen en Los Siete Magníficos:</p>
+
+<blockquote>
+<p>Lo nuestro es el plomo.</p>
+</blockquote>
+
+<p>Claro, que un poco más adelante, en la misma película también dijo:</p>
+
+<blockquote>
+<p>En aquel momento parecía una buena idea.</p>
+</blockquote>
+
+<!--more-->
+
+<p>Este año, los Reyes Magos me trajeron una Raspberry Pi. Si ya se que ya no está tan de moda pero después de una conversación con <a href="http://twitter.com/jdortiz">Jorge Ortiz</a> allá por Octubre me picó el gusanillo de usar este dispositivo para hacer pruebas de configuración de un servidor Rails. Después, pensando en lo poco que consume, que puede estar siempre encendido, que soporta ssh,… pensé que a lo mejor esta era la forma de poder publicar cosas en el blog cuando no estuviera en casa. </p>
+
+<h2>Organización: Borradores y Blog.</h2>
+
+<p>Supongo que ya lo sabréis pero Octopress se apoya mucho en git. Inicialmente pensé en tener toda la carpeta del proyecto en Dropbox para que estuviera sincronizado el contenido tanto en la Raspberry, como en el Mac, el iPhone o el iPad. Si esto funcionaba, lo único que tendría que hacer cuando hubiera terminado de escribir algo sería entrar en la RPi y hacer el <strong>deploy</strong> desde allí.<br>
+No fue una buena idea, primero porque la RPi no es el más rápido de los dispositivos y segundo porque la carpeta de un proyecto Octopress con la rama <strong>source</strong> tiene un número de ficheros que tiende a infinito y Dropbox es genial excepto cuando tienes un número muy grande de ficheros.<br>
+El plan B fue tener una carpeta en Dropbox para los borradores, tener el repositorio del blog sincronizado también con la Raspberry y mover los <strong>borradores</strong> al proyecto cuando fuera a publicar algo.</p>
+
+<h2>Crear una carpeta de borradores en Dropbox.</h2>
+
+<p>Prácticamente todos los editores markdown que hay tanto para iPhone, como para iPad como para Mac permiten guardar en Dropbox. En mi caso particular uso iA Writer en el iPhone, Editorial en el iPad y nvAlt, iA Writer o Textmate en el Mac (según me de). En todos estos editores puedo escribir los artículos, en el iPad y en el Mac además puedo hacer la <strong>postprodución</strong> del post, es decir la maquetación y uso de los plugins que aporta Octopress para que las entradas queden más vitaminadas. Además, el tener todo en Dropbox me permite empezar a escribir en el Mac, seguir escribiendo en el iPhone mientras voy en el Metro y terminar de maquetar en el iPad (porque mola mucho usar Editorial).</p>
+
+<p>Para poder usar Dropbox en la Raspberry me basé en <a href="http://raspi.tv/2013/how-to-use-dropbox-with-raspberry-pi">esta entrada</a>. Es importante destacar que Dropbox en la Raspberry todavía no funciona (y no se si algún día funcionará) como funciona en nuestros dispositivos habituales: no hay sincronización. <a href="https://github.com/andreafabrizi/Dropbox-Uploader">Dropbox Uploader</a> lo que permite es descargar, subir, borrar, crear directorios y demás historias pero la sincronización es algo que, si lo quieres, te lo tienes que currar tu. En mi caso, con la descarga de Dropbox a la Raspberry es suficiente.</p>
+
+<h2>GitHub, Bitbucket y ramas remotas.</h2>
+
+<p>Aunque este blog está hospedado en GitHub, el repositorio completo (Octopress consta de dos ramas: <strong>master</strong> y <strong>source</strong>) está alojado en Bitbucket. No es que tenga nada que ocultar, simplemente que tengo cosas a medio escribir que no me apetece que se vean hasta que estén terminadas. 
+Para poder usar Octopress en la Raspberry Pi si ya tienes el blog en algún repositorio remoto, lo único que hay que hacer es crear una clave ssh en la Raspberry (<a href="https://help.github.com/articles/generating-ssh-keys">en GitHub tienen muy buenos tutoriales de como hacerlo</a>), vincular esta clave tanto al repositorio de Bitbucket como al de GitHub y disfrutar: ya podemos clonar, hacer pull, hacer push y todas esas cosas que hacen que Octopress mole tanto. Como a todos los efectos es una nueva instalación. Cuando clonamos el proyecto tenemos que hacer el &quot;bundle install&quot; y volver a configurar el sistema de despliegue. Con las <a href="http://octopress.org/docs/deploying/">instrucciones del sitio de Octopress</a> es más que suficiente.</p>
+
+<h2>El proceso de publicación.</h2>
+
+<p>Creo que todavía no lo había dicho pero en todo momento he estado accediendo a la Raspberry vía ssh. Si usas git y octopress no deberías tenerle ningún miedo al terminal por lo que acceder vía ssh al dispositivo no será tampoco un problema. Para facilitarme un poco la tarea me he creado una serie de scripts para las situaciones que me puedo encontrar con más frecuencia:</p>
+
+<ol>
+<li>Descargar los borradores y previsualizar</li>
+<li>Publicar lo que haya en la Raspberry</li>
+<li>Descargar los borradores y publicar</li>
+<li>Descargar el repositorio y previsualizar</li>
+<li>Descargar el repositorio y publicar</li>
+</ol>
+
+<p>En todos los casos, después de publicar se hace commit en el repositorio y se suben los cambios a los servidores remotos.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+<span class="nb">mv</span> ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
+<span class="nb">set</span> <span class="nt">-e</span>
+<span class="nb">cd </span>blog
+rake generate
+rake deploy
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con quickpost.sh"</span>
+git push origin <span class="nb">source</span></code></pre></figure>
+
+<p>El script anterior descarga los ficheros que estén en la carpeta de <em>borradores</em>. A continuación, mueve los ficheros con extensión <em>markdown</em> a la carpeta donde se guardan los artículos en Octopress. Acto seguido genera la nueva versión del blog y lo publica. Para que los cambios sean accesibles desde cualquier lugar hace <code>commit</code>en la rama source y la sube al repositorio remoto. Por supuesto, cualquiera de estos pasos puede fallar. Si eso sucede el script se detiene y aquí no ha pasado nada.</p>
+
+<p>El resto de scripts, giran sobre la misma idea, en algunos casos se detienen en la generación y hacen un preview, en otros casos lo que hacen es hacer un <code>pulo</code> al repositorio remoto,…</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
+<span class="nb">cd </span>blog
+git pull origin <span class="nb">source
+</span>rake generate
+rake deploy
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con gitpost.sh”
+git push origin source</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
+./Dropbox-Uploader/dropbox_uploader.sh download ./drafts/
+<span class="nb">mv</span> ./drafts/<span class="k">*</span>.markdown ./blog/source/_posts
+<span class="nb">cd </span>blog
+rake generate
+rake preview</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
+<span class="nb">cd </span>blog
+rake generate
+rake deploy
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Nuevo publicación con quickdeploy.sh"</span>
+git push origin <span class="nb">source</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nt">-e</span>
+<span class="nb">cd </span>blog
+git pull origin <span class="nb">source
+</span>rake generate
+rake preview</code></pre></figure>
+
+<h2>Wherever I may roam</h2>
+
+<p>Y aquí llega el punto por el que decidí montar todo este tinglado: tenemos el repositorio del blog clonado en la Raspberry Pi, hemos creado una serie de scripts para facilitar el proceso de descarga y publicación. Para poder publicar en cualquier momento y allá donde nos encontremos solo nos faltan dos cosas: poder acceder a la Raspberry desde fuera de la red local y tener una aplicación en el iPhone o en el iPad que permitan hacer un ssh.</p>
+
+<p>Lo primero lo he resuelto con <a href="http://www.noip.com">no-ip</a> un servicio gratuito que mediante la instalación de un paquete en la Raspberry y la configuración de una cuenta nos permite acceder a nuestra red como si de un servicio web se tratara. Ya no recuerdo cual es el tutorial que usé yo para configurarlo pero cualquiera que aparece al buscar “no-ip raspberry” en Google valdrá. Es algo extremadamente sencillo.</p>
+
+<p>Y para lo segundo, hacía ya bastante tiempo que le había echado el ojo a <a href="https://itunes.apple.com/es/app/prompt/id421507115?mt=8">Prompt</a> de la gente de <a href="http://www.panic.com">Panic</a>. Quizá sea una aplicación cara (cuesta 7€) pero cumple su cometido a la perfección.</p>
+
+<h2>Conclusión.</h2>
+
+<p>Puede parecer una solución muy rebuscada pero cualquiera que se anime a repetir mis pasos encontrará que el proceso es muy sencillo.<br>
+Sobre el exceso de “ingeniería” para publicar el blog, la única disculpa que puedo poner es que Octopress/Jekyll me gusta mucho y quiero que sea mi sistema de blogging durante mucho tiempo. No le hago ascos a otros sistemas como Tumblr (y algún proyecto tengo por ahí que saldrá mediante ese servicio) o Medium (bastante de moda ahora) pero Octopress sigue siendo mi favorito. Además, llevo tiempo pensado en darle un giro al blog y tener una manera de publicar artículos esté donde esté o de forma “programada” mediante <code>crontab</code> me daría mucha agilidad.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Octoberry+Pi&amp;url=http://javimoreno.es/1.0/2014-04-07-octoberry-pi/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Octoberry+Pi&amp;u=http://javimoreno.es/1.0/2014-04-07-octoberry-pi/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Octoberry+Pi&amp;url=http://javimoreno.es/1.0/2014-04-07-octoberry-pi/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2014-11-19-motivacion-al-poder/">&larr; Motivación al poder</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2014-04-04-tweets-automaticos-con-octopress/">Tweets automáticos con Octopress &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>

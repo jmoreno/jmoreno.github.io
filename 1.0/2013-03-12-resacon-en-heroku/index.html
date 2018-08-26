@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Resacón en Heroku</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2013-03-12-resacon-en-heroku/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Resacón en Heroku</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-03-12 02:15"> 12 de marzo de 2013</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          4 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Como era de esperar, el debut de <a href="http://urlhunter-314159.herokuapp.com">URLHunter</a> ha tenido alguna incidencia.<br>
+En un primer momento pensé que todo era provocado por unos cambios de ultima hora que tuve que hacer en los tipos de campo de la entidad <em>Tweetlinks</em> al pasar de SQLite a PostgreSQL pero no, el problema ha sido de programador despistado.</p>
+
+<!--more-->
+
+<p>Este es el método que se encarga de la grabación de los tweets en el modelo. Según el API de Twitter, cada tweet retweeteado estará contenido dentro de otro tweet. El tweet <em>padre</em> siempre pertenecerá al usuario que hace el retweet mientras que la información original estará en el anidado. Esta es la razón por la que al preguntar si el tweet es en realidad un retweet hay que hacer una sustitución del objeto <em>tweet</em>. El problema ha sido que la comprobación de que el tweet_id no existe en la tabla se hacía antes del cambio por lo que, en realidad, el que se terminaba grabando siempre era otro.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+ <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweet?</span>
+     <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweeted_status</span>
+   <span class="k">end</span>
+   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">urls</span><span class="p">.</span><span class="nf">any?</span>
+     <span class="n">create!</span><span class="p">(</span>
+         <span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+         <span class="ss">content: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">text</span><span class="p">,</span>
+         <span class="ss">screen_name: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">screen_name</span><span class="p">,</span>
+         <span class="ss">profile_image: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">profile_image_url</span><span class="p">,</span>
+         <span class="ss">tweet_created_at: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">created_at</span><span class="p">,</span>
+     <span class="p">)</span>
+   <span class="k">end</span>
+ <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Este sería el código correcto:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">insert_tweet</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+ <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweet?</span>
+   <span class="n">tweet</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">retweeted_status</span>
+ <span class="k">end</span>
+ <span class="k">unless</span> <span class="n">exists?</span><span class="p">(</span><span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span>
+   <span class="k">if</span> <span class="n">tweet</span><span class="p">.</span><span class="nf">urls</span><span class="p">.</span><span class="nf">any?</span>
+     <span class="n">create!</span><span class="p">(</span>
+         <span class="ss">tweet_id: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+         <span class="ss">content: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">text</span><span class="p">,</span>
+         <span class="ss">screen_name: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">screen_name</span><span class="p">,</span>
+         <span class="ss">profile_image: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">profile_image_url</span><span class="p">,</span>
+         <span class="ss">tweet_created_at: </span><span class="n">tweet</span><span class="p">.</span><span class="nf">created_at</span><span class="p">,</span>
+     <span class="p">)</span>
+   <span class="k">end</span>
+ <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>A veces sucede que un error compensa a otro error y esto es lo que ha pasado esta vez. Al incluir la paginación, se me olvido incluir un criterio de ordenación en la query correspondiente. Debido a esto, el orden de presentación era por inserción (ascendente). En la carga inicial se recuperan 200 tweets pero se empiezan a insertar de más reciente a más antiguo. Posteriormente, cada llamada a la página recupera los nuevos tweets y si corresponde insertarlos los inserta.<br>
+A lo largo de la mañana se podía ver como el número de páginas iba subiendo de seis hasta once que es a lo que ha llegado hasta que he podido hacer un pequeño arreglo en Heroku. Básicamente las cinco nuevas páginas contenían el mismo tweet, en concreto el RT de mi tweet de presentación... vamos un debut lamentable ;-)</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">home</span>
+
+  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">page: </span><span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">])</span>
+
+  <span class="vi">@tweetlinks</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">pull_tweets</span>
+
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># index.html.erb</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@tweetlinks</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<p>Este sería la forma correcta:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">home</span>
+
+  <span class="vi">@tweetlinks</span> <span class="o">=</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">paginate</span><span class="p">(</span><span class="ss">page: </span><span class="n">params</span><span class="p">[</span><span class="ss">:page</span><span class="p">]).</span><span class="nf">order</span><span class="p">(</span><span class="s1">'tweet_id DESC'</span><span class="p">)</span>
+
+  <span class="vi">@tweetlinks</span><span class="p">.</span><span class="nf">empty?</span> <span class="p">?</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">first_time</span> <span class="p">:</span> <span class="no">Tweetlink</span><span class="p">.</span><span class="nf">pull_tweets</span>
+
+  <span class="n">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nb">format</span><span class="o">|</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">html</span> <span class="c1"># index.html.erb</span>
+    <span class="nb">format</span><span class="p">.</span><span class="nf">json</span> <span class="p">{</span> <span class="n">render</span> <span class="ss">json: </span><span class="vi">@tweetlinks</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+<span class="k">end</span></code></pre></figure>
+
+<h2>¿Cómo lo he podido arreglar sin tocar el código?</h2>
+
+<p>Una vez identificado el problema, y viendo que los amigos de <a href="http://twitter.com/ObjectiveC_es">@ObjectiveC_es</a> habían tweeteado algún enlace más lo único que había que hacer era hacer un rollback de la base de datos, borrarla completamente y volverla a crear. La primera carga de la base de datos recuperaría hasta un tweet normal y mientras no hicieran otro retweet de un enlace no se volvería a producir el problema.</p>
+
+<p>Por los pelos, la próxima vez seré más prudente y hare una beta. :-)</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Resac%C3%B3n+en+Heroku&amp;url=http://javimoreno.es/1.0/2013-03-12-resacon-en-heroku/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Resac%C3%B3n+en+Heroku&amp;u=http://javimoreno.es/1.0/2013-03-12-resacon-en-heroku/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Resac%C3%B3n+en+Heroku&amp;url=http://javimoreno.es/1.0/2013-03-12-resacon-en-heroku/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2013-03-22-send-to-kindle-para-octopress/">&larr; Send to kindle para Octopress</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2013-03-11-como-se-hizo-urlhunter/">Como se hizo URLHunter &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>
