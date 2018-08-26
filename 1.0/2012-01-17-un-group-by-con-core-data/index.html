@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Un "group by" con Core Data</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2012-01-17-un-group-by-con-core-data/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Un "group by" con Core Data</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2012-01-17 02:33"> 17 de enero de 2012</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          2 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Cuando se trabaja con bases de datos siempre llega un momento en el que hay que hacer algo más complejo que recuperar datos de forma directa y manipularlos. Saber cual es el registro que tiene el valor más alto o más bajo en una propiedad en concreto; identificar los valores diferentes que tienen una propiedad; etc, son situaciones que, aunque no sean cotidianas, vamos a tener que enfrentarnos con ellas.</p>
+
+<!--more-->
+
+<p>Si nos basamos en el ejemplo que utilizamos en la entrada anterior, podría ser de utilidad conocer que colores de pelo diferentes o que colores de ojos tenemos en nuestra base de datos. Con SQL esto se suele hacer con la clausulas &quot;distinct&quot; o &quot;group by&quot;. La clausula <em>distinct _ahora mismo está en desuso y si bien no es 100 % equivalente a la clausula _group by</em> si que es cierto que los resultados obtenidos son análogos.</p>
+
+<p>En Cocoa, si tienes una base de datos sqlite puedes hacer perfectamente un group by y gestionar los resultados. Sin embargo, hay una forma más sencilla de hacerlo: con <em>Key-value coding</em> (en adelante KVC) que no solo sirve para los objetos de Core Data si no también para arrays de diccionarios y objetos que estén preparados para KVC. Para ello usaremos los <em>operadores de colección</em>.</p>
+
+<p>Un array con el color de pelo de los individuos de nuestra base de datos se obtendría así:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">NSArray</span> <span class="o">*</span><span class="n">coloresDePelo</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrayDeIndividuos</span> <span class="nf">valueForKeyPath</span><span class="p">:</span><span class="err">'@distinctUnionOfArrays</span><span class="p">.</span><span class="n">colorPelo</span><span class="err">'</span><span class="p">];</span></code></pre></figure>
+
+<p>El arrayDeIndividuos está formado por objetos de tipo Individuo que es un NSManagedObject y que por lo tanto admite KVC. Si el objeto Individuo fuese un diccionario (NSDictionary o NSMutableDictionary) también funcionaría. El operador que hemos usado es <code>@distinctUnionOfArrays</code>.</p>
+
+<p>Una cosa más para que nos den la Matricula de Honor. Es muy posible que el array esté desordenado, para obtener un array con los colores de pelo ordenados alfabéticamente añadiríamos la siguiente instrucción:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="n">NSArray</span> <span class="o">*</span><span class="n">coloresDePeloOrdenados</span> <span class="o">=</span> <span class="p">[</span><span class="n">coloresDePelo</span> <span class="nf">sortedArrayUsingSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">localizedCaseInsensitiveCompare</span><span class="p">:)];</span>    </code></pre></figure>
+
+<p>La documentación de Apple sobre KVC la puedes encontrar <a href="http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/KeyValueCoding.html#//apple_ref/doc/uid/10000107-SW1">aquí</a>. Ahí podrás ver otros operadores de colección.
+Si en vez de leer sobre KVC te apetece escuchar, el <a href="http://ochentaycincoporcientococoa.tumblr.com/post/4290497170/85-cocoa-episodio-21-kvc">episodio 21 de 85 % Cocoa</a> hace una excelente introducción.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Un+%22group+by%22+con+Core+Data&amp;url=http://javimoreno.es/1.0/2012-01-17-un-group-by-con-core-data/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Un+%22group+by%22+con+Core+Data&amp;u=http://javimoreno.es/1.0/2012-01-17-un-group-by-con-core-data/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Un+%22group+by%22+con+Core+Data&amp;url=http://javimoreno.es/1.0/2012-01-17-un-group-by-con-core-data/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2012-05-14-web-y-cliente-ios-en-45min/">&larr; Web y cliente iOS en 45min</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2012-01-12-cursores-dinamicos-y-nscompoundpredicate/">Cursores dinámicos y NSCompoundPredicate &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Helios I. Guardando datos</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2013-04-11-helios-i-guardando-datos/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Helios I. Guardando datos</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2013-04-11 01:26"> 11 de abril de 2013</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          9 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Tal y como anticipe que sucedería, durante estos días he estado probando Helios, el framework de @mattt que nos permite crear un backend para aplicaciones móviles. </p>
+
+<p>Como ya hice un primer análisis del framework en conjunto, ahora me voy a ir centrando en las piezas que lo forman siguiendo el orden, para mi, de mayor a menor importancia. La idea es que en las próximas semanas pueda ir sacando artículos sobre cada una de ellas:</p>
+
+<ol>
+<li>Sincronización de datos. Core Data Buildpack + AFIncrementalStore</li>
+<li>Notificaciones Push. Rack::Push Notification + Orbiter</li>
+<li>In-App Purchases. Venice + Cargo Bay</li>
+<li>Passbook. Dubai/Rack::Passbook</li>
+</ol>
+
+<p>Sigo teniendo sentimientos encontrados con este framework. Por un lado creo que supone un gran avance ya que simplifica enormemente el desarrollo <em>propietario</em> de una serie de servicios indispensables para una aplicación móvil actual. Por otro lado creo que frameworks de desarrollo web como Ruby on Rails o Sinatra no son mucho más complicados y las posibilidades que ofrecen son infinitamente mayores.</p>
+
+<p>Empezemos...</p>
+
+<!--more-->
+
+<h2>Sincronización de datos</h2>
+
+<p>Hace algunos meses, Heroku publicó un tutorial en el que mostraba como crear un backend a partir de un proyecto iOS con Core Data. El mismo tutorial proponía realizar la sincronización con AFIncrementalStore, un framework basado en NSIncrmentalStote (una nueva clase no muy conocida) y que usa AFNetworking para las conexiones REST. Según el <a href="http://nshipster.com/nsincrementalstore/">articulo de NSHipster sobre NSIncrementalStore</a> con menos de 300 líneas de código tenemos una sincronización que nos quitará muchos quebraderos de cabeza. &quot;It just works&quot;, dice. Unas palabras malditas siempre que se habla de sincronización de datos en la <em>nube</em>.</p>
+
+<p>AFIncrementalStore no funciona bien a día de hoy. ¡Anda! igual que iCloud. He estado varios días intentando hacerlo funcionar pero al final no he conseguido nada. Supongo que es cosa de tiempo ya que hay una enorme comunidad de desarrolladores detrás intentando hacerlo funcionar.</p>
+
+<h2>Backend</h2>
+
+<p>Helios usa Core Data Buildpack para generar el modelo REST al arrancar el servidor. Necesita una base de datos PostgreSQL para funcionar y un poquito de configuración, pero hacerlo andar con una estructura de tablas por detrás es coser y cantar. Ojo con el modelo REST: tendremos todos los endpoints habituales para hacer las operaciones CRUD pero una cosa fundamental como son los filtros, a día de hoy, no están desarrollados y desconozco si lo estarán algún día ya que en el <em>roadmap</em> no se habla de ellos. Si por algún motivo no lo vas a necesitar en tu backend, perfecto, Helios se ajusta al 100% a tu servicio aunque yo creo que lo normal es incluir algún filtro en el <em>endpoint</em>: un campo de ordenación, el número de registros por página, filtrado por usuario. Creo que solo hay algo que se utilice más que la cláusula WHERE en SQL... el operador AND:</p>
+
+<p>Helios puede usarse solo ya que por dentro es una aplicación hecha en Sinatra pero también pueden integrarse la gema en un proyecto Rails o Sinatra, actuando como middleware. En el repositorio recomiendan que se proteja este middleware con seguridad ya que podrá contener datos de gran sensibilidad.</p>
+
+<p>En este post, aprovecharé para explicar muy brevemente como incluir la gema en un proyecto Rails e incorporar una seguridad HTTP básica.</p>
+
+<p>Mi idea era usar Helios para hacer una especie de Google Reader. AFIncrementalStore me ha desinflado un poco la idea pero sigue siendo la base del backend.<br>
+Supongo que cada uno seguirá su método; en mi caso, antes de empezar con la aplicación web, lo primero que haremos será crear un proyecto iOS con Core Data donde definiremos el modelo: dos tablas, una para almacenar los feeds a los que estamos suscritos y otra para almacener los elementos descargados de cada feed.</p>
+
+<p>Usaremos el API de Google Reader que se ocupa de descargar los feeds ya que devuelve siempre el mismo resultado, independientemente de que lea de un rss o de un atom. Este API seguro que desaparece el 1 de Julio de 2013 pero de momento nos ayudará a tener una buena copia de seguridad de nuestros blogs favoritos.</p>
+
+<h3>Empezamos a desarrollar.</h3>
+
+<p>Una vez que hemos creado un <em>xcdatamodel</em> en Xcode, lo que hacemos es crear una aplicación Rails que sirva para contener el backend Helios y además nos permita crear todo aquello que no nos proporciente este framework, como por ejemplo la securización del repositorio, las cuentas de usuario, etc.</p>
+
+<p>En el terminal escribiremos lo siguiente: </p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rails new DealerErgoGo <span class="nt">-d</span> postgresql</code></pre></figure>
+
+<p>Directamente trabajaremos con PostgreSQL desde desarrollo por lo que tenemos que tener instalado en nuestro equipo este gestor de base de datos. Mi recomendación es usar Postgres.app, desarrollada por Mattt (que tío) que funciona muy bien y es fácil de instalar (relativamente).</p>
+
+<p>Lo primero que haremos en nuestro proyecto Rails es configurar el acceso a la base de datos, solo cambiamos el usuario y le indicamos el puerto y el host. Creamos las bases de datos y a disfrutar.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rake db:create</code></pre></figure>
+
+<p>A continuación incluimos todo lo necesario para usar Helios.</p>
+
+<p>Instalamos la gema y creamos la base de datos</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>rake db:create</code></pre></figure>
+
+<p>Siguiendo las instrucciones del repositorio, configuramos Helios como un middleware en application.rb. Aprovecharemos para incluir el modelo de datos que hemos creado en la aplicación iOS dentro de la carpeta de configuración de la aplicación Rails. En local no es necesario pero cuando hagamos el despliegue en Heroku, tendremos que subir el modelo junto con la aplicación.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Using framework Helios as a middleware for our app</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">use</span> <span class="no">Helios</span><span class="o">::</span><span class="no">Application</span> <span class="k">do</span>
+        <span class="n">service</span> <span class="ss">:data</span><span class="p">,</span> <span class="ss">model: </span><span class="s1">'./config/DealerErgoGo.xcdatamodel'</span>
+        <span class="n">service</span> <span class="ss">:push_notification</span>
+        <span class="n">service</span> <span class="ss">:in_app_purchase</span>
+        <span class="n">service</span> <span class="ss">:passbook</span>
+    <span class="k">end</span></code></pre></figure>
+
+<p>Securizamos desarrollo y producción con seguridad HTTP básica</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Autenticación HTTP Básica para no dejar al descubierto los datos de la aplicación</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">insert_after</span><span class="p">(</span><span class="o">::</span><span class="no">Rack</span><span class="o">::</span><span class="no">Lock</span><span class="p">,</span> <span class="s2">"::Rack::Auth::Basic"</span><span class="p">,</span> <span class="s2">"Who R' U?"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">u</span><span class="p">,</span> <span class="nb">p</span><span class="o">|</span>
+    <span class="n">u</span> <span class="o">==</span> <span class="no">ENV</span><span class="p">[</span><span class="s2">"USERNAME"</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nb">p</span> <span class="o">==</span> <span class="no">ENV</span><span class="p">[</span><span class="s2">"PASSWORD"</span><span class="p">]</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Cargamos las variables de entorno de nuestro fichero</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># Load the environment variables at beginning</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">before_configuration</span> <span class="k">do</span>
+    <span class="n">env_file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">,</span> <span class="s1">'config'</span><span class="p">,</span> <span class="s1">'local_env.yml'</span><span class="p">)</span>
+    <span class="no">YAML</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">env_file</span><span class="p">)).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+    <span class="no">ENV</span><span class="p">[</span><span class="n">key</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">end</span> <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exists?</span><span class="p">(</span><span class="n">env_file</span><span class="p">)</span>
+  <span class="k">end</span></code></pre></figure>
+
+<p>Para terminar, cambiamos el adaptador de postgresql a postgres porque sequel, una dependencia que trae Helios, lo usa. Debido a esto es muy importante configurar y crear la base de datos antes de introducir Helios en la aplicación ya que de lo contrario entraremos en un bucle infinito de cambio de adapatores. También cambiamos el usuario de la base de datos ya que, por defecto, PostgreSQL solo tendrá nuestro usuario local.</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">development</span><span class="pi">:</span>
+<span class="err">  </span><span class="na">adapter</span><span class="pi">:</span> <span class="s">postgres</span>
+   <span class="err">   </span><span class="s">encoding</span><span class="pi">:</span> <span class="s">unicode</span>
+   <span class="err">   </span><span class="s">database</span><span class="pi">:</span> <span class="s">DealerErgoGo_development</span>
+   <span class="err">   </span><span class="s">pool</span><span class="pi">:</span> <span class="s">5</span>
+<span class="err">  </span><span class="na">username</span><span class="pi">:</span> <span class="s">javi</span>
+   <span class="err">   </span><span class="s">password</span><span class="pi">:</span>
+<span class="err">  </span><span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+<span class="err">  </span><span class="na">port</span><span class="pi">:</span> <span class="s">5432</span></code></pre></figure>
+
+<p>Y con esto ya tendríamos listo el backend. Podríamos probarlo en nuestra máquina local o desplegar directamente en Heroku. Para ello solo hay que tener <a href="https://toolbelt.heroku.com">Heroku toolbelt</a> instalado, haber hecho commit de todos los cambios en la rama y principal y desde la carpeta del proyecto en el terminal escribir lo siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>heroku create</code></pre></figure>
+
+<p>Para crear la aplicación y</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git push heroku master</code></pre></figure>
+
+<p>Para desplegar la aplicación en Heroku. Listo, ya podemos disfrutar de nuestras 750 horas gratuitas al mes.</p>
+
+<h3>La decepción</h3>
+
+<p>Nos las prometíamos muy felices. El desarrollo y puesta en producción del backend había sido tan sencillo que confiábamos en que la creación de la aplicación iOS fuera igual y en realidad, esto no ha sido así.</p>
+
+<p>Para desarrollar la aplicación vamos a seguir <a href="https://devcenter.heroku.com/articles/ios-core-data-buildpack-app">este tutorial de la web de Heroku</a>. Aparentemente no es muy complicado y de hecho no lo es, el problema es que cuando hayamos seguido todos los pasos y tengamos la aplicación lista para envíar datos a nuestro flamante servidor veremos que la grabación la hace bien pero el retorno de la información no y nuestra aplicación empieza a fallar. Llevo toda la semana leyendo las <em>issues</em> del repositorio y buscando en Stackoverflow a ver si doy con el correcto funcionamiento pero hasta ahora no he conseguido nada. Creo que es algo que se me ha pasado por alto en algún punto ya que es demasiado evidente que no está funcionando como para que no haya ninguna queja al respecto. En cualquier caso, yo mismo pondré un <em>issue</em> a ver si me pueden echar una mano.</p>
+
+<h2>Conclusiones</h2>
+
+<p>Si tu aplicación necesita de subir los datos a un servidor o simplemente leer unos datos sencillos: datos del tiempo, noticias, entradas de un blog, radares móviles,... Helios te puede ser de una gran ayuda. No recomiendo que uses AFIncrementalStore si no que, de momento, sería mejor que te hicieras tu propia sincronización con Core Data. </p>
+
+<p>Si ves que Helios se te empieza a quedar pequeño porque necesitas filtrar los datos en el servidor y no en la propia aplicación, no tengas miedo a dar el paso a Ruby on Rails. Llevará un poco más de trabajo pero no mucho más y eso ya si que es dar un salto cualitativo en la creación de tu propio backend ya que tendrás mucho más control sobre el mismo.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Helios+I.+Guardando+datos&amp;url=http://javimoreno.es/1.0/2013-04-11-helios-i-guardando-datos/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Helios+I.+Guardando+datos&amp;u=http://javimoreno.es/1.0/2013-04-11-helios-i-guardando-datos/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Helios+I.+Guardando+datos&amp;url=http://javimoreno.es/1.0/2013-04-11-helios-i-guardando-datos/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2013-05-02-helios-ii-houston/">&larr; Helios II. Houston, tenemos un problema.</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2013-04-04-helios-el-sol-vs-la-inube/">Helios: el sol Vs. la 'iNube' &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>

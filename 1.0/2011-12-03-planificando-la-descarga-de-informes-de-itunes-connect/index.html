@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Planificando la descarga de informes de iTunes Connect</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2011-12-03-planificando-la-descarga-de-informes-de-itunes-connect/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Planificando la descarga de informes de iTunes Connect</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2011-12-03 16:46"> 03 de diciembre de 2011</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          9 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>Hace poco me puse con una tarea que tenía pendiente desde el verano: automatizar la descarga de informes del iTunes Connect.</p>
+
+<p>El 30 de Agosto, en el Apple Developer Connection (en el iOS Developer News también) publicaron esto: <a href="http://developer.apple.com/news/index.php?id=08302011a">Automatically Download iTunes Connect Reports</a>. 
+Lo que nos contaban ahí es que habían desarrollado una nueva herramienta para poder descargar los informes de ventas del iTunes Connect sin tener que acceder a dicho portal. 
+Esto está muy bien, primero porque la descarga de varios informes es bastante tediosa, segundo porque es normal que no te acuerdes de entrar a descargarlos y puedes automatizar la descarga y tercero porque las herramientas para el seguimiento de las ventas brillan por su ausencia así que si empiezan a hacer alguna es una buena señal.</p>
+
+<!--more-->
+
+<p>A los cuatro días ya podía encontrarse en la web este enlace: <a href="http://ipaddevzone.com/cs/bash-script-download-all-available-reports-using-apples-auto-ingest-tool-itunes-connect-sales-tren">A Bash script to download all available reports using Apple&#39;s ‘Auto-Ingest’ Tool for iTunes Connect Sales &amp; Trends Reports</a></p>
+
+<p>Voy a insistir un poco más en la importancia de la planificación de estas descargas: tanto con esta herramienta como desde el portal solo puedes descargarte los últimos 14 informes diarios y los últimos 13 informes semanales (de ventas, no los que echan en la primera de TVE los sábados por la noche). Si planificas una tarea de descarga diaria, mal se tiene que dar para que al menos una vez en 14 días tu Mac no esté encendido a la/s hora/s planificada/s.
+En el enlace de iPad DevZone nos mostraban un Bash script para ejecutar la descarga, con comprobación de existencia de fichero descargado para no repetir además de los pasos a seguir para planificar este script correctamente.</p>
+
+<p>Lo que escribo a continuación es, básicamente, la traducción del contenido de ese post con alguna aclaración más para los que no tengan ni idea de lo que es un script bash ni de como se planifica (yo era uno de esos hasta hace quince días).</p>
+
+<p>1.- Creamos un directorio para nuestros scripts, por ejemplo: ~/bin/itc (para los no familiarizados con esta notación esto es crear una carpeta que se llame &quot;bin&quot; dentro de nuestra carpeta de usuario que, a su vez, contenga otra carpeta llamada &quot;itc&quot;)</p>
+
+<p>2.- Con nuestro editor de texto favorito (yo lo hice con TextWrangler) creamos un archivo llamado &quot;download<em>itc</em>reports<em>sh&quot; y lo guardamos en la carpeta &quot;itc&quot; que hemos creado antes. A continuación copiamos uno de los scripts que están al final de este post, lo pegamos y modificamos los parámetros de la sección de &quot;Configuration&quot; con nuestros propios datos.
+USER</em>NAME es nuestro usuario de acceso al iTC, USER<em>PASSWD la contraseña, VENDOR</em>ID el código de compañía y DIR_DEST el directorio donde vamos a descargar los informes. En mi caso particular, el directorio de descarga está dentro de la carpeta de DropBox que tengo en el Mac y así tengo el backup de los informes automatizado... ;-)</p>
+
+<p>3.- En la misma carpeta donde dejamos este fichero, tenemos que tener la herramienta de descarga automática que no es otra cosa que una clase Java. Si no la has descargado todavía puedes hacerlo desde este <a href="http://www.apple.com/itunesnews/docs/Autoingestion.class.zip">enlace</a>. Tendrás que tener Java instalado para poder utilizar esta herramienta.
+Los siguientes pasos ya hay que darlos en el Terminal.</p>
+
+<p>4.- Si queremos ejecutar manualmente el script, escribimos en el terminal lo siguiente:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ ~/bin/itc/download_itc_reports.sh
+</code></pre></div>
+<p>5.- Para planificarlo tendremos que usar otra herramienta escondida dentro del Terminal: Crontab</p>
+
+<p>6.- Para editar las entradas de Crontab escribimos lo siguiente en el terminal:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ crontab -e
+</code></pre></div>
+<p>7.- En una nueva linea en blanco (o en la primera si no tenemos nada) escribimos lo siguiente</p>
+<div class="highlight"><pre><code class="language-" data-lang="">0 13,14,16 * * * ~/bin/itc/download_itc_reports.sh
+</code></pre></div>
+<p>8.- Breve explicación sobre crontab. Cada registro consta de seis argumentos: minutos, horas, día del mes, mes, día de la semana y comando a ejecutar. Varios valores para el mismo argumento se separan por comas. El ejemplo se entiende como: &quot;en el minuto cero de las 13, 14 y 16 horas de cualquier día, de cualquier mes y cualquier día de la semana ejecutar el comando ~/bin/itc/download<em>itc</em>reports.sh. Puedes encontrar más información de crontab en este <a href="http://benr75.com/pages/using_crontab_mac_os_x_unix_linux">enlace</a>.</p>
+
+<p>9.- Si ya hemos creado otro script (por ejemplo: uno para informes diarios y otro para los semanales) habría que incluir otra linea con la planificación deseada y el nombre del script.</p>
+
+<p>10.- Una vez que hemos terminado de editar, guardamos y comprobamos nuestro trabajo escribiendo en el terminal:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ crontab -l
+</code></pre></div>
+<p>11.- Y ya está, si el Mac está encendido a las horas planificadas se ejecutarán los scripts.</p>
+
+<p>Los informes son ficheros planos que pueden ser importados a cualquier hoja de cálculo o base de datos que nos hayamos creado. Yo uso una aplicación que se llama AppStar Lite que permite importar estos informes y visualizarlos de una forma agradable.</p>
+
+<p>Actualmente podemos descargarnos dos tipos de informe: Diarios y Semanales. A continuación hay un script para cada uno.
+Además, cada tipo de informe tiene dos subtipos: Summary y Opt-In. No tengo muy clara la diferencia entre los primeros y los segundos. Los scripts están escritos para descargar los Summary, para descargar los Opt-In simplemente habría que cambiar una palabra por la otra.</p>
+
+<p>Script para descarga de informes diarios:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<span class="c">#</span>
+<span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
+<span class="c"># Released under the MIT license</span>
+<span class="c">#</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Configuration</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># ITC user name</span>
+<span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">"user name"</span>
+<span class="c"># ITC user password</span>
+<span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">"user password"</span>
+<span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
+<span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">"vendor Id"</span>
+<span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
+<span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
+<span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
+<span class="nv">NUM_OF_DAYS_TO_DOWNLOAD</span><span class="o">=</span>14
+<span class="c"># Currently only Sales reports are supported</span>
+<span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">"S"</span>
+<span class="c"># Currently only Daily report frequency is supported</span>
+<span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">"D"</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Program start</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Adjust input vars</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
+<span class="c"># Print info</span>
+<span class="c">#</span>
+<span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_DAYS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
+<span class="c"># set CLASSPATH which should point the this script location</span>
+<span class="c">#</span>
+<span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
+<span class="nb">cd</span> <span class="sb">`</span><span class="nb">dirname</span> <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
+<span class="c"># set dir where the reports are downloaded to</span>
+<span class="c">#</span>
+<span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
+<span class="c"># loop for requested NUM_OF_DAYS_TO_DOWNLOAD</span>
+<span class="c">#</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">DAY</span><span class="o">=</span>NUM_OF_DAYS_TO_DOWNLOAD<span class="p">;</span> DAY&gt;0<span class="p">;</span> DAY-- <span class="o">))</span>
+<span class="k">do
+</span><span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
+<span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
+<span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">then</span>
+<span class="c"># Report is missing so download one</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
+java <span class="nt">-cp</span> <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+<span class="k">else</span>
+<span class="c"># Report is found</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$DT_CUR</span><span class="s2">: already here"</span>
+<span class="k">fi
+done</span></code></pre></figure>
+
+<p>Script para descarga de informes semanales:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<span class="c">#</span>
+<span class="c"># Copyright 2011, Shark Intelligence, s.r.o.</span>
+<span class="c"># Released under the MIT license</span>
+<span class="c">#</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Configuration</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># ITC user name</span>
+<span class="nv">USER_NAME</span><span class="o">=</span><span class="s2">"user name"</span>
+<span class="c"># ITC user password</span>
+<span class="nv">USER_PASSWD</span><span class="o">=</span><span class="s2">"user password"</span>
+<span class="c"># vendorid: find it at: https://reportingitc.apple.com/subdashboard.faces</span>
+<span class="nv">VENDOR_ID</span><span class="o">=</span><span class="s2">"vendor Id"</span>
+<span class="c"># directory where the reports are downloaded; Current dir is used if empty;</span>
+<span class="nv">DIR_DEST</span><span class="o">=</span>~/projects/XXX/reports-sales
+<span class="c"># number of days beginning with yesterday which the reports are downloaded for</span>
+<span class="nv">NUM_OF_WEEKS_TO_DOWNLOAD</span><span class="o">=</span>13
+<span class="c"># Currently only Sales reports are supported</span>
+<span class="nv">REPORT_TYPE</span><span class="o">=</span><span class="s2">"S"</span>
+<span class="c"># Currently only Daily report frequency is supported</span>
+<span class="nv">REPORT_FREQ</span><span class="o">=</span><span class="s2">"W"</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Program start</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="c"># Adjust input vars</span>
+<span class="c">#</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$DIR_DEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then </span><span class="nv">DIR_DEST</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span><span class="p">;</span> <span class="k">fi</span>
+<span class="c"># Print info</span>
+<span class="c">#</span>
+<span class="nb">echo </span>Downloading ITC sales reports <span class="k">for</span> <span class="nv">$NUM_OF_WEEKS_TO_DOWNLOAD</span> days into destination: <span class="nv">$DIR_DEST</span>
+<span class="c"># set CLASSPATH which should point the this script location</span>
+<span class="c">#</span>
+<span class="nv">THIS_SCRIPT</span><span class="o">=</span><span class="nv">$0</span>
+<span class="nb">cd</span> <span class="sb">`</span><span class="nb">dirname</span> <span class="nv">$THIS_SCRIPT</span><span class="sb">`</span>
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span> <span class="nt">-P</span><span class="sb">`</span>
+<span class="c"># set dir where the reports are downloaded to</span>
+<span class="c">#</span>
+<span class="nb">cd</span> <span class="nv">$DIR_DEST</span>
+<span class="c"># loop for requested NUM_OF_WEEKS_TO_DOWNLOAD</span>
+<span class="c">#</span>
+<span class="k">for</span> <span class="o">((</span> <span class="nv">WEEK</span><span class="o">=</span>NUM_OF_WEEKS_TO_DOWNLOAD<span class="p">;</span> WEEK&gt;0<span class="p">;</span> WEEK-- <span class="o">))</span>
+<span class="k">do</span>
+<span class="c"># set value for last sunday</span>
+<span class="c">#</span>
+<span class="nv">DT_DAY_OF_WEEK</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%w<span class="sb">`</span>
+<span class="nb">let </span><span class="nv">DAYS</span><span class="o">=(</span>WEEK-1<span class="o">)</span><span class="k">*</span>7+DT_DAY_OF_WEEK
+<span class="nv">DT_CUR_STR</span><span class="o">=</span><span class="s2">"date -v-</span><span class="k">${</span><span class="nv">DAY</span><span class="k">}</span><span class="s2">d +%Y%m%d"</span>
+<span class="nv">DT_CUR</span><span class="o">=</span><span class="sb">`</span><span class="nv">$DT_CUR_STR</span><span class="sb">`</span>
+<span class="nv">FILE_CUR</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">REPORT_TYPE</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">REPORT_FREQ</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">VENDOR_ID</span><span class="k">}</span><span class="s2">_</span><span class="k">${</span><span class="nv">DT_CUR</span><span class="k">}</span><span class="s2">.txt.gz"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>find <span class="nb">.</span> <span class="nt">-name</span> <span class="nv">$FILE_CUR</span> <span class="nt">-maxdepth</span> 1 <span class="nt">-type</span> f | <span class="nb">wc</span> <span class="nt">-l</span><span class="k">)</span> <span class="o">==</span> <span class="s2">"0"</span> <span class="o">]</span>
+<span class="k">then</span>
+<span class="c"># Report is missing so download one</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="nv">$DT_CUR</span>: MISSING! Download initiated...
+java <span class="nt">-cp</span> <span class="nv">$CLASSPATH</span> Autoingestion <span class="nv">$USER_NAME</span> <span class="nv">$USER_PASSWD</span> <span class="nv">$VENDOR_ID</span> Sales Daily Summary <span class="nv">$DT_CUR</span>
+<span class="k">else</span>
+<span class="c"># Report is found</span>
+<span class="c">#</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$DT_CUR</span><span class="s2">: already here"</span>
+<span class="k">fi
+done</span></code></pre></figure>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/1.0/2011-12-03-planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;u=http://javimoreno.es/1.0/2011-12-03-planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Planificando+la+descarga+de+informes+de+iTunes+Connect&amp;url=http://javimoreno.es/1.0/2011-12-03-planificando-la-descarga-de-informes-de-itunes-connect/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2012-01-12-cursores-dinamicos-y-nscompoundpredicate/">&larr; Cursores dinámicos y NSCompoundPredicate</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2011-10-26-5/">No empezamos muy bien... es difícil sacar tiempo para escribir un blog.  &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>

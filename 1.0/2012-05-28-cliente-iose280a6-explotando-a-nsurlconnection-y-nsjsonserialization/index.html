@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Cliente iOS… explotando a NSURLConnection y NSJSONSerialization</title>
+  <meta name="description" content="Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="canonical" href="http://javimoreno.es/1.0/2012-05-28-cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/">
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+	
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38448478-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+
+    <!-- header start -->
+
+<!-- header end -->
+
+    <div class="topnav" id="myTopnav">
+	<a class="brand" href="/">Javi Moreno</a>
+  <a href="/apuntes/">Apuntes</a>
+  <a href="/fichas/">Fichas de Lectura</a>
+  <a href="/archivo/">Archivo</a>
+  <a href="/sobre-mi/">Sobre mi</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+    <!-- content start -->
+
+    
+<main class="content" role="main">
+  <article class="post">
+    <div class="noarticleimage">
+      <div class="post-meta">
+			 
+		  	<h1 class="post-title">Cliente iOS… explotando a NSURLConnection y NSJSONSerialization</h1>
+		  	 
+      </div>
+    </div>
+    <div class="bottom-teaser cf">
+      <div class="isLeft">
+        <section class="author">
+          <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+          <h4>Javi</h4>
+          <p class="bio"></p>
+          <hr>
+          <p class="published"><i class="fa fa-calendar"></i><time datetime="2012-05-28 02:27"> 28 de mayo de 2012</time></p>
+          <p class="published"><i class="fa fa-clock-o"></i>  
+          
+          
+          8 minutos
+          
+          de lectura
+          </p>
+        </section>
+      </div>
+    </div>
+    <section class="post-content">
+      <a name="topofpage"></a>
+      <p>En la entrada anterior vimos como hacer una web con su API Rest con muy poco esfuerzo. En esta vamos a ver como conectar con ese API Rest con muy poco esfuerzo también. Eso si, vamos a centrarnos solamente en la clase NSURLConnection; la creación de la aplicación, modificación del modelo y del storyboard lo damos por supuesto.</p>
+
+<!--more-->
+
+<blockquote>
+<p>Por si sirve de referencia: para crear la aplicación de ha utilizado la plantilla de Master-Detail, con opción de Core Data y Storyboards, que llamaremos MegaLists. En el detailviewcontroller se ha cambiado la UILabel por un UITextView para que de más juego y en el modelo Core Data, tanto la entidad como los atributos se llaman igual que en la aplicación Rails.</p>
+</blockquote>
+
+<h2>NSURLConnection</h2>
+
+<p>Vamos a empezar las cosas bien. En un fichero de cabecera que llamaremos MegaLists.h vamos a crear un par de macros que podremos llegar a utilizar en muchas partes de nuestra aplicación. Este fichero de cabecera luego lo incluiremos en el fichero MegaLists-Prefix.pch para que se incluya en la compilación de cada clase del proyecto. Las macros son estas:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#define SERVER_URL @"http://localhost:3000/"
+#define HTTP_TIMEOUT 5.0</span></code></pre></figure>
+
+<p>De esta forma, cuando vayamos a subir la aplicación a la App Store solo tendremos que cambiar la url local por la del dominio al que nos vayamos a conectar. Igualmente, si queremos aumentar el tiempo de espera de la conexión, de esta forma lo cambiaremos para todas las conexiones. La llamada al servicio web se hará desde la clase MasterViewController. Necesitaremos un par de propiedades más: un NSURL y un NSData. El primero será la url a la que llamaremos y el segundo donde almacenaremos los datos que nos devuelva el servicio. El objeto NSURL lo alocaremos nada más cargar el viewcontroller:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+        <span class="c1">// Do any additional setup after loading the view, typically from a nib.</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">leftBarButtonItem</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">editButtonItem</span><span class="p">;</span>
+    
+    <span class="n">self</span><span class="p">.</span><span class="n">serverURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="n">SERVER_URL</span><span class="p">];</span>
+    
+<span class="p">}</span></code></pre></figure>
+
+<p>El método encargado de hacer la conexión se llamará <code>loadDataFromOurWebService</code>, muy descriptivo para que sepamos donde tocar si algo falla y será invocado cada vez que se vea la vista del MasterViewController:</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#pragma mark - Conexión al servidor:
+</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewWillAppear</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">animated</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="nf">loadDataFromOurWebService</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">loadDataFromOurWebService</span>
+<span class="p">{</span>
+    <span class="n">NSURL</span> <span class="o">*</span><span class="n">queryURL</span> <span class="o">=</span>  <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">serverURL</span> <span class="nf">URLByAppendingPathComponent</span><span class="p">:</span><span class="s">@"lists.json"</span> <span class="nf">isDirectory</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+
+    <span class="n">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:</span><span class="n">queryURL</span>
+                                             <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestReloadIgnoringLocalCacheData</span>
+                                         <span class="n">timeoutInterval</span><span class="o">:</span><span class="n">HTTP_TIMEOUT</span><span class="p">];</span>
+
+    <span class="c1">//ASINCRONOOOOOOOO</span>
+    <span class="n">NSURLConnection</span> <span class="o">*</span><span class="n">connection</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLConnection</span> <span class="nf">connectionWithRequest</span><span class="p">:</span><span class="n">request</span> <span class="nf">delegate</span><span class="p">:</span><span class="n">self</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">connection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Connecting..."</span><span class="p">);</span>
+        <span class="c1">// Create the NSMutableData to hold the received data.</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableData</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// Inform the user that the connection failed.</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: Unable to create connection."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>El metodo <code>connectionWithRequest</code> es asíncrono lo que va a permitir que nuestra aplicación siga siendo usable mientras hacemos la descarga del servidor. Para conocer el éxito o fracaso de nuestra conexión necesitaremos los siguientes métodos delegados que posee la clase NSURLConnection... si no sabemos cuales son, la documentación de Apple nos lo deja bien claro: <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/Tasks/UsingNSURLConnection.html#//apple_ref/doc/uid/20001836-BAJEAIEE">Using NSURLConnection</a></p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="cp">#pragma mark - URL Connection delegate
+</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connection</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span> <span class="nf">didFailWithError</span><span class="p">:(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span>
+<span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">]);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>La verdad es que no es necesario contar que hace el método <code>didFailWithError</code> pero por si acaso, diremos que es el que nos informará, en caso de que haya algún problema, del error que se ha producido en la conexión.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connection</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span> <span class="nf">didReceiveResponse</span><span class="p">:(</span><span class="n">NSURLResponse</span> <span class="o">*</span><span class="p">)</span><span class="nv">response</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received response: %@"</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
+    <span class="c1">// It can be called multiple times, for example in the case of a redirect, so each time we reset the data.</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="nf">setLength</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>En situaciones normales, solo deberíamos ver una sola vez el método <code>didReceiveResponse</code>, eso quiere decir que el servidor ha aceptado nuestra conexión y va a enviar datos. Si se envía más de un mensaje a este método querrá decir que algo ha ido mal en la conexión y los datos recibidos hasta el momento ya no son válidos. Es por ello que en este método se vuelve a inicializar el NSData.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connection</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span> <span class="nf">didReceiveData</span><span class="p">:(</span><span class="n">NSData</span> <span class="o">*</span><span class="p">)</span><span class="nv">data</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="nf">appendData</span><span class="p">:</span><span class="n">data</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>El método <code>didReceiveData</code> se encargará de ir &quot;pegando&quot; los paquetes de datos que vaya recibiendo. Una vez que se hayan recibido todos los datos, se enviará un mensaje al método <code>connectionDidFinishLoading</code>. En este método, mediante la clase de reciente aparición en iOS 5 NSJSONSerialization, parsearemos los datos recibidos y los enviaremos al método que se encarga de la grabación en la base de datos.</p>
+
+<figure class="highlight"><pre><code class="language-objc" data-lang="objc"><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">connectionDidFinishLoading</span><span class="p">:(</span><span class="n">NSURLConnection</span> <span class="o">*</span><span class="p">)</span> <span class="n">connection</span> <span class="p">{</span>
+
+    <span class="c1">// Do the JSON parsing.</span>
+
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">;</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">JSONObjectWithData</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span>
+                                                    <span class="nf">options</span><span class="p">:</span><span class="n">kNilOptions</span>
+                                                      <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSString</span> <span class="o">*</span><span class="n">receivedString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithData</span><span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">receivedData</span>
+                                                         <span class="nf">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">];</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"ERROR: Failed to parse JSON response."</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received data: %@"</span><span class="p">,</span> <span class="n">receivedString</span><span class="p">);</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Failed to parse JSON: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Finished loading: %@"</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+        <span class="p">[</span><span class="n">self</span> <span class="nf">reloadManagedObjectContextWithData</span><span class="p">:</span><span class="n">data</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="n">self</span><span class="p">.</span><span class="n">receivedData</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="c1">//    self.inProgress = NO;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">reloadManagedObjectContextWithData</span><span class="o">:</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">data</span> <span class="p">{</span>
+    <span class="n">NSManagedObject</span> <span class="o">*</span><span class="n">managedObject</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">dictionary</span> <span class="k">in</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">managedObject</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSEntityDescription</span> <span class="nf">insertNewObjectForEntityForName</span><span class="p">:</span><span class="s">@"Lists"</span> <span class="nf">inManagedObjectContext</span><span class="p">:</span><span class="n">__managedObjectContext</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">([</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"id"</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">NSNull</span> <span class="nf">null</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">managedObject</span> <span class="nf">setValue</span><span class="p">:[</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"id"</span><span class="p">]</span> <span class="nf">forKey</span><span class="p">:</span><span class="s">@"id"</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">([</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"name"</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">NSNull</span> <span class="nf">null</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">managedObject</span> <span class="nf">setValue</span><span class="p">:[</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"name"</span><span class="p">]</span> <span class="nf">forKey</span><span class="p">:</span><span class="s">@"name"</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">([</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"notes"</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">NSNull</span> <span class="nf">null</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">managedObject</span> <span class="nf">setValue</span><span class="p">:[</span><span class="n">dictionary</span> <span class="nf">objectForKey</span><span class="p">:</span><span class="s">@"notes"</span><span class="p">]</span> <span class="nf">forKey</span><span class="p">:</span><span class="s">@"notes"</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">__managedObjectContext</span> <span class="nf">save</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Se ha producido error al grabar: %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">error</span> <span class="nf">localizedDescription</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span> </code></pre></figure>
+
+<p>La clase NSFetchedResultsController (una de esas cosas que debemos agradecer al obsoleto iOS 3.0) es la que se va a encargar de mostrar los datos en la pantalla del iPhone. Nosotros, lo único que hemos hecho a la plantilla que ha creado XCode es cambiar los nombres de la entidad y los atributos para adaptarlos a los de nuestra base de datos en servidor. El código fuente de este proyecto lo podréis encontrar en GitHub. Es ligeramente diferente a lo que se ha visto aquí porque incluye el borrado de elementos desde la propia aplicación y código para gestionar la descarga de registros ya grabados.</p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/1.0/2012-05-28-cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;u=http://javimoreno.es/1.0/2012-05-28-cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Cliente+iOS%E2%80%A6+explotando+a+NSURLConnection+y+NSJSONSerialization&amp;url=http://javimoreno.es/1.0/2012-05-28-cliente-iose280a6-explotando-a-nsurlconnection-y-nsjsonserialization/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/1.0/2012-05-28-pintando-rutas-con-mapkit/">&larr; Pintando rutas con MapKit</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/1.0/2012-05-14-una-web-con-ruby-on-rails/">Una web con Ruby on Rails &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
+  </article>
+</main>
+
+    <!-- content end -->
+
+    <!-- footer start -->
+
+<footer class="site-footer">
+    <a class="page-link" href="/">Inicio</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/apuntes/">Apuntes</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/lecturas/">Fichas de Lectura</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/archivo/">Archivo</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="page-link" href="/sobre-mi/">Sobre mi</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+	  <a class="page-link" href="/1.0/">Versión 1.0</a>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> ¡Subscribete!</span></a>
+    <div class="inner">
+    	<br>
+         <section class="copyright">
+         	<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este blog está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.
+         </section>
+         <section class="poweredby">Hecho con <a href="http://jekyllrb.com"> Jekyll</a></section>
+    </div>
+</footer>
+
+<!-- footer end -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/500, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.post-image-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+<script>
+function myFunction() {
+	var x = document.getElementById("myTopnav");
+	if (x.className === "topnav") {
+		x.className += " responsive";
+	} else {
+		x.className = "topnav";
+	}
+}
+</script>
+
+
+		
+
+  </body>
+
+</html>
