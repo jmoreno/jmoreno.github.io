@@ -61,13 +61,13 @@
     <!-- content start -->
 
     <header class="blog-header">
-    <h1 class="blog-title">Plugin para publicar en Medium</h1>
+    <h2 class="blog-title">Plugin para publicar en Medium</h2>
 </header>
 
 <main class="content" role="main">
 	<article class="post">
    	<section class="post-content">
-	   	<blockquote>Un plugin para poder publicar en Medium determinados artículos al mismo tiempo que los publicaba en el blog.</blockquote>
+	   	<blockquote><p>Un plugin para poder publicar en Medium determinados artículos al mismo tiempo que los publicaba en el blog.</p></blockquote>
       <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">module</span> <span class="nn">Medium</span>
 
   <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:posts</span><span class="p">,</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
@@ -137,6 +137,47 @@
 <span class="k">end</span>
 </code></pre></div>
     </section>   
+    <footer class="post-footer">
+      <section class="share">
+        
+          
+            <a class="icon-twitter" href="http://twitter.com/share?text=Plugin+para+publicar+en+Medium&amp;url=http://javimoreno.es/apuntes/Jekyll/plugin-para-publicar-en-medium/"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+            <i class="fa fa-twitter"></i><span class="hidden">twitter</span>
+            </a>
+          
+        
+          
+        
+          
+            <a class="icon-facebook" href="//www.facebook.com/sharer.php?t=Plugin+para+publicar+en+Medium&amp;u=http://javimoreno.es/apuntes/Jekyll/plugin-para-publicar-en-medium/"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+            <i class="fa fa-facebook"></i><span class="hidden">facebook</span>
+            </a>
+          
+        
+          
+            <a class="icon-linkedin" href="//www.linkedin.com/shareArticle?mini=true&title=Plugin+para+publicar+en+Medium&amp;url=http://javimoreno.es/apuntes/Jekyll/plugin-para-publicar-en-medium/"
+              onclick="window.open(this.href, 'linkedin-share', 'width=550,height=255');return false;">
+            <i class="fa fa-linkedin"></i><span class="hidden">linkedin</span>
+            </a>
+          
+        
+      </section>
+      <nav class="post-pagination-next" role="navigation">
+        
+          <a class="next" href="/apuntes/Jekyll/plugin-para-publicar-tweets-por-cada-nuevo-post/">&larr; Plugin para publicar tweets por cada nuevo post</a>
+        
+      </nav>
+      <nav class="post-pagination-previous" role="navigation">
+        
+          <a class="previous" href="/apuntes/Jekyll/las-dependencias-de-este-blog/">Las dependencias de este blog &rarr;</a>
+        
+      </nav>
+      <nav class="post-pagination-clear" role="navigation">
+      </nav>
+		  
+    </footer>
 	</article>
 </main>	
 
