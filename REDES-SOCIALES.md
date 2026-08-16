@@ -47,21 +47,26 @@ variables → Actions** del repositorio.
    - `LINKEDIN_AUTHOR_URN`
 
 A partir de ahí, cualquier entrada con `linkedin` en su `sharing` se
-publica sola en tu perfil: el título, el resumen y el enlace como texto,
-más una tarjeta de artículo con el título/descripción/enlace debajo.
+publica sola en tu perfil, con el título, el resumen y el enlace.
 
-> El script usa el endpoint **`/rest/posts`** (la "Posts API" actual),
-> no el antiguo `/v2/ugcPosts` — ese endpoint legado dejó de aceptar el
-> formato `urn:li:person:...` en el campo `author` y solo admite
-> `urn:li:member:\d+`/`urn:li:company:\d+`, lo que no cuadra con el URN
-> que se saca de `/v2/userinfo`. Con `/rest/posts` sí funciona.
+> El script usa el endpoint **`/v2/ugcPosts`** (el que trae de serie el
+> producto autoservicio "Share on LinkedIn"), no el más nuevo
+> `/rest/posts`. Probamos `/rest/posts` en su momento porque es el que
+> recomienda la documentación actual de LinkedIn, pero da un 403 sin
+> más detalle en apps personales: ese endpoint exige además el producto
+> **"Community Management API"**, que LinkedIn concede tras una
+> revisión manual — no es autoservicio como "Share on LinkedIn", así
+> que una app personal normal no lo consigue sin más. `/v2/ugcPosts`
+> sigue siendo la vía accesible sin pedir permiso a nadie.
 >
-> La API de LinkedIn se versiona por mes con la cabecera
-> `LinkedIn-Version: AAAAMM`, y solo admite más o menos los últimos 12
-> meses. Ese valor está en la variable `LINKEDIN_API_VERSION` al
-> principio de `scripts/social_share.sh` — si LinkedIn empieza a
-> rechazar la llamada por versión caducada, hay que subir ese número
-> (o pasarlo como variable de entorno en la Action sin tocar el script).
+> Si en algún momento `/v2/ugcPosts` empieza a rechazar la llamada
+> (LinkedIn cambia esto de vez en cuando sin avisar demasiado), lo
+> primero es comprobar el **valor exacto** de `LINKEDIN_AUTHOR_URN`:
+> tiene que ser literalmente `urn:li:person:` seguido del `sub` que
+> devuelve `/v2/userinfo`, sin espacios ni comillas de más — un error
+> de formato ahí produce justo un 422 con un mensaje de "no coincide
+> con urn:li:member/urn:li:company" que puede confundirse con un
+> problema del endpoint cuando en realidad es un dato mal copiado.
 
 ## X / Twitter (publicación directa)
 
@@ -92,6 +97,17 @@ A partir de ahí, cualquier entrada con `twitter` en su `sharing` se
 publica sola como tuit (título, resumen y enlace, recortado a 280
 caracteres si hace falta). A diferencia del token de LinkedIn, este no
 caduca solo con el tiempo — solo si lo revocas a mano o rotas las claves.
+
+> **Error `client-not-enrolled` / "must use keys and tokens from a
+> developer App that is attached to a Project"**: significa que la App
+> no está dentro de ningún Project, aunque tengas claves generadas. En
+> el [portal de desarrolladores](https://developer.x.com), en
+> **Projects & Apps**, comprueba que la App aparece colgando de un
+> Project (no como "Standalone App" suelta). Si aparece suelta, o el
+> Project no tiene ningún plan de acceso asignado (ni siquiera el
+> "Free"), muévela dentro de un Project o créalo de cero desde ahí —
+> las claves generadas fuera de un Project no sirven aunque parezcan
+> válidas.
 
 ## Instagram (y cualquier otra red)
 
