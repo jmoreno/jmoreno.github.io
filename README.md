@@ -128,7 +128,10 @@ se sirven tal cual para no romper enlaces antiguos.
 
 ## Publicar avisos en redes sociales
 
-Ver [REDES-SOCIALES.md](REDES-SOCIALES.md).
+Ver [REDES-SOCIALES.md](REDES-SOCIALES.md). Resumen rápido: para que una
+entrada se anuncie sola en LinkedIn, añade `tags: [linkedin]` a su
+front matter; sin ese tag, esa entrada no se publica ahí (aunque el
+webhook genérico para Instagram/otros sí se dispara para todo).
 
 ## Nota de seguridad
 

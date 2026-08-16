@@ -23,8 +23,22 @@ sitio. Actívala configurando los *secrets* que te interesen en
    - `LINKEDIN_ACCESS_TOKEN`
    - `LINKEDIN_AUTHOR_URN`
 
-A partir de ahí, cada entrada nueva se publica sola en tu perfil de
-LinkedIn con el título, el resumen y el enlace.
+A partir de ahí, **solo se publican en LinkedIn las entradas que lleven
+el tag `linkedin`** en su front matter (así no se anuncia todo lo que
+escribes, solo lo que marcas tú explícitamente):
+
+```markdown
+---
+title: Un post que sí quiero anunciar en LinkedIn
+tags: [linkedin]
+---
+```
+
+Si una entrada no tiene ese tag, la Action se salta LinkedIn aunque los
+secrets estén configurados (queda anotado en el log de la Action). El
+tag tiene que ir en formato de lista entre corchetes (`tags: [linkedin]`
+o `tags: [linkedin, otro-tag]`); es el único formato que entiende
+`scripts/social_share.sh`.
 
 > La API de LinkedIn cambia de vez en cuando (el endpoint `ugcPosts` es
 > el "clásico"; existe también `/rest/posts`, más nuevo). Si LinkedIn
@@ -48,3 +62,9 @@ imagen obligatoria en cada publicación — implementarlo directamente no es
 Con esto, cada entrada nueva dispara el webhook y la automatización se
 encarga de llevarlo a Instagram (o a cualquier otro sitio que quieras
 enganchar ahí: Telegram, un email, Notion...).
+
+A diferencia de LinkedIn, el webhook se dispara para **todas** las
+entradas nuevas, tengan o no el tag `linkedin` (no hace falta marcar
+nada aparte). Si en algún momento quieres el mismo filtro por tag para
+el webhook, es un cambio de una línea en `scripts/social_share.sh`
+(añadir la misma comprobación `has_tag` al bloque del webhook).

@@ -2,15 +2,19 @@
 # Anuncia en redes sociales las entradas nuevas publicadas en este push.
 #
 # - Si existen los secrets LINKEDIN_ACCESS_TOKEN y LINKEDIN_AUTHOR_URN,
-#   publica directamente en LinkedIn con la API de LinkedIn.
+#   Y la entrada tiene el tag "linkedin" en su front matter, publica
+#   directamente en LinkedIn con la API de LinkedIn. Sin ese tag, se
+#   salta LinkedIn aunque los secrets estén configurados.
 # - Si existe el secret SOCIAL_WEBHOOK_URL, envía un POST con un JSON
-#   {title, url, excerpt} a esa URL. Ahí puedes enganchar IFTTT, Zapier,
-#   Make o Buffer para que reenvíen el aviso a Instagram (o donde quieras).
+#   {title, url, excerpt} a esa URL para TODAS las entradas nuevas. Ahí
+#   puedes enganchar IFTTT, Zapier, Make o Buffer para que reenvíen el
+#   aviso a Instagram (o donde quieras).
 #
 # Si no hay secrets configurados, el script no falla: simplemente no hace nada.
 set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
+LINKEDIN_TAG="linkedin"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -25,6 +29,23 @@ front_matter_field() {
       exit
     }
   ' "$file"
+}
+
+# has_tag <file> <tag> -> éxito (0) si el front matter incluye ese tag
+#
+# Solo entiende tags en formato "flow": tags: [linkedin, otro-tag]
+# (así es como se escriben en este blog, ver README.md).
+has_tag() {
+  local file="$1" tag="$2" raw part
+  raw=$(front_matter_field "$file" "tags")
+  raw="${raw#\[}"
+  raw="${raw%\]}"
+  IFS=',' read -ra parts <<< "$raw"
+  for part in "${parts[@]}"; do
+    part="$(echo "$part" | xargs)" # recorta espacios sueltos
+    [ "$part" = "$tag" ] && return 0
+  done
+  return 1
 }
 
 # post_url <file> -> URL pública de la entrada, según la colección
@@ -62,8 +83,8 @@ ${url}"
 
   echo "Nuevo contenido: ${title} (${url})"
 
-  if [ -n "${LINKEDIN_ACCESS_TOKEN:-}" ] && [ -n "${LINKEDIN_AUTHOR_URN:-}" ]; then
-    echo "-> Publicando en LinkedIn"
+  if [ -n "${LINKEDIN_ACCESS_TOKEN:-}" ] && [ -n "${LINKEDIN_AUTHOR_URN:-}" ] && has_tag "$file" "$LINKEDIN_TAG"; then
+    echo "-> Publicando en LinkedIn (tiene el tag '${LINKEDIN_TAG}')"
     curl -sS -X POST "https://api.linkedin.com/v2/ugcPosts" \
       -H "Authorization: Bearer ${LINKEDIN_ACCESS_TOKEN}" \
       -H "Content-Type: application/json" \
@@ -83,6 +104,8 @@ ${url}"
 }
 JSON
     echo
+  elif [ -n "${LINKEDIN_ACCESS_TOKEN:-}" ] && [ -n "${LINKEDIN_AUTHOR_URN:-}" ]; then
+    echo "-> Sin tag '${LINKEDIN_TAG}', no se publica en LinkedIn"
   fi
 
   if [ -n "${SOCIAL_WEBHOOK_URL:-}" ]; then
