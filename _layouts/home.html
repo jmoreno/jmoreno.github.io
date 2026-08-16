@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{% if page.intro %}
+<section class="intro">
+  {{ page.intro }}
+</section>
+{% endif %}
+
+<section class="zones">
+  <a class="zone-card" href="{{ '/recetas/' | relative_url }}">
+    <span class="zone-card-title">Recetas</span>
+    <span class="zone-card-desc">Lo que cocino y me sale bien (o casi).</span>
+  </a>
+  <a class="zone-card" href="{{ '/libros/' | relative_url }}">
+    <span class="zone-card-title">Libros</span>
+    <span class="zone-card-desc">Fichas de lo que voy leyendo.</span>
+  </a>
+  <a class="zone-card" href="{{ '/snippets/' | relative_url }}">
+    <span class="zone-card-title">Snippets</span>
+    <span class="zone-card-desc">Trocitos de código que no quiero volver a buscar.</span>
+  </a>
+</section>
+
+<section class="post-list">
+  {% for post in site.posts %}
+    <article class="post-summary">
+      <p class="post-summary-date">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+      </p>
+      <h2 class="post-summary-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      {% if post.summary %}
+        <p class="post-summary-excerpt">{{ post.summary }}</p>
+      {% else %}
+        <p class="post-summary-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</p>
+      {% endif %}
+    </article>
+  {% else %}
+    <p class="empty">Todavía no hay entradas. El primer post está a un <code>git push</code> de distancia.</p>
+  {% endfor %}
+</section>

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="post receta">
+  <header class="post-header">
+    <p class="eyebrow">Receta</p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{% include fecha.html date=page.date %}</time>{% endif %}
+      {% if page.tiempo %}&nbsp;·&nbsp;⏱ {{ page.tiempo }}{% endif %}
+      {% if page.raciones %}&nbsp;·&nbsp;🍽 {{ page.raciones }}{% endif %}
+      {% if page.dificultad %}&nbsp;·&nbsp;📈 {{ page.dificultad }}{% endif %}
+    </p>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% include share.html %}
+</article>
