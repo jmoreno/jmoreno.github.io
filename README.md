@@ -1,4 +1,4 @@
-# javimoreno.es / saltodemata.es
+# saltodemata.es
 
 Blog personal de Javi Moreno, reconstruido como un **"git blog"**: publicar
 es escribir un archivo Markdown y hacer `git push`. GitHub Pages compila el
