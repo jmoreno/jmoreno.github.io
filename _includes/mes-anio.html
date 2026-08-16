@@ -1,0 +1,6 @@
+{%- comment -%}
+  "mes de año" en español. Uso: {% include mes-anio.html date=page.date %}
+{%- endcomment -%}
+{%- assign meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," -%}
+{%- assign mes_index = include.date | date: "%-m" | minus: 1 -%}
+{{ meses[mes_index] }} de {{ include.date | date: "%Y" }}
