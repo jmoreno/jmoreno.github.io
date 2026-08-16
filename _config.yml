@@ -1,0 +1,129 @@
+title: "Javi Moreno"
+description: >-
+  Puede que no haya ido a donde quería ir, pero creo que he terminado donde tenía que estar.
+url: "https://www.saltodemata.es"
+baseurl: ""
+lang: es
+locale: es_ES
+
+author:
+  name: "Javi Moreno"
+  email: "hola@saltodemata.es"
+  twitter: jmoreno78
+  github: jmoreno
+
+# -----------------------------------------------------------------------
+# Markdown / build
+# -----------------------------------------------------------------------
+# Desactiva el tema por defecto de GitHub Pages (jekyll-theme-primer):
+# este sitio trae su propio diseño en assets/css/style.css.
+theme: null
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+
+highlighter: rouge
+excerpt_separator: "<!--more-->"
+
+# -----------------------------------------------------------------------
+# Zonas aisladas del blog
+#
+# "posts" (_posts/) es el blog principal: ideas y reflexiones sueltas,
+# sin un hilo conductor claro. Las demás son colecciones independientes,
+# cada una con su propio índice y su propia URL, para que no se mezclen
+# entre sí ni con el blog principal.
+# -----------------------------------------------------------------------
+permalink: /blog/:title/
+
+collections:
+  recetas:
+    output: true
+    permalink: /recetas/:path/
+  libros:
+    output: true
+    permalink: /libros/:path/
+  snippets:
+    output: true
+    permalink: /snippets/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      zone: blog
+      zone_label: "Blog"
+  - scope:
+      path: ""
+      type: "recetas"
+    values:
+      layout: receta
+      zone: recetas
+      zone_label: "Recetas"
+  - scope:
+      path: ""
+      type: "libros"
+    values:
+      layout: libro
+      zone: libros
+      zone_label: "Libros"
+  - scope:
+      path: ""
+      type: "snippets"
+    values:
+      layout: snippet
+      zone: snippets
+      zone_label: "Snippets"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+
+# -----------------------------------------------------------------------
+# Navegación principal (usada por _includes/header.html)
+# -----------------------------------------------------------------------
+nav:
+  - title: Blog
+    url: /
+  - title: Recetas
+    url: /recetas/
+  - title: Libros
+    url: /libros/
+  - title: Snippets
+    url: /snippets/
+  - title: Sobre mí
+    url: /sobre-mi/
+
+# Plugins soportados de forma nativa por GitHub Pages: con esto basta
+# "git push" para que el sitio se recompile y se publique solo, sin
+# ninguna Action ni paso de build manual.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+# -----------------------------------------------------------------------
+# Todo lo que no debe pasar por el generador
+# -----------------------------------------------------------------------
+exclude:
+  - README.md
+  - REDES-SOCIALES.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts
+  - vendor
+  - node_modules
+  - "*.gemspec"
+
+# Carpetas de versiones/secciones anteriores del blog: se sirven tal cual,
+# como HTML estático, sin pasar por Jekyll. Se mantienen para no romper
+# enlaces antiguos; están enlazadas desde /anterior/.

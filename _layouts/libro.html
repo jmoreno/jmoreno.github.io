@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article class="post ficha-libro">
+  <header class="post-header">
+    <p class="eyebrow">Libro</p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      {% if page.autor %}{{ page.autor }}{% endif %}
+      {% if page.date %}&nbsp;·&nbsp;<time datetime="{{ page.date | date_to_xmlschema }}">{% include mes-anio.html date=page.date %}</time>{% endif %}
+      {% if page.valoracion %}&nbsp;·&nbsp;{% assign estrellas = "" %}{% for i in (1..5) %}{% if i <= page.valoracion %}★{% else %}☆{% endif %}{% endfor %}{% endif %}
+    </p>
+  </header>
+
+  {% if page.portada %}
+  <img class="libro-portada" src="{{ page.portada | relative_url }}" alt="Portada de {{ page.title }}">
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% include share.html %}
+</article>
