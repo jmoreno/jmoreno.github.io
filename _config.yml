@@ -5,6 +5,17 @@ url: "https://www.saltodemata.es"
 baseurl: ""
 lang: es
 locale: es_ES
+# Sin esto, Jekyll interpreta cualquier "date:" sin zona horaria como UTC.
+# La app desde la que se publica pone la fecha en hora local de España, así
+# que entre las 22:00 y las 00:00 (verano) o 23:00 y 00:00 (invierno) esa
+# hora local ya es "mañana" mientras en UTC todavía es "hoy": Jekyll veía
+# esos posts como "del futuro" y los ocultaba sin dar ningún error hasta
+# que el reloj UTC alcanzaba esa fecha.
+timezone: Europe/Madrid
+# Red de seguridad además de lo anterior: publica igualmente aunque algún
+# post quede fechado en el futuro (nunca se usa esto para programar
+# publicaciones, así que no tiene sentido que Jekyll las oculte solo).
+future: true
 
 author:
   name: "Javi Moreno"
