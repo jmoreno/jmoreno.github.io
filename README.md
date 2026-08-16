@@ -30,6 +30,11 @@ Contenido en Markdown.
 El nombre del archivo **debe** empezar por `AAAA-MM-DD-`; el resto es la
 URL (`/blog/mi-idea-suelta/`).
 
+Cualquier entrada, en cualquier zona, admite además un campo opcional
+`sharing: [linkedin, instagram]` para que se anuncie sola en redes al
+publicarla — ver [Publicar avisos en redes sociales](#publicar-avisos-en-redes-sociales)
+más abajo. Sin ese campo, no se anuncia en ningún sitio.
+
 ### Recetas
 
 ```
@@ -128,10 +133,10 @@ se sirven tal cual para no romper enlaces antiguos.
 
 ## Publicar avisos en redes sociales
 
-Ver [REDES-SOCIALES.md](REDES-SOCIALES.md). Resumen rápido: para que una
-entrada se anuncie sola en LinkedIn, añade `tags: [linkedin]` a su
-front matter; sin ese tag, esa entrada no se publica ahí (aunque el
-webhook genérico para Instagram/otros sí se dispara para todo).
+Ver [REDES-SOCIALES.md](REDES-SOCIALES.md). Resumen rápido: cada
+entrada decide dónde se anuncia con el campo `sharing` en su front
+matter (`sharing: [linkedin, instagram]`); sin ese campo, no se anuncia
+en ningún sitio.
 
 ## Nota de seguridad
 
