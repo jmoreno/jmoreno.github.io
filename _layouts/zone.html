@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<header class="page-header">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.description %}<p class="page-description">{{ page.description }}</p>{% endif %}
+</header>
+
+{{ content }}
+
+<section class="post-list">
+  {% assign items = site[page.collection_name] | sort: page.sort_by | reverse %}
+  {% for item in items %}
+    <article class="post-summary">
+      {% if item.date %}
+        <p class="post-summary-date">
+          <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%d/%m/%Y" }}</time>
+        </p>
+      {% endif %}
+      <h2 class="post-summary-title"><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h2>
+      {% if item.description %}<p class="post-summary-excerpt">{{ item.description }}</p>{% endif %}
+    </article>
+  {% else %}
+    <p class="empty">Todavía no hay nada aquí. Próximamente.</p>
+  {% endfor %}
+</section>

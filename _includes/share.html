@@ -1,0 +1,21 @@
+<div class="share-box">
+  <span class="share-label">Compartir:</span>
+  <a class="share-link" target="_blank" rel="noopener"
+     href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}">LinkedIn</a>
+  <a class="share-link" target="_blank" rel="noopener"
+     href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}">X/Twitter</a>
+  <button type="button" class="share-link share-copy" data-url="{{ page.url | absolute_url }}">Copiar enlace</button>
+</div>
+<script>
+  (function () {
+    var btn = document.currentScript.previousElementSibling.querySelector('.share-copy');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(btn.dataset.url).then(function () {
+        var original = btn.textContent;
+        btn.textContent = '¡Copiado!';
+        setTimeout(function () { btn.textContent = original; }, 1500);
+      });
+    });
+  })();
+</script>

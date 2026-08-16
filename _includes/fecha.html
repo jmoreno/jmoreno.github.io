@@ -1,0 +1,7 @@
+{%- comment -%}
+  Fecha en español, ya que Jekyll 3.x no trae localización de fechas.
+  Uso: {% include fecha.html date=page.date %}
+{%- endcomment -%}
+{%- assign meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," -%}
+{%- assign mes_index = include.date | date: "%-m" | minus: 1 -%}
+{{ include.date | date: "%-d" }} de {{ meses[mes_index] }} de {{ include.date | date: "%Y" }}

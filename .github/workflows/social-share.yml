@@ -1,0 +1,41 @@
+name: Anunciar contenido nuevo en redes
+
+# Se dispara cuando un push añade contenido nuevo al blog, a recetas,
+# a libros o a snippets. No hace falta para publicar el sitio (eso lo
+# hace GitHub Pages solo al compilar Jekyll); esto es solo el aviso
+# opcional en redes sociales.
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "_posts/**"
+      - "_recetas/**"
+      - "_libros/**"
+      - "_snippets/**"
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detectar archivos nuevos
+        id: diff
+        run: |
+          FILES=$(git diff --name-status "${{ github.event.before }}" "${{ github.sha }}" \
+            -- _posts _recetas _libros _snippets \
+            | awk '$1=="A"{print $2}')
+          {
+            echo "files<<EOF"
+            echo "$FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publicar aviso
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          SOCIAL_WEBHOOK_URL: ${{ secrets.SOCIAL_WEBHOOK_URL }}
+        run: ./scripts/social_share.sh "${{ steps.diff.outputs.files }}"
