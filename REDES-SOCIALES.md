@@ -47,11 +47,21 @@ variables → Actions** del repositorio.
    - `LINKEDIN_AUTHOR_URN`
 
 A partir de ahí, cualquier entrada con `linkedin` en su `sharing` se
-publica sola en tu perfil con el título, el resumen y el enlace.
+publica sola en tu perfil: el título, el resumen y el enlace como texto,
+más una tarjeta de artículo con el título/descripción/enlace debajo.
 
-> La API de LinkedIn cambia de vez en cuando (el endpoint `ugcPosts` es
-> el "clásico"; existe también `/rest/posts`, más nuevo). Si LinkedIn
-> deja de aceptar la llamada, hay que ajustar `scripts/social_share.sh`.
+> El script usa el endpoint **`/rest/posts`** (la "Posts API" actual),
+> no el antiguo `/v2/ugcPosts` — ese endpoint legado dejó de aceptar el
+> formato `urn:li:person:...` en el campo `author` y solo admite
+> `urn:li:member:\d+`/`urn:li:company:\d+`, lo que no cuadra con el URN
+> que se saca de `/v2/userinfo`. Con `/rest/posts` sí funciona.
+>
+> La API de LinkedIn se versiona por mes con la cabecera
+> `LinkedIn-Version: AAAAMM`, y solo admite más o menos los últimos 12
+> meses. Ese valor está en la variable `LINKEDIN_API_VERSION` al
+> principio de `scripts/social_share.sh` — si LinkedIn empieza a
+> rechazar la llamada por versión caducada, hay que subir ese número
+> (o pasarlo como variable de entorno en la Action sin tocar el script).
 
 ## X / Twitter (publicación directa)
 
