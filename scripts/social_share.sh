@@ -11,6 +11,9 @@
 #
 # - "linkedin" en sharing + secrets LINKEDIN_ACCESS_TOKEN y
 #   LINKEDIN_AUTHOR_URN configurados -> publica directo en LinkedIn.
+# - "twitter" en sharing + secrets TWITTER_API_KEY, TWITTER_API_SECRET,
+#   TWITTER_ACCESS_TOKEN y TWITTER_ACCESS_TOKEN_SECRET configurados ->
+#   publica directo en X/Twitter (scripts/post_to_twitter.py).
 # - Cualquier red en sharing (incluida "instagram") + secret
 #   SOCIAL_WEBHOOK_URL configurado -> envía un POST con un JSON
 #   {title, url, excerpt, platforms} a esa URL. Ahí puedes enganchar
@@ -24,6 +27,7 @@
 set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -127,6 +131,14 @@ ${url}"
   "visibility": { "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC" }
 }
 JSON
+    echo
+  fi
+
+  if [ -n "${TWITTER_API_KEY:-}" ] && [ -n "${TWITTER_API_SECRET:-}" ] \
+    && [ -n "${TWITTER_ACCESS_TOKEN:-}" ] && [ -n "${TWITTER_ACCESS_TOKEN_SECRET:-}" ] \
+    && has_sharing_target "$file" "twitter"; then
+    echo "-> Publicando en X/Twitter"
+    python3 "${SCRIPT_DIR}/post_to_twitter.py" "$title" "$excerpt" "$url"
     echo
   fi
 

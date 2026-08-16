@@ -14,15 +14,16 @@ Cada entrada decide por sí misma dónde se anuncia con el campo
 ```markdown
 ---
 title: Un post que quiero anunciar
-sharing: [linkedin, instagram]
+sharing: [linkedin, twitter, instagram]
 ---
 ```
 
 - Sin `sharing`, la entrada no se anuncia en ningún sitio — es opt-in,
   no pasa nada por defecto.
 - `sharing: [linkedin]` → solo LinkedIn.
+- `sharing: [twitter]` → solo X/Twitter.
 - `sharing: [instagram]` → solo el webhook genérico (ver más abajo).
-- `sharing: [linkedin, instagram]` → los dos.
+- Se pueden combinar: `sharing: [linkedin, twitter, instagram]` → las tres.
 
 El campo tiene que ir en formato de lista entre corchetes; es el único
 formato que entiende `scripts/social_share.sh`.
@@ -51,6 +52,36 @@ publica sola en tu perfil con el título, el resumen y el enlace.
 > La API de LinkedIn cambia de vez en cuando (el endpoint `ugcPosts` es
 > el "clásico"; existe también `/rest/posts`, más nuevo). Si LinkedIn
 > deja de aceptar la llamada, hay que ajustar `scripts/social_share.sh`.
+
+## X / Twitter (publicación directa)
+
+A diferencia de LinkedIn, la API de X no acepta un simple token: cada
+petición se firma con OAuth 1.0a (HMAC-SHA1). Eso ya está resuelto en
+[`scripts/post_to_twitter.py`](scripts/post_to_twitter.py), sin
+dependencias externas — solo hace falta rellenar cuatro secrets.
+
+1. Crea una cuenta de desarrollador en <https://developer.x.com> (es
+   gratis; el nivel "Free" permite publicar tuits, con un límite mensual
+   bajo pero de sobra para un blog personal).
+2. Crea un *Project* y una *App* dentro de él.
+3. En **App settings → User authentication settings**, actívalo con
+   permisos **"Read and Write"** (por defecto suele venir en
+   "Read only").
+4. En la pestaña **"Keys and tokens"**:
+   - Copia la **API Key** y el **API Key Secret** (también llamados
+     *Consumer Key/Secret*).
+   - Genera (o regenera, si ya existían de antes de poner permisos de
+     escritura) el **Access Token** y el **Access Token Secret**.
+5. Añade los cuatro secrets al repositorio:
+   - `TWITTER_API_KEY`
+   - `TWITTER_API_SECRET`
+   - `TWITTER_ACCESS_TOKEN`
+   - `TWITTER_ACCESS_TOKEN_SECRET`
+
+A partir de ahí, cualquier entrada con `twitter` en su `sharing` se
+publica sola como tuit (título, resumen y enlace, recortado a 280
+caracteres si hace falta). A diferencia del token de LinkedIn, este no
+caduca solo con el tiempo — solo si lo revocas a mano o rotas las claves.
 
 ## Instagram (y cualquier otra red)
 
