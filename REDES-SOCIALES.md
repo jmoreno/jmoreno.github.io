@@ -6,9 +6,32 @@ Cuando haces `git push` de una entrada nueva (en `_posts/`, `_recetas/`,
 se dispara sola. No hace nada por publicar el blog en sí (eso ya lo hace
 GitHub Pages) — solo se encarga del aviso en redes.
 
-Sin configurar nada, la Action no falla: simplemente no publica en ningún
-sitio. Actívala configurando los *secrets* que te interesen en
-**Settings → Secrets and variables → Actions** del repositorio.
+## Elegir dónde se anuncia cada entrada
+
+Cada entrada decide por sí misma dónde se anuncia con el campo
+`sharing` en el front matter (una lista, igual que `tags`):
+
+```markdown
+---
+title: Un post que quiero anunciar
+sharing: [linkedin, twitter, instagram]
+---
+```
+
+- Sin `sharing`, la entrada no se anuncia en ningún sitio — es opt-in,
+  no pasa nada por defecto.
+- `sharing: [linkedin]` → solo LinkedIn.
+- `sharing: [twitter]` → solo X/Twitter.
+- `sharing: [instagram]` → solo el webhook genérico (ver más abajo).
+- Se pueden combinar: `sharing: [linkedin, twitter, instagram]` → las tres.
+
+El campo tiene que ir en formato de lista entre corchetes; es el único
+formato que entiende `scripts/social_share.sh`.
+
+Sin configurar ningún secret, la Action no falla: aunque una entrada
+lleve `sharing`, simplemente no publica en ningún sitio. Actívala
+configurando los que te interesen en **Settings → Secrets and
+variables → Actions** del repositorio.
 
 ## LinkedIn (publicación directa)
 
@@ -23,12 +46,42 @@ sitio. Actívala configurando los *secrets* que te interesen en
    - `LINKEDIN_ACCESS_TOKEN`
    - `LINKEDIN_AUTHOR_URN`
 
-A partir de ahí, cada entrada nueva se publica sola en tu perfil de
-LinkedIn con el título, el resumen y el enlace.
+A partir de ahí, cualquier entrada con `linkedin` en su `sharing` se
+publica sola en tu perfil con el título, el resumen y el enlace.
 
 > La API de LinkedIn cambia de vez en cuando (el endpoint `ugcPosts` es
 > el "clásico"; existe también `/rest/posts`, más nuevo). Si LinkedIn
 > deja de aceptar la llamada, hay que ajustar `scripts/social_share.sh`.
+
+## X / Twitter (publicación directa)
+
+A diferencia de LinkedIn, la API de X no acepta un simple token: cada
+petición se firma con OAuth 1.0a (HMAC-SHA1). Eso ya está resuelto en
+[`scripts/post_to_twitter.py`](scripts/post_to_twitter.py), sin
+dependencias externas — solo hace falta rellenar cuatro secrets.
+
+1. Crea una cuenta de desarrollador en <https://developer.x.com> (es
+   gratis; el nivel "Free" permite publicar tuits, con un límite mensual
+   bajo pero de sobra para un blog personal).
+2. Crea un *Project* y una *App* dentro de él.
+3. En **App settings → User authentication settings**, actívalo con
+   permisos **"Read and Write"** (por defecto suele venir en
+   "Read only").
+4. En la pestaña **"Keys and tokens"**:
+   - Copia la **API Key** y el **API Key Secret** (también llamados
+     *Consumer Key/Secret*).
+   - Genera (o regenera, si ya existían de antes de poner permisos de
+     escritura) el **Access Token** y el **Access Token Secret**.
+5. Añade los cuatro secrets al repositorio:
+   - `TWITTER_API_KEY`
+   - `TWITTER_API_SECRET`
+   - `TWITTER_ACCESS_TOKEN`
+   - `TWITTER_ACCESS_TOKEN_SECRET`
+
+A partir de ahí, cualquier entrada con `twitter` en su `sharing` se
+publica sola como tuit (título, resumen y enlace, recortado a 280
+caracteres si hace falta). A diferencia del token de LinkedIn, este no
+caduca solo con el tiempo — solo si lo revocas a mano o rotas las claves.
 
 ## Instagram (y cualquier otra red)
 
@@ -45,6 +98,21 @@ imagen obligatoria en cada publicación — implementarlo directamente no es
    campos `title`, `url` y `excerpt` que llegan en el JSON — por ejemplo
    como texto del pie de foto, y sube tú la imagen o usa una fija.
 
-Con esto, cada entrada nueva dispara el webhook y la automatización se
-encarga de llevarlo a Instagram (o a cualquier otro sitio que quieras
-enganchar ahí: Telegram, un email, Notion...).
+El webhook se dispara para cualquier entrada que tenga **algo** en
+`sharing` (no hace falta que sea literalmente `instagram`: puede ser
+`linkedin`, `instagram`, o cualquier otro nombre que te invente). El
+JSON incluye además un campo `platforms` con la lista completa, por si
+quieres filtrar en el propio applet según a qué red va dirigido:
+
+```json
+{
+  "title": "Un post que quiero anunciar",
+  "url": "https://www.saltodemata.es/blog/un-post/",
+  "excerpt": "...",
+  "platforms": ["linkedin", "instagram"]
+}
+```
+
+Por ejemplo, en IFTTT puedes añadir un filtro que compruebe si
+`platforms` contiene `"instagram"` antes de publicar ahí, y así usar el
+mismo webhook para varias redes sin que se crucen.
