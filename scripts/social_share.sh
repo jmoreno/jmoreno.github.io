@@ -28,11 +28,6 @@ set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# LinkedIn versiona su API por mes (AAAAMM). Solo admite, a grandes rasgos,
-# la ventana de los últimos ~12 meses, así que hay que ir subiendo este
-# valor de vez en cuando. Se puede sobreescribir con la variable de entorno
-# del mismo nombre sin tocar el script.
-LINKEDIN_API_VERSION="${LINKEDIN_API_VERSION:-202606}"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -118,32 +113,31 @@ ${url}"
 
   if [ -n "${LINKEDIN_ACCESS_TOKEN:-}" ] && [ -n "${LINKEDIN_AUTHOR_URN:-}" ] && has_sharing_target "$file" "linkedin"; then
     echo "-> Publicando en LinkedIn"
-    curl -sS -X POST "https://api.linkedin.com/rest/posts" \
+    # /rest/posts (la Posts API "nueva") suele exigir que LinkedIn apruebe
+    # aparte el acceso a la Community Management API, algo que una app
+    # personal no consigue por autoservicio. Por eso usamos /v2/ugcPosts,
+    # que sí está incluido en el producto autoservicio "Share on LinkedIn".
+    curl -sS -i -X POST "https://api.linkedin.com/v2/ugcPosts" \
       -H "Authorization: Bearer ${LINKEDIN_ACCESS_TOKEN}" \
       -H "Content-Type: application/json" \
       -H "X-Restli-Protocol-Version: 2.0.0" \
-      -H "LinkedIn-Version: ${LINKEDIN_API_VERSION}" \
       -d "$(python3 -c '
 import json, sys
-author, text, url, title, excerpt = sys.argv[1:6]
-article = {"source": url, "title": title}
-if excerpt:
-    article["description"] = excerpt
+author, text, url = sys.argv[1:4]
 body = {
     "author": author,
-    "commentary": text,
-    "visibility": "PUBLIC",
-    "distribution": {
-        "feedDistribution": "MAIN_FEED",
-        "targetEntities": [],
-        "thirdPartyDistributionChannels": [],
-    },
-    "content": {"article": article},
     "lifecycleState": "PUBLISHED",
-    "isReshareDisabledByAuthor": False,
+    "specificContent": {
+        "com.linkedin.ugc.ShareContent": {
+            "shareCommentary": {"text": text},
+            "shareMediaCategory": "ARTICLE",
+            "media": [{"status": "READY", "originalUrl": url}],
+        }
+    },
+    "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
 }
 print(json.dumps(body))
-' "$LINKEDIN_AUTHOR_URN" "$text" "$url" "$title" "$excerpt")"
+' "$LINKEDIN_AUTHOR_URN" "$text" "$url")"
     echo
   fi
 
