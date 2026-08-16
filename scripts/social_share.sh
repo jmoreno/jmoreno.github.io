@@ -28,6 +28,11 @@ set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# LinkedIn versiona su API por mes (AAAAMM). Solo admite, a grandes rasgos,
+# la ventana de los últimos ~12 meses, así que hay que ir subiendo este
+# valor de vez en cuando. Se puede sobreescribir con la variable de entorno
+# del mismo nombre sin tocar el script.
+LINKEDIN_API_VERSION="${LINKEDIN_API_VERSION:-202606}"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -113,24 +118,32 @@ ${url}"
 
   if [ -n "${LINKEDIN_ACCESS_TOKEN:-}" ] && [ -n "${LINKEDIN_AUTHOR_URN:-}" ] && has_sharing_target "$file" "linkedin"; then
     echo "-> Publicando en LinkedIn"
-    curl -sS -X POST "https://api.linkedin.com/v2/ugcPosts" \
+    curl -sS -X POST "https://api.linkedin.com/rest/posts" \
       -H "Authorization: Bearer ${LINKEDIN_ACCESS_TOKEN}" \
       -H "Content-Type: application/json" \
       -H "X-Restli-Protocol-Version: 2.0.0" \
-      -d @- <<JSON
-{
-  "author": "${LINKEDIN_AUTHOR_URN}",
-  "lifecycleState": "PUBLISHED",
-  "specificContent": {
-    "com.linkedin.ugc.ShareContent": {
-      "shareCommentary": { "text": $(printf '%s' "$text" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))') },
-      "shareMediaCategory": "ARTICLE",
-      "media": [{ "status": "READY", "originalUrl": "${url}" }]
-    }
-  },
-  "visibility": { "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC" }
+      -H "LinkedIn-Version: ${LINKEDIN_API_VERSION}" \
+      -d "$(python3 -c '
+import json, sys
+author, text, url, title, excerpt = sys.argv[1:6]
+article = {"source": url, "title": title}
+if excerpt:
+    article["description"] = excerpt
+body = {
+    "author": author,
+    "commentary": text,
+    "visibility": "PUBLIC",
+    "distribution": {
+        "feedDistribution": "MAIN_FEED",
+        "targetEntities": [],
+        "thirdPartyDistributionChannels": [],
+    },
+    "content": {"article": article},
+    "lifecycleState": "PUBLISHED",
+    "isReshareDisabledByAuthor": False,
 }
-JSON
+print(json.dumps(body))
+' "$LINKEDIN_AUTHOR_URN" "$text" "$url" "$title" "$excerpt")"
     echo
   fi
 
