@@ -15,8 +15,11 @@
   --max-width: 720px;
 }
 
+/* Tema oscuro: por defecto del sistema (prefers-color-scheme), salvo que
+   el visitante haya elegido explícitamente uno con el selector del
+   cabecero -- en ese caso [data-theme] manda, en cualquier dirección. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #171513;
     --bg-raised: #201d1b;
     --text: #ece7e1;
@@ -25,6 +28,15 @@
     --accent: #e08668;
     --accent-contrast: #171513;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #171513;
+  --bg-raised: #201d1b;
+  --text: #ece7e1;
+  --text-muted: #a39c93;
+  --border: #35302b;
+  --accent: #e08668;
+  --accent-contrast: #171513;
 }
 
 * { box-sizing: border-box; }
@@ -70,6 +82,11 @@ pre {
 }
 pre code { background: none; border: none; padding: 0; }
 
+/* Los bloques de código de los snippets van siempre en tema oscuro
+   (ver assets/css/syntax.css), así que su borde no necesita ser tan
+   marcado como el de un <pre> normal sobre fondo claro. */
+.post-content pre.highlight { border-color: transparent; }
+
 blockquote {
   margin: 1.5rem 0;
   padding: 0.1rem 1.25rem;
@@ -83,6 +100,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 /* Header / nav                                                       */
 /* ------------------------------------------------------------------ */
 .site-header {
+  position: relative;
   border-bottom: 1px solid var(--border);
   padding: 1.1rem 0;
 }
@@ -101,28 +119,88 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
   text-decoration: none;
 }
 
-.nav-toggle { display: none; }
-.nav-toggle-label { display: none; cursor: pointer; font-size: 1.4rem; line-height: 1; }
+.header-controls { display: flex; align-items: center; gap: 1.1rem; }
 
-.nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
-.nav-links a {
+.site-nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.site-nav a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.95rem;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.site-nav a:hover, .site-nav a.active { color: var(--accent); }
 
-@media (max-width: 560px) {
-  .nav-toggle-label { display: inline-block; }
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 0.6rem;
-    padding-top: 0.75rem;
-  }
-  .nav-toggle:checked ~ .nav-links { display: flex; }
+/* Botón genérico para los dos controles del cabecero (tema y zonas):
+   discretos a propósito, sin chrome de botón. */
+.icon-btn {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.2rem;
 }
+.icon-btn:hover { color: var(--accent); }
+
+#theme-toggle { font-size: 0.95rem; }
+
+.zones-toggle-btn { font-size: 1.3rem; }
+.zones-toggle-checkbox { position: absolute; opacity: 0; pointer-events: none; }
+
+/* ------------------------------------------------------------------ */
+/* Panel lateral de zonas (recetas, libros, snippets)                  */
+/*                                                                      */
+/* A propósito no son botones a la vista en todas las páginas: viven en */
+/* este panel discreto que se abre con el icono ☰ del cabecero.        */
+/* ------------------------------------------------------------------ */
+.zones-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 90;
+}
+
+.zones-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 240px;
+  max-width: 80vw;
+  background: var(--bg-raised);
+  border-left: 1px solid var(--border);
+  padding: 4.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  z-index: 91;
+}
+.zones-panel-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.zones-panel a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+.zones-panel a:hover, .zones-panel a.active { color: var(--accent); }
+
+.zones-toggle-checkbox:checked ~ .zones-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.zones-toggle-checkbox:checked ~ .zones-panel { transform: translateX(0); }
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
@@ -164,33 +242,6 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 /* Home                                                                */
 /* ------------------------------------------------------------------ */
 .intro { font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
-
-.zones {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.9rem;
-  margin-bottom: 3rem;
-}
-@media (max-width: 560px) { .zones { grid-template-columns: 1fr; } }
-
-.zone-card {
-  display: block;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-raised);
-  text-decoration: none;
-  transition: border-color 0.15s ease;
-}
-.zone-card:hover { border-color: var(--accent); }
-.zone-card-title {
-  display: block;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.2rem;
-}
-.zone-card-desc { display: block; font-size: 0.88rem; color: var(--text-muted); }
 
 .post-list { display: flex; flex-direction: column; gap: 2rem; }
 .post-summary-date { color: var(--text-muted); font-size: 0.85rem; margin: 0 0 0.15rem; }

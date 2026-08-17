@@ -97,19 +97,26 @@ defaults:
       layout: page
 
 # -----------------------------------------------------------------------
-# Navegación principal (usada por _includes/header.html)
+# Navegación (usada por _includes/header.html)
+#
+# nav_primary sale siempre visible en el cabecero. nav_zones son las
+# "zonas aisladas" del blog (recetas, libros, snippets): a propósito no
+# van como botones a la vista, sino en el panel lateral discreto que se
+# abre con el icono ☰.
 # -----------------------------------------------------------------------
-nav:
+nav_primary:
   - title: Blog
     url: /
+  - title: Sobre mí
+    url: /sobre-mi/
+
+nav_zones:
   - title: Recetas
     url: /recetas/
   - title: Libros
     url: /libros/
   - title: Snippets
     url: /snippets/
-  - title: Sobre mí
-    url: /sobre-mi/
 
 # Plugins soportados de forma nativa por GitHub Pages: con esto basta
 # "git push" para que el sitio se recompile y se publique solo, sin
