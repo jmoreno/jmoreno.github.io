@@ -49,16 +49,41 @@ conexión con X.
 ## LinkedIn (publicación directa)
 
 1. Crea una app en <https://www.linkedin.com/developers/apps>.
-2. Solicita el producto **"Share on LinkedIn"** (da acceso al scope
-   `w_member_social`).
-3. Genera un access token (OAuth 2.0, flujo de 3 patas) con ese scope.
-   Dura unos 60 días — tendrás que regenerarlo periódicamente.
-4. Consigue tu *author URN*: `urn:li:person:TU_ID` (se obtiene con una
-   llamada a `GET /v2/userinfo` usando el mismo token; el campo que
-   necesitas es `sub`).
+2. En la pestaña **Products** de la app, añade **los dos** productos
+   (los dos son autoservicio, sin revisión manual):
+   - **"Share on LinkedIn"** (da el scope `w_member_social`, para
+     publicar).
+   - **"Sign In with LinkedIn using OpenID Connect"** (da los scopes
+     `openid`/`profile`, necesarios para saber quién eres — sin este
+     producto añadido a *esta* app en concreto, ni siquiera aparecen
+     como opción al generar el token).
+3. Genera un access token marcando los tres scopes (`openid`, `profile`,
+   `w_member_social`) — la forma más simple es la herramienta **Token
+   Generator**, en "Docs and Tools" del portal de desarrolladores:
+   eliges tu app y los scopes, sin tener que montar tú tampoco el flujo
+   OAuth con un *redirect URI* propio. Dura unos 60 días — tendrás que
+   regenerarlo periódicamente.
+   - Si tienes dudas de qué scopes tiene realmente un token ya
+     generado, la herramienta **Token Inspector** (mismo menú) te los
+     lista pegando el token.
+4. Con ese token, consigue tu *author URN*. Hace falta la cabecera
+   `LinkedIn-Version` incluso aquí (si no, da 403 aunque el token tenga
+   los scopes correctos):
+
+   ```bash
+   curl https://api.linkedin.com/v2/userinfo \
+     -H "Authorization: Bearer TU_ACCESS_TOKEN" \
+     -H "LinkedIn-Version: 202606"
+   ```
+
+   El campo que necesitas de la respuesta es `sub` (una cadena corta
+   tipo `98f5Fdovbj`, no un número). Tu *author URN* es
+   `urn:li:person:` seguido de ese valor, sin espacios ni comillas de
+   más: `urn:li:person:98f5Fdovbj`.
 5. Añade dos secrets al repositorio:
-   - `LINKEDIN_ACCESS_TOKEN`
-   - `LINKEDIN_AUTHOR_URN`
+   - `LINKEDIN_ACCESS_TOKEN` — el token del paso 3 (vale para lo dos:
+     consultar el perfil y publicar).
+   - `LINKEDIN_AUTHOR_URN` — el URN del paso 4.
 
 A partir de ahí, cualquier entrada con `linkedin` en su `sharing` se
 publica sola en tu perfil, con el título, el resumen y el enlace.
@@ -67,12 +92,15 @@ publica sola en tu perfil, con el título, el resumen y el enlace.
 > producto autoservicio "Share on LinkedIn"), no el más nuevo
 > `/rest/posts` — ese exige además el producto "Community Management
 > API", que LinkedIn concede tras revisión manual, no por autoservicio.
+> Igual que `/v2/userinfo`, lleva la cabecera `LinkedIn-Version`
+> (variable `LINKEDIN_API_VERSION` al principio de
+> `scripts/social_share.sh`, sube ese número de vez en cuando).
 >
 > Si `/v2/ugcPosts` rechaza la llamada con un 422 del tipo *"/author ::
 > no coincide con urn:li:member/urn:li:company"*, revisa primero el
 > **valor exacto** de `LINKEDIN_AUTHOR_URN`: tiene que ser literalmente
-> `urn:li:person:` seguido del `sub` que devuelve `/v2/userinfo`, sin
-> espacios ni comillas de más.
+> `urn:li:person:` seguido del `sub`, sin espacios ni comillas de más
+> — es el error que da si ese valor está mal formado.
 
 ## Webhook genérico (X/Twitter, Instagram, o cualquier otra red)
 

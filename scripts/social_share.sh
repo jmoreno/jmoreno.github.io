@@ -26,6 +26,14 @@
 set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
+# LinkedIn ha empezado a exigir esta cabecera incluso en endpoints que
+# antes no la pedían (p. ej. /v2/userinfo empezó a devolver 403 "sin
+# permisos" sin ella, aunque el token tuviera el scope correcto). Se
+# versiona por mes (AAAAMM) y solo admite, a grandes rasgos, la ventana
+# de los últimos ~12 meses -- hay que ir subiendo este valor de vez en
+# cuando. Se puede sobreescribir con la variable de entorno del mismo
+# nombre sin tocar el script.
+LINKEDIN_API_VERSION="${LINKEDIN_API_VERSION:-202606}"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -119,6 +127,7 @@ ${url}"
       -H "Authorization: Bearer ${LINKEDIN_ACCESS_TOKEN}" \
       -H "Content-Type: application/json" \
       -H "X-Restli-Protocol-Version: 2.0.0" \
+      -H "LinkedIn-Version: ${LINKEDIN_API_VERSION}" \
       -d "$(python3 -c '
 import json, sys
 author, text, url = sys.argv[1:4]
