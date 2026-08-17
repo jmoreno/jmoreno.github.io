@@ -129,8 +129,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 }
 .site-nav a:hover, .site-nav a.active { color: var(--accent); }
 
-/* Botón genérico para los dos controles del cabecero (tema y zonas):
-   discretos a propósito, sin chrome de botón. */
+/* Botón genérico discreto, sin chrome de botón (el de abrir el menú y
+   el de cambiar de tema, éste ya dentro del panel). */
 .icon-btn {
   border: none;
   background: none;
@@ -143,13 +143,11 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 }
 .icon-btn:hover { color: var(--accent); }
 
-#theme-toggle { font-size: 0.95rem; }
-
 .zones-toggle-btn { font-size: 1.3rem; }
 .zones-toggle-checkbox { position: absolute; opacity: 0; pointer-events: none; }
 
 /* ------------------------------------------------------------------ */
-/* Panel lateral de zonas (recetas, libros, snippets)                  */
+/* Panel lateral (recetas, libros, snippets, y el selector de tema)    */
 /*                                                                      */
 /* A propósito no son botones a la vista en todas las páginas: viven en */
 /* este panel discreto que se abre con el icono ☰ del cabecero.        */
@@ -195,6 +193,20 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
   font-size: 1.1rem;
 }
 .zones-panel a:hover, .zones-panel a.active { color: var(--accent); }
+
+.zones-panel-sep {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0.4rem 0;
+}
+.zones-panel-theme-btn {
+  align-self: flex-start;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.zones-panel-theme-btn:hover { color: var(--accent); }
 
 .zones-toggle-checkbox:checked ~ .zones-overlay {
   opacity: 1;
