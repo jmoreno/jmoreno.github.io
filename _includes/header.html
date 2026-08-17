@@ -11,20 +11,22 @@
         {% endfor %}
       </nav>
 
-      <button type="button" id="theme-toggle" class="icon-btn" aria-label="Cambiar entre tema claro y oscuro">
-        <span class="theme-toggle-label">Oscuro</span>
-      </button>
-
-      <label for="zones-toggle" class="icon-btn zones-toggle-btn" aria-label="Abrir secciones (recetas, libros, snippets)">&#9776;</label>
+      <label for="zones-toggle" class="icon-btn zones-toggle-btn" aria-label="Abrir menú">&#9776;</label>
     </div>
   </div>
 
   <label for="zones-toggle" class="zones-overlay" aria-hidden="true"></label>
-  <nav class="zones-panel" aria-label="Secciones">
+  <nav class="zones-panel" aria-label="Menú">
     <p class="zones-panel-title">Secciones</p>
     {% for item in site.nav_zones %}
       <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
     {% endfor %}
+
+    <hr class="zones-panel-sep">
+
+    <button type="button" id="theme-toggle" class="icon-btn zones-panel-theme-btn" aria-label="Cambiar entre tema claro y oscuro">
+      <span class="theme-toggle-label">Tema oscuro</span>
+    </button>
   </nav>
 </header>
 <script>
@@ -40,7 +42,7 @@
 
     // El botón muestra la acción que va a hacer, no el estado actual.
     function render() {
-      label.textContent = effectiveTheme() === 'dark' ? 'Claro' : 'Oscuro';
+      label.textContent = effectiveTheme() === 'dark' ? 'Tema claro' : 'Tema oscuro';
     }
 
     btn.addEventListener('click', function () {
