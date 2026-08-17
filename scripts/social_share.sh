@@ -76,6 +76,15 @@ has_sharing_target() {
   [[ ",${list}," == *",${target},"* ]]
 }
 
+# clean_slug <cadena> -> igual que el slug que calcula Jekyll para :title
+# en el permalink: colapsa guiones repetidos y recorta los de los bordes.
+# Hace falta porque el nombre de archivo no siempre viene limpio (p. ej.
+# un título con un espacio al final se convierte en un guión de más al
+# final del nombre de archivo).
+clean_slug() {
+  python3 -c 'import re, sys; s = re.sub(r"-{2,}", "-", sys.argv[1]).strip("-"); print(s)' "$1"
+}
+
 # post_url <file> -> URL pública de la entrada, según la colección
 post_url() {
   local file="$1" base name
@@ -83,11 +92,11 @@ post_url() {
   case "$file" in
     _posts/*)
       name="${base#*-*-*-}" # quita el prefijo YYYY-MM-DD-
-      echo "${SITE_URL}/blog/${name}/"
+      echo "${SITE_URL}/blog/$(clean_slug "$name")/"
       ;;
-    _recetas/*) echo "${SITE_URL}/recetas/${base}/" ;;
-    _libros/*)  echo "${SITE_URL}/libros/${base}/" ;;
-    _snippets/*) echo "${SITE_URL}/snippets/${base}/" ;;
+    _recetas/*) echo "${SITE_URL}/recetas/$(clean_slug "$base")/" ;;
+    _libros/*)  echo "${SITE_URL}/libros/$(clean_slug "$base")/" ;;
+    _snippets/*) echo "${SITE_URL}/snippets/$(clean_slug "$base")/" ;;
     *) echo "" ;;
   esac
 }
