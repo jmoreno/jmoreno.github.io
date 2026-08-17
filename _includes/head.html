@@ -1,5 +1,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  // Aplica el tema guardado (si el visitante eligió uno) antes de que se
+  // pinte nada, para que no haya parpadeo de un tema al otro. El resto
+  // de la lógica del interruptor vive en _includes/header.html.
+  (function () {
+    var stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light') {
+      document.documentElement.setAttribute('data-theme', stored);
+    }
+  })();
+</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">

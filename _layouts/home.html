@@ -7,21 +7,6 @@ layout: default
 </section>
 {% endif %}
 
-<section class="zones">
-  <a class="zone-card" href="{{ '/recetas/' | relative_url }}">
-    <span class="zone-card-title">Recetas</span>
-    <span class="zone-card-desc">Lo que cocino y me sale bien (o casi).</span>
-  </a>
-  <a class="zone-card" href="{{ '/libros/' | relative_url }}">
-    <span class="zone-card-title">Libros</span>
-    <span class="zone-card-desc">Fichas de lo que voy leyendo.</span>
-  </a>
-  <a class="zone-card" href="{{ '/snippets/' | relative_url }}">
-    <span class="zone-card-title">Snippets</span>
-    <span class="zone-card-desc">Trocitos de código que no quiero volver a buscar.</span>
-  </a>
-</section>
-
 <section class="post-list">
   {% for post in site.posts %}
     <article class="post-summary">
