@@ -1,8 +1,7 @@
 ---
 title: Segunda intentona con las redes
 date: 2026-08-17
-title: Segunda intentona con las redes
-summary: La primera prueba llegó al blog pero no a LinkedIn ni a X: fallaban por motivos distintos, ya debería estar arreglado.
+summary: "La primera prueba llegó al blog pero no a LinkedIn ni a X: fallaban por motivos distintos, ya debería estar arreglado."
 tags: [meta]
 sharing: [linkedin, twitter]
 ---
