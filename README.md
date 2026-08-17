@@ -136,9 +136,10 @@ se sirven tal cual para no romper enlaces antiguos.
 Ver [REDES-SOCIALES.md](REDES-SOCIALES.md). Resumen rápido: cada
 entrada decide dónde se anuncia con el campo `sharing` en su front
 matter (`sharing: [linkedin, twitter, instagram]`); sin ese campo, no
-se anuncia en ningún sitio. LinkedIn y X/Twitter se publican directo
-desde la Action; Instagram (o cualquier otra red) va por un webhook
-genérico que enganchas a IFTTT/Zapier/Buffer.
+se anuncia en ningún sitio. LinkedIn se publica directo desde la
+Action; X/Twitter, Instagram (o cualquier otra red) van por un webhook
+genérico que enganchas a IFTTT/Zapier/Buffer — X no tiene integración
+directa a propósito, porque su API cobra por publicación de terceros.
 
 ## Nota de seguridad
 

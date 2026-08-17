@@ -11,15 +11,14 @@
 #
 # - "linkedin" en sharing + secrets LINKEDIN_ACCESS_TOKEN y
 #   LINKEDIN_AUTHOR_URN configurados -> publica directo en LinkedIn.
-# - "twitter" en sharing + secrets TWITTER_API_KEY, TWITTER_API_SECRET,
-#   TWITTER_ACCESS_TOKEN y TWITTER_ACCESS_TOKEN_SECRET configurados ->
-#   publica directo en X/Twitter (scripts/post_to_twitter.py).
-# - Cualquier red en sharing (incluida "instagram") + secret
+# - Cualquier red en sharing (twitter, instagram, o la que sea) + secret
 #   SOCIAL_WEBHOOK_URL configurado -> envía un POST con un JSON
 #   {title, url, excerpt, platforms} a esa URL. Ahí puedes enganchar
 #   IFTTT, Zapier, Make o Buffer, y decidir en esa automatización qué
-#   hacer según el contenido de "platforms" (p. ej. publicar en
-#   Instagram solo si "instagram" está en la lista).
+#   hacer según el contenido de "platforms" (p. ej. publicar en X solo
+#   si "twitter" está en la lista). X/Twitter no tiene integración
+#   directa aquí a propósito: su API cobra por publicación de apps de
+#   terceros, así que esta vía (webhook) es la que no tiene coste.
 #
 # Sin "sharing" en el front matter, la entrada no se anuncia en ningún
 # sitio (aunque los secrets estén configurados). Sin secrets configurados,
@@ -27,7 +26,6 @@
 set -euo pipefail
 
 SITE_URL="https://www.saltodemata.es"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # front_matter_field <file> <campo>  -> valor del campo (o vacío)
 front_matter_field() {
@@ -138,14 +136,6 @@ body = {
 }
 print(json.dumps(body))
 ' "$LINKEDIN_AUTHOR_URN" "$text" "$url")"
-    echo
-  fi
-
-  if [ -n "${TWITTER_API_KEY:-}" ] && [ -n "${TWITTER_API_SECRET:-}" ] \
-    && [ -n "${TWITTER_ACCESS_TOKEN:-}" ] && [ -n "${TWITTER_ACCESS_TOKEN_SECRET:-}" ] \
-    && has_sharing_target "$file" "twitter"; then
-    echo "-> Publicando en X/Twitter"
-    python3 "${SCRIPT_DIR}/post_to_twitter.py" "$title" "$excerpt" "$url"
     echo
   fi
 
