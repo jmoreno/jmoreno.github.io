@@ -193,6 +193,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
   font-size: 1.1rem;
 }
 .zones-panel a:hover, .zones-panel a.active { color: var(--accent); }
+.zones-panel .external-icon { font-size: 0.75em; color: var(--text-muted); }
 
 .zones-panel-sep {
   width: 100%;

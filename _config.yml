@@ -118,6 +118,14 @@ nav_zones:
   - title: Snippets
     url: /snippets/
 
+# Enlaces a otros proyectos (sitios externos, no zonas del propio blog).
+# Van en el mismo panel lateral que nav_zones, pero en su propio grupo.
+nav_projects:
+  - title: Zink
+    url: https://zink.saltodemata.es
+  - title: Maxwellev
+    url: https://maxwellev.app
+
 # Plugins soportados de forma nativa por GitHub Pages: con esto basta
 # "git push" para que el sitio se recompile y se publique solo, sin
 # ninguna Action ni paso de build manual.

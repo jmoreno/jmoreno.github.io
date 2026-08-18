@@ -22,6 +22,14 @@
       <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.title }}</a>
     {% endfor %}
 
+    {% if site.nav_projects %}
+      <hr class="zones-panel-sep">
+      <p class="zones-panel-title">Otros proyectos</p>
+      {% for item in site.nav_projects %}
+        <a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }} <span class="external-icon" aria-hidden="true">&#8599;</span></a>
+      {% endfor %}
+    {% endif %}
+
     <hr class="zones-panel-sep">
 
     <button type="button" id="theme-toggle" class="icon-btn zones-panel-theme-btn" aria-label="Cambiar entre tema claro y oscuro">
